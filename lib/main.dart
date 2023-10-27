@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
 
 import 'navigation.dart';
 import 'screens/admin_main_screen.dart';
@@ -38,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return MaterialApp(
         title: 'Intervüe',
         theme: ThemeData(fontFamily: 'Futura'),
-        home: Navigation(),
+        home: CandidatesUploadCV(),
         routes: {
           AdminMainScreen.routeName: (context) => AdminMainScreen(),
         });

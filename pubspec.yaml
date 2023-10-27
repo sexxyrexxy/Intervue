@@ -38,6 +38,8 @@ dependencies:
   dart_openai: ^4.0.0
   dropdown_button2: ^2.3.9
   flutter_expanded_tile: ^0.3.7
+  camera: ^0.10.5+5
+  file_picker: ^6.0.0
 
 dev_dependencies:
   flutter_test:

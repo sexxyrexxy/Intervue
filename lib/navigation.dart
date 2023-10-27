@@ -24,7 +24,7 @@ class NavigationState extends State<Navigation> {
   static int currentIndex = 0;
   bool _isLoading = true;
 
-  static List<Widget> screens = [
+  List<Widget> screens = [
     AdminMainScreen(),
     AdminSetInterviewScreen(),
     AdminCandidatesScreen(),
@@ -36,7 +36,9 @@ class NavigationState extends State<Navigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(children: [
+      body: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
         Container(
           width: 200,
           height: double.infinity,
@@ -132,12 +134,12 @@ Container navItem(IconData icon, String text, bool active) {
       children: [
         Icon(
           icon,
-          color: backgrounWhite,
+          color: backgroundWhite,
         ),
         SizedBox(width: 10),
         Text(
           text,
-          style: TextStyle(fontSize: 17, color: backgrounWhite),
+          style: TextStyle(fontSize: 17, color: backgroundWhite),
         )
       ],
     ),

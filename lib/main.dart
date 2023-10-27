@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:talentsync/screens/candidates_test_mic.dart';
 import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
 
 import 'navigation.dart';
@@ -15,33 +16,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Intervue',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      title: 'Intervüe',
+      theme: ThemeData(fontFamily: 'Futura'),
+      home: CandidatesUploadCV(),
+      routes: {
+        AdminMainScreen.routeName: (context) => AdminMainScreen(),
+      },
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Intervüe',
-        theme: ThemeData(fontFamily: 'Futura'),
-        home: Navigation(),
-        routes: {
-          AdminMainScreen.routeName: (context) => AdminMainScreen(),
-        });
   }
 }

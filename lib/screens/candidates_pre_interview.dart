@@ -1,9 +1,64 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:talentsync/widgets/small-button.dart';
 import 'package:talentsync/models/colors.dart' as custom_colors;
 
-class PreInterviewScreen extends StatelessWidget {
+class PreInterviewScreen extends StatefulWidget {
   const PreInterviewScreen({super.key});
+
+  @override
+  State<PreInterviewScreen> createState() => _PreInterviewScreenState();
+}
+
+class _PreInterviewScreenState extends State<PreInterviewScreen> {
+  CameraController? _controller;
+  bool _isCameraInitialized = false;
+  late final List<CameraDescription> _cameras;
+  bool _isRecording = false;
+
+  Future<void> initCamera() async {
+    _cameras = await availableCameras();
+    // Initialize the camera with the first camera in the list
+    await onNewCameraSelected(_cameras.first);
+  }
+
+  Future<void> onNewCameraSelected(CameraDescription description) async {
+    final previousCameraController = _controller;
+
+    // Instantiating the camera controller
+    final CameraController cameraController = CameraController(
+      description,
+      ResolutionPreset.high,
+      imageFormatGroup: ImageFormatGroup.jpeg,
+    );
+
+    // Initialize controller
+    try {
+      await cameraController.initialize();
+    } on CameraException catch (e) {
+      debugPrint('Error initializing camera: $e');
+    }
+    // Dispose the previous controller
+    await previousCameraController?.dispose();
+
+    // Replace with the new controller
+    if (mounted) {
+      setState(() {
+        _controller = cameraController;
+      });
+    }
+
+    // Update UI if controller updated
+    cameraController.addListener(() {
+      if (mounted) setState(() {});
+    });
+    // Update the Boolean
+    if (mounted) {
+      setState(() {
+        _isCameraInitialized = _controller!.value.isInitialized;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

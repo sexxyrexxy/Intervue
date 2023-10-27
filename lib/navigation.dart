@@ -43,9 +43,10 @@ class NavigationState extends State<Navigation> {
           width: 200,
           height: double.infinity,
           color: secondaryDarkBlue,
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.symmetric(horizontal:20),
           child: Column(
             children: [
+              Image.asset('lib/assets/images/Intervue-Logo.png'),
               GestureDetector(
                   onTap: () {
                     setState(() {
@@ -87,8 +88,13 @@ class NavigationState extends State<Navigation> {
                 },
                 child: navItem(Icons.notifications, 'Messages',
                     currentIndex == 4 ? true : false),
+              ),              
+              Divider(
+                color: black,    
+                thickness: 1.5,           
               ),
-              GestureDetector(
+              Spacer(),
+               GestureDetector(
                 onTap: () {
                   setState(() {
                     currentIndex = 5;
@@ -96,11 +102,6 @@ class NavigationState extends State<Navigation> {
                 },
                 child: navItem(Icons.settings, 'Settings',
                     currentIndex == 5 ? true : false),
-              ),
-              Spacer(),
-              Divider(
-                color: black,
-                height: 50,
               ),
               GestureDetector(
                 onTap: () {

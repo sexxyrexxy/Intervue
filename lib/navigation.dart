@@ -4,6 +4,7 @@ import 'screens/admin_analytics_screen.dart';
 import 'screens/admin_candidates_screen.dart';
 import 'screens/admin_main_screen.dart';
 import 'screens/admin_messages_screen.dart';
+import 'screens/admin_set_questions_screen.dart';
 import 'screens/admin_settings_screen.dart';
 
 class Navigation extends StatefulWidget {
@@ -20,11 +21,12 @@ class NavigationState extends State<Navigation> {
   //   return NavigationState.globalKey.currentWidget as BottomNavigationBar;
   // }
 
-  int currentIndex = 0;
+  static int currentIndex = 0;
   bool _isLoading = true;
 
-  List<Widget> screens = [
+  static List<Widget> screens = [
     AdminMainScreen(),
+    AdminSetInterviewScreen(),
     AdminCandidatesScreen(),
     AdminAnalyticsScreen(),
     AdminMessageScreen(),
@@ -51,45 +53,68 @@ class NavigationState extends State<Navigation> {
                   child: navItem(Icons.home_rounded, 'Dashboard',
                       currentIndex == 0 ? true : false)),
               GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      currentIndex = 1;
-                    });
-                  },
-                  child: navItem(Icons.people, 'Candidates',
-                      currentIndex == 1 ? true : false)),
+                onTap: () {
+                  setState(() {
+                    currentIndex = 1;
+                  });
+                },
+                child: navItem(Icons.question_answer, 'Interview',
+                    currentIndex == 1 ? true : false),
+              ),
               GestureDetector(
                   onTap: () {
                     setState(() {
                       currentIndex = 2;
                     });
                   },
-                  child: navItem(Icons.line_axis_outlined, 'Analytics',
+                  child: navItem(Icons.people, 'Candidates',
                       currentIndex == 2 ? true : false)),
               GestureDetector(
-                onTap: () {
-                  setState(() {
-                    currentIndex = 3;
-                  });
-                },
-                child: navItem(Icons.message_rounded, 'Messages',
-                    currentIndex == 3 ? true : false),
-              ),
+                  onTap: () {
+                    setState(() {
+                      currentIndex = 3;
+                    });
+                  },
+                  child: navItem(Icons.line_axis_outlined, 'Analytics',
+                      currentIndex == 3 ? true : false)),
               GestureDetector(
                 onTap: () {
                   setState(() {
                     currentIndex = 4;
                   });
                 },
+                child: navItem(Icons.notifications, 'Messages',
+                    currentIndex == 4 ? true : false),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    currentIndex = 5;
+                  });
+                },
+                child: navItem(Icons.settings, 'Settings',
+                    currentIndex == 5 ? true : false),
+              ),
+              Spacer(),
+              Divider(
+                color: black,
+                height: 50,
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    currentIndex = 5;
+                  });
+                },
                 child: navItem(
-                    Icons.settings, 'Settings', currentIndex == 4 ? true : false),
+                    Icons.logout, 'Log Out', currentIndex == 5 ? true : false),
               ),
             ],
           ),
         ),
-        Expanded(child: SingleChildScrollView(
-          scrollDirection: Axis.vertical ,
-          child: screens[currentIndex]))
+        Expanded(
+            child: SingleChildScrollView(
+                scrollDirection: Axis.vertical, child: screens[currentIndex]))
       ]),
     );
   }

@@ -1,8 +1,0 @@
-version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
-options: "c2f74df80635b9efe76998bc422474105d17f727be40e8cc7963e9c978dbd819"
-build_start_time: [1698070643, 414927959]
-build_end_time: [1698070656, 362401962]
-inputs:
-  "/Users/rexlim/Documents/Intervue/Intervue/macos/Flutter/GeneratedPluginRegistrant.swift": [1698070640, 906682968]
-  "/Users/rexlim/Documents/Intervue/Intervue/macos/Runner/AppDelegate.swift": [1678249904, 0]
-  "/Users/rexlim/Documents/Intervue/Intervue/macos/Runner/MainFlutterWindow.swift": [1683971318, 427385330]

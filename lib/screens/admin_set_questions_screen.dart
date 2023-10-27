@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 import 'package:talentsync/models/colors.dart';
+import 'package:talentsync/widgets/interview_position_card.dart';
 import 'package:talentsync/widgets/interview_question_card.dart';
 
 class AdminSetInterviewScreen extends StatefulWidget {
@@ -12,103 +13,57 @@ class AdminSetInterviewScreen extends StatefulWidget {
 }
 
 class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
+  List<Widget> positions = [
+    InterviewPosition('Software Engineer'),
+    InterviewPosition('System Engineer'),
+    InterviewPosition('Intern (Software Engineer)'),
+    InterviewPosition('UI/UX Designer'),
+  ];
+  final _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _controller = TextEditingController();
     return Container(
         padding: EdgeInsets.all(20),
         child: Column(
+
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ExpansionTile(
-              
-              title: Text(
-                'Software Engineer',
-                style: TextStyle(color: secondaryDarkBlue),
-              ),
-              children: [
-                InterviewQuestionCard(
-                    'What programming languages do you know?'),
-                InterviewQuestionCard(
-                    'Have you had prior experience in being a software engineer?'),
-                InterviewQuestionCard('How would you debug a bug?'),
-                InterviewQuestionCard('Hello?'),
-                Container(
-                  decoration: BoxDecoration(
-                    color: backgroundWhite,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 1,
-                        blurRadius: 7,
-                        offset: Offset(0, 5), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  margin: EdgeInsets.all(10),
-                  child: TextField(
-                    textAlign: TextAlign.center,
-                    controller: _controller,
-                    textInputAction: TextInputAction.done,
-                    onSubmitted: (value) {
-                      _controller.clear();
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Add Question...',
-                      border: InputBorder.none,
+            Text('Interview Positions',style: TextStyle(color: secondaryDarkBlue,fontSize: 25,fontWeight: FontWeight.w500),),
+            SizedBox(height: 20,),
+            Divider(height: 0,),
+            ...positions,
+            Container(
+                margin: EdgeInsets.all(10),
+                width:double.infinity,
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Colors.grey.withOpacity(0.5)),
+                  borderRadius: BorderRadius.circular(10),
+                  color: backgroundWhite,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 7,
+                      offset: Offset(0, 5), // changes position of shadow
                     ),
-                  ),
-                )
-              ],
-            ),
-            ExpansionTile(
-              title: Text('Intern (Software Engineer)',
-                  style: TextStyle(color: secondaryDarkBlue)),
-              children: [
-                InterviewQuestionCard(
-                    'What programming languages do you know?'),
-                InterviewQuestionCard(
-                    'Have you had prior experience in being a software engineer?'),
-                InterviewQuestionCard('How would you debug a bug?'),
-                InterviewQuestionCard('Hello?'),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: TextField(
-                    controller: _controller,
-                    textInputAction: TextInputAction.done,
-                    onSubmitted: (value) {
+                  ],
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: TextField(
+                  textAlign: TextAlign.center,
+                  controller: _controller,
+                  textInputAction: TextInputAction.done,
+                  onSubmitted: (value) {
+                    setState(() {
                       _controller.clear();
-                    },
-                    decoration: InputDecoration(
-                        hintText: 'Add Question...', border: InputBorder.none),
+                      positions.add(InterviewPosition(value));
+                    });
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'Add New Position',
+                    border: InputBorder.none,
                   ),
-                )
-              ],
-            ),
-            ExpansionTile(
-              title: Text('UI/UX Designer',
-                  style: TextStyle(color: secondaryDarkBlue)),
-              children: [
-                InterviewQuestionCard(
-                    'What programming languages do you know?'),
-                InterviewQuestionCard(
-                    'Have you had prior experience in being a software engineer?'),
-                InterviewQuestionCard('How would you debug a bug?'),
-                InterviewQuestionCard('Hello?'),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: TextField(
-                    controller: _controller,
-                    textInputAction: TextInputAction.done,
-                    onSubmitted: (value) {
-                      _controller.clear();
-                    },
-                    decoration: InputDecoration(
-                        hintText: 'Add Question...', border: InputBorder.none),
-                  ),
-                )
-              ],
-            ),
+                ))
           ],
         ));
   }

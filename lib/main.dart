@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return MaterialApp(
         title: 'Intervüe',
         theme: ThemeData(fontFamily: 'Futura'),
-        home: CandidatesUploadCV(),
+        home: Navigation(),
         routes: {
           AdminMainScreen.routeName: (context) => AdminMainScreen(),
         });

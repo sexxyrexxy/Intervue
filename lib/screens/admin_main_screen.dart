@@ -26,8 +26,8 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
 
   //   // Start using!
   //   final completion = await OpenAI.instance.completion.create(
-  //     model: "text-davinci-002",
-  //     prompt: "Dart is",
+  //     model: "text-davinci-003",
+  //     prompt: "I am interviewing a candidate for software engineer. The question is what language do you know. The response is I know flutter, and I have made a few apps with Flutter. What follow up question should I ask? Please give me a very specific follow up qeustion.",
   //   );
   //   print(completion.choices[0].text);
   // }

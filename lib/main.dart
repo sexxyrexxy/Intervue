@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:talentsync/screens/candidates_test_mic.dart';
+import 'package:talentsync/screens/candidates_pre_interview.dart';
 import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
 
 import 'navigation.dart';
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Intervüe',
       theme: ThemeData(fontFamily: 'Futura'),
-      home: CandidatesUploadCV(),
+      home: PreInterviewScreen(),
       routes: {
         AdminMainScreen.routeName: (context) => AdminMainScreen(),
       },

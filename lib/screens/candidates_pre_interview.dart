@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:talentsync/widgets/camera.dart';
 import 'package:talentsync/widgets/small-button.dart';
 import 'package:talentsync/models/colors.dart' as custom_colors;
 
@@ -84,13 +85,14 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                width: 640,
-                height: 320,
-                decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(28)),
-              ),
+              Camera(),
+              // Container(
+              //   width: 640,
+              //   height: 320,
+              //   decoration: BoxDecoration(
+              //       color: Colors.amber,
+              //       borderRadius: BorderRadius.circular(28)),
+              // ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,

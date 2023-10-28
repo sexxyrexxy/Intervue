@@ -51,7 +51,7 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset('lib/assets/images/intervue-logo.png', height: 80),
+              Image.asset('lib/assets/images/Intervue-logo.png', height: 80),
               smallButton(120, 40, custom_colors.secondaryDarkBlue,
                   Icons.arrow_forward_ios, "Start", 16)
             ],

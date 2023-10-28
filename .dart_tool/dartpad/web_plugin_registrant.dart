@@ -9,6 +9,8 @@
 import 'package:camera_web/camera_web.dart';
 import 'package:file_picker/_internal/file_picker_web.dart';
 import 'package:image_picker_for_web/image_picker_for_web.dart';
+import 'package:record_web/record_web.dart';
+import 'package:url_launcher_web/url_launcher_web.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 void registerPlugins([final Registrar? pluginRegistrar]) {
@@ -16,5 +18,7 @@ void registerPlugins([final Registrar? pluginRegistrar]) {
   CameraPlugin.registerWith(registrar);
   FilePickerWeb.registerWith(registrar);
   ImagePickerPlugin.registerWith(registrar);
+  RecordPluginWeb.registerWith(registrar);
+  UrlLauncherPlugin.registerWith(registrar);
   registrar.registerMessageHandler();
 }

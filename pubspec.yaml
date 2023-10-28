@@ -40,6 +40,7 @@ dependencies:
   flutter_expanded_tile: ^0.3.7
   camera: ^0.10.5+5
   file_picker: ^6.0.0
+  image_picker: ^1.0.4
   speech_to_text: ^6.3.0
 
 dev_dependencies:
@@ -67,6 +68,8 @@ flutter:
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
+  assets:
+    - lib/assets/images/Intervue-Logo.png
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages

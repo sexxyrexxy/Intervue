@@ -32,7 +32,7 @@ class NavigationState extends State<Navigation> {
     AdminAnalyticsScreen(),
     AdminMessageScreen(),
     AdminSettingsScreen(),
-    SpeechToText()
+    SpeechToTextTest()
   ];
 
   @override

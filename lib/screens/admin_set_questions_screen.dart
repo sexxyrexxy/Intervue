@@ -15,14 +15,15 @@ class AdminSetInterviewScreen extends StatefulWidget {
       _AdminSetInterviewScreenState();
 }
 
-class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
-  List<Widget> positions = [];
-  final _controller = TextEditingController();
+List<Widget> positions = [];
+final _controller = TextEditingController();
 
+class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
   @override
   Widget build(BuildContext context) {
     var positionProvider =
         Provider.of<PositionProvider>(context, listen: false);
+    print(positions);
 
     if (positions.isEmpty) {
       // Perform the initialization if the positions list is empty

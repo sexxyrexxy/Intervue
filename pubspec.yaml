@@ -39,6 +39,11 @@ dependencies:
   flutter_expanded_tile: ^0.3.7
   camera: ^0.10.5+5
   file_picker: ^6.0.0
+  noise_meter: ^5.0.2
+  syncfusion_flutter_charts: ^19.1.67
+  url_launcher: ^6.0.6
+  record: ^5.0.1
+  permission_handler: ^11.0.1
 
 dev_dependencies:
   flutter_test:

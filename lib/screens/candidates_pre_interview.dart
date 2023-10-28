@@ -12,52 +12,29 @@ class PreInterviewScreen extends StatefulWidget {
 }
 
 class _PreInterviewScreenState extends State<PreInterviewScreen> {
-  CameraController? _controller;
+  List<CameraDescription>? cameras;
+  CameraController? controller; //controller for camera
   bool _isCameraInitialized = false;
-  late final List<CameraDescription> _cameras;
-  bool _isRecording = false;
-
-  Future<void> initCamera() async {
-    _cameras = await availableCameras();
-    // Initialize the camera with the first camera in the list
-    await onNewCameraSelected(_cameras.first);
+  @override
+  void initState() {
+    loadCamera();
+    super.initState();
   }
 
-  Future<void> onNewCameraSelected(CameraDescription description) async {
-    final previousCameraController = _controller;
+  loadCamera() async {
+    cameras = await availableCameras();
+    if (cameras != null) {
+      controller = CameraController(cameras![0], ResolutionPreset.max);
+      //cameras[0] = first camera, change to 1 to another camera
 
-    // Instantiating the camera controller
-    final CameraController cameraController = CameraController(
-      description,
-      ResolutionPreset.high,
-      imageFormatGroup: ImageFormatGroup.jpeg,
-    );
-
-    // Initialize controller
-    try {
-      await cameraController.initialize();
-    } on CameraException catch (e) {
-      debugPrint('Error initializing camera: $e');
-    }
-    // Dispose the previous controller
-    await previousCameraController?.dispose();
-
-    // Replace with the new controller
-    if (mounted) {
-      setState(() {
-        _controller = cameraController;
+      controller!.initialize().then((_) {
+        if (!mounted) {
+          return;
+        }
+        setState(() {});
       });
-    }
-
-    // Update UI if controller updated
-    cameraController.addListener(() {
-      if (mounted) setState(() {});
-    });
-    // Update the Boolean
-    if (mounted) {
-      setState(() {
-        _isCameraInitialized = _controller!.value.isInitialized;
-      });
+    } else {
+      print("NO any camera found");
     }
   }
 
@@ -86,13 +63,6 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Camera(),
-              // Container(
-              //   width: 640,
-              //   height: 320,
-              //   decoration: BoxDecoration(
-              //       color: Colors.amber,
-              //       borderRadius: BorderRadius.circular(28)),
-              // ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -199,6 +169,77 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
           Text(
             "[Live Caption will show up when you speak]",
             style: TextStyle(fontSize: 16, color: custom_colors.primaryBlue),
+          ),
+          SizedBox(
+            height: 40,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 80.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(Icons.mic),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      "Noise Meter here",
+                      style: TextStyle(fontSize: 12),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Row(
+                  children: [
+                    Icon(Icons.photo_camera_front),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      controller == null
+                          ? "Loading Camera"
+                          : !controller!.value.isInitialized
+                              ? "Please open your camera"
+                              : "Your Camera is working properly",
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: !controller!.value.isInitialized
+                              ? Colors.red
+                              : Colors.green),
+                    )
+                  ],
+                ),
+                SizedBox(width: 32),
+                Row(
+                  children: [
+                    Icon(Icons.volume_up_outlined),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Container(
+                      width: 160,
+                      height: 32,
+                      decoration: BoxDecoration(
+                          color: custom_colors.primaryBlue,
+                          borderRadius: BorderRadius.circular(8)),
+                      child: Center(
+                        child: Text(
+                          "Play a sound",
+                          style: TextStyle(
+                              color: custom_colors.backgroundWhite,
+                              fontSize: 12),
+                        ),
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
           )
         ],
       ),

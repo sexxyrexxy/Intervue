@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:talentsync/widgets/camera.dart';
 import 'package:talentsync/widgets/small-button.dart';
 import 'package:talentsync/models/colors.dart' as custom_colors;
+import 'package:speech_to_text/speech_recognition_result.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 
 class PreInterviewScreen extends StatefulWidget {
   const PreInterviewScreen({super.key});
@@ -15,14 +17,22 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
   List<CameraDescription>? cameras;
   CameraController? controller; //controller for camera
   bool _isCameraInitialized = false;
+  final SpeechToText _speechToText = SpeechToText();
+  bool _speechEnabled = false;
+  String _lastWords = '';
+  String _currentWords = '';
+  double _noiseLevel = 0.0;
+
   @override
   void initState() {
     loadCamera();
     super.initState();
+    _initSpeech();
   }
 
   loadCamera() async {
     cameras = await availableCameras();
+    _startListening();
     if (cameras != null) {
       controller = CameraController(cameras![0], ResolutionPreset.max);
       //cameras[0] = first camera, change to 1 to another camera
@@ -35,6 +45,54 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
       });
     } else {
       print("NO any camera found");
+    }
+  }
+
+  /// This has to happen only once per app
+  void _initSpeech() async {
+    _speechEnabled = await _speechToText.initialize(
+        onStatus: statusListener
+    );
+    setState(() {});
+  }
+
+  /// Each time to start a speech recognition session
+  void _startListening() async {
+    await _speechToText.listen(onResult: _onSpeechResult, onSoundLevelChange: _onSoundLevelChange, listenMode: ListenMode.dictation);
+    setState(() {});
+  }
+
+  /// Manually stop the active speech recognition session
+  /// Note that there are also timeouts that each platform enforces
+  /// and the SpeechToText plugin supports setting timeouts on the
+  /// listen method.
+  void _stopListening() async {
+    await _speechToText.stop();
+    setState(() {});
+  }
+
+  /// This is the callback that the SpeechToText plugin calls when
+  /// the platform returns recognized words.
+  void _onSpeechResult(SpeechRecognitionResult result) {
+    setState(() {
+      _lastWords = result.recognizedWords;
+    });
+  }
+
+  void _onSoundLevelChange(double level) {
+    setState(() {
+      _noiseLevel = level;
+    });
+  }
+
+  void statusListener(String status) async {
+    if (status == "done" && _speechEnabled) {
+      setState(() {
+        _lastWords += " $_currentWords";
+        _currentWords = "";
+        _speechEnabled = false;
+      });
+      _startListening();
     }
   }
 
@@ -167,7 +225,7 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
             height: 12,
           ),
           Text(
-            "[Live Caption will show up when you speak]",
+            _lastWords.isNotEmpty ? _lastWords : "[Live Caption will show up when you speak]",
             style: TextStyle(fontSize: 16, color: custom_colors.primaryBlue),
           ),
           SizedBox(
@@ -186,7 +244,7 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                       width: 8,
                     ),
                     Text(
-                      "Noise Meter here",
+                      _noiseLevel.toStringAsFixed(2),
                       style: TextStyle(fontSize: 12),
                     )
                   ],

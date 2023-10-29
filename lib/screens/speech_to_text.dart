@@ -14,6 +14,7 @@ class _SpeechToTextTest extends State {
   final SpeechToText _speechToText = SpeechToText();
   bool _speechEnabled = false;
   String _lastWords = '';
+  String _currentWords = '';
 
   @override
   void initState() {
@@ -23,13 +24,15 @@ class _SpeechToTextTest extends State {
 
   /// This has to happen only once per app
   void _initSpeech() async {
-    _speechEnabled = await _speechToText.initialize();
+    _speechEnabled = await _speechToText.initialize(
+        onStatus: statusListener
+    );
     setState(() {});
   }
 
   /// Each time to start a speech recognition session
   void _startListening() async {
-    await _speechToText.listen(onResult: _onSpeechResult);
+    await _speechToText.listen(onResult: _onSpeechResult, listenMode: ListenMode.dictation);
     setState(() {});
   }
 
@@ -48,6 +51,18 @@ class _SpeechToTextTest extends State {
     setState(() {
       _lastWords = result.recognizedWords;
     });
+  }
+
+  void statusListener(String status) async {
+    debugPrint("status $status");
+    if (status == "done" && _speechEnabled) {
+      setState(() {
+        _lastWords += " $_currentWords";
+        _currentWords = "";
+        _speechEnabled = false;
+      });
+      _startListening();
+    }
   }
 
   @override
@@ -88,21 +103,16 @@ class _SpeechToTextTest extends State {
             children: [
               Padding(
                 padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                child: Text(
-                  _speechToText.isListening
-                      ? '$_lastWords'
-                  // If listening isn't active but could be tell the user
-                  // how to start it, otherwise indicate that speech
-                  // recognition is not yet ready or not supported on
-                  // the target device
-                      : _speechEnabled
-                      ? 'Tap the microphone to start listening...'
-                      : 'Speech not available',
-                  style: const TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w100,
+                child: SizedBox(
+                  width: 600,
+                  child: Text(
+                    _speechToText.isListening ? _lastWords : _speechEnabled ? 'Tap the microphone to start listening...' : 'Speech not available',
+                    style: const TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w100,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
               ),
             ]

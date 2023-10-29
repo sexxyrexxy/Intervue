@@ -40,8 +40,8 @@ class _CameraState extends State<Camera> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 640,
-      height: 360,
+      width: 800,
+      height: 450,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(28)),
       child: controller == null
           ? Center(child: Text("Loading Camera..."))

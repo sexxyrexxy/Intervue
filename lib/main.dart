@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:talentsync/providers/position_provider.dart';
 import 'package:talentsync/screens/candidates_pre_interview.dart';
 import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
 
@@ -15,13 +17,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Intervüe',
-      theme: ThemeData(fontFamily: 'Futura'),
-      home: PreInterviewScreen(),
-      routes: {
-        AdminMainScreen.routeName: (context) => AdminMainScreen(),
-      },
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: PositionProvider(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Intervüe',
+        theme: ThemeData(fontFamily: 'Futura'),
+        home: Navigation(),
+        routes: {
+          AdminMainScreen.routeName: (context) => AdminMainScreen(),
+        },
+      ),
     );
   }
 }

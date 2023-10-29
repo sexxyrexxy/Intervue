@@ -22,16 +22,23 @@ class _CandidatesAnsweringScreenState extends State<CandidatesAnsweringScreen> {
   List<AnsweringScreen> questions = [];
   final PageController _pageController = PageController();
   int currentPage = 0;
+
+  void action() {
+    currentPage++;
+    _pageController.animateToPage(currentPage,
+        duration: new Duration(seconds: 1), curve: Curves.easeIn);
+  }
+
   @override
   Widget build(BuildContext context) {
     var positionProvider = Provider.of<PositionProvider>(context, listen: true);
-    positionProvider.initializePositions();
+    if (questions.isEmpty) {
+      positionProvider.initializePositions();
+    }
     questions = positionProvider.positionList['Software Engineer']!
-        .map((question) => AnsweringScreen(question, () {
-              currentPage++;
-              _pageController.animateToPage(currentPage,
-                  duration: new Duration(seconds: 1), curve: Curves.easeIn);
-            }))
+        .map(
+          (question) => AnsweringScreen(question, action),
+        )
         .toList();
     return Scaffold(
         body: Container(

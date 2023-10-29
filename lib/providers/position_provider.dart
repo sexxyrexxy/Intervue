@@ -24,6 +24,10 @@ class PositionProvider with ChangeNotifier {
     notifyListeners();
     
   }
+  void addQuestionsAtIndex(String posName, String question) {
+    positionList[posName]!.insert(1,question);
+    notifyListeners();
+  }
 
   void removeQuestions(String posName, String questionToRemove) {
     if (positionList.containsKey(posName)) {

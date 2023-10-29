@@ -266,6 +266,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "json_annotation",
+      "rootUri": "file:///Users/rexlim/.pub-cache/hosted/pub.dev/json_annotation-4.8.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "lints",
       "rootUri": "file:///Users/rexlim/.pub-cache/hosted/pub.dev/lints-2.1.1",
       "packageUri": "lib/",
@@ -310,6 +316,12 @@
     {
       "name": "path",
       "rootUri": "file:///Users/rexlim/.pub-cache/hosted/pub.dev/path-1.8.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "pedantic",
+      "rootUri": "file:///Users/rexlim/.pub-cache/hosted/pub.dev/pedantic-1.11.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -414,6 +426,24 @@
       "rootUri": "file:///Users/rexlim/.pub-cache/hosted/pub.dev/source_span-1.10.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
+    },
+    {
+      "name": "speech_to_text",
+      "rootUri": "file:///Users/rexlim/.pub-cache/hosted/pub.dev/speech_to_text-6.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "speech_to_text_macos",
+      "rootUri": "file:///Users/rexlim/.pub-cache/hosted/pub.dev/speech_to_text_macos-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "speech_to_text_platform_interface",
+      "rootUri": "file:///Users/rexlim/.pub-cache/hosted/pub.dev/speech_to_text_platform_interface-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "sprintf",
@@ -554,7 +584,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-10-28T08:28:35.929026Z",
+  "generated": "2023-10-29T14:17:35.283154Z",
   "generator": "pub",
   "generatorVersion": "3.1.5"
 }

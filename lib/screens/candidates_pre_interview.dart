@@ -86,14 +86,14 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
   }
 
   void statusListener(String status) async {
-    if (status == "done" && _speechEnabled) {
-      setState(() {
-        _lastWords += " $_currentWords";
-        _currentWords = "";
-        _speechEnabled = false;
-      });
-      _startListening();
-    }
+    // if (status == "done" && _speechEnabled) {
+    //   setState(() {
+    //     _lastWords += " $_currentWords";
+    //     _currentWords = "";
+    //     _speechEnabled = false;
+    //   });
+    //   _startListening();
+    // }
   }
 
   @override

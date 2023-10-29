@@ -105,15 +105,15 @@ class NavigationState extends State<Navigation> {
                 child: navItem(Icons.settings, 'Settings',
                     currentIndex == 5 ? true : false),
               ),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    currentIndex = 6;
-                  });
-                },
-                child: navItem(Icons.build, 'STT',
-                    currentIndex == 6 ? true : false),
-              ),
+              // GestureDetector(
+              //   onTap: () {
+              //     setState(() {
+              //       currentIndex = 6;
+              //     });
+              //   },
+              //   child: navItem(Icons.build, 'STT',
+              //       currentIndex == 6 ? true : false),
+              // ),
               GestureDetector(
                 onTap: () {
                   setState(() {

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Intervüe',
         theme: ThemeData(fontFamily: 'Futura'),
-        home: CandidatesAnsweringScreen(),
+        home: Navigation(),
         routes: {
           AdminMainScreen.routeName: (context) => AdminMainScreen(),
         },

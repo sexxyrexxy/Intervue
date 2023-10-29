@@ -2,7 +2,11 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 class Camera extends StatefulWidget {
-  const Camera({
+  double width;
+  double height;
+  Camera(
+    this.width,
+    this.height, {
     super.key,
   });
 
@@ -40,8 +44,9 @@ class _CameraState extends State<Camera> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 800,
-      height: 450,
+      width: widget.width,
+      height: widget.height,
+      clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(28)),
       child: controller == null
           ? Center(child: Text("Loading Camera..."))

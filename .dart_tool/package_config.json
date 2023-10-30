@@ -381,7 +381,7 @@
     },
     {
       "name": "record_android",
-      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/record_android-1.0.2",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/record_android-1.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -578,7 +578,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-10-29T14:32:13.452120Z",
+  "generated": "2023-10-30T15:38:24.213497Z",
   "generator": "pub",
   "generatorVersion": "3.0.6"
 }

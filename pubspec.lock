@@ -500,10 +500,10 @@ packages:
     dependency: transitive
     description:
       name: record_android
-      sha256: f2d72c8e86d275967b9e9d1ced58c775958b94d3e2dac3d5416df46d23924ade
+      sha256: "5a96286f051cf46dffd1ae7cd5f1baa82cf6a983d26389c2f8d03d03dddc711b"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.2"
+    version: "1.0.3"
   record_darwin:
     dependency: transitive
     description:

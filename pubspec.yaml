@@ -72,8 +72,6 @@ flutter:
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
-  assets:
-    - lib/assets/images/Intervue-Logo.png
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
@@ -83,6 +81,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  assets:
+     - lib/assets/images/top_background.jpg
+     - lib/assets/images/Intervue-Logo.png
+     - lib/assets/images/dummy_job_man.jpeg
+
   fonts:
     - family: Futura
       fonts:

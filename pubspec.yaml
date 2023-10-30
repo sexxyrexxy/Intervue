@@ -75,6 +75,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  assets:
+     - lib/assets/images/top_background.jpg
+     - lib/assets/images/Intervue-Logo.png
+     - lib/assets/images/dummy_job_man.jpeg
+
   fonts:
     - family: Futura
       fonts:

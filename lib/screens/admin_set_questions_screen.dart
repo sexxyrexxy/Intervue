@@ -25,18 +25,28 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
     return Container(
         padding: EdgeInsets.all(20),
         child: Column(
-
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Interview Positions',style: TextStyle(color: secondaryDarkBlue,fontSize: 25,fontWeight: FontWeight.w500),),
-            SizedBox(height: 20,),
-            Divider(height: 0,),
+            Text(
+              'Interview Positions',
+              style: TextStyle(
+                  color: secondaryDarkBlue,
+                  fontSize: 25,
+                  fontWeight: FontWeight.w500),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Divider(
+              height: 0,
+            ),
             ...positions,
             Container(
                 margin: EdgeInsets.all(10),
-                width:double.infinity,
+                width: double.infinity,
                 decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.grey.withOpacity(0.5)),
+                  border:
+                      Border.all(width: 1, color: Colors.grey.withOpacity(0.5)),
                   borderRadius: BorderRadius.circular(10),
                   color: backgroundWhite,
                   boxShadow: [
@@ -59,6 +69,7 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
                       positions.add(InterviewPosition(value));
                     });
                   },
+                  //Change this to button that leads to the job posting screen//
                   decoration: InputDecoration(
                     hintText: 'Add New Position',
                     border: InputBorder.none,

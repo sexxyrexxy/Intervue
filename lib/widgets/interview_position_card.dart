@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:talentsync/providers/position_provider.dart';
 
 import '../models/colors.dart';
 import 'interview_question_card.dart';
 
 class InterviewPosition extends StatefulWidget {
-  
   String position;
   InterviewPosition(this.position);
   @override
@@ -12,21 +13,31 @@ class InterviewPosition extends StatefulWidget {
 }
 
 class _InterviewPositionState extends State<InterviewPosition> {
-  
   final TextEditingController _controller = TextEditingController();
-  List<Widget> questions = [
-    InterviewQuestionCard('What programming languages do you know?'),
-    InterviewQuestionCard(
-        'Have you had prior experience in being a software engineer?'),
-    InterviewQuestionCard('How would you debug a bug?'),
-    InterviewQuestionCard('Hello?'),
-  ];
+  List<Widget> questions = [];
   @override
   Widget build(BuildContext context) {
+    questions.clear();
+    var positionProvider =
+        Provider.of<PositionProvider>(context, listen: true);
+
+      if (positionProvider.positionList.containsKey(widget.position)) {
+       
+        List<String> questionList =
+            positionProvider.positionList[widget.position]!;
+
+        
+          questions = questionList
+              .map((question) => InterviewQuestionCard(widget.position,question))
+              .toList();
+      }    
     return ExpansionTile(
       title: Text(
         widget.position,
-        style: TextStyle(color: secondaryDarkBlue,fontSize: 17,fontWeight: FontWeight.w500),
+        style: TextStyle(
+            color: secondaryDarkBlue,
+            fontSize: 17,
+            fontWeight: FontWeight.w500),
       ),
       children: [
         ...questions,
@@ -50,8 +61,9 @@ class _InterviewPositionState extends State<InterviewPosition> {
             textInputAction: TextInputAction.done,
             onSubmitted: (value) {
               setState(() {
+                positionProvider.addQuestions(widget.position, _controller.text);
+                questions.add(InterviewQuestionCard(widget.position,_controller.text));
                 _controller.clear();
-                questions.add(InterviewQuestionCard(value));
               });
             },
             decoration: InputDecoration(

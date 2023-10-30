@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:talentsync/providers/position_provider.dart';
+import 'package:talentsync/screens/candidates_pre_interview.dart';
 import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
 import 'package:talentsync/screens/main_jobsearching_screen.dart';
 
@@ -15,34 +18,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Intervue',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: PositionProvider(),
+        ),
+      ],
+      child: MaterialApp(
         title: 'Intervüe',
         theme: ThemeData(fontFamily: 'Futura'),
         home: MainJobSearch(),
         routes: {
           AdminMainScreen.routeName: (context) => AdminMainScreen(),
-        });
+        },
+      ),
+    );
   }
 }

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
+import 'package:provider/provider.dart';
 import 'package:talentsync/models/colors.dart';
 import 'package:talentsync/widgets/interview_position_card.dart';
 import 'package:talentsync/widgets/interview_question_card.dart';
+
+import '../providers/position_provider.dart';
 
 class AdminSetInterviewScreen extends StatefulWidget {
   const AdminSetInterviewScreen({super.key});
@@ -12,16 +15,26 @@ class AdminSetInterviewScreen extends StatefulWidget {
       _AdminSetInterviewScreenState();
 }
 
+List<Widget> positions = [];
+final _controller = TextEditingController();
+
 class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
-  List<Widget> positions = [
-    InterviewPosition('Software Engineer'),
-    InterviewPosition('System Engineer'),
-    InterviewPosition('Intern (Software Engineer)'),
-    InterviewPosition('UI/UX Designer'),
-  ];
-  final _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    var positionProvider =
+        Provider.of<PositionProvider>(context, listen: false);
+    print(positions);
+
+    if (positions.isEmpty) {
+      // Perform the initialization if the positions list is empty
+      positionProvider.initializePositions();
+      // Populate the positions list from the provider
+      setState(() {
+        positions = positionProvider.positionList.keys
+            .map((positionName) => InterviewPosition(positionName))
+            .toList();
+      });
+    }
     return Container(
         padding: EdgeInsets.all(20),
         child: Column(

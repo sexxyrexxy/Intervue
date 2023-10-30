@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:talentsync/widgets/camera.dart';
 import 'package:talentsync/widgets/small-button.dart';
 import 'package:talentsync/models/colors.dart' as custom_colors;
-import 'package:speech_to_text/speech_recognition_result.dart';
-import 'package:speech_to_text/speech_to_text.dart';
+import 'dart:html' as html;
+import 'dart:js_util' as js_util;
+import 'dart:math';
 
 class PreInterviewScreen extends StatefulWidget {
   const PreInterviewScreen({super.key});
@@ -17,17 +18,14 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
   List<CameraDescription>? cameras;
   CameraController? controller; //controller for camera
   bool _isCameraInitialized = false;
-  final SpeechToText _speechToText = SpeechToText();
-  bool _speechEnabled = false;
+  final speechRecognition = html.SpeechRecognition();
   String _lastWords = '';
-  String _currentWords = '';
-  double _noiseLevel = 0.0;
+  bool _isListening = false;
 
   @override
   void initState() {
     loadCamera();
     super.initState();
-    _initSpeech();
   }
 
   loadCamera() async {
@@ -48,52 +46,46 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
     }
   }
 
-  /// This has to happen only once per app
-  void _initSpeech() async {
-    _speechEnabled = await _speechToText.initialize(
-        onStatus: statusListener
-    );
-    setState(() {});
-  }
-
-  /// Each time to start a speech recognition session
   void _startListening() async {
-    await _speechToText.listen(onResult: _onSpeechResult, onSoundLevelChange: _onSoundLevelChange, listenMode: ListenMode.dictation);
-    setState(() {});
+    setState(() {
+      _isListening = true;
+    });
+    speechRecognition.continuous = true;
+    speechRecognition.onResult.listen((event) => _onSpeechResult(event));
+    speechRecognition.start();
   }
 
-  /// Manually stop the active speech recognition session
-  /// Note that there are also timeouts that each platform enforces
-  /// and the SpeechToText plugin supports setting timeouts on the
-  /// listen method.
   void _stopListening() async {
-    await _speechToText.stop();
-    setState(() {});
-  }
-
-  /// This is the callback that the SpeechToText plugin calls when
-  /// the platform returns recognized words.
-  void _onSpeechResult(SpeechRecognitionResult result) {
     setState(() {
-      _lastWords = result.recognizedWords;
+      _isListening = false;
+      _lastWords = '';
     });
+    speechRecognition.stop();
   }
 
-  void _onSoundLevelChange(double level) {
+  void _onSpeechResult(html.SpeechRecognitionEvent event) {
+    var results = event.results;
+    if (null == results) return;
+    var longestAlt = 0;
+    var finalTranscript = "";
+    for (var recognitionResult in results) {
+      if (null == recognitionResult.length || recognitionResult.length == 0) {
+        continue;
+      }
+
+      for (var altIndex = 0;
+      altIndex < (recognitionResult.length ?? 0);
+      ++altIndex) {
+        longestAlt = max(longestAlt, altIndex);
+        var alt = js_util.callMethod(recognitionResult, 'item', [altIndex]);
+        if (null == alt) continue;
+        String? transcript = js_util.getProperty(alt, 'transcript');
+        finalTranscript += transcript ?? "";
+      }
+    }
     setState(() {
-      _noiseLevel = level;
+      _lastWords = finalTranscript;
     });
-  }
-
-  void statusListener(String status) async {
-    // if (status == "done" && _speechEnabled) {
-    //   setState(() {
-    //     _lastWords += " $_currentWords";
-    //     _currentWords = "";
-    //     _speechEnabled = false;
-    //   });
-    //   _startListening();
-    // }
   }
 
   @override
@@ -245,7 +237,7 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                         width: 8,
                       ),
                       Text(
-                        _noiseLevel.toStringAsFixed(2),
+                        '0.00',
                         style: TextStyle(fontSize: 12),
                       )
                     ],

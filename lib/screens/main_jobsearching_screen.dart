@@ -18,6 +18,7 @@ class MainJobSearch extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
           child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             width: double.infinity,
@@ -229,13 +230,18 @@ class MainJobSearch extends StatelessWidget {
               ),
             ],
           ),
-          ListView(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+          Divider(
+            height: 50,
+            color: custom_Color.black,
+            thickness: 1,
+            indent: 20,
+            endIndent: 20,
+          ),
+          Column(
             children: [
               Container(
-                width: double.infinity,
-                margin: EdgeInsets.only(right: 1000),
+                // width: double.infinity,
+                padding: EdgeInsets.only(left: 30),
                 child: jobpositionCard(
                   image: 'lib/assets/images/dummy_job_man.jpeg',
                   job_title: 'Senior Administrator',
@@ -244,7 +250,23 @@ class MainJobSearch extends StatelessWidget {
                 ),
               ),
             ],
-          ),
+          )
+          // ListView(
+          //   shrinkWrap: true,
+          //   physics: NeverScrollableScrollPhysics(),
+          //   children: [
+          //     Container(
+          //       // width: double.infinity,
+          //       margin: EdgeInsets.only(right: 1000),
+          //       child: jobpositionCard(
+          //         image: 'lib/assets/images/dummy_job_man.jpeg',
+          //         job_title: 'Senior Administrator',
+          //         description:
+          //             'This job requires inclusive work and effort in the office',
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ],
       )),
     );

@@ -20,7 +20,7 @@ class _jobpositionCardState extends State<jobpositionCard> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(10),
-      width: 466,
+      width: 366,
       height: 479,
       decoration: ShapeDecoration(
           color: Colors.white,
@@ -29,9 +29,11 @@ class _jobpositionCardState extends State<jobpositionCard> {
             borderRadius: BorderRadius.circular(12),
           )),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: 431.90,
+            width: 331.90,
             height: 250.05,
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -40,49 +42,32 @@ class _jobpositionCardState extends State<jobpositionCard> {
               ),
             ),
           ),
-          const Spacer(),
-          Row(
-            children: [
-              SizedBox(
-                width: 323,
-                height: 42,
-                child: Text(
-                  'Pen-Tester Intern',
-                  style: TextStyle(
-                    color: Color(0xFF0D4073),
-                    fontSize: 28,
-                    fontFamily: 'Futura',
-                    fontWeight: FontWeight.w700,
-                    decoration: TextDecoration.underline,
-                    height: 0,
-                  ),
-                ),
-              ),
-            ],
+          Text(
+            'Pen-Tester Intern',
+            style: TextStyle(
+              color: Color(0xFF0D4073),
+              fontSize: 28,
+              fontFamily: 'Futura',
+              fontWeight: FontWeight.w600,
+              decoration: TextDecoration.underline,
+              height: 0,
+            ),
           ),
-          Row(
-            children: [
-              SizedBox(
-                width: 420.54,
-                height: 51.96,
-                child: Text(
-                  'Intervue present you with multiple job positions with AI-powered interview',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontFamily: 'Actor',
-                    fontWeight: FontWeight.w400,
-                    height: 0,
-                  ),
-                ),
-              ),
-            ],
+          Text(
+            'Intervue present you with multiple job positions with AI-powered interview',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 16,
+              fontFamily: 'Actor',
+              fontWeight: FontWeight.w400,
+              height: 0,
+            ),
           ),
           Row(
             children: [
               Container(
                 alignment: Alignment.center,
-                width: 431.90,
+                width: 323,
                 height: 42,
                 decoration: BoxDecoration(
                   color: custom_Color.secondaryDarkBlue,

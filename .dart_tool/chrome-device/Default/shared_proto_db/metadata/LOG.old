@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-2023/10/30-20:44:57.779 be03 Reusing MANIFEST /private/var/folders/tk/g82_b_t56hdcpv_57sl5pm_w0000gn/T/flutter_tools.9jgGQ8/flutter_tools_chrome_device.eIP4mr/Default/shared_proto_db/metadata/MANIFEST-000001
-2023/10/30-20:44:57.779 be03 Recovering log #3
-2023/10/30-20:44:57.779 be03 Reusing old log /private/var/folders/tk/g82_b_t56hdcpv_57sl5pm_w0000gn/T/flutter_tools.9jgGQ8/flutter_tools_chrome_device.eIP4mr/Default/shared_proto_db/metadata/000003.log 
-=======
-2023/10/28-16:19:19.204 f403 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.2Kk7jC/flutter_tools_chrome_device.SWlE8G/Default/shared_proto_db/metadata/MANIFEST-000001
-2023/10/28-16:19:19.204 f403 Recovering log #3
-2023/10/28-16:19:19.204 f403 Reusing old log /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.2Kk7jC/flutter_tools_chrome_device.SWlE8G/Default/shared_proto_db/metadata/000003.log 
->>>>>>> e86ff26b90017f6034bdfbe0956a0c1859d632ab
+2023/10/31-22:28:41.154 b203 Reusing MANIFEST /private/var/folders/tk/g82_b_t56hdcpv_57sl5pm_w0000gn/T/flutter_tools.RJCswP/flutter_tools_chrome_device.WzGuTI/Default/shared_proto_db/metadata/MANIFEST-000001
+2023/10/31-22:28:41.154 b203 Recovering log #3
+2023/10/31-22:28:41.154 b203 Reusing old log /private/var/folders/tk/g82_b_t56hdcpv_57sl5pm_w0000gn/T/flutter_tools.RJCswP/flutter_tools_chrome_device.WzGuTI/Default/shared_proto_db/metadata/000003.log 

@@ -20,18 +20,22 @@ class _inputFieldState extends State<inputField> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          alignment: Alignment.center,
-          margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-          width: 220,
-          height: 34,
+          margin: EdgeInsets.symmetric(
+            horizontal: 16,
+          ),
+          width: 240,
+          height: 44,
           child: TextField(
             cursorColor: custom_Color.primaryBlue,
             controller: widget.controller,
             decoration: InputDecoration(
-              icon: Icon(Icons.search_rounded),
-              hintText: "Enter ${widget.text} ",
+              contentPadding: EdgeInsets.only(left: 20, right: 12, top: 8),
+              suffixIcon: Icon(Icons.search_rounded),
+              // icon: Icon(Icons.search_rounded),
+              hintText: "${widget.text} ",
               filled: true,
               fillColor: custom_Color.backgroundWhite,
               border: OutlineInputBorder(

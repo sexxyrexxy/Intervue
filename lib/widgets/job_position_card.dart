@@ -21,7 +21,7 @@ class _jobpositionCardState extends State<jobpositionCard> {
     return Container(
       padding: EdgeInsets.all(10),
       width: 366,
-      height: 479,
+      height: 480,
       decoration: ShapeDecoration(
           color: Colors.white,
           shape: RoundedRectangleBorder(

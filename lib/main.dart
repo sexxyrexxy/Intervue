@@ -6,7 +6,8 @@ import 'package:talentsync/providers/responsibilities_provider.dart';
 import 'package:talentsync/providers/skills_provider.dart';
 import 'package:talentsync/screens/candidates_pre_interview.dart';
 import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
-import 'package:talentsync/screens/main_jobsearching_screen.dart';
+import 'package:talentsync/screens/speech_to_text.dart';
+import 'package:talentsync/screens/main_job_searching_screen.dart';
 import 'package:talentsync/screens/new_job_screen_I.dart';
 import 'package:talentsync/screens/new_job_screen_II.dart';
 import 'package:talentsync/screens/new_job_screen_III.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
           newJobPostionScreenII.routeName: (context) => newJobPostionScreenII(),
           newJobPositionScreenIII.routeName: (context) =>
               newJobPositionScreenIII(),
+          PreInterviewScreen.routeName: (context) => PreInterviewScreen(),
         },
       ),
     );

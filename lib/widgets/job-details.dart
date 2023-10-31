@@ -85,8 +85,172 @@ class jobDetailsCard extends StatelessWidget {
           endIndent: 0,
         ),
         // Bottom Half
+        // ignore: prefer_const_constructors
         SingleChildScrollView(
-          child: Column(children: [Text("Job detasilssss")]),
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Job details",
+                  style: TextStyle(
+                      color: custom_color.secondaryDarkBlue,
+                      fontSize: 28,
+                      fontWeight: FontWeight.w500),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  "Responsibilities:",
+                  style: TextStyle(
+                      color: custom_color.secondaryDarkBlue,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w300),
+                ),
+                Text(
+                  "• Maintain good relationship with existing customer",
+                  style: TextStyle(
+                    color: custom_color.secondaryDarkBlue,
+                    fontSize: 20,
+                  ),
+                ),
+                Text(
+                  "• Response to customer's enquiries",
+                  style: TextStyle(
+                    color: custom_color.secondaryDarkBlue,
+                    fontSize: 20,
+                  ),
+                ),
+                Text(
+                  "• Follow up with the customers",
+                  style: TextStyle(
+                    color: custom_color.secondaryDarkBlue,
+                    fontSize: 20,
+                  ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Row(children: [
+                  Text(
+                    "Job Type: ",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: custom_color.secondaryDarkBlue,
+                      fontSize: 20,
+                    ),
+                  ),
+                  Text(
+                    "Full-time",
+                    style: TextStyle(
+                      color: custom_color.secondaryDarkBlue,
+                      fontSize: 20,
+                    ),
+                  )
+                ]),
+                Row(children: [
+                  Text(
+                    "Salary: ",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: custom_color.secondaryDarkBlue,
+                      fontSize: 20,
+                    ),
+                  ),
+                  Text(
+                    "RM1,800.00 - RM2,500.00 per month",
+                    style: TextStyle(
+                      color: custom_color.secondaryDarkBlue,
+                      fontSize: 20,
+                    ),
+                  )
+                ]),
+                Text(
+                  "Benefits: ",
+                  style: TextStyle(
+                      color: custom_color.secondaryDarkBlue,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w300),
+                ),
+                Text(
+                  "• Maternity leave",
+                  style: TextStyle(
+                    color: custom_color.secondaryDarkBlue,
+                    fontSize: 20,
+                  ),
+                ),
+                Text(
+                  "Education: ",
+                  style: TextStyle(
+                      color: custom_color.secondaryDarkBlue,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w300),
+                ),
+                Text(
+                  "• STM/SPM (Preferred)",
+                  style: TextStyle(
+                    color: custom_color.secondaryDarkBlue,
+                    fontSize: 20,
+                  ),
+                ),
+                Text(
+                  "• STM/SPM (Preferred)",
+                  style: TextStyle(
+                    color: custom_color.secondaryDarkBlue,
+                    fontSize: 20,
+                  ),
+                ),
+                Text(
+                  "• STM/SPM (Preferred)",
+                  style: TextStyle(
+                    color: custom_color.secondaryDarkBlue,
+                    fontSize: 20,
+                  ),
+                ),
+                Text(
+                  "• STM/SPM (Preferred)",
+                  style: TextStyle(
+                    color: custom_color.secondaryDarkBlue,
+                    fontSize: 20,
+                  ),
+                ),
+                Text(
+                  "Experience: ",
+                  style: TextStyle(
+                      color: custom_color.secondaryDarkBlue,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w300),
+                ),
+                Text(
+                  "• 1 - 2 year of experience (Preferred)",
+                  style: TextStyle(
+                    color: custom_color.secondaryDarkBlue,
+                    fontSize: 20,
+                  ),
+                ),
+                Text(
+                  "Language: ",
+                  style: TextStyle(
+                      color: custom_color.secondaryDarkBlue,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w300),
+                ),
+                Text(
+                  "• English (Preferred)",
+                  style: TextStyle(
+                    color: custom_color.secondaryDarkBlue,
+                    fontSize: 20,
+                  ),
+                ),
+                Text(
+                  "• Bahasa (Preferred)",
+                  style: TextStyle(
+                    color: custom_color.secondaryDarkBlue,
+                    fontSize: 20,
+                  ),
+                ),
+              ]),
         )
       ]),
     );

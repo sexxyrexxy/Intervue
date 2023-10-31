@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Intervüe',
         theme: ThemeData(fontFamily: 'Futura'),
-        home: MainJobSearch(),
+        home: PreInterviewScreen(),
         routes: {
           AdminMainScreen.routeName: (context) => AdminMainScreen(),
           PreInterviewScreen.routeName: (context) => PreInterviewScreen(),

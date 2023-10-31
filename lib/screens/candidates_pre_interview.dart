@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:talentsync/widgets/camera.dart';
 import 'package:talentsync/widgets/small-button.dart';
 import 'package:talentsync/models/colors.dart' as custom_colors;
@@ -29,6 +30,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
     loadCamera();
     super.initState();
     _initSpeech();
+    _startListening();
+    debugPrint("current status ${_speechToText.isNotListening.toString()}");
   }
 
   loadCamera() async {
@@ -78,6 +81,7 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
   void _onSpeechResult(SpeechRecognitionResult result) {
     setState(() {
       _lastWords = result.recognizedWords;
+      debugPrint("Hai $_lastWords");
     });
   }
 
@@ -123,7 +127,7 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Camera(),
+                Cameras(),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,

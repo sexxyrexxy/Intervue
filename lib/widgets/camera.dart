@@ -1,16 +1,16 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
-class Camera extends StatefulWidget {
-  const Camera({
+class Cameras extends StatefulWidget {
+  const Cameras({
     super.key,
   });
 
   @override
-  State<Camera> createState() => _CameraState();
+  State<Cameras> createState() => _CamerasState();
 }
 
-class _CameraState extends State<Camera> {
+class _CamerasState extends State<Cameras> {
   List<CameraDescription>? cameras;
   CameraController? controller; //controller for camera
   XFile? image;
@@ -18,23 +18,6 @@ class _CameraState extends State<Camera> {
   void initState() {
     loadCamera();
     super.initState();
-  }
-
-  loadCamera() async {
-    cameras = await availableCameras();
-    if (cameras != null) {
-      controller = CameraController(cameras![0], ResolutionPreset.max);
-      //cameras[0] = first camera, change to 1 to another camera
-
-      controller!.initialize().then((_) {
-        if (!mounted) {
-          return;
-        }
-        setState(() {});
-      });
-    } else {
-      print("NO any camera found");
-    }
   }
 
   @override
@@ -51,5 +34,26 @@ class _CameraState extends State<Camera> {
                 )
               : CameraPreview(controller!),
     );
+  }
+
+  void loadCamera() async {
+    cameras = await availableCameras();
+    if (cameras != null) {
+      controller = CameraController(cameras![0], ResolutionPreset.max);
+      //cameras[0] = first camera, change to 1 to another camera
+
+      controller!.initialize().then((_) {
+        if (!mounted) {
+          return;
+        }
+        setState(() {});
+      });
+    } else {
+      print("NO any camera found");
+    }
+  }
+
+  void initCamera() {
+    loadCamera();
   }
 }

@@ -1,6 +1,8 @@
+import 'dart:html' as html;
+import 'dart:js_util' as js_util;
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:speech_to_text/speech_recognition_result.dart';
-import 'package:speech_to_text/speech_to_text.dart';
 
 class SpeechToTextTest extends StatefulWidget {
   const SpeechToTextTest({Key? key}) : super(key: key);
@@ -9,60 +11,56 @@ class SpeechToTextTest extends StatefulWidget {
   _SpeechToTextTest createState() => _SpeechToTextTest();
 }
 
-
 class _SpeechToTextTest extends State {
-  final SpeechToText _speechToText = SpeechToText();
-  bool _speechEnabled = false;
+  final speechRecognition = html.SpeechRecognition();
   String _lastWords = '';
-  String _currentWords = '';
+  bool _isListening = false;
 
   @override
   void initState() {
     super.initState();
-    _initSpeech();
   }
 
-  /// This has to happen only once per app
-  void _initSpeech() async {
-    _speechEnabled = await _speechToText.initialize(
-        onStatus: statusListener
-    );
-    setState(() {});
-  }
-
-  /// Each time to start a speech recognition session
   void _startListening() async {
-    await _speechToText.listen(onResult: _onSpeechResult, listenMode: ListenMode.dictation);
-    setState(() {});
-  }
-
-  /// Manually stop the active speech recognition session
-  /// Note that there are also timeouts that each platform enforces
-  /// and the SpeechToText plugin supports setting timeouts on the
-  /// listen method.
-  void _stopListening() async {
-    await _speechToText.stop();
-    setState(() {});
-  }
-
-  /// This is the callback that the SpeechToText plugin calls when
-  /// the platform returns recognized words.
-  void _onSpeechResult(SpeechRecognitionResult result) {
     setState(() {
-      _lastWords = result.recognizedWords;
+      _isListening = true;
     });
+    speechRecognition.continuous = true;
+    speechRecognition.onResult.listen((event) => _onSpeechResult(event));
+    speechRecognition.start();
   }
 
-  void statusListener(String status) async {
-    debugPrint("status $status");
-    if (status == "done" && _speechEnabled) {
-      setState(() {
-        _lastWords += " $_currentWords";
-        _currentWords = "";
-        _speechEnabled = false;
-      });
-      _startListening();
+  void _stopListening() async {
+    setState(() {
+      _isListening = false;
+      _lastWords = '';
+    });
+    speechRecognition.stop();
+  }
+
+  void _onSpeechResult(html.SpeechRecognitionEvent event) {
+    var results = event.results;
+    if (null == results) return;
+    var longestAlt = 0;
+    var finalTranscript = "";
+    for (var recognitionResult in results) {
+      if (null == recognitionResult.length || recognitionResult.length == 0) {
+        continue;
+      }
+
+      for (var altIndex = 0;
+      altIndex < (recognitionResult.length ?? 0);
+      ++altIndex) {
+        longestAlt = max(longestAlt, altIndex);
+        var alt = js_util.callMethod(recognitionResult, 'item', [altIndex]);
+        if (null == alt) continue;
+        String? transcript = js_util.getProperty(alt, 'transcript');
+        finalTranscript += transcript ?? "";
+      }
     }
+    setState(() {
+      _lastWords = finalTranscript;
+    });
   }
 
   @override
@@ -91,7 +89,7 @@ class _SpeechToTextTest extends State {
               Padding(
                 padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
                 child: FloatingActionButton(
-                    onPressed: _speechToText.isNotListening ? _startListening : _stopListening,
+                    onPressed: !_isListening ? _startListening : _stopListening,
                     tooltip: 'Start/Stop',
                     child: const Icon(Icons.mic)
                 ),
@@ -106,7 +104,7 @@ class _SpeechToTextTest extends State {
                 child: SizedBox(
                   width: 600,
                   child: Text(
-                    _speechToText.isListening ? _lastWords : _speechEnabled ? 'Tap the microphone to start listening...' : 'Speech not available',
+                    _lastWords.isNotEmpty ? _lastWords : 'Tap the microphone to start listening...',
                     style: const TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.w100,

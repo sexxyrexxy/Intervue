@@ -1,2 +1,3 @@
-2023/10/24-21:17:12.228 11303 Creating DB /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.qF5PrI/flutter_tools_chrome_device.OX7rRp/Default/Extension Rules since it was missing.
-2023/10/24-21:17:12.245 11303 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.qF5PrI/flutter_tools_chrome_device.OX7rRp/Default/Extension Rules/MANIFEST-000001
+2023/10/31-10:52:41.122 a907 Reusing MANIFEST /private/var/folders/c6/ml47p_317kjcw90pxjg9s7sc0000gn/T/flutter_tools.Htiqyd/flutter_tools_chrome_device.FzKjMU/Default/Extension Rules/MANIFEST-000001
+2023/10/31-10:52:41.122 a907 Recovering log #3
+2023/10/31-10:52:41.122 a907 Reusing old log /private/var/folders/c6/ml47p_317kjcw90pxjg9s7sc0000gn/T/flutter_tools.Htiqyd/flutter_tools_chrome_device.FzKjMU/Default/Extension Rules/000003.log 

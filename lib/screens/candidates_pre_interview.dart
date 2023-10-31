@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:talentsync/widgets/camera.dart';
 import 'package:talentsync/widgets/small-button.dart';
 import 'package:talentsync/models/colors.dart' as custom_colors;
@@ -8,6 +9,7 @@ import 'dart:js_util' as js_util;
 import 'dart:math';
 
 class PreInterviewScreen extends StatefulWidget {
+  static const routeName = '/interview';
   const PreInterviewScreen({super.key});
 
   @override
@@ -26,6 +28,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
   void initState() {
     loadCamera();
     super.initState();
+    _startListening();
+    debugPrint("current status ${_isListening}");
   }
 
   loadCamera() async {
@@ -46,10 +50,18 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
     }
   }
 
+  // /// This has to happen only once per app
+  // void _initSpeech() async {
+  //   _speechEnabled = await _speechToText.initialize(onStatus: statusListener);
+  //   setState(() {});
+  // }
+
+  /// Each time to start a speech recognition session
   void _startListening() async {
     setState(() {
       _isListening = true;
     });
+
     speechRecognition.continuous = true;
     speechRecognition.onResult.listen((event) => _onSpeechResult(event));
     speechRecognition.start();
@@ -74,8 +86,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
       }
 
       for (var altIndex = 0;
-      altIndex < (recognitionResult.length ?? 0);
-      ++altIndex) {
+          altIndex < (recognitionResult.length ?? 0);
+          ++altIndex) {
         longestAlt = max(longestAlt, altIndex);
         var alt = js_util.callMethod(recognitionResult, 'item', [altIndex]);
         if (null == alt) continue;
@@ -85,6 +97,7 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
     }
     setState(() {
       _lastWords = finalTranscript;
+      debugPrint("hai $_lastWords");
     });
   }
 
@@ -92,7 +105,7 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 52, vertical: 36),
+        padding: EdgeInsets.symmetric(horizontal: 80, vertical: 36),
         height: double.infinity,
         width: double.infinity,
         child: Column(
@@ -113,7 +126,7 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Camera(),
+                Cameras(),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,9 +134,9 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                     Text(
                       'The Interview Question \n will be shown here.',
                       style: TextStyle(
-                          fontSize: 24,
+                          fontSize: 28,
                           color: custom_colors.primaryBlue,
-                          fontWeight: FontWeight.w700),
+                          fontWeight: FontWeight.w500),
                     ),
                     SizedBox(
                       height: 16,
@@ -133,7 +146,7 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                       children: [
                         Icon(
                           Icons.warning_amber_rounded,
-                          size: 20,
+                          size: 24,
                           color: Colors.black.withOpacity(0.3),
                         ),
                         SizedBox(
@@ -142,7 +155,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                         Text(
                           "A few tips before proceeding:",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.3), fontSize: 12),
+                              color: Colors.black.withOpacity(0.3),
+                              fontSize: 16),
                         )
                       ],
                     ),
@@ -155,7 +169,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                         Text(
                           '•',
                           style: TextStyle(
-                              fontSize: 28, color: Colors.black.withOpacity(0.3)),
+                              fontSize: 32,
+                              color: Colors.black.withOpacity(0.3)),
                         ),
                         SizedBox(
                           width: 12,
@@ -163,7 +178,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                         Text(
                           "Make sure that your surrounding \nenvironment is well-lit",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.3), fontSize: 12),
+                              color: Colors.black.withOpacity(0.3),
+                              fontSize: 16),
                         )
                       ],
                     ),
@@ -173,7 +189,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                         Text(
                           '•',
                           style: TextStyle(
-                              fontSize: 28, color: Colors.black.withOpacity(0.3)),
+                              fontSize: 32,
+                              color: Colors.black.withOpacity(0.3)),
                         ),
                         SizedBox(
                           width: 12,
@@ -181,7 +198,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                         Text(
                           "Avoid rooms with noisy backgrounds",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.3), fontSize: 12),
+                              color: Colors.black.withOpacity(0.3),
+                              fontSize: 16),
                         )
                       ],
                     ),
@@ -191,7 +209,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                         Text(
                           '•',
                           style: TextStyle(
-                              fontSize: 28, color: Colors.black.withOpacity(0.3)),
+                              fontSize: 32,
+                              color: Colors.black.withOpacity(0.3)),
                         ),
                         SizedBox(
                           width: 12,
@@ -199,7 +218,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                         Text(
                           "Make sure that your surrounding \nenvironment is well-lit",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.3), fontSize: 12),
+                              color: Colors.black.withOpacity(0.3),
+                              fontSize: 16),
                         )
                       ],
                     ),
@@ -207,8 +227,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                       height: 24,
                     ),
                     Text(
-                      "When you're ready, click the 'Start' \nbutton located top right",
-                      style: TextStyle(fontSize: 12, color: Colors.black),
+                      "When you're ready, click the 'Start' button \nlocated top right",
+                      style: TextStyle(fontSize: 16, color: Colors.black),
                     )
                   ],
                 ),
@@ -218,7 +238,9 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
               height: 12,
             ),
             Text(
-              _lastWords.isNotEmpty ? _lastWords : "[Live Caption will show up when you speak]",
+              _lastWords.isNotEmpty
+                  ? _lastWords
+                  : "[Live Caption will show up when you speak]",
               style: TextStyle(fontSize: 16, color: custom_colors.primaryBlue),
             ),
             SizedBox(
@@ -232,13 +254,16 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(Icons.mic),
+                      Icon(
+                        Icons.mic,
+                        size: 32,
+                      ),
                       SizedBox(
                         width: 8,
                       ),
                       Text(
-                        '0.00',
-                        style: TextStyle(fontSize: 12),
+                        "0.0",
+                        style: TextStyle(fontSize: 20),
                       )
                     ],
                   ),
@@ -247,7 +272,7 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                   ),
                   Row(
                     children: [
-                      Icon(Icons.photo_camera_front),
+                      Icon(Icons.photo_camera_front, size: 32),
                       SizedBox(
                         width: 8,
                       ),
@@ -258,7 +283,7 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                                 ? "Please open your camera"
                                 : "Your Camera is working properly",
                         style: TextStyle(
-                            fontSize: 12,
+                            fontSize: 20,
                             color: !controller!.value.isInitialized
                                 ? Colors.red
                                 : Colors.green),
@@ -268,13 +293,16 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                   SizedBox(width: 32),
                   Row(
                     children: [
-                      Icon(Icons.volume_up_outlined),
+                      Icon(
+                        Icons.volume_up_outlined,
+                        size: 32,
+                      ),
                       SizedBox(
                         width: 8,
                       ),
                       Container(
-                        width: 160,
-                        height: 32,
+                        width: 180,
+                        height: 52,
                         decoration: BoxDecoration(
                             color: custom_colors.primaryBlue,
                             borderRadius: BorderRadius.circular(8)),
@@ -283,7 +311,7 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                             "Play a sound",
                             style: TextStyle(
                                 color: custom_colors.backgroundWhite,
-                                fontSize: 12),
+                                fontSize: 16),
                           ),
                         ),
                       )

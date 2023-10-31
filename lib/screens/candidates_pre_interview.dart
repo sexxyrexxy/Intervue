@@ -7,6 +7,7 @@ import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
 class PreInterviewScreen extends StatefulWidget {
+  static const routeName = '/interview';
   const PreInterviewScreen({super.key});
 
   @override
@@ -50,15 +51,16 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
 
   /// This has to happen only once per app
   void _initSpeech() async {
-    _speechEnabled = await _speechToText.initialize(
-        onStatus: statusListener
-    );
+    _speechEnabled = await _speechToText.initialize(onStatus: statusListener);
     setState(() {});
   }
 
   /// Each time to start a speech recognition session
   void _startListening() async {
-    await _speechToText.listen(onResult: _onSpeechResult, onSoundLevelChange: _onSoundLevelChange, listenMode: ListenMode.dictation);
+    await _speechToText.listen(
+        onResult: _onSpeechResult,
+        onSoundLevelChange: _onSoundLevelChange,
+        listenMode: ListenMode.dictation);
     setState(() {});
   }
 
@@ -150,7 +152,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                         Text(
                           "A few tips before proceeding:",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.3), fontSize: 12),
+                              color: Colors.black.withOpacity(0.3),
+                              fontSize: 12),
                         )
                       ],
                     ),
@@ -163,7 +166,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                         Text(
                           '•',
                           style: TextStyle(
-                              fontSize: 28, color: Colors.black.withOpacity(0.3)),
+                              fontSize: 28,
+                              color: Colors.black.withOpacity(0.3)),
                         ),
                         SizedBox(
                           width: 12,
@@ -171,7 +175,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                         Text(
                           "Make sure that your surrounding \nenvironment is well-lit",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.3), fontSize: 12),
+                              color: Colors.black.withOpacity(0.3),
+                              fontSize: 12),
                         )
                       ],
                     ),
@@ -181,7 +186,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                         Text(
                           '•',
                           style: TextStyle(
-                              fontSize: 28, color: Colors.black.withOpacity(0.3)),
+                              fontSize: 28,
+                              color: Colors.black.withOpacity(0.3)),
                         ),
                         SizedBox(
                           width: 12,
@@ -189,7 +195,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                         Text(
                           "Avoid rooms with noisy backgrounds",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.3), fontSize: 12),
+                              color: Colors.black.withOpacity(0.3),
+                              fontSize: 12),
                         )
                       ],
                     ),
@@ -199,7 +206,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                         Text(
                           '•',
                           style: TextStyle(
-                              fontSize: 28, color: Colors.black.withOpacity(0.3)),
+                              fontSize: 28,
+                              color: Colors.black.withOpacity(0.3)),
                         ),
                         SizedBox(
                           width: 12,
@@ -207,7 +215,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                         Text(
                           "Make sure that your surrounding \nenvironment is well-lit",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.3), fontSize: 12),
+                              color: Colors.black.withOpacity(0.3),
+                              fontSize: 12),
                         )
                       ],
                     ),
@@ -226,7 +235,9 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
               height: 12,
             ),
             Text(
-              _lastWords.isNotEmpty ? _lastWords : "[Live Caption will show up when you speak]",
+              _lastWords.isNotEmpty
+                  ? _lastWords
+                  : "[Live Caption will show up when you speak]",
               style: TextStyle(fontSize: 16, color: custom_colors.primaryBlue),
             ),
             SizedBox(

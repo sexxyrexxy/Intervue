@@ -206,7 +206,13 @@ class MainJobSearch extends StatelessWidget {
                         ),
                       ],
                     ),
-                    jobDetailsCard()
+                    JobDetailsCard(
+                      jobPosition: "PEN TESTER INTERN",
+                      location: "Ampang",
+                      salaryStartRange: 1800,
+                      salaryEndRange: 2500,
+                      jobType: "Internship",
+                    )
                   ],
                 ),
               )

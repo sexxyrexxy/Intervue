@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
         home: MainJobSearch(),
         routes: {
           AdminMainScreen.routeName: (context) => AdminMainScreen(),
+          PreInterviewScreen.routeName: (context) => PreInterviewScreen(),
         },
       ),
     );

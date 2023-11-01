@@ -48,6 +48,9 @@ dependencies:
   provider: ^6.0.5
   confirm_dialog: ^1.0.2
   speech_to_text: ^6.3.0
+  wheel_chooser: ^1.1.2
+  selector_wheel: ^1.1.2
+  multi_dropdown: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -72,8 +75,6 @@ flutter:
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
-  assets:
-    - lib/assets/images/Intervue-Logo.png
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
@@ -83,6 +84,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  assets:
+    - lib/assets/images/top_background.jpg
+    - lib/assets/images/Intervue-Logo.png
+    - lib/assets/images/dummy_job_man.jpeg
+
   fonts:
     - family: Futura
       fonts:

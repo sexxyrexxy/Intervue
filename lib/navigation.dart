@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:talentsync/screens/new_job_screen_I.dart';
 import 'models/colors.dart';
 import 'screens/admin_analytics_screen.dart';
 import 'screens/admin_candidates_screen.dart';
@@ -31,21 +32,20 @@ class NavigationState extends State<Navigation> {
     AdminCandidatesScreen(),
     AdminAnalyticsScreen(),
     AdminMessageScreen(),
+    newJobPostionScreen(),
     AdminSettingsScreen(),
-    SpeechToTextTest()
+    SpeechToTextTest(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+      body: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Container(
           width: 200,
           height: double.infinity,
           color: secondaryDarkBlue,
-          padding: EdgeInsets.symmetric(horizontal:20),
+          padding: EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
               Image.asset('lib/assets/images/Intervue-Logo.png'),
@@ -91,29 +91,6 @@ class NavigationState extends State<Navigation> {
                 child: navItem(Icons.notifications, 'Messages',
                     currentIndex == 4 ? true : false),
               ),
-              Divider(
-                color: black,
-                thickness: 1.5,
-              ),
-              Spacer(),
-               GestureDetector(
-                onTap: () {
-                  setState(() {
-                    currentIndex = 5;
-                  });
-                },
-                child: navItem(Icons.settings, 'Settings',
-                    currentIndex == 5 ? true : false),
-              ),
-              // GestureDetector(
-              //   onTap: () {
-              //     setState(() {
-              //       currentIndex = 6;
-              //     });
-              //   },
-              //   child: navItem(Icons.build, 'STT',
-              //       currentIndex == 6 ? true : false),
-              // ),
               GestureDetector(
                 onTap: () {
                   setState(() {
@@ -121,7 +98,39 @@ class NavigationState extends State<Navigation> {
                   });
                 },
                 child: navItem(
-                    Icons.logout, 'Log Out', currentIndex == 5 ? true : false),
+                    Icons.add, 'New Job', currentIndex == 5 ? true : false),
+              ),
+              Divider(
+                color: black,
+                thickness: 1.5,
+              ),
+              Spacer(),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    currentIndex = 6;
+                  });
+                },
+                child: navItem(Icons.settings, 'Settings',
+                    currentIndex == 6 ? true : false),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    currentIndex = 7;
+                  });
+                },
+                child: navItem(
+                    Icons.build, 'STT', currentIndex == 7 ? true : false),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    currentIndex = 5;
+                  });
+                },
+                child: navItem(
+                    Icons.logout, 'Log Out', currentIndex == 8 ? true : false),
               ),
             ],
           ),
@@ -136,7 +145,7 @@ class NavigationState extends State<Navigation> {
 
 Container navItem(IconData icon, String text, bool active) {
   return Container(
-    margin: EdgeInsets.only(bottom: 50),
+    margin: EdgeInsets.only(bottom: 30),
     padding: EdgeInsets.all(10),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10),

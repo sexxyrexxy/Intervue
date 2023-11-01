@@ -99,7 +99,7 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
             SizedBox(
               height: 20,
             ),
-            Camera(800, 540),
+            Cameras(800, 540),
             SizedBox(height: 20),
             GestureDetector(
                 onTap: () {

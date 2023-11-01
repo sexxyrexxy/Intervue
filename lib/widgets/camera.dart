@@ -1,20 +1,20 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
-class Camera extends StatefulWidget {
+class Cameras extends StatefulWidget {
   double width;
   double height;
-  Camera(
+  Cameras(
     this.width,
     this.height, {
     super.key,
   });
 
   @override
-  State<Camera> createState() => _CameraState();
+  State<Cameras> createState() => _CamerasState();
 }
 
-class _CameraState extends State<Camera> {
+class _CamerasState extends State<Cameras> {
   List<CameraDescription>? cameras;
   CameraController? controller; //controller for camera
   XFile? image;
@@ -24,7 +24,7 @@ class _CameraState extends State<Camera> {
     super.initState();
   }
 
-  loadCamera() async {
+  void loadCamera() async {
     cameras = await availableCameras();
     if (cameras != null) {
       controller = CameraController(cameras![0], ResolutionPreset.max);
@@ -56,5 +56,8 @@ class _CameraState extends State<Camera> {
                 )
               : CameraPreview(controller!),
     );
+    void initCamera() {
+      loadCamera();
+    }
   }
 }

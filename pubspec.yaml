@@ -52,7 +52,6 @@ dependencies:
   selector_wheel: ^1.1.2
   multi_dropdown: ^2.1.0
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -86,9 +85,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   assets:
-     - lib/assets/images/top_background.jpg
-     - lib/assets/images/Intervue-Logo.png
-     - lib/assets/images/dummy_job_man.jpeg
+    - lib/assets/images/top_background.jpg
+    - lib/assets/images/Intervue-Logo.png
+    - lib/assets/images/dummy_job_man.jpeg
 
   fonts:
     - family: Futura

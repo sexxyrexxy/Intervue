@@ -126,7 +126,7 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Cameras(),
+                Cameras(800, 450),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,

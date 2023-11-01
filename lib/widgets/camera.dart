@@ -2,7 +2,11 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 class Cameras extends StatefulWidget {
-  const Cameras({
+  double width;
+  double height;
+  Cameras(
+    this.width,
+    this.height, {
     super.key,
   });
 
@@ -18,22 +22,6 @@ class _CamerasState extends State<Cameras> {
   void initState() {
     loadCamera();
     super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 800,
-      height: 450,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(28)),
-      child: controller == null
-          ? Center(child: Text("Loading Camera..."))
-          : !controller!.value.isInitialized
-              ? Center(
-                  child: CircularProgressIndicator(),
-                )
-              : CameraPreview(controller!),
-    );
   }
 
   void loadCamera() async {
@@ -53,7 +41,23 @@ class _CamerasState extends State<Cameras> {
     }
   }
 
-  void initCamera() {
-    loadCamera();
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: widget.width,
+      height: widget.height,
+      clipBehavior: Clip.hardEdge,
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(28)),
+      child: controller == null
+          ? Center(child: Text("Loading Camera..."))
+          : !controller!.value.isInitialized
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : CameraPreview(controller!),
+    );
+    void initCamera() {
+      loadCamera();
+    }
   }
 }

@@ -49,8 +49,8 @@ class _SpeechToTextTest extends State {
       }
 
       for (var altIndex = 0;
-      altIndex < (recognitionResult.length ?? 0);
-      ++altIndex) {
+          altIndex < (recognitionResult.length ?? 0);
+          ++altIndex) {
         longestAlt = max(longestAlt, altIndex);
         var alt = js_util.callMethod(recognitionResult, 'item', [altIndex]);
         if (null == alt) continue;
@@ -67,54 +67,46 @@ class _SpeechToTextTest extends State {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+        const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+            child: Text(
+              'Test Speech-To-Text',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ]),
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+            child: FloatingActionButton(
+                onPressed: !_isListening ? _startListening : _stopListening,
+                tooltip: 'Start/Stop',
+                child: const Icon(Icons.mic)),
+          ),
+        ]),
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+            child: SizedBox(
+              width: 600,
               child: Text(
-                'Test Speech-To-Text',
-                style: TextStyle(
+                _lastWords.isNotEmpty
+                    ? _lastWords
+                    : 'Tap the microphone to start listening...',
+                style: const TextStyle(
                   fontSize: 30,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w100,
                 ),
                 textAlign: TextAlign.center,
               ),
             ),
-          ]
-        ),
-        Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                child: FloatingActionButton(
-                    onPressed: !_isListening ? _startListening : _stopListening,
-                    tooltip: 'Start/Stop',
-                    child: const Icon(Icons.mic)
-                ),
-              ),
-            ]
-        ),
-        Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                child: SizedBox(
-                  width: 600,
-                  child: Text(
-                    _lastWords.isNotEmpty ? _lastWords : 'Tap the microphone to start listening...',
-                    style: const TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w100,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            ]
-        ),
+          ),
+        ]),
       ],
     );
   }

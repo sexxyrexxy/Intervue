@@ -133,10 +133,10 @@ packages:
     dependency: transitive
     description:
       name: camera_avfoundation
-      sha256: "9495e633cda700717bbe299b0979e6c4a08cee45f298945973dc9cf3e4c1cba5"
+      sha256: "3b6d9f550cfd658c71f34a99509528501e5e5d4fa79f11e3a4d6ef380d8e0254"
       url: "https://pub.dev"
     source: hosted
-    version: "0.9.13+6"
+    version: "0.9.13+7"
   camera_platform_interface:
     dependency: transitive
     description:
@@ -269,10 +269,10 @@ packages:
     dependency: transitive
     description:
       name: fetch_api
-      sha256: b88977a8f369344cbaa13a53752629185ecae0d56c6683f0a2060b652a0cf437
+      sha256: "74a1e426d41ed9c89353703b2d80400c5d0ecfa144b2d8a7bd8882fbc9e48787"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.2"
+    version: "1.0.3"
   fetch_client:
     dependency: transitive
     description:
@@ -476,10 +476,10 @@ packages:
     dependency: transitive
     description:
       name: image_picker_ios
-      sha256: c5538cacefacac733c724be7484377923b476216ad1ead35a0d2eadcdc0fc497
+      sha256: "76ec722aeea419d03aa915c2c96bf5b47214b053899088c9abb4086ceecf97a7"
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.8+2"
+    version: "0.8.8+4"
   image_picker_linux:
     dependency: transitive
     description:
@@ -772,10 +772,10 @@ packages:
     dependency: transitive
     description:
       name: record_web
-      sha256: f1c0427dcf5af68dcfe06439d04771d65f73bd040eb0dcd98fbe4c02263a7d35
+      sha256: d4b3b2ccdc34a82b6d747a70a525ee5fce126bcd5cc0c1ef56d4771b43aab5f2
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.2"
   record_windows:
     dependency: transitive
     description:
@@ -833,10 +833,10 @@ packages:
     dependency: "direct main"
     description:
       name: speech_to_text
-      sha256: "59393a58815a517dc1237a81ccbaf8302f44d107d84fafca9c295cdf7fff404f"
+      sha256: "14c946f4a72fb70d365fe903e748a906a925d20ba3be4a1ec0e9968b1f94adf9"
       url: "https://pub.dev"
     source: hosted
-    version: "6.3.0"
+    version: "6.4.0"
   speech_to_text_macos:
     dependency: transitive
     description:

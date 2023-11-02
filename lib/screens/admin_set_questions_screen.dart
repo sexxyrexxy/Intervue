@@ -82,6 +82,7 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
                       positions.add(InterviewPosition(value));
                     });
                   },
+                  //Change this to button that leads to the job posting screen//
                   decoration: InputDecoration(
                     hintText: 'Add New Position',
                     border: InputBorder.none,

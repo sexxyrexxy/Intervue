@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Intervüe',
         theme: ThemeData(fontFamily: 'Futura'),
-        home: Navigation(),
+        home: SpeechToTextTest(),
         routes: {
           AdminMainScreen.routeName: (context) => AdminMainScreen(),
           newJobPostionScreenII.routeName: (context) => newJobPostionScreenII(),

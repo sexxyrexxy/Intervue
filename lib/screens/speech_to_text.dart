@@ -9,7 +9,7 @@ class SpeechToTextTest extends StatefulWidget {
 }
 
 class _SpeechToTextTest extends State {
-  var speechRecognitionComponent = SpeechToTextProvider();
+  final SpeechToTextProvider speechRecognitionComponent = SpeechToTextProvider();
 
   @override
   void initState() {
@@ -41,6 +41,7 @@ class _SpeechToTextTest extends State {
                   if (speechRecognitionComponent.isListening == false) {
                     speechRecognitionComponent.startListening();
                   } else {
+                    print(speechRecognitionComponent.recognizedWords);
                     speechRecognitionComponent.stopListening();
                   }
                 },

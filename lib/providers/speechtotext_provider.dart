@@ -21,8 +21,8 @@ class SpeechToTextProvider with ChangeNotifier {
 
   void stopListening() async {
     _isListening = false;
-    notifyListeners();
     _recognizedWords = '';
+    notifyListeners();
     speechRecognition.stop();
   }
 

@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:talentsync/screens/loading_screen.dart';
 
 class Cameras extends StatefulWidget {
   double width;
@@ -18,6 +19,7 @@ class _CamerasState extends State<Cameras> {
   List<CameraDescription>? cameras;
   CameraController? controller; //controller for camera
   XFile? image;
+  bool isLoading=true;
   @override
   void initState() {
     loadCamera();
@@ -27,17 +29,16 @@ class _CamerasState extends State<Cameras> {
   void loadCamera() async {
     cameras = await availableCameras();
     if (cameras != null) {
-      controller = CameraController(cameras![0], ResolutionPreset.max);
+      controller =  CameraController(cameras![0], ResolutionPreset.max);
       //cameras[0] = first camera, change to 1 to another camera
 
-      controller!.initialize().then((_) {
+      controller?.initialize().then((_) {
         if (!mounted) {
           return;
         }
-        setState(() {});
+        setState(() {isLoading=false;});
       });
     } else {
-      print("NO any camera found");
     }
   }
 
@@ -48,12 +49,10 @@ class _CamerasState extends State<Cameras> {
       height: widget.height,
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(28)),
-      child: controller == null
-          ? Center(child: Text("Loading Camera..."))
+      child: isLoading ?
+           LoadingScreen()
           : !controller!.value.isInitialized
-              ? Center(
-                  child: CircularProgressIndicator(),
-                )
+              ? LoadingScreen()
               : CameraPreview(controller!),
     );
     void initCamera() {

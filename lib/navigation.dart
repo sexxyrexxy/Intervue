@@ -7,7 +7,6 @@ import 'screens/admin_main_screen.dart';
 import 'screens/admin_messages_screen.dart';
 import 'screens/admin_set_questions_screen.dart';
 import 'screens/admin_settings_screen.dart';
-import 'screens/speech_to_text.dart';
 
 class Navigation extends StatefulWidget {
   static const routeName = '/navigation';
@@ -34,7 +33,6 @@ class NavigationState extends State<Navigation> {
     AdminMessageScreen(),
     newJobPostionScreen(),
     AdminSettingsScreen(),
-    SpeechToTextTest(),
   ];
 
   @override
@@ -113,15 +111,6 @@ class NavigationState extends State<Navigation> {
                 },
                 child: navItem(Icons.settings, 'Settings',
                     currentIndex == 6 ? true : false),
-              ),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    currentIndex = 7;
-                  });
-                },
-                child: navItem(
-                    Icons.build, 'STT', currentIndex == 7 ? true : false),
               ),
               GestureDetector(
                 onTap: () {

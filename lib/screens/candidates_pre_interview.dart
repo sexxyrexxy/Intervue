@@ -4,9 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:talentsync/widgets/camera.dart';
 import 'package:talentsync/widgets/small-button.dart';
 import 'package:talentsync/models/colors.dart' as custom_colors;
-import 'dart:html' as html;
-import 'dart:js_util' as js_util;
-import 'dart:math';
+import 'package:talentsync/providers/speechtotext_provider.dart';
 
 class PreInterviewScreen extends StatefulWidget {
   static const routeName = '/interview';
@@ -20,21 +18,17 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
   List<CameraDescription>? cameras;
   CameraController? controller; //controller for camera
   bool _isCameraInitialized = false;
-  final speechRecognition = html.SpeechRecognition();
-  String _lastWords = '';
-  bool _isListening = false;
+  var speechRecognitionComponent = SpeechToTextProvider();
 
   @override
   void initState() {
     loadCamera();
     super.initState();
-    _startListening();
-    debugPrint("current status ${_isListening}");
   }
 
   loadCamera() async {
     cameras = await availableCameras();
-    _startListening();
+    speechRecognitionComponent.startListening();
     if (cameras != null) {
       controller = CameraController(cameras![0], ResolutionPreset.max);
       //cameras[0] = first camera, change to 1 to another camera
@@ -48,57 +42,6 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
     } else {
       print("No any camera found");
     }
-  }
-
-  // /// This has to happen only once per app
-  // void _initSpeech() async {
-  //   _speechEnabled = await _speechToText.initialize(onStatus: statusListener);
-  //   setState(() {});
-  // }
-
-  /// Each time to start a speech recognition session
-  void _startListening() async {
-    setState(() {
-      _isListening = true;
-    });
-
-    speechRecognition.continuous = true;
-    speechRecognition.onResult.listen((event) => _onSpeechResult(event));
-    speechRecognition.start();
-  }
-
-  void _stopListening() async {
-    setState(() {
-      _isListening = false;
-      _lastWords = '';
-    });
-    speechRecognition.stop();
-  }
-
-  void _onSpeechResult(html.SpeechRecognitionEvent event) {
-    var results = event.results;
-    if (null == results) return;
-    var longestAlt = 0;
-    var finalTranscript = "";
-    for (var recognitionResult in results) {
-      if (null == recognitionResult.length || recognitionResult.length == 0) {
-        continue;
-      }
-
-      for (var altIndex = 0;
-          altIndex < (recognitionResult.length ?? 0);
-          ++altIndex) {
-        longestAlt = max(longestAlt, altIndex);
-        var alt = js_util.callMethod(recognitionResult, 'item', [altIndex]);
-        if (null == alt) continue;
-        String? transcript = js_util.getProperty(alt, 'transcript');
-        finalTranscript += transcript ?? "";
-      }
-    }
-    setState(() {
-      _lastWords = finalTranscript;
-      debugPrint("hai $_lastWords");
-    });
   }
 
   @override
@@ -238,8 +181,8 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
               height: 12,
             ),
             Text(
-              _lastWords.isNotEmpty
-                  ? _lastWords
+              speechRecognitionComponent.recognizedWords.isNotEmpty
+                  ? speechRecognitionComponent.recognizedWords
                   : "[Live Caption will show up when you speak]",
               style: TextStyle(fontSize: 16, color: custom_colors.primaryBlue),
             ),

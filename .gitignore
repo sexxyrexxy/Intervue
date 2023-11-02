@@ -3,3 +3,5 @@
 build/
 .flutter-plugins-dependencies
 .DS_Store
+.package_config.json
+.package_config_subset

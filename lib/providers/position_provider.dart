@@ -22,7 +22,6 @@ class PositionProvider with ChangeNotifier {
   void addQuestions(String posName, String question) {
     positionList[posName]!.add(question);
     notifyListeners();
-    
   }
   void addQuestionsAtIndex(String posName, String question) {
     positionList[posName]!.insert(1,question);

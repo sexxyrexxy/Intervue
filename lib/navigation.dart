@@ -7,6 +7,7 @@ import 'screens/admin_main_screen.dart';
 import 'screens/admin_messages_screen.dart';
 import 'screens/admin_set_questions_screen.dart';
 import 'screens/admin_settings_screen.dart';
+import 'screens/main_job_searching_screen.dart';
 
 class Navigation extends StatefulWidget {
   static const routeName = '/navigation';
@@ -114,9 +115,7 @@ class NavigationState extends State<Navigation> {
               ),
               GestureDetector(
                 onTap: () {
-                  setState(() {
-                    currentIndex = 5;
-                  });
+                  Navigator.of(context).pushNamed(MainJobSearch.routeName);
                 },
                 child: navItem(
                     Icons.logout, 'Log Out', currentIndex == 8 ? true : false),

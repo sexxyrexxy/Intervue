@@ -88,6 +88,10 @@ flutter:
     - lib/assets/images/top_background.jpg
     - lib/assets/images/Intervue-Logo.png
     - lib/assets/images/dummy_job_man.jpeg
+    - lib/assets/images/RexLim.jpeg
+    - lib/assets/images/hans.jpeg
+    - lib/assets/images/ivy.jpeg
+    - lib/assets/images/bbq.jpeg
 
   fonts:
     - family: Futura

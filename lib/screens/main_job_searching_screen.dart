@@ -14,6 +14,7 @@ import '../widgets/job_position_card.dart';
 
 class MainJobSearch extends StatelessWidget {
   const MainJobSearch({super.key});
+  static const routeName = '/mainJobSearch';
 
   @override
   Widget build(BuildContext context) {

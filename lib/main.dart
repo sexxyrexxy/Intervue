@@ -16,6 +16,7 @@ import 'package:talentsync/screens/speech_to_text.dart';
 import 'package:talentsync/widgets/camera.dart';
 
 import 'navigation.dart';
+import 'screens/admin_individual_candidate_screen.dart';
 import 'screens/admin_main_screen.dart';
 
 void main() {
@@ -46,14 +47,15 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Intervüe',
         theme: ThemeData(fontFamily: 'Futura'),
-        home: SpeechToTextTest(),
+        home: Navigation(),
         routes: {
           AdminMainScreen.routeName: (context) => AdminMainScreen(),
           newJobPostionScreenII.routeName: (context) => newJobPostionScreenII(),
-          newJobPositionScreenIII.routeName: (context) =>
-              newJobPositionScreenIII(),
+          newJobPositionScreenIII.routeName: (context) =>newJobPositionScreenIII(),
           PreInterviewScreen.routeName: (context) => PreInterviewScreen(),
-        },
+          MainJobSearch.routeName: (context) => MainJobSearch(),
+          AdminIndividualCandidateScreen.routeName: (context) => AdminIndividualCandidateScreen()
+        }
       ),
     );
   }

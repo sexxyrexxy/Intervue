@@ -34,29 +34,15 @@ class AdminCandidatesScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CandidateCard('Yap Xuan', "/Users/rexlim/Documents/Intervue/lib/assets/images/bbq.jpeg"),
+                CandidateCard('Go Yap Xuan', "/Users/rexlim/Documents/Intervue/lib/assets/images/bbq.jpeg"),
                 SizedBox(
                   width: 60,
                 ),
-                Container(
-                  height: 360,
-                  width: 300,
-                  decoration: BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
+                CandidateCard('Bonifacio Ronald', '/Users/rexlim/Documents/Intervue/lib/assets/images/ronald.jpeg'),
                 SizedBox(
                   width: 60,
                 ),
-                Container(
-                  height: 360,
-                  width: 300,
-                  decoration: BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
+                CandidateCard('Cheah Zixu', '/Users/rexlim/Documents/Intervue/lib/assets/images/cheah.png')
               ],
             )
           ],

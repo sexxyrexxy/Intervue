@@ -51,6 +51,7 @@ dependencies:
   wheel_chooser: ^1.1.2
   selector_wheel: ^1.1.2
   multi_dropdown: ^2.1.0
+  bulleted_list: ^0.0.1+0.1a
 
 dev_dependencies:
   flutter_test:
@@ -92,6 +93,8 @@ flutter:
     - lib/assets/images/hans.jpeg
     - lib/assets/images/ivy.jpeg
     - lib/assets/images/bbq.jpeg
+    - lib/assets/images/ronald.jpeg
+    - lib/assets/images/cheah.png
 
   fonts:
     - family: Futura

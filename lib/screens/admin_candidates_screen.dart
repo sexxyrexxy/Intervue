@@ -14,18 +14,15 @@ class AdminCandidatesScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CandidateCard('Rex Lim',
-                    '/Users/rexlim/Documents/Intervue/lib/assets/images/RexLim.jpeg'),
+                CandidateCard('Rex Lim', 'lib/assets/images/RexLim.jpeg'),
                 SizedBox(
                   width: 60,
                 ),
-                CandidateCard('Hans Andreanto',
-                    '/Users/rexlim/Documents/Intervue/lib/assets/images/hans.jpeg'),
+                CandidateCard('Hans Andreanto', 'lib/assets/images/hans.jpeg'),
                 SizedBox(
                   width: 60,
                 ),
-                CandidateCard('Ivy Chung',
-                    '/Users/rexlim/Documents/Intervue/lib/assets/images/ivy.jpeg'),
+                CandidateCard('Ivy Chung', "lib/assets/images/ivy.jpeg"),
               ],
             ),
             SizedBox(
@@ -34,15 +31,16 @@ class AdminCandidatesScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CandidateCard('Go Yap Xuan', "/Users/rexlim/Documents/Intervue/lib/assets/images/bbq.jpeg"),
+                CandidateCard('Go Yap Xuan', "lib/assets/images/bbq.jpeg"),
                 SizedBox(
                   width: 60,
                 ),
-                CandidateCard('Bonifacio Ronald', '/Users/rexlim/Documents/Intervue/lib/assets/images/ronald.jpeg'),
+                CandidateCard(
+                    'Bonifacio Ronald', 'lib/assets/images/ronald.jpeg'),
                 SizedBox(
                   width: 60,
                 ),
-                CandidateCard('Cheah Zixu', '/Users/rexlim/Documents/Intervue/lib/assets/images/cheah.png')
+                CandidateCard('Cheah Zixu', 'lib/assets/images/cheah.png')
               ],
             )
           ],

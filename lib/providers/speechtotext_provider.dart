@@ -3,7 +3,7 @@ import 'dart:js_util' as js_util;
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-class SpeechToTextProvider with ChangeNotifier {
+class SpeechToTextProvider {
   final speechRecognition = html.SpeechRecognition();
   String _recognizedWords = '';
   bool _isListening = false;
@@ -13,7 +13,6 @@ class SpeechToTextProvider with ChangeNotifier {
 
   void startListening() async {
     _isListening = true;
-    notifyListeners();
     speechRecognition.continuous = true;
     speechRecognition.onResult.listen((event) => _onSpeechResult(event));
     speechRecognition.start();
@@ -22,7 +21,6 @@ class SpeechToTextProvider with ChangeNotifier {
   void stopListening() async {
     _isListening = false;
     _recognizedWords = '';
-    notifyListeners();
     speechRecognition.stop();
   }
 
@@ -43,10 +41,11 @@ class SpeechToTextProvider with ChangeNotifier {
         var alt = js_util.callMethod(recognitionResult, 'item', [altIndex]);
         if (null == alt) continue;
         String? transcript = js_util.getProperty(alt, 'transcript');
-        finalTranscript += transcript ?? "";
+        
+        finalTranscript += transcript ?? "";        
       }
     }
     _recognizedWords = finalTranscript;
-    notifyListeners();
+    print(_recognizedWords);
   }
 }

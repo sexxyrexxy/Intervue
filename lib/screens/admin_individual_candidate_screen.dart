@@ -255,7 +255,7 @@ class _AdminIndividualCandidateScreenState
   Future<void> _dialogBuilder(BuildContext context, String question) {
     String answer;
     if (question == 'Tell me a little bit about yourself') {
-      answer = 'Hi, I am Rex, a software engineer with a passion for building innovative and user-friendly applications. I am always eager to learn new technologies and take on challenging projects. I am also a team player and enjoy working with others to achieve common goals.';
+      answer = 'Hello I am a fresh graduate of the Bachelor of Computer Science, I code in Flutter, Python and also React JS. ';
     } else if (question == 'Give me two of your strengths') {
       answer = 'Two of my strengths are my problem-solving skills and my ability to learn quickly. I am also a creative thinker and I am always looking for new ways to improve the way things are done.';
     } else if (question == 'Why do you want to join us?') {

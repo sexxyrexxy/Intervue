@@ -35,7 +35,12 @@ class _AdminIndividualCandidateScreenState
               SizedBox(
                 width: 10,
               ),
-              Text(question,style: TextStyle(color: secondaryDarkBlue),),
+              InkWell(
+                onTap: () {
+                  _dialogBuilder(context, question);
+                },
+                child: new Text(question,style: TextStyle(color: secondaryDarkBlue),),
+              )
             ],
           ));
     }).toList();
@@ -244,6 +249,39 @@ class _AdminIndividualCandidateScreenState
           ],
         ),
       ),
+    );
+  }
+
+  Future<void> _dialogBuilder(BuildContext context, String question) {
+    String answer;
+    if (question == 'Tell me a little bit about yourself') {
+      answer = 'Answer 1';
+    } else if (question == 'Give me two of your strengths') {
+      answer = 'Answer 2';
+    } else if (question == 'Why do you want to join us?') {
+      answer = 'Answer 3';
+    } else {
+      answer = 'Answer 4';
+    }
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(question),
+          content: Text(answer),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('Close'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

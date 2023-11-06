@@ -255,20 +255,26 @@ class _AdminIndividualCandidateScreenState
   Future<void> _dialogBuilder(BuildContext context, String question) {
     String answer;
     if (question == 'Tell me a little bit about yourself') {
-      answer = 'Answer 1';
+      answer = 'Hi, I am Rex, a software engineer with a passion for building innovative and user-friendly applications. I am always eager to learn new technologies and take on challenging projects. I am also a team player and enjoy working with others to achieve common goals.';
     } else if (question == 'Give me two of your strengths') {
-      answer = 'Answer 2';
+      answer = 'Two of my strengths are my problem-solving skills and my ability to learn quickly. I am also a creative thinker and I am always looking for new ways to improve the way things are done.';
     } else if (question == 'Why do you want to join us?') {
-      answer = 'Answer 3';
+      answer = 'I am interested in joining your team because I am impressed with your company\'s culture and your commitment to innovation. I believe that my skills and experience would be a valuable asset to your team. I am also excited about the opportunity to learn from your team and to contribute to your company\'s success.';
     } else {
-      answer = 'Answer 4';
+      answer = 'A dialog is a type of modal window that\n'
+          'appears in front of app content to\n'
+          'provide critical information, or prompt\n'
+          'for a decision to be made.';
     }
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(question),
-          content: Text(answer),
+          content: Container(
+            width: MediaQuery.of(context).size.width * 0.6,
+            child: Text(answer),
+          ),
           actions: <Widget>[
             TextButton(
               style: TextButton.styleFrom(

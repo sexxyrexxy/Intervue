@@ -50,6 +50,32 @@ class _AdminIndividualCandidateScreenState
             ],
           ));
     }).toList();
+
+    questions.insert(
+        1,
+        Container(
+            margin: EdgeInsets.all(10),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.voice_chat,
+                  color: secondaryDarkBlue,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                InkWell(
+                  onTap: () {
+                    _dialogBuilder(context,
+                        'Could you tell me a bit more about the strategies you use to reduce load time?');
+                  },
+                  child: new Text(
+                    'Could you tell me a bit more about the strategies you use to reduce load time?',
+                    style: TextStyle(color: secondaryDarkBlue),
+                  ),
+                )
+              ],
+            )));
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(20),
@@ -249,7 +275,16 @@ class _AdminIndividualCandidateScreenState
                             'Working with large language model and artificial intelligence',
                             "Degree from Taylor's University",
                             "Compensation : 100k USD",
-                          ])
+                          ]),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'This candidate is highly confident, and more elaborative in his answers than most candidates. Skillsets match the job descriptions. Highly recommended!',
+                        style: TextStyle(
+                            color: secondaryDarkBlue,
+                            fontWeight: FontWeight.bold),
+                      )
                     ]),
               ),
             )
@@ -263,10 +298,14 @@ class _AdminIndividualCandidateScreenState
     String answer;
     if (question == 'Tell me a little bit about yourself') {
       answer =
-          'Hello I am a fresh graduate of the Bachelor of Computer Science, I code in Flutter, Python and also React JS. ';
+          'Hi, I am a software engineer working with Netflix. my main job role includes reducing load time when users enter the website.';
     } else if (question == 'Give me two of your strengths') {
       answer =
           'Two of my strengths are my problem-solving skills and my ability to learn quickly. I am also a creative thinker and I am always looking for new ways to improve the way things are done.';
+    } else if (question ==
+        'Could you tell me a bit more about the strategies you use to reduce load time?') {
+      answer =
+          "I used a Content Delivery Network, which is a network of servers that are distributed around the world. By using a CDN, your website's content can be served to users from the server that is closest to them, reducing load times.";
     } else if (question == 'Why do you want to join us?') {
       answer =
           'I am interested in joining your team because I am impressed with your company\'s culture and your commitment to innovation. I believe that my skills and experience would be a valuable asset to your team. I am also excited about the opportunity to learn from your team and to contribute to your company\'s success.';

@@ -298,6 +298,7 @@ class _AdminIndividualCandidateScreenState
     if (question == 'Tell me a little bit about yourself') {
       answer =
           'Hi, I am a software engineer working with Netflix. my main job role includes reducing load time when users enter the website.';
+
     } else if (question == 'Give me two of your strengths') {
       answer =
           'Two of my strengths are my problem-solving skills and my ability to learn quickly. I am also a creative thinker and I am always looking for new ways to improve the way things are done.';

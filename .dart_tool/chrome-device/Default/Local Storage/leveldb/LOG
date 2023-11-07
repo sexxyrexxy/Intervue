@@ -1,10 +1,15 @@
-2023/11/05-21:12:35.751 2c03 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.oZdQtK/flutter_tools_chrome_device.mDhxLy/Default/Local Storage/leveldb/MANIFEST-000001
-2023/11/05-21:12:35.752 2c03 Recovering log #13
-2023/11/05-21:12:35.752 2c03 Reusing old log /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.oZdQtK/flutter_tools_chrome_device.mDhxLy/Default/Local Storage/leveldb/000013.log 
-2023/11/05-21:12:35.752 2c03 Delete type=0 #4
-2023/11/05-21:12:35.752 2c03 Delete type=0 #3
-2023/11/05-21:12:35.752 2c03 Delete type=2 #14
-2023/11/05-21:12:35.752 2c03 Delete type=2 #12
-2023/11/05-21:12:35.752 2c03 Delete type=2 #10
-2023/11/05-21:12:35.752 2c03 Delete type=2 #5
-2023/11/05-21:12:35.752 2c03 Delete type=2 #8
+2023/11/06-23:41:03.431 2d03 Creating DB /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.f7kTiI/flutter_tools_chrome_device.2NTMU7/Default/Local Storage/leveldb since it was missing.
+2023/11/06-23:41:03.439 2d03 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.f7kTiI/flutter_tools_chrome_device.2NTMU7/Default/Local Storage/leveldb/MANIFEST-000001
+2023/11/06-23:41:03.439 2d03 Recovering log #3
+2023/11/06-23:41:03.440 2d03 Recovering log #4
+2023/11/06-23:41:03.440 2d03 Level-0 table #4: started
+2023/11/06-23:41:03.443 2d03 Level-0 table #4: 11578 bytes OK
+2023/11/06-23:41:03.443 2d03 Recovering log #13
+2023/11/06-23:41:03.444 2d03 Reusing old log /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.f7kTiI/flutter_tools_chrome_device.2NTMU7/Default/Local Storage/leveldb/000013.log 
+2023/11/06-23:41:03.450 2d03 Delete type=0 #4
+2023/11/06-23:41:03.450 2d03 Delete type=0 #3
+2023/11/06-23:41:03.451 2d03 Delete type=2 #14
+2023/11/06-23:41:03.451 2d03 Delete type=2 #12
+2023/11/06-23:41:03.451 2d03 Delete type=2 #10
+2023/11/06-23:41:03.451 2d03 Delete type=2 #5
+2023/11/06-23:41:03.451 2d03 Delete type=2 #8

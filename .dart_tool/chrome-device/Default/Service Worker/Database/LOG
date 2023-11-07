@@ -1,3 +1,4 @@
-2023/11/05-21:12:36.271 a103 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.oZdQtK/flutter_tools_chrome_device.mDhxLy/Default/Service Worker/Database/MANIFEST-000001
-2023/11/05-21:12:36.271 a103 Recovering log #3
-2023/11/05-21:12:36.271 a103 Reusing old log /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.oZdQtK/flutter_tools_chrome_device.mDhxLy/Default/Service Worker/Database/000003.log 
+2023/11/06-23:41:04.195 a503 Creating DB /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.f7kTiI/flutter_tools_chrome_device.2NTMU7/Default/Service Worker/Database since it was missing.
+2023/11/06-23:41:04.205 a503 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.f7kTiI/flutter_tools_chrome_device.2NTMU7/Default/Service Worker/Database/MANIFEST-000001
+2023/11/06-23:41:04.206 a503 Recovering log #3
+2023/11/06-23:41:04.206 a503 Reusing old log /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.f7kTiI/flutter_tools_chrome_device.2NTMU7/Default/Service Worker/Database/000003.log 

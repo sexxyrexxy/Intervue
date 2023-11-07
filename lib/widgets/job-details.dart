@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:talentsync/models/colors.dart' as custom_color;
+import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/screens/candidates_pre_interview.dart';
+import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
 
 class JobDetailsCard extends StatelessWidget {
   String jobPosition;
@@ -62,7 +64,7 @@ class JobDetailsCard extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(PreInterviewScreen.routeName);
+                  Navigator.of(context).pushNamed(CandidatesUploadCV.routeName);
                 },
                 style: ElevatedButton.styleFrom(
                   primary: custom_color.secondaryDarkBlue,

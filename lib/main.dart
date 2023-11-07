@@ -45,18 +45,24 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'Intervüe',
-        theme: ThemeData(fontFamily: 'Futura'),
-        home: Navigation(),
-        routes: {
-          AdminMainScreen.routeName: (context) => AdminMainScreen(),
-          newJobPostionScreenII.routeName: (context) => newJobPostionScreenII(),
-          newJobPositionScreenIII.routeName: (context) =>newJobPositionScreenIII(),
-          PreInterviewScreen.routeName: (context) => PreInterviewScreen(),
-          MainJobSearch.routeName: (context) => MainJobSearch(),
-          AdminIndividualCandidateScreen.routeName: (context) => AdminIndividualCandidateScreen()
-        }
-      ),
+          debugShowCheckedModeBanner: false,
+          title: 'Intervüe',
+          theme: ThemeData(fontFamily: 'Futura'),
+          home: Navigation(),
+          routes: {
+            AdminMainScreen.routeName: (context) => AdminMainScreen(),
+            newJobPostionScreenII.routeName: (context) =>
+                newJobPostionScreenII(),
+            newJobPositionScreenIII.routeName: (context) =>
+                newJobPositionScreenIII(),
+            PreInterviewScreen.routeName: (context) => PreInterviewScreen(),
+            MainJobSearch.routeName: (context) => MainJobSearch(),
+            AdminIndividualCandidateScreen.routeName: (context) =>
+                AdminIndividualCandidateScreen(),
+            CandidatesUploadCV.routeName: (context) => CandidatesUploadCV(),
+            CandidatesAnsweringScreen.routeName: (context) =>
+                CandidatesAnsweringScreen()
+          }),
     );
   }
 }

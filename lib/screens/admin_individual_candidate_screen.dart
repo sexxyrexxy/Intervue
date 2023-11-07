@@ -117,8 +117,7 @@ class _AdminIndividualCandidateScreenState
                       shape: BoxShape.circle,
                     ),
                     child: Image.asset(
-                        fit: BoxFit.fill,
-                        '/Users/rexlim/Documents/Intervue/lib/assets/images/RexLim.jpeg'),
+                        fit: BoxFit.fill, 'lib/assets/images/RexLim.jpeg'),
                   ),
                   Text(
                     'Rex Lim',
@@ -282,7 +281,9 @@ class _AdminIndividualCandidateScreenState
                       ),
                       Text(
                         'This candidate is highly confident, and more elaborative in his answers than most candidates. Skillsets match the job descriptions. Highly recommended!',
-                        style: TextStyle(color: secondaryDarkBlue, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: secondaryDarkBlue,
+                            fontWeight: FontWeight.bold),
                       )
                     ]),
               ),
@@ -298,7 +299,6 @@ class _AdminIndividualCandidateScreenState
     if (question == 'Tell me a little bit about yourself') {
       answer =
           'Hi, I am a software engineer working with Netflix. my main job role includes reducing load time when users enter the website.';
-
     } else if (question == 'Give me two of your strengths') {
       answer =
           'Two of my strengths are my problem-solving skills and my ability to learn quickly. I am also a creative thinker and I am always looking for new ways to improve the way things are done.';

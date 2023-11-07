@@ -6,6 +6,7 @@ import 'package:talentsync/widgets/answering_screen.dart';
 import 'package:talentsync/widgets/camera.dart';
 
 class CandidatesAnsweringScreen extends StatefulWidget {
+  static const routeName = '/autoanswer';
   const CandidatesAnsweringScreen({super.key});
 
   @override

@@ -5,9 +5,11 @@ import 'package:file_picker/_internal/file_picker_web.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:talentsync/models/colors.dart';
+import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/widgets/candidate_info_text_field.dart';
 
 class CandidatesUploadCV extends StatefulWidget {
+  static const routeName = '/uploadCV';
   const CandidatesUploadCV({super.key});
 
   @override
@@ -103,12 +105,35 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                     CandidatesInfoTextField('Phone Number', phoneController),
                     CandidatesInfoTextField('Email Address', emailController),
                     CandidatesInfoTextField('Education', educationController),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context)
+                            .pushNamed(CandidatesAnsweringScreen.routeName);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: secondaryDarkBlue,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        minimumSize: Size(280, 56),
+                      ),
+                      child: Text(
+                        'Interview Now',
+                        style: TextStyle(
+                          color: backgroundWhite,
+                          fontSize: 20,
+                          fontFamily: 'Futura',
+                          fontWeight: FontWeight.w300,
+                          height: 0,
+                        ),
+                      ),
+                    ),
                   ]),
             ),
           ),
           Expanded(
               child: Container(
-            padding: EdgeInsets.symmetric(horizontal:150,vertical: 60),
+            padding: EdgeInsets.symmetric(horizontal: 150, vertical: 60),
             child: GestureDetector(
               onTap: () async {
                 final result = await FilePickerWeb.platform.pickFiles(
@@ -129,24 +154,32 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                 }
               },
               child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  clipBehavior: Clip.hardEdge,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: selectedImage != null
-                      ? FittedBox(fit:BoxFit.fill,child: selectedImage)
-                      : Column(
+                width: double.infinity,
+                height: double.infinity,
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.5),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: selectedImage != null
+                    ? FittedBox(fit: BoxFit.cover, child: selectedImage)
+                    : Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.photo,size: 50,),
+                          Icon(
+                            Icons.photo,
+                            size: 50,
+                          ),
                           SizedBox(
                             height: 20,
                           ),
-                          Text('Upload your photo here',style: TextStyle(fontSize: 20),),
-                        ],),),
+                          Text(
+                            'Upload your photo here',
+                            style: TextStyle(fontSize: 20),
+                          ),
+                        ],
+                      ),
+              ),
             ),
           ))
         ],

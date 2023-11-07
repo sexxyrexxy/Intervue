@@ -31,7 +31,10 @@ class _AdminIndividualCandidateScreenState
           margin: EdgeInsets.all(10),
           child: Row(
             children: [
-              Icon(Icons.voice_chat,color: secondaryDarkBlue,),
+              Icon(
+                Icons.voice_chat,
+                color: secondaryDarkBlue,
+              ),
               SizedBox(
                 width: 10,
               ),
@@ -39,7 +42,10 @@ class _AdminIndividualCandidateScreenState
                 onTap: () {
                   _dialogBuilder(context, question);
                 },
-                child: new Text(question,style: TextStyle(color: secondaryDarkBlue),),
+                child: new Text(
+                  question,
+                  style: TextStyle(color: secondaryDarkBlue),
+                ),
               )
             ],
           ));
@@ -85,8 +91,7 @@ class _AdminIndividualCandidateScreenState
                       shape: BoxShape.circle,
                     ),
                     child: Image.asset(
-                        fit: BoxFit.fill,
-                        '/Users/rexlim/Documents/Intervue/lib/assets/images/RexLim.jpeg'),
+                        fit: BoxFit.fill, 'lib/assets/images/RexLim.jpeg'),
                   ),
                   Text(
                     'Rex Lim',
@@ -232,7 +237,9 @@ class _AdminIndividualCandidateScreenState
                       ),
                       BulletedList(
                           style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w500,color: secondaryDarkBlue),
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              color: secondaryDarkBlue),
                           bulletColor: secondaryDarkBlue,
                           listItems: [
                             'Software Engineer, Data Scientist, AI Engineer',
@@ -255,11 +262,14 @@ class _AdminIndividualCandidateScreenState
   Future<void> _dialogBuilder(BuildContext context, String question) {
     String answer;
     if (question == 'Tell me a little bit about yourself') {
-      answer = 'Hello I am a fresh graduate of the Bachelor of Computer Science, I code in Flutter, Python and also React JS. ';
+      answer =
+          'Hello I am a fresh graduate of the Bachelor of Computer Science, I code in Flutter, Python and also React JS. ';
     } else if (question == 'Give me two of your strengths') {
-      answer = 'Two of my strengths are my problem-solving skills and my ability to learn quickly. I am also a creative thinker and I am always looking for new ways to improve the way things are done.';
+      answer =
+          'Two of my strengths are my problem-solving skills and my ability to learn quickly. I am also a creative thinker and I am always looking for new ways to improve the way things are done.';
     } else if (question == 'Why do you want to join us?') {
-      answer = 'I am interested in joining your team because I am impressed with your company\'s culture and your commitment to innovation. I believe that my skills and experience would be a valuable asset to your team. I am also excited about the opportunity to learn from your team and to contribute to your company\'s success.';
+      answer =
+          'I am interested in joining your team because I am impressed with your company\'s culture and your commitment to innovation. I believe that my skills and experience would be a valuable asset to your team. I am also excited about the opportunity to learn from your team and to contribute to your company\'s success.';
     } else {
       answer = 'A dialog is a type of modal window that\n'
           'appears in front of app content to\n'

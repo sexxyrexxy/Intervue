@@ -68,7 +68,7 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
     var positionProvider = Provider.of<PositionProvider>(context, listen: true);
     Future<void> exampleAI() async {
       // Set the OpenAI API key from the .env file.
-      OpenAI.apiKey = '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';
+      OpenAI.apiKey = 'XXXXXX';
 
       // Start using!
       final completion = await OpenAI.instance.completion.create(

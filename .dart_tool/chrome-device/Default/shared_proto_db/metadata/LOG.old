@@ -1,3 +1,10 @@
-2023/11/05-21:12:36.273 a103 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.oZdQtK/flutter_tools_chrome_device.mDhxLy/Default/shared_proto_db/metadata/MANIFEST-000001
-2023/11/05-21:12:36.273 a103 Recovering log #3
-2023/11/05-21:12:36.273 a103 Reusing old log /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.oZdQtK/flutter_tools_chrome_device.mDhxLy/Default/shared_proto_db/metadata/000003.log 
+<<<<<<< HEAD
+2023/11/07-10:36:03.369 b403 Reusing MANIFEST /private/var/folders/c6/ml47p_317kjcw90pxjg9s7sc0000gn/T/flutter_tools.gAbTEQ/flutter_tools_chrome_device.Rxrn1t/Default/shared_proto_db/metadata/MANIFEST-000001
+2023/11/07-10:36:03.370 b403 Recovering log #3
+2023/11/07-10:36:03.370 b403 Reusing old log /private/var/folders/c6/ml47p_317kjcw90pxjg9s7sc0000gn/T/flutter_tools.gAbTEQ/flutter_tools_chrome_device.Rxrn1t/Default/shared_proto_db/metadata/000003.log 
+=======
+2023/11/06-23:41:04.036 fa03 Creating DB /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.f7kTiI/flutter_tools_chrome_device.2NTMU7/Default/shared_proto_db/metadata since it was missing.
+2023/11/06-23:41:04.051 fa03 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.f7kTiI/flutter_tools_chrome_device.2NTMU7/Default/shared_proto_db/metadata/MANIFEST-000001
+2023/11/06-23:41:04.051 fa03 Recovering log #3
+2023/11/06-23:41:04.051 fa03 Reusing old log /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.f7kTiI/flutter_tools_chrome_device.2NTMU7/Default/shared_proto_db/metadata/000003.log 
+>>>>>>> d5dc13e8b6a5149c2b55861cbd0633f8bc25ab9d

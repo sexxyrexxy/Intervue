@@ -283,7 +283,7 @@ class _AdminIndividualCandidateScreenState
                         'This candidate is highly confident, and more elaborative in his answers than most candidates. Skillsets match the job descriptions. Highly recommended!',
                         style: TextStyle(
                             color: secondaryDarkBlue,
-                            fontWeight: FontWeight.bold),
+                            fontWeight: FontWeight.w500),
                       )
                     ]),
               ),

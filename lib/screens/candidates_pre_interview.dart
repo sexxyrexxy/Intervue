@@ -1,6 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:super_bullet_list/bullet_list.dart';
 import 'package:talentsync/widgets/camera.dart';
 import 'package:talentsync/widgets/small-button.dart';
 import 'package:talentsync/models/colors.dart' as custom_colors;
@@ -84,88 +85,53 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                     SizedBox(
                       height: 16,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(
+                    SuperBulletList(
+                        iconSize: 24,
+                        isOrdered: false,
+                        crossAxisMargin: 0.0,
+                        customBullet: Icon(
                           Icons.warning_amber_rounded,
                           size: 24,
                           color: Colors.black.withOpacity(0.3),
                         ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Text(
-                          "A few tips before proceeding:",
-                          style: TextStyle(
-                              color: Colors.black.withOpacity(0.3),
-                              fontSize: 16),
-                        )
-                      ],
-                    ),
+                        items: [
+                          Text(
+                            "A few tips before proceeding:",
+                            style: TextStyle(
+                                color: Colors.black.withOpacity(0.3),
+                                fontSize: 16),
+                          )
+                        ]),
                     SizedBox(
                       height: 12,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '•',
-                          style: TextStyle(
-                              fontSize: 32,
-                              color: Colors.black.withOpacity(0.3)),
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Text(
-                          "Make sure that your surrounding \nenvironment is well-lit",
-                          style: TextStyle(
-                              color: Colors.black.withOpacity(0.3),
-                              fontSize: 16),
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '•',
-                          style: TextStyle(
-                              fontSize: 32,
-                              color: Colors.black.withOpacity(0.3)),
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Text(
-                          "Avoid rooms with noisy backgrounds",
-                          style: TextStyle(
-                              color: Colors.black.withOpacity(0.3),
-                              fontSize: 16),
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '•',
-                          style: TextStyle(
-                              fontSize: 32,
-                              color: Colors.black.withOpacity(0.3)),
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Text(
-                          "Make sure that your surrounding \nenvironment is well-lit",
-                          style: TextStyle(
-                              color: Colors.black.withOpacity(0.3),
-                              fontSize: 16),
-                        )
-                      ],
-                    ),
+                    SuperBulletList(
+                        gap: 25,
+                        iconColor: custom_colors.black.withOpacity(0.3),
+                        isOrdered: false,
+                        crossAxisMargin: 12.0,
+                        items: [
+                          Text(
+                            "Make sure that your surrounding \nenvironment is well-lit",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                color: Colors.black.withOpacity(0.3),
+                                fontSize: 16),
+                          ),
+                          Text(
+                            "Avoid rooms with noisy backgrounds",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                color: Colors.black.withOpacity(0.3),
+                                fontSize: 16),
+                          ),
+                          Text(
+                              "Make eye contact by looking at the \n camera instead of screen. ",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: Colors.black.withOpacity(0.3),
+                                  fontSize: 16))
+                        ]),
                     SizedBox(
                       height: 24,
                     ),

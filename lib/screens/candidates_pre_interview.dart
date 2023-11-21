@@ -2,10 +2,13 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:super_bullet_list/bullet_list.dart';
+import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/widgets/camera.dart';
 import 'package:talentsync/widgets/small-button.dart';
 import 'package:talentsync/models/colors.dart' as custom_colors;
 import 'package:talentsync/providers/speechtotext_provider.dart';
+
+import '../widgets/answering_screen.dart';
 
 class PreInterviewScreen extends StatefulWidget {
   static const routeName = '/interview';
@@ -60,8 +63,12 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Image.asset('lib/assets/images/Intervue-logo.png', height: 80),
-                smallButton(120, 40, custom_colors.secondaryDarkBlue,
-                    Icons.arrow_forward_ios, "Start", 16)
+                GestureDetector(
+                  onTap: () => Navigator.of(context)
+                      .pushNamed(CandidatesAnsweringScreen.routeName),
+                  child: smallButton(140, 52, custom_colors.secondaryDarkBlue,
+                      Icons.arrow_forward_ios, "Start", 20),
+                )
               ],
             ),
             SizedBox(

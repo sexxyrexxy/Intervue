@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Intervüe',
           theme: ThemeData(fontFamily: 'Futura'),
-          home: PreInterviewScreen(),
+          home: CandidatesAnsweringScreen(),
           routes: {
             AdminMainScreen.routeName: (context) => AdminMainScreen(),
             newJobPostionScreenII.routeName: (context) =>
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
                 AdminIndividualCandidateScreen(),
             CandidatesUploadCV.routeName: (context) => CandidatesUploadCV(),
             CandidatesAnsweringScreen.routeName: (context) =>
-                CandidatesAnsweringScreen()
+                CandidatesAnsweringScreen(),
           }),
     );
   }

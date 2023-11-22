@@ -7,12 +7,10 @@ import 'package:talentsync/providers/skills_provider.dart';
 import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/screens/candidates_pre_interview.dart';
 import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
-import 'package:talentsync/screens/speech_to_text.dart';
 import 'package:talentsync/screens/main_job_searching_screen.dart';
 import 'package:talentsync/screens/new_job_screen_I.dart';
 import 'package:talentsync/screens/new_job_screen_II.dart';
 import 'package:talentsync/screens/new_job_screen_III.dart';
-import 'package:talentsync/screens/speech_to_text.dart';
 import 'package:talentsync/widgets/camera.dart';
 
 import 'navigation.dart';

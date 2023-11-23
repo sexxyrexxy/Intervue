@@ -37,10 +37,13 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
       // print(pickedFile?.files.first.bytes);
 
       await FirebaseStorage.instance.ref("pdfs/$fileName").putData(fileBytes!);
+      final downloadlink =
+          await FirebaseStorage.instance.ref("pdfs/$fileName").getDownloadURL();
+
       print("Pdf uploaded succesfully");
-      await _firebaseFirestore.collection("pdfs").add({
-        "name": fileName,
-      });
+      await _firebaseFirestore
+          .collection("pdfs")
+          .add({"name": fileName, "url": downloadlink});
 
       print("Pdf anjeng succesfully");
     } else {

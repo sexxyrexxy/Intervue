@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:talentsync/providers/benefits_provider.dart';
@@ -12,12 +13,15 @@ import 'package:talentsync/screens/new_job_screen_I.dart';
 import 'package:talentsync/screens/new_job_screen_II.dart';
 import 'package:talentsync/screens/new_job_screen_III.dart';
 import 'package:talentsync/widgets/camera.dart';
+import 'firebase_options.dart';
 
 import 'navigation.dart';
 import 'screens/admin_individual_candidate_screen.dart';
 import 'screens/admin_main_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -46,7 +50,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Intervüe',
           theme: ThemeData(fontFamily: 'Futura'),
-          home: Navigation(),
+          home: CandidatesUploadCV(),
           routes: {
             AdminMainScreen.routeName: (context) => AdminMainScreen(),
             newJobPostionScreenII.routeName: (context) =>
@@ -59,7 +63,7 @@ class MyApp extends StatelessWidget {
                 AdminIndividualCandidateScreen(),
             CandidatesUploadCV.routeName: (context) => CandidatesUploadCV(),
             CandidatesAnsweringScreen.routeName: (context) =>
-                CandidatesAnsweringScreen()
+                CandidatesAnsweringScreen(),
           }),
     );
   }

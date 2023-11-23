@@ -34,11 +34,15 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
     if (pickedFile?.files.first.bytes != null) {
       final String fileName = pickedFile!.files[0].name;
       final fileBytes = pickedFile.files.first.bytes;
-      print(pickedFile?.files.first.bytes);
+      // print(pickedFile?.files.first.bytes);
 
       await FirebaseStorage.instance.ref("pdfs/$fileName").putData(fileBytes!);
-
       print("Pdf uploaded succesfully");
+      await _firebaseFirestore.collection("pdfs").add({
+        "name": fileName,
+      });
+
+      print("Pdf anjeng succesfully");
     } else {
       throw "Cancelled File Picker";
     }

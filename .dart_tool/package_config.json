@@ -272,6 +272,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "flutter_dotenv",
+      "rootUri": "file:///Users/rexlim/.pub-cache/hosted/pub.dev/flutter_dotenv-5.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_expanded_tile",
       "rootUri": "file:///Users/rexlim/.pub-cache/hosted/pub.dev/flutter_expanded_tile-0.3.7",
       "packageUri": "lib/",
@@ -824,7 +830,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-11-22T16:08:32.240795Z",
+  "generated": "2023-11-23T01:25:13.383004Z",
   "generator": "pub",
   "generatorVersion": "3.1.5"
 }

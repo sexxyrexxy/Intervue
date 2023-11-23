@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:talentsync/models/colors.dart' as custom_Color;
-import 'package:talentsync/providers/skills_provider.dart';
 
 class newJobPositionScreenIII extends StatefulWidget {
   static const routeName = '/newjob3';
@@ -20,7 +19,6 @@ final _controllerD = TextEditingController();
 class newJobPositionScreenIIIState extends State<newJobPositionScreenIII> {
   @override
   Widget build(BuildContext context) {
-    var skillsProvider = Provider.of<SkillsProvider>(context, listen: true);
 
     return Scaffold(
       body: Container(
@@ -70,8 +68,7 @@ class newJobPositionScreenIIIState extends State<newJobPositionScreenIII> {
                         textInputAction: TextInputAction.done,
                         onEditingComplete: () {
                           if (_controllerS.text.isNotEmpty) {
-                            setState(() {
-                              skillsProvider.addSkills(_controllerS.text);
+                            setState(() {                              
                               _controllerS.clear();
                             });
                           }
@@ -84,12 +81,12 @@ class newJobPositionScreenIIIState extends State<newJobPositionScreenIII> {
                     ),
                     Expanded(
                       child: ListView.builder(
-                        itemCount: skillsProvider.skills.length,
+                        itemCount: 1,
                         itemBuilder: (context, index) {
-                          var item = skillsProvider.skills[index];
+                          var item = 1;
                           return Material(
                             child: ListTile(
-                              title: Text(item.skills),
+                              title: Text('item'),
                             ),
                           );
                         },

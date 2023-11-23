@@ -8,6 +8,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "_flutterfire_internals",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/_flutterfire_internals-1.3.13",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "analyzer",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/analyzer-6.2.0",
       "packageUri": "lib/",
@@ -140,6 +146,24 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "cloud_firestore",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/cloud_firestore-4.13.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "cloud_firestore_platform_interface",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/cloud_firestore_platform_interface-6.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "cloud_firestore_web",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/cloud_firestore_web-3.8.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "code_builder",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/code_builder-4.7.0",
       "packageUri": "lib/",
@@ -198,6 +222,12 @@
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/dropdown_button2-2.3.9",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "easy_pdf_viewer",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/easy_pdf_viewer-1.0.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "fake_async",
@@ -278,6 +308,24 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "firebase_storage",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/firebase_storage-11.5.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "firebase_storage_platform_interface",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/firebase_storage_platform_interface-5.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "firebase_storage_web",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/firebase_storage_web-3.6.14",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "fixnum",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/fixnum-1.1.0",
       "packageUri": "lib/",
@@ -294,6 +342,12 @@
       "rootUri": "file:///Users/hansandreanto/Development/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "flutter_cache_manager",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/flutter_cache_manager-3.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "flutter_expanded_tile",
@@ -428,6 +482,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "infinite_listview",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/infinite_listview-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "intl",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/intl-0.17.0",
       "packageUri": "lib/",
@@ -506,6 +566,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "numberpicker",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/numberpicker-2.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "package_config",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/package_config-2.1.0",
       "packageUri": "lib/",
@@ -516,6 +582,42 @@
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/path-1.8.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "path_provider",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/path_provider-2.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "path_provider_android",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/path_provider_android-2.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "path_provider_foundation",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/path_provider_foundation-2.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "path_provider_linux",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "path_provider_platform_interface",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/path_provider_platform_interface-2.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "path_provider_windows",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/path_provider_windows-2.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "pedantic",
@@ -552,6 +654,12 @@
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/permission_handler_windows-0.1.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "platform",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/platform-3.1.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "plugin_platform_interface",
@@ -632,6 +740,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "rxdart",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/rxdart-0.27.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "selector_wheel",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/selector_wheel-1.1.2",
       "packageUri": "lib/",
@@ -692,6 +806,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "sqflite",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/sqflite-2.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "sqflite_common",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/sqflite_common-2.5.0+2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "stack_trace",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/stack_trace-1.11.0",
       "packageUri": "lib/",
@@ -732,6 +858,12 @@
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/syncfusion_flutter_core-19.4.56",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "synchronized",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/synchronized-3.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
     },
     {
       "name": "term_glyph",
@@ -842,6 +974,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "xdg_directories",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/xdg_directories-1.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "yaml",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/yaml-3.1.2",
       "packageUri": "lib/",
@@ -854,7 +992,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-11-21T17:16:52.085346Z",
+  "generated": "2023-11-23T09:23:17.352114Z",
   "generator": "pub",
   "generatorVersion": "3.0.6"
 }

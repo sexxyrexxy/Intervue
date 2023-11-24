@@ -11,6 +11,8 @@ import 'package:talentsync/models/colors.dart';
 import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/widgets/candidate_info_text_field.dart';
 
+import '../auth.dart';
+
 class CandidatesUploadCV extends StatefulWidget {
   static const routeName = '/uploadCV';
   const CandidatesUploadCV({super.key});
@@ -23,6 +25,35 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   List<Map<String, dynamic>> pdfData = [];
 
+  // Pick image
+  void pickImage() async {
+    final result = await FilePickerWeb.platform.pickFiles(
+        type: FileType.custom, allowedExtensions: ['jpeg', 'png', 'jpg']);
+    if (result != null) {
+      final String imgName = result!.files[0].name;
+      final bytes =
+          result.files.single.bytes; // Get the file's content as bytes
+
+      if (bytes != null) {
+        final image = Image.memory(
+            Uint8List.fromList(bytes)); // Create an image from bytes
+        setState(() {
+          selectedImage = image;
+        });
+      }
+      await FirebaseStorage.instance.ref("imgs/$imgName").putData(bytes!);
+      final imgDownloadlink =
+          await FirebaseStorage.instance.ref("imgs/$imgName").getDownloadURL();
+      print("img uploaded succesfully");
+      await _firebaseFirestore
+          .collection("user")
+          .doc(Auth().currentUser!.uid)
+          .update({"imgNames": imgName, "imgUrls": imgDownloadlink});
+
+      print("img anjeng succesfully");
+    }
+  }
+
   // Pick file function
   void pickFile() async {
     final pickedFile = await FilePickerWeb.platform.pickFiles(
@@ -30,7 +61,6 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
       allowedExtensions: ['pdf'],
     );
 
-    if (pickedFile != null && pickedFile.files.isNotEmpty) {}
     if (pickedFile?.files.first.bytes != null) {
       final String fileName = pickedFile!.files[0].name;
       final fileBytes = pickedFile.files.first.bytes;
@@ -42,8 +72,9 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
 
       print("Pdf uploaded succesfully");
       await _firebaseFirestore
-          .collection("pdfs")
-          .add({"name": fileName, "url": downloadlink});
+          .collection("user")
+          .doc(Auth().currentUser!.uid)
+          .update({"pdfNames": fileName, "pdfUrls": downloadlink});
 
       print("Pdf anjeng succesfully");
     } else {
@@ -188,22 +219,21 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
             padding: EdgeInsets.symmetric(horizontal: 150, vertical: 60),
             child: GestureDetector(
               onTap: () async {
-                final result = await FilePickerWeb.platform.pickFiles(
-                    type: FileType.custom,
-                    allowedExtensions: ['jpeg', 'png', 'jpg']);
-                if (result != null) {
-                  final bytes = result
-                      .files.single.bytes; // Get the file's content as bytes
+                pickImage();
 
-                  if (bytes != null) {
-                    final image = Image.memory(Uint8List.fromList(
-                        bytes)); // Create an image from bytes
+                // final result = await FilePickerWeb.platform.pickFiles(
+                //     type: FileType.custom,
+                //     allowedExtensions: ['jpeg', 'png', 'jpg']);
+                // if (result != null) {
+                //   final bytes = result
+                //       .files.single.bytes; // Get the file's content as bytes
 
-                    setState(() {
-                      selectedImage = image;
-                    });
-                  }
-                }
+                // if (bytes != null) {
+                //   final image = Image.memory(Uint8List.fromList(
+                //       bytes)); // Create an image from bytes
+
+                // }
+                // }
               },
               child: Container(
                 width: double.infinity,

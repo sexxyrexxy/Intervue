@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:talentsync/navigation.dart';
 import 'package:talentsync/screens/login_screen.dart';
 import 'package:talentsync/screens/main_job_searching_screen.dart';
 import '../models/colors.dart' as custom_colors;
@@ -141,7 +140,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       onPressed: (() {
         setState(() {
           _isLogin = !_isLogin;
-          Navigator.of(context).pop();
+          Navigator.of(context).pushNamed(loginScreen.routeName);
         });
       }),
       child: Text(

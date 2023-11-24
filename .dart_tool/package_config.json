@@ -716,6 +716,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "timer_count_down",
+      "rootUri": "file:///Users/rexlim/.pub-cache/hosted/pub.dev/timer_count_down-2.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "timing",
       "rootUri": "file:///Users/rexlim/.pub-cache/hosted/pub.dev/timing-1.0.1",
       "packageUri": "lib/",
@@ -830,7 +836,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-11-23T01:25:13.383004Z",
+  "generated": "2023-11-23T10:30:49.231730Z",
   "generator": "pub",
   "generatorVersion": "3.1.5"
 }

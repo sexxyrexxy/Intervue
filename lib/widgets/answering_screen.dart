@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:talentsync/widgets/camera.dart';
-
+import 'package:timer_count_down/timer_controller.dart';
+import 'package:timer_count_down/timer_count_down.dart';
 import '../models/colors.dart';
 import '../providers/position_provider.dart';
 
@@ -19,6 +20,7 @@ class AnsweringScreen extends StatefulWidget {
 final SpeechToText _speechToText = SpeechToText();
 bool isListening = false;
 String text = '';
+final CountdownController _controller = CountdownController(autoStart: false);
 
 class _AnsweringScreenState extends State<AnsweringScreen> {
   void checkMicrophoneAvailability() async {
@@ -100,14 +102,47 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
               height: 20,
             ),
             Cameras(800, 540),
+             Countdown(
+              // controller: _controller,
+              seconds: 180,
+              controller: _controller,
+              build: (_, double time) => Text(
+                time.toString(),
+                style: TextStyle(
+                  fontSize: 10,
+                ),
+              ),
+              interval: Duration(seconds: 1),
+              onFinished: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Timer is done!'),
+                  ),
+                );
+              },
+            ),
             SizedBox(height: 20),
-            GestureDetector(
-                onTap: () {
-                  startListening();
-                  print('listen');
-                },
-                child: const Icon(Icons.mic)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                    onTap: () {
+                      _controller.start();
+                      startListening();
+                      print('listen');
+                    },
+                    child: const Icon(Icons.play_circle_fill, size: 50,)),
+                GestureDetector(
+                    onTap: () {
+                      startListening();
+                      _controller.pause();
+                      print('listen');
+                    },
+                    child: const Icon(Icons.pause_circle, size:50)),
+              ],
+            ),
             SizedBox(height: 20),
+            //
             GestureDetector(
               onTap: () {
                 widget.action!();

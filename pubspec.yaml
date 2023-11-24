@@ -53,6 +53,7 @@ dependencies:
   multi_dropdown: ^2.1.0
   bulleted_list: ^0.0.1+0.1a
   flutter_dotenv: ^5.1.0
+  timer_count_down: ^2.2.2
 
 dev_dependencies:
   flutter_test:

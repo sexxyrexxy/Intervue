@@ -290,6 +290,24 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "firebase_auth",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/firebase_auth-4.14.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "firebase_auth_platform_interface",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/firebase_auth_platform_interface-7.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "firebase_auth_web",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/firebase_auth_web-5.8.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "firebase_core",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/firebase_core-2.23.0",
       "packageUri": "lib/",
@@ -412,6 +430,42 @@
     {
       "name": "glob",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/glob-2.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "google_identity_services_web",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/google_identity_services_web-0.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "google_sign_in",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/google_sign_in-6.1.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "google_sign_in_android",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/google_sign_in_android-6.1.20",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "google_sign_in_ios",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/google_sign_in_ios-5.6.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "google_sign_in_platform_interface",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/google_sign_in_platform_interface-2.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "google_sign_in_web",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/google_sign_in_web-0.12.0+4",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -1004,7 +1058,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-11-24T03:43:46.002435Z",
+  "generated": "2023-11-24T08:37:29.064531Z",
   "generator": "pub",
   "generatorVersion": "3.0.6"
 }

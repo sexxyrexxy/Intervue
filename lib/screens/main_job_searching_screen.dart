@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:talentsync/models/colors.dart' as custom_Color;
 import 'package:talentsync/widgets/Input_field.dart';
 import 'package:talentsync/widgets/category.dart';
+import 'package:talentsync/widgets/small-button.dart';
 
 import '../widgets/job-details.dart';
 import '../widgets/job_position_card.dart';
@@ -28,6 +29,7 @@ class MainJobSearch extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
+                padding: EdgeInsets.fromLTRB(20, 8, 24, 8),
                 width: double.infinity,
                 alignment: Alignment.topLeft,
                 height: 300,
@@ -37,9 +39,26 @@ class MainJobSearch extends StatelessWidget {
                       fit: BoxFit.cover,
                       opacity: 0.6),
                 ),
-                child: Image.asset(
-                  'lib/assets/images/Intervue-Logo.png',
-                  height: 80,
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'lib/assets/images/Intervue-Logo.png',
+                      height: 80,
+                    ),
+                    Spacer(),
+                    smallButtonwithoutIcons(
+                        140,
+                        44,
+                        custom_Color.backgroundWhite,
+                        "Signup",
+                        20,
+                        custom_Color.primaryBlue),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    smallButtonwithoutIcons(140, 44, custom_Color.secondaryBlue,
+                        "Login", 20, Colors.white)
+                  ],
                 ),
               ),
               SizedBox(

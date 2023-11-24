@@ -9,6 +9,7 @@ import 'package:talentsync/screens/main_job_searching_screen.dart';
 import 'package:talentsync/screens/new_job_screen_I.dart';
 import 'package:talentsync/screens/new_job_screen_II.dart';
 import 'package:talentsync/screens/new_job_screen_III.dart';
+import 'package:talentsync/screens/signup_screen.dart';
 import 'package:talentsync/widgets/camera.dart';
 import 'firebase_options.dart';
 
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Intervüe',
           theme: ThemeData(fontFamily: 'Futura'),
-          home: CandidatesAnsweringScreen(),
+          home: RegisterScreen(),
           routes: {
             AdminMainScreen.routeName: (context) => AdminMainScreen(),
             newJobPostionScreenII.routeName: (context) =>

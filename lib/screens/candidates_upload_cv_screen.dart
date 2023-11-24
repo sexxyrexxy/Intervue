@@ -1,9 +1,12 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/_internal/file_picker_web.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:talentsync/models/colors.dart';
 import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/widgets/candidate_info_text_field.dart';
@@ -17,6 +20,52 @@ class CandidatesUploadCV extends StatefulWidget {
 }
 
 class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
+  final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
+  List<Map<String, dynamic>> pdfData = [];
+
+  // Pick file function
+  void pickFile() async {
+    final pickedFile = await FilePickerWeb.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['pdf'],
+    );
+
+    if (pickedFile != null && pickedFile.files.isNotEmpty) {}
+    if (pickedFile?.files.first.bytes != null) {
+      final String fileName = pickedFile!.files[0].name;
+      final fileBytes = pickedFile.files.first.bytes;
+      // print(pickedFile?.files.first.bytes);
+
+      await FirebaseStorage.instance.ref("pdfs/$fileName").putData(fileBytes!);
+      final downloadlink =
+          await FirebaseStorage.instance.ref("pdfs/$fileName").getDownloadURL();
+
+      print("Pdf uploaded succesfully");
+      await _firebaseFirestore
+          .collection("pdfs")
+          .add({"name": fileName, "url": downloadlink});
+
+      print("Pdf anjeng succesfully");
+    } else {
+      throw "Cancelled File Picker";
+    }
+  }
+
+  void getAllPdf() async {
+    final results = await _firebaseFirestore.collection("pdfs").get();
+
+    pdfData = results.docs.map((e) => e.data()).toList();
+
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getAllPdf();
+    super.initState();
+  }
+
   final fnameController = TextEditingController();
   final lnameController = TextEditingController();
   final emailController = TextEditingController();
@@ -53,20 +102,23 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                       children: [
                         GestureDetector(
                           onTap: () async {
-                            final result = await FilePickerWeb.platform
-                                .pickFiles(
-                                    type: FileType.custom,
-                                    allowedExtensions: ['pdf']);
-                            if (result != null) {
-                              setState(() {
-                                fnameController.text = 'Rex';
-                                lnameController.text = 'Lim';
-                                phoneController.text = "0147593534";
-                                emailController.text = 'rexlim2003@gmail.com';
-                                educationController.text =
-                                    "Bachelor's of Computer Science";
-                              });
-                            }
+                            pickFile();
+                            debugPrint("anjeng cok");
+
+                            // final result = await FilePickerWeb.platform
+                            //     .pickFiles(
+                            //         type: FileType.custom,
+                            //         allowedExtensions: ['pdf']);
+                            // if (result != null) {
+                            //   setState(() {
+                            //     fnameController.text = 'Rex';
+                            //     lnameController.text = 'Lim';
+                            //     phoneController.text = "0147593534";
+                            //     emailController.text = 'rexlim2003@gmail.com';
+                            //     educationController.text =
+                            //         "Bachelor's of Computer Science";
+                            //   });
+                            // }
                           },
                           child: Container(
                             padding: EdgeInsets.symmetric(

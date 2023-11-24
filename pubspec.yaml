@@ -52,6 +52,11 @@ dependencies:
   selector_wheel: ^1.1.2
   multi_dropdown: ^2.1.0
   bulleted_list: ^0.0.1+0.1a
+  firebase_core: ^2.23.0
+  super_bullet_list: ^0.0.2
+  easy_pdf_viewer: ^1.0.7
+  firebase_storage: ^11.5.2
+  cloud_firestore: ^4.13.2
   flutter_dotenv: ^5.1.0
   timer_count_down: ^2.2.2
 

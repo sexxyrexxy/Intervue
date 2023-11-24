@@ -1,10 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:talentsync/providers/benefits_provider.dart';
 import 'package:talentsync/providers/position_provider.dart';
-import 'package:talentsync/providers/responsibilities_provider.dart';
-import 'package:talentsync/providers/skills_provider.dart';
 import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/screens/candidates_pre_interview.dart';
 import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
@@ -36,21 +33,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: PositionProvider(),
         ),
-        ChangeNotifierProvider.value(
-          value: ResponsibilitiesProvider(),
-        ),
-        ChangeNotifierProvider.value(
-          value: BenefitsProvider(),
-        ),
-        ChangeNotifierProvider.value(
-          value: SkillsProvider(),
-        ),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Intervüe',
           theme: ThemeData(fontFamily: 'Futura'),
-          home: CandidatesUploadCV(),
+          home: CandidatesAnsweringScreen(),
           routes: {
             AdminMainScreen.routeName: (context) => AdminMainScreen(),
             newJobPostionScreenII.routeName: (context) =>

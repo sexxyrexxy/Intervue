@@ -2,14 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:provider/provider.dart';
-import 'package:talentsync/models/responsibilities_model.dart';
-import 'package:talentsync/providers/benefits_provider.dart';
 import 'package:talentsync/screens/new_job_screen_I.dart';
 import 'package:talentsync/models/colors.dart' as custom_Color;
 import 'package:talentsync/screens/new_job_screen_III.dart';
 import 'package:wheel_chooser/wheel_chooser.dart';
 import 'package:selector_wheel/selector_wheel.dart';
-import '../providers/responsibilities_provider.dart';
+
 
 class newJobPostionScreenII extends StatefulWidget {
   static const routeName = '/newjob2';
@@ -28,11 +26,7 @@ final _controllerL = MultiSelectController();
 
 class _newJobPositionScreenIIState extends State<newJobPostionScreenII> {
   @override
-  Widget build(BuildContext context) {
-    var responsibilitiesProvider =
-        Provider.of<ResponsibilitiesProvider>(context, listen: true);
-    var benefitsProvider = Provider.of<BenefitsProvider>(context, listen: true);
-
+  Widget build(BuildContext context) {    
     return Scaffold(
         body: Container(
       width: double.infinity,
@@ -108,9 +102,7 @@ class _newJobPositionScreenIIState extends State<newJobPostionScreenII> {
                   textInputAction: TextInputAction.done,
                   onEditingComplete: () {
                     if (_controllerR.text.isNotEmpty) {
-                      setState(() {
-                        responsibilitiesProvider
-                            .addResponsibilities(_controllerR.text);
+                      setState(() {                        
                         _controllerR.clear();
                       });
                     }
@@ -123,12 +115,12 @@ class _newJobPositionScreenIIState extends State<newJobPostionScreenII> {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: responsibilitiesProvider.responsibilities.length,
+                  itemCount: 1,
                   itemBuilder: (context, index) {
-                    var item = responsibilitiesProvider.responsibilities[index];
+                    var item = 1;
                     return Material(
                       child: ListTile(
-                        title: Text(item.responsibilities),
+                        title: Text('d'),
                       ),
                     );
                   },
@@ -157,8 +149,7 @@ class _newJobPositionScreenIIState extends State<newJobPostionScreenII> {
                   textInputAction: TextInputAction.done,
                   onEditingComplete: () {
                     if (_controllerB.text.isNotEmpty) {
-                      setState(() {
-                        benefitsProvider.addBenefits(_controllerB.text);
+                      setState(() {                        
                         _controllerB.clear();
                       });
                     }
@@ -171,12 +162,12 @@ class _newJobPositionScreenIIState extends State<newJobPostionScreenII> {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: benefitsProvider.benefits.length,
+                  itemCount: 1,
                   itemBuilder: (context, index) {
-                    var item2 = benefitsProvider.benefits[index];
+                    var item2 = 1;
                     return Material(
                       child: ListTile(
-                        title: Text(item2.benefits),
+                        title: Text('item2.benefits'),
                       ),
                     );
                   },

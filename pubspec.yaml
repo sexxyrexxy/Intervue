@@ -57,6 +57,8 @@ dependencies:
   easy_pdf_viewer: ^1.0.7
   firebase_storage: ^11.5.2
   cloud_firestore: ^4.13.2
+  flutter_dotenv: ^5.1.0
+  timer_count_down: ^2.2.2
 
 dev_dependencies:
   flutter_test:

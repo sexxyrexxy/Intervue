@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:talentsync/models/colors.dart';
 import 'package:bulleted_list/bulleted_list.dart';
+import 'package:talentsync/providers/candidate_provider.dart';
 import '../providers/position_provider.dart';
 
 class AdminIndividualCandidateScreen extends StatefulWidget {
@@ -13,69 +14,67 @@ class AdminIndividualCandidateScreen extends StatefulWidget {
       _AdminIndividualCandidateScreenState();
 }
 
-var questions = [];
+List<Widget> questions = [];
 
 class _AdminIndividualCandidateScreenState
     extends State<AdminIndividualCandidateScreen> {
   @override
   Widget build(BuildContext context) {
-    var positionProvider =
-        Provider.of<PositionProvider>(context, listen: false);
+    var candidateProvider =
+        Provider.of<CandidatesProvider>(context, listen: false);
 
-    if (questions.isEmpty) {
-      positionProvider.initializePositions();
-    }
-    questions =
-        positionProvider.positionList['Software Engineer']!.map((question) {
+    questions = candidateProvider.defaultCandidate.question.map((question) {
       return Container(
-          margin: EdgeInsets.all(10),
-          child: Row(
-            children: [
-              Icon(
-                Icons.voice_chat,
-                color: secondaryDarkBlue,
+        margin: EdgeInsets.all(10),
+        child: Row(
+          children: [
+            Icon(
+              Icons.voice_chat,
+              color: secondaryDarkBlue,
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            InkWell(
+              onTap: () {
+                _dialogBuilder(context, question.keys.toString(),
+                    question.values.toString());
+              },
+              child: new Text(
+                question.keys.toString(),
+                style: TextStyle(color: secondaryDarkBlue),
               ),
-              SizedBox(
-                width: 10,
-              ),
-              InkWell(
-                onTap: () {
-                  _dialogBuilder(context, question);
-                },
-                child: new Text(
-                  question,
-                  style: TextStyle(color: secondaryDarkBlue),
-                ),
-              )
-            ],
-          ));
+            )
+          ],
+        ),
+      );
     }).toList();
 
-    questions.insert(
-        1,
-        Container(
-            margin: EdgeInsets.all(10),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.voice_chat,
-                  color: secondaryDarkBlue,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                InkWell(
-                  onTap: () {
-                    _dialogBuilder(context,
-                        'Could you tell me a bit more about the strategies you use to reduce load time?');
-                  },
-                  child: new Text(
-                    'Could you tell me a bit more about the strategies you use to reduce load time?',
-                    style: TextStyle(color: secondaryDarkBlue),
-                  ),
-                )
-              ],
-            )));
+    // questions.insert(
+    //     1,
+    //     Container(
+    //         margin: EdgeInsets.all(10),
+    //         child: Row(
+    //           children: [
+    //             Icon(
+    //               Icons.voice_chat,
+    //               color: secondaryDarkBlue,
+    //             ),
+    //             SizedBox(
+    //               width: 10,
+    //             ),
+    //             InkWell(
+    //               onTap: () {
+    //                 _dialogBuilder(context,
+    //                     'Could you tell me a bit more about the strategies you use to reduce load time?');
+    //               },
+    //               child: new Text(
+    //                 'Could you tell me a bit more about the strategies you use to reduce load time?',
+    //                 style: TextStyle(color: secondaryDarkBlue),
+    //               ),
+    //             )
+    //           ],
+    //         )));
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(20),
@@ -294,27 +293,8 @@ class _AdminIndividualCandidateScreenState
     );
   }
 
-  Future<void> _dialogBuilder(BuildContext context, String question) {
-    String answer;
-    if (question == 'Tell me a little bit about yourself') {
-      answer =
-          'Hi, I am a software engineer working with Netflix. my main job role includes reducing load time when users enter the website.';
-    } else if (question == 'Give me two of your strengths') {
-      answer =
-          'Two of my strengths are my problem-solving skills and my ability to learn quickly. I am also a creative thinker and I am always looking for new ways to improve the way things are done.';
-    } else if (question ==
-        'Could you tell me a bit more about the strategies you use to reduce load time?') {
-      answer =
-          "I used a Content Delivery Network, which is a network of servers that are distributed around the world. By using a CDN, your website's content can be served to users from the server that is closest to them, reducing load times.";
-    } else if (question == 'Why do you want to join us?') {
-      answer =
-          'I am interested in joining your team because I am impressed with your company\'s culture and your commitment to innovation. I believe that my skills and experience would be a valuable asset to your team. I am also excited about the opportunity to learn from your team and to contribute to your company\'s success.';
-    } else {
-      answer = 'A dialog is a type of modal window that\n'
-          'appears in front of app content to\n'
-          'provide critical information, or prompt\n'
-          'for a decision to be made.';
-    }
+  Future<void> _dialogBuilder(
+      BuildContext context, String question, String answer) {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {

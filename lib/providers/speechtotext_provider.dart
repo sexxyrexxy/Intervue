@@ -35,14 +35,14 @@ class SpeechToTextProvider {
       }
 
       for (var altIndex = 0;
-      altIndex < (recognitionResult.length ?? 0);
-      ++altIndex) {
+          altIndex < (recognitionResult.length ?? 0);
+          ++altIndex) {
         longestAlt = max(longestAlt, altIndex);
         var alt = js_util.callMethod(recognitionResult, 'item', [altIndex]);
         if (null == alt) continue;
         String? transcript = js_util.getProperty(alt, 'transcript');
-        
-        finalTranscript += transcript ?? "";        
+
+        finalTranscript += transcript ?? "";
       }
     }
     _recognizedWords = finalTranscript;

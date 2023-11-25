@@ -4,37 +4,28 @@ import 'package:talentsync/models/candidates_model.dart';
 
 import '../auth.dart';
 
-class candidatesProvider with ChangeNotifier {
+class CandidatesProvider with ChangeNotifier {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
-  // late pdfExtractedModel pdfExtractedData;
-  // late imgExtractedModel imgExtractedData;
-  // Initialize pdfExtractedData and candidateProviderData in the constructor.
-  // final pdfExtractedData = pdfExtractedModel(
-  //   pdfName: '',
-  //   pdfUrl: '',
-  //   candidateName: '',
-  //   skills: [],
-  //   experiences: [],
-  //   education: [],
-  // );
-//
-  CandidateModel candidateProviderData =
-      CandidateModel(id: '', name: '', email: '', education: '', imgs: [
-    {
-      'imgName': '',
-      'imgUrl': '',
-    }
-  ], skills: [], experiences: [], pdfs: [
-    {
-      "name": '',
-      "pdfUrls": '',
-      "candidateName": '',
-      "skills": [],
-      "experience": [],
-      "education": []
-    }
-  ]);
+  CandidateModel defaultCandidate = CandidateModel(
+      id: "0",
+      name: "Rex Lim",
+      email: "rexlim2003@gmail.com",
+      education: "Bachelor of Computer Science",
+      appliedPosition: "Software Engineer",
+      imgs: imgExtractedModel(imgName: "", imgUrl: ""),
+      skills: ["Flutter, React.JS, Python"],
+      experiences: [
+        "7 years of working experience",
+        "Worked with AirAsia, Uber and Amazon",
+        "Working with large language model and artificial intelligence",
+        "Degree from Taylor's University"
+      ],
+      question: [
+        {"What are you?": "I am Rex"},
+        {"Where are you?": "Here"}
+      ],
+      pdfs: pdfExtractedModel(pdfName: "", pdfUrl: ""));
 
   Future<void> setName(String name) async {
     await _firebaseFirestore
@@ -71,10 +62,6 @@ class candidatesProvider with ChangeNotifier {
       "pdfs": {
         "pdfName": pdfExtractedData.pdfName,
         "pdfUrls": pdfExtractedData.pdfUrl,
-        "candidateName": pdfExtractedData.candidateName,
-        "skills": pdfExtractedData.skills,
-        "experience": pdfExtractedData.experiences,
-        "education": pdfExtractedData.education
       }
     });
   }

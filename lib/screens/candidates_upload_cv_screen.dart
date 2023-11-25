@@ -48,7 +48,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
       final imgDownloadlink =
           await FirebaseStorage.instance.ref("imgs/$imgName").getDownloadURL();
       print("img uploaded succesfully");
-      Provider.of<candidatesProvider>(context, listen: false).setImgDetails(
+      Provider.of<CandidatesProvider>(context, listen: false).setImgDetails(
           imgExtractedModel(imgName: imgName, imgUrl: imgDownloadlink));
       print("img anjeng succesfully");
     }
@@ -107,8 +107,8 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
   @override
   Widget build(BuildContext context) {
     CandidateModel currentCandidate =
-        Provider.of<candidatesProvider>(context, listen: false)
-            .candidateProviderData;
+        Provider.of<CandidatesProvider>(context, listen: false)
+            .defaultCandidate;
 
     return Scaffold(
         body: Container(

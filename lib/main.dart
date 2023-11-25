@@ -36,13 +36,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: PositionProvider(),
         ),
-        ChangeNotifierProvider.value(value: candidatesProvider())
+        ChangeNotifierProvider.value(value: CandidatesProvider())
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Intervüe',
           theme: ThemeData(fontFamily: 'Futura'),
-          home: loginScreen(),
+          home: Navigation(),
           routes: {
             AdminMainScreen.routeName: (context) => AdminMainScreen(),
             newJobPostionScreenII.routeName: (context) =>

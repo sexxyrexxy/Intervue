@@ -82,8 +82,8 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
                 Please give me a very specific follow up qeustion.
                 """,
       );
-      positionProvider.addQuestionsAtIndex(
-          'Software Engineer', completion.choices[0].text);
+      positionProvider.addQuestion(
+          'Software Engineer', completion.choices[0].text, 1);
 
       print(completion.choices[0].text);
     }
@@ -102,7 +102,7 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
               height: 20,
             ),
             Cameras(800, 540),
-             Countdown(
+            Countdown(
               // controller: _controller,
               seconds: 180,
               controller: _controller,
@@ -131,14 +131,17 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
                       startListening();
                       print('listen');
                     },
-                    child: const Icon(Icons.play_circle_fill, size: 50,)),
+                    child: const Icon(
+                      Icons.play_circle_fill,
+                      size: 50,
+                    )),
                 GestureDetector(
                     onTap: () {
                       startListening();
                       _controller.pause();
                       print('listen');
                     },
-                    child: const Icon(Icons.pause_circle, size:50)),
+                    child: const Icon(Icons.pause_circle, size: 50)),
               ],
             ),
             SizedBox(height: 20),

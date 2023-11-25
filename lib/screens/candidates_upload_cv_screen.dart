@@ -1,7 +1,8 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
 import 'package:file_picker/_internal/file_picker_web.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -12,8 +13,8 @@ import 'package:talentsync/models/candidates_model.dart';
 import 'package:talentsync/models/colors.dart';
 import 'package:talentsync/providers/candidate_provider.dart';
 import 'package:talentsync/screens/candidates_answering_screen.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:talentsync/widgets/candidate_info_text_field.dart';
-
 import '../auth.dart';
 
 class CandidatesUploadCV extends StatefulWidget {
@@ -33,7 +34,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
     final result = await FilePickerWeb.platform.pickFiles(
         type: FileType.custom, allowedExtensions: ['jpeg', 'png', 'jpg']);
     if (result != null) {
-      final String imgName = result!.files[0].name;
+      final String imgName = result.files[0].name;
       final bytes =
           result.files.single.bytes; // Get the file's content as bytes
 
@@ -126,6 +127,9 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                             pickedFile = await FilePickerWeb.platform.pickFiles(
                                 type: FileType.custom,
                                 allowedExtensions: ['pdf']);
+                                
+    //                             PdfDocument document =
+    // PdfDocument(inputBytes: await _readDocumentData(pickedFile));
                             if (pickedFile != null) {
                               setState(() {
                                 fnameController.text = 'Rex';
@@ -178,7 +182,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                       onPressed: () {
                         Navigator.of(context)
                             .pushNamed(CandidatesAnsweringScreen.routeName);
-                      uploadFiles();
+                        uploadFiles();
                       },
                       style: ElevatedButton.styleFrom(
                         primary: secondaryDarkBlue,

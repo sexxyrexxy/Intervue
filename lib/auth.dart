@@ -29,11 +29,15 @@ class Auth {
       password: password,
     )
         .then((value) {
-      FirebaseFirestore.instance.collection('user').doc(value.user!.uid).set({
+      FirebaseFirestore.instance
+          .collection('candidates')
+          .doc(value.user!.uid)
+          .set({
         "email": value.user!.email,
         "id": value.user!.uid,
         'name': '',
-        'education': [],
+        'education': '',
+        'appliedPosition': '',
         'skills': [],
         'experiences': [],
         'imgs': {
@@ -43,11 +47,8 @@ class Auth {
         'pdfs': {
           "name": '',
           "pdfUrls": '',
-          "candidateName": '',
-          "skills": [],
-          "experience": [],
-          "education": []
-        }
+        },
+        "questions": [],
       });
     });
     return null;

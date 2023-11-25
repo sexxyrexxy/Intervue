@@ -30,7 +30,6 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
       allowedExtensions: ['pdf'],
     );
 
-    if (pickedFile != null && pickedFile.files.isNotEmpty) {}
     if (pickedFile?.files.first.bytes != null) {
       final String fileName = pickedFile!.files[0].name;
       final fileBytes = pickedFile.files.first.bytes;

@@ -59,6 +59,8 @@ dependencies:
   cloud_firestore: ^4.13.2
   flutter_dotenv: ^5.1.0
   timer_count_down: ^2.2.2
+  read_pdf_text: ^0.2.1
+  syncfusion_flutter_pdf: ^19.4.56-beta
 
 dev_dependencies:
   flutter_test:
@@ -102,6 +104,7 @@ flutter:
     - lib/assets/images/bbq.jpeg
     - lib/assets/images/ronald.jpeg
     - lib/assets/images/cheah.png
+    - lib/assets/CVMay2023.pdf
 
   fonts:
     - family: Futura

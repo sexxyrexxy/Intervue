@@ -1,15 +1,16 @@
 import 'dart:io';
 import 'dart:typed_data';
-
+import 'package:flutter/services.dart';
+import 'package:read_pdf_text/read_pdf_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/_internal/file_picker_web.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:talentsync/models/colors.dart';
 import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/widgets/candidate_info_text_field.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 class CandidatesUploadCV extends StatefulWidget {
   static const routeName = '/uploadCV';
@@ -22,15 +23,15 @@ class CandidatesUploadCV extends StatefulWidget {
 class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   List<Map<String, dynamic>> pdfData = [];
+  var pickedFile;
+  Future<List<int>> _readDocumentData(String name) async {
+    final ByteData data = await rootBundle.load(
+        'https://firebasestorage.googleapis.com/v0/b/intervue-my.appspot.com/o/pdfs%2FCVMay2023.pdf?alt=media&token=d29fabac-15e2-48eb-a5ba-7c99a0628df8');
+    return data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+  }
 
-  // Pick file function
-  void pickFile() async {
-    final pickedFile = await FilePickerWeb.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['pdf'],
-    );
-
-    if (pickedFile?.files.first.bytes != null) {
+  void uploadFile() async {
+    if (pickedFile != null) {
       final String fileName = pickedFile!.files[0].name;
       final fileBytes = pickedFile.files.first.bytes;
       // print(pickedFile?.files.first.bytes);
@@ -101,23 +102,34 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                       children: [
                         GestureDetector(
                           onTap: () async {
-                            pickFile();
-                            debugPrint("anjeng cok");
+                            pickedFile = await FilePickerWeb.platform.pickFiles(
+                                type: FileType.custom,
+                                allowedExtensions: ['pdf']);
+                            var fileBytes = '/Users/rexlim/Desktop';
+                            print(fileBytes);
+                            //Load an existing PDF document.
+                            PdfDocument document = PdfDocument(
+                                inputBytes: await _readDocumentData(
+                                    'pdf_succinctly.pdf'));
+                            PdfTextExtractor extractor =
+                                PdfTextExtractor(document);
 
-                            // final result = await FilePickerWeb.platform
-                            //     .pickFiles(
-                            //         type: FileType.custom,
-                            //         allowedExtensions: ['pdf']);
-                            // if (result != null) {
-                            //   setState(() {
-                            //     fnameController.text = 'Rex';
-                            //     lnameController.text = 'Lim';
-                            //     phoneController.text = "0147593534";
-                            //     emailController.text = 'rexlim2003@gmail.com';
-                            //     educationController.text =
-                            //         "Bachelor's of Computer Science";
-                            //   });
-                            // }
+                            String ok = extractor.extractText();
+                            print(ok);
+                            String text = "";
+                            text = await ReadPdfText.getPDFtext(
+                                'https://firebasestorage.googleapis.com/v0/b/intervue-my.appspot.com/o/pdfs%2FCVMay2023.pdf?alt=media&token=d29fabac-15e2-48eb-a5ba-7c99a0628df8');
+                            print(text);
+                            if (pickedFile != null) {
+                              setState(() {
+                                fnameController.text = 'Rex';
+                                lnameController.text = 'Lim';
+                                phoneController.text = "0147593534";
+                                emailController.text = 'rexlim2003@gmail.com';
+                                educationController.text =
+                                    "Bachelor's of Computer Science";
+                              });
+                            }
                           },
                           child: Container(
                             padding: EdgeInsets.symmetric(
@@ -160,6 +172,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                       onPressed: () {
                         Navigator.of(context)
                             .pushNamed(CandidatesAnsweringScreen.routeName);
+                        uploadFile();
                       },
                       style: ElevatedButton.styleFrom(
                         primary: secondaryDarkBlue,

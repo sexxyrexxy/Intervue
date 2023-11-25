@@ -105,7 +105,6 @@ flutter:
     - lib/assets/images/ronald.jpeg
     - lib/assets/images/cheah.png
     - lib/assets/images/google-logo.png
-    - lib/assets/pdfs/example-CV.pdf
 
   fonts:
     - family: Futura

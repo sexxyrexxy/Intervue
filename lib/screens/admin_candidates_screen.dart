@@ -13,6 +13,9 @@ class AdminCandidatesScreen extends StatefulWidget {
   State<AdminCandidatesScreen> createState() => _AdminCandidatesScreenState();
 }
 
+String _selectedItem = 'Software Engineer';
+List<String> _dropdownItems = ['Software Engineer', 'Data Analyst'];
+
 class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
   bool _isLoading = true;
 
@@ -59,6 +62,23 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: DropdownButton<String>(
+                      value: _selectedItem,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          print(newValue);
+                          _selectedItem = newValue!;
+                        });
+                      },
+                      items: _dropdownItems.map((String item) {
+                        return DropdownMenuItem<String>(
+                          value: item,
+                          child: Text(item),
+                        );
+                      }).toList(),
+                    )),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

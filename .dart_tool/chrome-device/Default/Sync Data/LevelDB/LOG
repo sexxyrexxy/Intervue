@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-2023/11/25-15:10:13.872 1b10 Reusing MANIFEST C:\Users\BONIFA~1\AppData\Local\Temp\flutter_tools.102944e0\flutter_tools_chrome_device.b344778e\Default\Sync Data\LevelDB/MANIFEST-000001
-2023/11/25-15:10:13.875 1b10 Recovering log #3
-2023/11/25-15:10:13.877 1b10 Reusing old log C:\Users\BONIFA~1\AppData\Local\Temp\flutter_tools.102944e0\flutter_tools_chrome_device.b344778e\Default\Sync Data\LevelDB/000003.log 
-=======
-2023/11/25-16:01:26.207 f203 Reusing MANIFEST /private/var/folders/c6/ml47p_317kjcw90pxjg9s7sc0000gn/T/flutter_tools.xErWnv/flutter_tools_chrome_device.l30m4I/Default/Sync Data/LevelDB/MANIFEST-000001
-2023/11/25-16:01:26.221 f203 Recovering log #3
-2023/11/25-16:01:26.222 f203 Reusing old log /private/var/folders/c6/ml47p_317kjcw90pxjg9s7sc0000gn/T/flutter_tools.xErWnv/flutter_tools_chrome_device.l30m4I/Default/Sync Data/LevelDB/000003.log 
->>>>>>> 489a18afee2e110f2ec5f2b7c97899c8c7f4dbf4
-=======
-2023/11/25-17:25:05.657 a603 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.fVuK5u/flutter_tools_chrome_device.Z2N9lS/Default/Sync Data/LevelDB/MANIFEST-000001
-2023/11/25-17:25:05.667 a603 Recovering log #3
-2023/11/25-17:25:05.667 a603 Reusing old log /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.fVuK5u/flutter_tools_chrome_device.Z2N9lS/Default/Sync Data/LevelDB/000003.log 
->>>>>>> afd1dc7 (ok)
-=======
-2023/11/25-17:25:05.657 a603 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.fVuK5u/flutter_tools_chrome_device.Z2N9lS/Default/Sync Data/LevelDB/MANIFEST-000001
-2023/11/25-17:25:05.667 a603 Recovering log #3
-2023/11/25-17:25:05.667 a603 Reusing old log /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.fVuK5u/flutter_tools_chrome_device.Z2N9lS/Default/Sync Data/LevelDB/000003.log 
->>>>>>> e0aae6460ffc131c210bc3f7020343545b19dfb3
+2023/11/25-17:27:51.063 a603 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.fL8jF0/flutter_tools_chrome_device.eMuYd3/Default/Sync Data/LevelDB/MANIFEST-000001
+2023/11/25-17:27:51.074 a603 Recovering log #3
+2023/11/25-17:27:51.075 a603 Reusing old log /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.fL8jF0/flutter_tools_chrome_device.eMuYd3/Default/Sync Data/LevelDB/000003.log 

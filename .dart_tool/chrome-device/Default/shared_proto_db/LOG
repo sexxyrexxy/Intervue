@@ -1,58 +1,22 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-2023/11/25-15:10:14.023 2250 Reusing MANIFEST C:\Users\BONIFA~1\AppData\Local\Temp\flutter_tools.102944e0\flutter_tools_chrome_device.b344778e\Default\shared_proto_db/MANIFEST-000001
-2023/11/25-15:10:14.024 2250 Recovering log #3
-2023/11/25-15:10:14.025 2250 Reusing old log C:\Users\BONIFA~1\AppData\Local\Temp\flutter_tools.102944e0\flutter_tools_chrome_device.b344778e\Default\shared_proto_db/000003.log 
-=======
-2023/11/25-16:01:26.764 f303 Reusing MANIFEST /private/var/folders/c6/ml47p_317kjcw90pxjg9s7sc0000gn/T/flutter_tools.xErWnv/flutter_tools_chrome_device.l30m4I/Default/shared_proto_db/MANIFEST-000001
-2023/11/25-16:01:26.764 f303 Recovering log #34
-2023/11/25-16:01:26.765 f303 Reusing old log /private/var/folders/c6/ml47p_317kjcw90pxjg9s7sc0000gn/T/flutter_tools.xErWnv/flutter_tools_chrome_device.l30m4I/Default/shared_proto_db/000034.log 
-2023/11/25-16:01:26.766 f303 Delete type=0 #13
-2023/11/25-16:01:26.766 f303 Delete type=0 #7
-2023/11/25-16:01:26.766 f303 Delete type=0 #4
-2023/11/25-16:01:26.766 f303 Delete type=0 #10
-2023/11/25-16:01:26.766 f303 Delete type=0 #29
-2023/11/25-16:01:26.766 f303 Delete type=0 #16
-2023/11/25-16:01:26.766 f303 Delete type=2 #14
-2023/11/25-16:01:26.766 f303 Delete type=2 #17
-2023/11/25-16:01:26.766 f303 Delete type=2 #3
-2023/11/25-16:01:26.766 f303 Delete type=2 #11
-2023/11/25-16:01:26.766 f303 Delete type=2 #8
-2023/11/25-16:01:26.766 f303 Delete type=2 #21
-2023/11/25-16:01:26.766 f303 Delete type=2 #27
-2023/11/25-16:01:26.766 f303 Delete type=2 #24
-2023/11/25-16:01:26.766 f303 Delete type=0 #26
-2023/11/25-16:01:26.766 f303 Delete type=0 #31
-2023/11/25-16:01:26.766 f303 Delete type=0 #19
-2023/11/25-16:01:26.766 f303 Delete type=0 #23
->>>>>>> 489a18afee2e110f2ec5f2b7c97899c8c7f4dbf4
-=======
-=======
->>>>>>> e0aae6460ffc131c210bc3f7020343545b19dfb3
-2023/11/25-17:25:06.119 b603 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.fVuK5u/flutter_tools_chrome_device.Z2N9lS/Default/shared_proto_db/MANIFEST-000001
-2023/11/25-17:25:06.119 b603 Recovering log #33
-2023/11/25-17:25:06.119 b603 Reusing old log /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.fVuK5u/flutter_tools_chrome_device.Z2N9lS/Default/shared_proto_db/000033.log 
-2023/11/25-17:25:06.120 b603 Delete type=0 #13
-2023/11/25-17:25:06.120 b603 Delete type=0 #7
-2023/11/25-17:25:06.120 b603 Delete type=0 #4
-2023/11/25-17:25:06.120 b603 Delete type=0 #10
-2023/11/25-17:25:06.120 b603 Delete type=0 #29
-2023/11/25-17:25:06.120 b603 Delete type=0 #16
-2023/11/25-17:25:06.120 b603 Delete type=0 #3
-2023/11/25-17:25:06.120 b603 Delete type=2 #14
-2023/11/25-17:25:06.120 b603 Delete type=2 #17
-2023/11/25-17:25:06.120 b603 Delete type=2 #11
-2023/11/25-17:25:06.120 b603 Delete type=2 #8
-2023/11/25-17:25:06.120 b603 Delete type=2 #21
-2023/11/25-17:25:06.120 b603 Delete type=2 #27
-2023/11/25-17:25:06.120 b603 Delete type=2 #24
-2023/11/25-17:25:06.120 b603 Delete type=2 #30
-2023/11/25-17:25:06.120 b603 Delete type=0 #26
-2023/11/25-17:25:06.120 b603 Delete type=0 #31
-2023/11/25-17:25:06.120 b603 Delete type=0 #19
-2023/11/25-17:25:06.120 b603 Delete type=0 #23
-<<<<<<< HEAD
->>>>>>> afd1dc7 (ok)
-=======
->>>>>>> e0aae6460ffc131c210bc3f7020343545b19dfb3
+2023/11/25-17:27:51.557 a603 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.fL8jF0/flutter_tools_chrome_device.eMuYd3/Default/shared_proto_db/MANIFEST-000001
+2023/11/25-17:27:51.558 a603 Recovering log #33
+2023/11/25-17:27:51.559 a603 Reusing old log /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.fL8jF0/flutter_tools_chrome_device.eMuYd3/Default/shared_proto_db/000033.log 
+2023/11/25-17:27:51.559 a603 Delete type=0 #13
+2023/11/25-17:27:51.559 a603 Delete type=0 #7
+2023/11/25-17:27:51.559 a603 Delete type=0 #4
+2023/11/25-17:27:51.559 a603 Delete type=0 #10
+2023/11/25-17:27:51.559 a603 Delete type=0 #29
+2023/11/25-17:27:51.559 a603 Delete type=0 #16
+2023/11/25-17:27:51.559 a603 Delete type=0 #3
+2023/11/25-17:27:51.559 a603 Delete type=2 #14
+2023/11/25-17:27:51.559 a603 Delete type=2 #17
+2023/11/25-17:27:51.559 a603 Delete type=2 #11
+2023/11/25-17:27:51.559 a603 Delete type=2 #8
+2023/11/25-17:27:51.559 a603 Delete type=2 #21
+2023/11/25-17:27:51.559 a603 Delete type=2 #27
+2023/11/25-17:27:51.559 a603 Delete type=2 #24
+2023/11/25-17:27:51.559 a603 Delete type=2 #30
+2023/11/25-17:27:51.559 a603 Delete type=0 #26
+2023/11/25-17:27:51.559 a603 Delete type=0 #31
+2023/11/25-17:27:51.559 a603 Delete type=0 #19
+2023/11/25-17:27:51.559 a603 Delete type=0 #23

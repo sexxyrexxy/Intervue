@@ -13,7 +13,6 @@ import 'package:talentsync/models/candidates_model.dart';
 import 'package:talentsync/models/colors.dart';
 import 'package:talentsync/providers/candidate_provider.dart';
 import 'package:talentsync/screens/candidates_answering_screen.dart';
-import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:talentsync/widgets/candidate_info_text_field.dart';
 import '../auth.dart';
 

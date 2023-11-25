@@ -63,14 +63,12 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
             SizedBox(
               height: 20,
             ),
-<<<<<<< HEAD
-            Cameras(800, 540),
-=======
+
             Cameras(800, 500),
             SizedBox(
               height: 10,
             ),
->>>>>>> e0aae64 (ok)
+
             Countdown(
               // controller: _controller,
               seconds: 180,

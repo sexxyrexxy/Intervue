@@ -8,7 +8,11 @@ class PositionModel {
   List<String> responsibilities;
   List<String> benefits;
   List<String> skillsRequired;
-  List<String> questions;
+  List<String> questions = [
+    'Tell me a little bit about yourself',
+    'Give me two of your strengths',
+    'Why do you want to join us?'
+  ];
 
   PositionModel({
     required this.id,
@@ -20,6 +24,5 @@ class PositionModel {
     required this.responsibilities,
     required this.benefits,
     required this.skillsRequired,
-    required this.questions,
   });
 }

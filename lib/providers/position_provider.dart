@@ -1,39 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:talentsync/models/position_model.dart';
 
 class PositionProvider with ChangeNotifier {
-  Map<String, List<String>> positionList = {};
-  //List<PositionModel> positionList = []; //software engineer, etc
-  List<String> generalQues = [
-    'Tell me a little bit about yourself',
-    'Give me two of your strengths',
-    'Why do you want to join us?'
-  ];
-  void initializePositions() {
-    positionList['Software Engineer'] = [...generalQues];
-    positionList['Intern'] = [...generalQues];
-    positionList['UI/UX Designer'] = [...generalQues];
-  }
+  List<PositionModel> positionList = [];
 
-  void addNewPosition(String newPosition) {
-    positionList[newPosition] = [];
+  void initializePositions() {}
+
+  void addNewPosition(PositionModel newPosition) {
+    positionList.add(newPosition);
     notifyListeners();
   }
 
-  void addQuestions(String posName, String question) {
-    positionList[posName]!.add(question);
-    notifyListeners();
-  }
-  void addQuestionsAtIndex(String posName, String question) {
-    positionList[posName]!.insert(1,question);
+  void addQuestion(
+      String posName, String question, int? preferredQuestionIndex) {
+    int positionIndex = positionList.indexWhere((pos) => pos.name == posName);
+    PositionModel newPositionModel = positionList[positionIndex];
+    if (preferredQuestionIndex == null) {
+      //no preferred index, put at the last
+      newPositionModel.questions.add(question);
+    } else {
+      newPositionModel.questions.insert(preferredQuestionIndex, question);
+    }
+    positionList[positionIndex] = newPositionModel;
     notifyListeners();
   }
 
   void removeQuestions(String posName, String questionToRemove) {
-    if (positionList.containsKey(posName)) {
-      if (positionList[posName]!.contains(questionToRemove)) {
-        positionList[posName]!.remove(questionToRemove);
-        notifyListeners();
-      }
-    }
+    int positionIndex = positionList.indexWhere((pos) => pos.name == posName);
+    positionList[positionIndex].questions.remove(questionToRemove);
+    notifyListeners();
   }
 }

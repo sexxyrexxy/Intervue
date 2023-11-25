@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 2023/11/25-14:44:15.070 5e8 Creating DB C:\Users\BONIFA~1\AppData\Local\Temp\flutter_tools.cefc2c6\flutter_tools_chrome_device.8f74e9b0\Default\Extension Rules since it was missing.
 2023/11/25-14:44:15.080 5e8 Reusing MANIFEST C:\Users\BONIFA~1\AppData\Local\Temp\flutter_tools.cefc2c6\flutter_tools_chrome_device.8f74e9b0\Default\Extension Rules/MANIFEST-000001
 =======
@@ -6,3 +7,8 @@
 2023/11/25-14:05:07.605 a603 Recovering log #3
 2023/11/25-14:05:07.606 a603 Reusing old log /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.RMIh1f/flutter_tools_chrome_device.Agkbcd/Default/Extension Rules/000003.log 
 >>>>>>> afd1dc7 (ok)
+=======
+2023/11/25-14:05:07.605 a603 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.RMIh1f/flutter_tools_chrome_device.Agkbcd/Default/Extension Rules/MANIFEST-000001
+2023/11/25-14:05:07.605 a603 Recovering log #3
+2023/11/25-14:05:07.606 a603 Reusing old log /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.RMIh1f/flutter_tools_chrome_device.Agkbcd/Default/Extension Rules/000003.log 
+>>>>>>> e0aae6460ffc131c210bc3f7020343545b19dfb3

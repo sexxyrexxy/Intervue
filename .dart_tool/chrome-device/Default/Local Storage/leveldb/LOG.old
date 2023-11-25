@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 2023/11/25-15:06:11.996 368 Reusing MANIFEST C:\Users\BONIFA~1\AppData\Local\Temp\flutter_tools.1c4231a\flutter_tools_chrome_device.9b964c7c\Default\Local Storage\leveldb/MANIFEST-000001
 2023/11/25-15:06:12.001 368 Recovering log #3
 2023/11/25-15:06:12.012 368 Reusing old log C:\Users\BONIFA~1\AppData\Local\Temp\flutter_tools.1c4231a\flutter_tools_chrome_device.9b964c7c\Default\Local Storage\leveldb/000003.log 
@@ -17,6 +18,8 @@
 2023/11/25-15:49:31.513 2a07 Delete type=2 #8
 >>>>>>> 489a18afee2e110f2ec5f2b7c97899c8c7f4dbf4
 =======
+=======
+>>>>>>> e0aae6460ffc131c210bc3f7020343545b19dfb3
 2023/11/25-17:23:50.535 2e03 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.MfrReJ/flutter_tools_chrome_device.2Ogv6Q/Default/Local Storage/leveldb/MANIFEST-000001
 2023/11/25-17:23:50.536 2e03 Recovering log #15
 2023/11/25-17:23:50.536 2e03 Reusing old log /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.MfrReJ/flutter_tools_chrome_device.2Ogv6Q/Default/Local Storage/leveldb/000015.log 
@@ -28,4 +31,7 @@
 2023/11/25-17:23:50.537 2e03 Delete type=2 #12
 2023/11/25-17:23:50.537 2e03 Delete type=2 #10
 2023/11/25-17:23:50.537 2e03 Delete type=2 #8
+<<<<<<< HEAD
 >>>>>>> afd1dc7 (ok)
+=======
+>>>>>>> e0aae6460ffc131c210bc3f7020343545b19dfb3

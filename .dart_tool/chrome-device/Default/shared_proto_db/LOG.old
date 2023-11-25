@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 2023/11/25-15:06:12.018 4e38 Reusing MANIFEST C:\Users\BONIFA~1\AppData\Local\Temp\flutter_tools.1c4231a\flutter_tools_chrome_device.9b964c7c\Default\shared_proto_db/MANIFEST-000001
 2023/11/25-15:06:12.019 4e38 Recovering log #3
 2023/11/25-15:06:12.020 4e38 Reusing old log C:\Users\BONIFA~1\AppData\Local\Temp\flutter_tools.1c4231a\flutter_tools_chrome_device.9b964c7c\Default\shared_proto_db/000003.log 
@@ -27,6 +28,8 @@
 2023/11/25-15:49:32.179 b403 Delete type=0 #23
 >>>>>>> 489a18afee2e110f2ec5f2b7c97899c8c7f4dbf4
 =======
+=======
+>>>>>>> e0aae6460ffc131c210bc3f7020343545b19dfb3
 2023/11/25-17:23:51.094 b903 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.MfrReJ/flutter_tools_chrome_device.2Ogv6Q/Default/shared_proto_db/MANIFEST-000001
 2023/11/25-17:23:51.094 b903 Recovering log #3
 2023/11/25-17:23:51.095 b903 Level-0 table #3: started
@@ -90,4 +93,7 @@
 2023/11/25-17:24:07.117 f503 Level-0 table #34: started
 2023/11/25-17:24:07.135 f503 Level-0 table #34: 141128 bytes OK
 2023/11/25-17:24:07.144 f503 Delete type=0 #31
+<<<<<<< HEAD
 >>>>>>> afd1dc7 (ok)
+=======
+>>>>>>> e0aae6460ffc131c210bc3f7020343545b19dfb3

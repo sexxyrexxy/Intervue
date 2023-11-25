@@ -40,7 +40,7 @@ dependencies:
   camera: ^0.10.5+5
   file_picker: ^6.0.0
   noise_meter: ^5.0.2
-  syncfusion_flutter_charts: ^19.1.67
+
   url_launcher: ^6.0.6
   record: ^5.0.1
   permission_handler: ^11.0.1
@@ -61,6 +61,7 @@ dependencies:
   timer_count_down: ^2.2.2
   firebase_auth: ^4.14.1
   google_sign_in: ^6.1.6
+  syncfusion_flutter_pdf: ^20.3.49
 
 dev_dependencies:
   flutter_test:
@@ -105,6 +106,7 @@ flutter:
     - lib/assets/images/ronald.jpeg
     - lib/assets/images/cheah.png
     - lib/assets/images/google-logo.png
+    - lib/assets/pdfs/example-CV.pdf
 
   fonts:
     - family: Futura

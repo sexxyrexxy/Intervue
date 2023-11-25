@@ -29,7 +29,7 @@ class CandidatesProvider with ChangeNotifier {
 
   Future<void> setName(String name) async {
     await _firebaseFirestore
-        .collection("user")
+        .collection("candidates")
         .doc(Auth().currentUser!.uid)
         .update({
       "name": name,
@@ -39,7 +39,7 @@ class CandidatesProvider with ChangeNotifier {
 
   Future<void> setSkills(List<String> skills) async {
     await _firebaseFirestore
-        .collection("user")
+        .collection("candidates")
         .doc(Auth().currentUser!.uid)
         .update({"skills": FieldValue.arrayUnion(skills)});
     print("Skills updated successfully");
@@ -47,7 +47,7 @@ class CandidatesProvider with ChangeNotifier {
 
   Future<void> setExperiences(List<String> experience) async {
     await _firebaseFirestore
-        .collection("user")
+        .collection("candidates")
         .doc(Auth().currentUser!.uid)
         .update({"experience": FieldValue.arrayUnion(experience)});
     print("Experiences updated successfully");
@@ -56,7 +56,7 @@ class CandidatesProvider with ChangeNotifier {
   // pdfName, String pdfUrls, String candidateName, List<String> skills, List<String> experience, List<String> education
   Future<void> setPdfDetails(pdfExtractedModel pdfExtractedData) async {
     await _firebaseFirestore
-        .collection("user")
+        .collection("candidates")
         .doc(Auth().currentUser!.uid)
         .update({
       "pdfs": {
@@ -68,7 +68,7 @@ class CandidatesProvider with ChangeNotifier {
 
   Future<void> setImgDetails(imgExtractedModel imgExtractedData) async {
     await _firebaseFirestore
-        .collection("user")
+        .collection("candidates")
         .doc(Auth().currentUser!.uid)
         .update({
       "imgs": {

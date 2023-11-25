@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:talentsync/models/colors.dart' as custom_Color;
+import 'package:talentsync/screens/login_screen.dart';
+import 'package:talentsync/screens/signup_screen.dart';
 import 'package:talentsync/widgets/Input_field.dart';
 import 'package:talentsync/widgets/category.dart';
 import 'package:talentsync/widgets/small-button.dart';
@@ -46,18 +48,31 @@ class MainJobSearch extends StatelessWidget {
                       height: 80,
                     ),
                     Spacer(),
-                    smallButtonwithoutIcons(
-                        140,
-                        44,
-                        custom_Color.backgroundWhite,
-                        "Signup",
-                        20,
-                        custom_Color.primaryBlue),
+                    GestureDetector(
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(RegisterScreen.routeName),
+                      child: smallButtonwithoutIcons(
+                          140,
+                          44,
+                          custom_Color.backgroundWhite,
+                          "Signup",
+                          20,
+                          custom_Color.primaryBlue),
+                    ),
                     SizedBox(
                       width: 20,
                     ),
-                    smallButtonwithoutIcons(140, 44, custom_Color.secondaryBlue,
-                        "Login", 20, Colors.white)
+                    GestureDetector(
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(loginScreen.routeName),
+                      child: smallButtonwithoutIcons(
+                          140,
+                          44,
+                          custom_Color.secondaryBlue,
+                          "Login",
+                          20,
+                          Colors.white),
+                    )
                   ],
                 ),
               ),

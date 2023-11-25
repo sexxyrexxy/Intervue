@@ -8,7 +8,7 @@ class OccupationModel {
   List<String> responsibilities;
   int yearOfExperience;
   List<String> benefits;
-  List<String> questions;
+  List<String> defaultQuestions;
 
   OccupationModel({
     required this.positionName,
@@ -18,6 +18,6 @@ class OccupationModel {
     required this.skills,
     required this.responsibilities,
     required this.benefits,
-    required this.questions,
+    required this.defaultQuestions,
   });
 }

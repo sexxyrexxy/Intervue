@@ -3,7 +3,7 @@ class CandidateModel {
   String name;
   String email;
   String education;
-  List<String> imgs;
+  List imgs = [imgExtractedModel];
   List<String> skills;
   List<String> experiences;
   List pdfs = [pdfExtractedModel];
@@ -34,4 +34,11 @@ class pdfExtractedModel {
       required this.skills,
       required this.experiences,
       required this.education});
+}
+
+class imgExtractedModel {
+  String imgName;
+  String imgUrl;
+
+  imgExtractedModel({required this.imgName, required this.imgUrl});
 }

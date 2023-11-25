@@ -26,7 +26,7 @@ class CandidatesUploadCV extends StatefulWidget {
 
 class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
-  List<Map<String, dynamic>> pdfData = [];
+  var pickedFile;
 
   // Pick image
   void pickImage() async {
@@ -55,12 +55,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
   }
 
   // Pick file function
-  void pickFile() async {
-    final pickedFile = await FilePickerWeb.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['pdf'],
-    );
-
+  void uploadFiles() async {
     if (pickedFile?.files.first.bytes != null) {
       final String fileName = pickedFile!.files[0].name;
       final fileBytes = pickedFile.files.first.bytes;
@@ -82,18 +77,9 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
     }
   }
 
-  void getAllPdf() async {
-    final results = await _firebaseFirestore.collection("pdfs").get();
-
-    pdfData = results.docs.map((e) => e.data()).toList();
-
-    setState(() {});
-  }
-
   @override
   void initState() {
     // TODO: implement initState
-    getAllPdf();
     super.initState();
   }
 
@@ -137,23 +123,19 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                       children: [
                         GestureDetector(
                           onTap: () async {
-                            pickFile();
-                            debugPrint("anjeng cok");
-
-                            // final result = await FilePickerWeb.platform
-                            //     .pickFiles(
-                            //         type: FileType.custom,
-                            //         allowedExtensions: ['pdf']);
-                            // if (result != null) {
-                            //   setState(() {
-                            //     fnameController.text = 'Rex';
-                            //     lnameController.text = 'Lim';
-                            //     phoneController.text = "0147593534";
-                            //     emailController.text = 'rexlim2003@gmail.com';
-                            //     educationController.text =
-                            //         "Bachelor's of Computer Science";
-                            //   });
-                            // }
+                            pickedFile = await FilePickerWeb.platform.pickFiles(
+                                type: FileType.custom,
+                                allowedExtensions: ['pdf']);
+                            if (pickedFile != null) {
+                              setState(() {
+                                fnameController.text = 'Rex';
+                                lnameController.text = 'Lim';
+                                phoneController.text = "0147593534";
+                                emailController.text = 'rexlim2003@gmail.com';
+                                educationController.text =
+                                    "Bachelor's of Computer Science";
+                              });
+                            }
                           },
                           child: Container(
                             padding: EdgeInsets.symmetric(
@@ -196,6 +178,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                       onPressed: () {
                         Navigator.of(context)
                             .pushNamed(CandidatesAnsweringScreen.routeName);
+                      uploadFiles();
                       },
                       style: ElevatedButton.styleFrom(
                         primary: secondaryDarkBlue,
@@ -224,20 +207,6 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
             child: GestureDetector(
               onTap: () async {
                 pickImage();
-
-                // final result = await FilePickerWeb.platform.pickFiles(
-                //     type: FileType.custom,
-                //     allowedExtensions: ['jpeg', 'png', 'jpg']);
-                // if (result != null) {
-                //   final bytes = result
-                //       .files.single.bytes; // Get the file's content as bytes
-
-                // if (bytes != null) {
-                //   final image = Image.memory(Uint8List.fromList(
-                //       bytes)); // Create an image from bytes
-
-                // }
-                // }
               },
               child: Container(
                 width: double.infinity,

@@ -1,21 +1,63 @@
-2023/11/25-15:49:32.176 b403 Reusing MANIFEST /private/var/folders/c6/ml47p_317kjcw90pxjg9s7sc0000gn/T/flutter_tools.ZiGJPd/flutter_tools_chrome_device.1SQsL2/Default/shared_proto_db/MANIFEST-000001
-2023/11/25-15:49:32.177 b403 Recovering log #34
-2023/11/25-15:49:32.177 b403 Reusing old log /private/var/folders/c6/ml47p_317kjcw90pxjg9s7sc0000gn/T/flutter_tools.ZiGJPd/flutter_tools_chrome_device.1SQsL2/Default/shared_proto_db/000034.log 
-2023/11/25-15:49:32.178 b403 Delete type=0 #13
-2023/11/25-15:49:32.178 b403 Delete type=0 #7
-2023/11/25-15:49:32.178 b403 Delete type=0 #4
-2023/11/25-15:49:32.178 b403 Delete type=0 #10
-2023/11/25-15:49:32.178 b403 Delete type=0 #29
-2023/11/25-15:49:32.178 b403 Delete type=0 #16
-2023/11/25-15:49:32.178 b403 Delete type=2 #14
-2023/11/25-15:49:32.178 b403 Delete type=2 #17
-2023/11/25-15:49:32.178 b403 Delete type=2 #3
-2023/11/25-15:49:32.178 b403 Delete type=2 #11
-2023/11/25-15:49:32.178 b403 Delete type=2 #8
-2023/11/25-15:49:32.178 b403 Delete type=2 #21
-2023/11/25-15:49:32.178 b403 Delete type=2 #27
-2023/11/25-15:49:32.178 b403 Delete type=2 #24
-2023/11/25-15:49:32.178 b403 Delete type=0 #26
-2023/11/25-15:49:32.178 b403 Delete type=0 #31
-2023/11/25-15:49:32.178 b403 Delete type=0 #19
-2023/11/25-15:49:32.179 b403 Delete type=0 #23
+2023/11/25-17:23:51.094 b903 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.MfrReJ/flutter_tools_chrome_device.2Ogv6Q/Default/shared_proto_db/MANIFEST-000001
+2023/11/25-17:23:51.094 b903 Recovering log #3
+2023/11/25-17:23:51.095 b903 Level-0 table #3: started
+2023/11/25-17:23:51.101 b903 Level-0 table #3: 15096 bytes OK
+2023/11/25-17:23:51.101 b903 Recovering log #4
+2023/11/25-17:23:51.102 b903 Level-0 table #4: started
+2023/11/25-17:23:51.110 b903 Level-0 table #4: 123375 bytes OK
+2023/11/25-17:23:51.110 b903 Recovering log #7
+2023/11/25-17:23:51.111 b903 Level-0 table #5: started
+2023/11/25-17:23:51.117 b903 Level-0 table #5: 92478 bytes OK
+2023/11/25-17:23:51.117 b903 Recovering log #10
+2023/11/25-17:23:51.118 b903 Level-0 table #8: started
+2023/11/25-17:23:51.122 b903 Level-0 table #8: 125990 bytes OK
+2023/11/25-17:23:51.122 b903 Recovering log #13
+2023/11/25-17:23:51.123 b903 Level-0 table #11: started
+2023/11/25-17:23:51.127 b903 Level-0 table #11: 124041 bytes OK
+2023/11/25-17:23:51.128 b903 Recovering log #16
+2023/11/25-17:23:51.130 b903 Level-0 table #14: started
+2023/11/25-17:23:51.134 b903 Level-0 table #14: 124316 bytes OK
+2023/11/25-17:23:51.134 b903 Recovering log #19
+2023/11/25-17:23:51.136 b903 Level-0 table #17: started
+2023/11/25-17:23:51.140 b903 Level-0 table #17: 125616 bytes OK
+2023/11/25-17:23:51.140 b903 Recovering log #23
+2023/11/25-17:23:51.142 b903 Level-0 table #20: started
+2023/11/25-17:23:51.148 b903 Level-0 table #20: 122011 bytes OK
+2023/11/25-17:23:51.148 b903 Recovering log #26
+2023/11/25-17:23:51.149 b903 Level-0 table #24: started
+2023/11/25-17:23:51.154 b903 Level-0 table #24: 115457 bytes OK
+2023/11/25-17:23:51.154 b903 Recovering log #29
+2023/11/25-17:23:51.155 b903 Level-0 table #27: started
+2023/11/25-17:23:51.159 b903 Level-0 table #27: 111963 bytes OK
+2023/11/25-17:23:51.159 b903 Recovering log #31
+2023/11/25-17:23:51.160 b903 Reusing old log /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.MfrReJ/flutter_tools_chrome_device.2Ogv6Q/Default/shared_proto_db/000031.log 
+2023/11/25-17:23:51.166 b903 Delete type=0 #13
+2023/11/25-17:23:51.166 b903 Delete type=0 #7
+2023/11/25-17:23:51.166 b903 Delete type=0 #4
+2023/11/25-17:23:51.166 b903 Delete type=0 #10
+2023/11/25-17:23:51.166 b903 Delete type=0 #29
+2023/11/25-17:23:51.166 b903 Delete type=0 #16
+2023/11/25-17:23:51.166 b903 Delete type=0 #3
+2023/11/25-17:23:51.166 b903 Delete type=2 #21
+2023/11/25-17:23:51.166 b903 Delete type=2 #32
+2023/11/25-17:23:51.166 b903 Delete type=2 #30
+2023/11/25-17:23:51.166 b903 Delete type=0 #26
+2023/11/25-17:23:51.166 b903 Delete type=0 #19
+2023/11/25-17:23:51.166 b903 Delete type=0 #23
+2023/11/25-17:23:51.167 8303 Compacting 10@0 + 0@1 files
+2023/11/25-17:23:51.177 8303 Generated table #32@0: 1330 keys, 232183 bytes
+2023/11/25-17:23:51.177 8303 Compacted 10@0 + 0@1 files => 232183 bytes
+2023/11/25-17:23:51.182 8303 compacted to: files[ 0 1 0 0 0 0 0 ]
+2023/11/25-17:23:51.182 8303 Delete type=2 #14
+2023/11/25-17:23:51.182 8303 Delete type=2 #17
+2023/11/25-17:23:51.182 8303 Delete type=2 #3
+2023/11/25-17:23:51.182 8303 Delete type=2 #4
+2023/11/25-17:23:51.182 8303 Delete type=2 #5
+2023/11/25-17:23:51.182 8303 Delete type=2 #11
+2023/11/25-17:23:51.182 8303 Delete type=2 #8
+2023/11/25-17:23:51.182 8303 Delete type=2 #20
+2023/11/25-17:23:51.182 8303 Delete type=2 #27
+2023/11/25-17:23:51.183 8303 Delete type=2 #24
+2023/11/25-17:24:07.117 f503 Level-0 table #34: started
+2023/11/25-17:24:07.135 f503 Level-0 table #34: 141128 bytes OK
+2023/11/25-17:24:07.144 f503 Delete type=0 #31

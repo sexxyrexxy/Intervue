@@ -1,19 +1,18 @@
 class CandidateModel {
   String id;
   String name;
-  String phoneNumber;
+  String email;
   String education;
   List<String> skills;
   List<String> experiences;
-  List<String> responses;
+  List<String> pdfs;
 
-  CandidateModel({
-    required this.id,
-    required this.name,
-    required this.phoneNumber,
-    required this.education,
-    required this.responses,
-    required this.skills,
-    required this.experiences,
-  });
+  CandidateModel(
+      {required this.id,
+      required this.name,
+      required this.email,
+      required this.education,
+      required this.skills,
+      required this.experiences,
+      required this.pdfs});
 }

@@ -1,7 +1,8 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
 import 'package:file_picker/_internal/file_picker_web.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -13,7 +14,6 @@ import 'package:talentsync/models/colors.dart';
 import 'package:talentsync/providers/candidate_provider.dart';
 import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/widgets/candidate_info_text_field.dart';
-
 import '../auth.dart';
 
 class CandidatesUploadCV extends StatefulWidget {
@@ -26,14 +26,14 @@ class CandidatesUploadCV extends StatefulWidget {
 
 class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
-  List<Map<String, dynamic>> pdfData = [];
+  var pickedFile;
 
   // Pick image
   void pickImage() async {
     final result = await FilePickerWeb.platform.pickFiles(
         type: FileType.custom, allowedExtensions: ['jpeg', 'png', 'jpg']);
     if (result != null) {
-      final String imgName = result!.files[0].name;
+      final String imgName = result.files[0].name;
       final bytes =
           result.files.single.bytes; // Get the file's content as bytes
 
@@ -55,12 +55,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
   }
 
   // Pick file function
-  void pickFile() async {
-    final pickedFile = await FilePickerWeb.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['pdf'],
-    );
-
+  void uploadFiles() async {
     if (pickedFile?.files.first.bytes != null) {
       final String fileName = pickedFile!.files[0].name;
       final fileBytes = pickedFile.files.first.bytes;
@@ -82,18 +77,9 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
     }
   }
 
-  void getAllPdf() async {
-    final results = await _firebaseFirestore.collection("pdfs").get();
-
-    pdfData = results.docs.map((e) => e.data()).toList();
-
-    setState(() {});
-  }
-
   @override
   void initState() {
     // TODO: implement initState
-    getAllPdf();
     super.initState();
   }
 
@@ -137,23 +123,22 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                       children: [
                         GestureDetector(
                           onTap: () async {
-                            pickFile();
-                            debugPrint("anjeng cok");
-
-                            // final result = await FilePickerWeb.platform
-                            //     .pickFiles(
-                            //         type: FileType.custom,
-                            //         allowedExtensions: ['pdf']);
-                            // if (result != null) {
-                            //   setState(() {
-                            //     fnameController.text = 'Rex';
-                            //     lnameController.text = 'Lim';
-                            //     phoneController.text = "0147593534";
-                            //     emailController.text = 'rexlim2003@gmail.com';
-                            //     educationController.text =
-                            //         "Bachelor's of Computer Science";
-                            //   });
-                            // }
+                            pickedFile = await FilePickerWeb.platform.pickFiles(
+                                type: FileType.custom,
+                                allowedExtensions: ['pdf']);
+                                
+    //                             PdfDocument document =
+    // PdfDocument(inputBytes: await _readDocumentData(pickedFile));
+                            if (pickedFile != null) {
+                              setState(() {
+                                fnameController.text = 'Rex';
+                                lnameController.text = 'Lim';
+                                phoneController.text = "0147593534";
+                                emailController.text = 'rexlim2003@gmail.com';
+                                educationController.text =
+                                    "Bachelor's of Computer Science";
+                              });
+                            }
                           },
                           child: Container(
                             padding: EdgeInsets.symmetric(
@@ -196,6 +181,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                       onPressed: () {
                         Navigator.of(context)
                             .pushNamed(CandidatesAnsweringScreen.routeName);
+                        uploadFiles();
                       },
                       style: ElevatedButton.styleFrom(
                         primary: secondaryDarkBlue,
@@ -224,20 +210,6 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
             child: GestureDetector(
               onTap: () async {
                 pickImage();
-
-                // final result = await FilePickerWeb.platform.pickFiles(
-                //     type: FileType.custom,
-                //     allowedExtensions: ['jpeg', 'png', 'jpg']);
-                // if (result != null) {
-                //   final bytes = result
-                //       .files.single.bytes; // Get the file's content as bytes
-
-                // if (bytes != null) {
-                //   final image = Image.memory(Uint8List.fromList(
-                //       bytes)); // Create an image from bytes
-
-                // }
-                // }
               },
               child: Container(
                 width: double.infinity,

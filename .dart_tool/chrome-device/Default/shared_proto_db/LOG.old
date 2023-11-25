@@ -1,27 +1,22 @@
-<<<<<<< HEAD
-2023/11/25-15:06:12.018 4e38 Reusing MANIFEST C:\Users\BONIFA~1\AppData\Local\Temp\flutter_tools.1c4231a\flutter_tools_chrome_device.9b964c7c\Default\shared_proto_db/MANIFEST-000001
-2023/11/25-15:06:12.019 4e38 Recovering log #3
-2023/11/25-15:06:12.020 4e38 Reusing old log C:\Users\BONIFA~1\AppData\Local\Temp\flutter_tools.1c4231a\flutter_tools_chrome_device.9b964c7c\Default\shared_proto_db/000003.log 
-=======
-2023/11/25-15:49:32.176 b403 Reusing MANIFEST /private/var/folders/c6/ml47p_317kjcw90pxjg9s7sc0000gn/T/flutter_tools.ZiGJPd/flutter_tools_chrome_device.1SQsL2/Default/shared_proto_db/MANIFEST-000001
-2023/11/25-15:49:32.177 b403 Recovering log #34
-2023/11/25-15:49:32.177 b403 Reusing old log /private/var/folders/c6/ml47p_317kjcw90pxjg9s7sc0000gn/T/flutter_tools.ZiGJPd/flutter_tools_chrome_device.1SQsL2/Default/shared_proto_db/000034.log 
-2023/11/25-15:49:32.178 b403 Delete type=0 #13
-2023/11/25-15:49:32.178 b403 Delete type=0 #7
-2023/11/25-15:49:32.178 b403 Delete type=0 #4
-2023/11/25-15:49:32.178 b403 Delete type=0 #10
-2023/11/25-15:49:32.178 b403 Delete type=0 #29
-2023/11/25-15:49:32.178 b403 Delete type=0 #16
-2023/11/25-15:49:32.178 b403 Delete type=2 #14
-2023/11/25-15:49:32.178 b403 Delete type=2 #17
-2023/11/25-15:49:32.178 b403 Delete type=2 #3
-2023/11/25-15:49:32.178 b403 Delete type=2 #11
-2023/11/25-15:49:32.178 b403 Delete type=2 #8
-2023/11/25-15:49:32.178 b403 Delete type=2 #21
-2023/11/25-15:49:32.178 b403 Delete type=2 #27
-2023/11/25-15:49:32.178 b403 Delete type=2 #24
-2023/11/25-15:49:32.178 b403 Delete type=0 #26
-2023/11/25-15:49:32.178 b403 Delete type=0 #31
-2023/11/25-15:49:32.178 b403 Delete type=0 #19
-2023/11/25-15:49:32.179 b403 Delete type=0 #23
->>>>>>> 489a18afee2e110f2ec5f2b7c97899c8c7f4dbf4
+2023/11/25-17:25:06.119 b603 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.fVuK5u/flutter_tools_chrome_device.Z2N9lS/Default/shared_proto_db/MANIFEST-000001
+2023/11/25-17:25:06.119 b603 Recovering log #33
+2023/11/25-17:25:06.119 b603 Reusing old log /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.fVuK5u/flutter_tools_chrome_device.Z2N9lS/Default/shared_proto_db/000033.log 
+2023/11/25-17:25:06.120 b603 Delete type=0 #13
+2023/11/25-17:25:06.120 b603 Delete type=0 #7
+2023/11/25-17:25:06.120 b603 Delete type=0 #4
+2023/11/25-17:25:06.120 b603 Delete type=0 #10
+2023/11/25-17:25:06.120 b603 Delete type=0 #29
+2023/11/25-17:25:06.120 b603 Delete type=0 #16
+2023/11/25-17:25:06.120 b603 Delete type=0 #3
+2023/11/25-17:25:06.120 b603 Delete type=2 #14
+2023/11/25-17:25:06.120 b603 Delete type=2 #17
+2023/11/25-17:25:06.120 b603 Delete type=2 #11
+2023/11/25-17:25:06.120 b603 Delete type=2 #8
+2023/11/25-17:25:06.120 b603 Delete type=2 #21
+2023/11/25-17:25:06.120 b603 Delete type=2 #27
+2023/11/25-17:25:06.120 b603 Delete type=2 #24
+2023/11/25-17:25:06.120 b603 Delete type=2 #30
+2023/11/25-17:25:06.120 b603 Delete type=0 #26
+2023/11/25-17:25:06.120 b603 Delete type=0 #31
+2023/11/25-17:25:06.120 b603 Delete type=0 #19
+2023/11/25-17:25:06.120 b603 Delete type=0 #23

@@ -56,18 +56,3 @@ class _CandidatesAnsweringScreenState extends State<CandidatesAnsweringScreen> {
     ));
   }
 }
-//  GestureDetector(
-//               onTap: () {
-//                 currentPage++;
-//                 _pageController.animateToPage(currentPage,
-//                     duration: new Duration(seconds: 1), curve: Curves.easeIn);
-//               },
-//               child: Container(
-//                 decoration: BoxDecoration(
-//                     borderRadius: BorderRadius.circular(20),
-//                     color: secondaryDarkBlue),
-//                 child: Text(
-//                   'Next Question',
-//                   style: TextStyle(color: backgroundWhite),
-//                 ),
-//               ))

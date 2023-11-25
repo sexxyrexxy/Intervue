@@ -30,8 +30,8 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
       positionProvider.initializePositions();
       // Populate the positions list from the provider
       setState(() {
-        positions = positionProvider.positionList.keys
-            .map((positionName) => InterviewPosition(positionName))
+        positions = positionProvider.positionList
+            .map((pos) => InterviewPosition(pos.name))
             .toList();
       });
     }

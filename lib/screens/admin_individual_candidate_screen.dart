@@ -13,7 +13,7 @@ class AdminIndividualCandidateScreen extends StatefulWidget {
       _AdminIndividualCandidateScreenState();
 }
 
-var questions = [];
+List<Widget> questions = [];
 
 class _AdminIndividualCandidateScreenState
     extends State<AdminIndividualCandidateScreen> {
@@ -22,33 +22,31 @@ class _AdminIndividualCandidateScreenState
     var positionProvider =
         Provider.of<PositionProvider>(context, listen: false);
 
-    if (questions.isEmpty) {
-      positionProvider.initializePositions();
-    }
     questions =
         positionProvider.positionList['Software Engineer']!.map((question) {
       return Container(
-          margin: EdgeInsets.all(10),
-          child: Row(
-            children: [
-              Icon(
-                Icons.voice_chat,
-                color: secondaryDarkBlue,
+        margin: EdgeInsets.all(10),
+        child: Row(
+          children: [
+            Icon(
+              Icons.voice_chat,
+              color: secondaryDarkBlue,
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            InkWell(
+              onTap: () {
+                _dialogBuilder(context, question);
+              },
+              child: new Text(
+                question,
+                style: TextStyle(color: secondaryDarkBlue),
               ),
-              SizedBox(
-                width: 10,
-              ),
-              InkWell(
-                onTap: () {
-                  _dialogBuilder(context, question);
-                },
-                child: new Text(
-                  question,
-                  style: TextStyle(color: secondaryDarkBlue),
-                ),
-              )
-            ],
-          ));
+            )
+          ],
+        ),
+      );
     }).toList();
 
     questions.insert(

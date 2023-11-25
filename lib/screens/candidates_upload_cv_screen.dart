@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dart_openai/dart_openai.dart';
 import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
 import 'package:file_picker/_internal/file_picker_web.dart';
 import 'package:file_picker/file_picker.dart';
@@ -28,7 +29,6 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   var pickedFile;
 
-  // Pick image
   void pickImage() async {
     final result = await FilePickerWeb.platform.pickFiles(
         type: FileType.custom, allowedExtensions: ['jpeg', 'png', 'jpg']);

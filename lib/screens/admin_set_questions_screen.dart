@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 import 'package:provider/provider.dart';
 import 'package:talentsync/models/colors.dart';
+import 'package:talentsync/models/position_model.dart';
 import 'package:talentsync/widgets/interview_position_card.dart';
 import 'package:talentsync/widgets/interview_question_card.dart';
 
@@ -22,19 +23,20 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
   @override
   Widget build(BuildContext context) {
     var positionProvider =
-        Provider.of<PositionProvider>(context, listen: false);
+        Provider.of<PositionProvider>(context, listen: true);
     print(positions);
 
     if (positions.isEmpty) {
       // Perform the initialization if the positions list is empty
       positionProvider.initializePositions();
       // Populate the positions list from the provider
-      setState(() {
+      
+    }
+    setState(() {
         positions = positionProvider.positionList
             .map((pos) => InterviewPosition(pos.name))
             .toList();
       });
-    }
     return Container(
         padding: EdgeInsets.all(20),
         child: Column(
@@ -78,7 +80,20 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
                 textInputAction: TextInputAction.done,
                 onSubmitted: (value) {
                   setState(() {
-                    positions.add(InterviewPosition(value));
+                    positionProvider.addNewPosition(PositionModel(
+                      id: "",
+                      name: value,
+                      description:
+                          "",
+                      numOfPeople: 0,
+                      location: "",
+                      yearOfExperience: 0,
+                      responsibilities: [""
+                        
+                      ],
+                      benefits: [""],
+                      skillsRequired: [""],
+                    ));
                     _controller.clear();
                   });
                 },

@@ -82,8 +82,8 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
                 Please give me a very specific follow up qeustion.
                 """,
       );
-      positionProvider.addQuestionAtIndex(
-          'Software Engineer', completion.choices[0].text);
+      positionProvider.addQuestion(
+          'Software Engineer', completion.choices[0].text, 1);
 
       print(completion.choices[0].text);
     }

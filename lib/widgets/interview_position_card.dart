@@ -19,15 +19,13 @@ class _InterviewPositionState extends State<InterviewPosition> {
   Widget build(BuildContext context) {
     questions.clear();
     var positionProvider = Provider.of<PositionProvider>(context, listen: true);
-
-    if (positionProvider.positionList.containsKey(widget.position)) {
-      List<String> questionList =
-          positionProvider.positionList[widget.position]!;
-
-      questions = questionList
-          .map((question) => InterviewQuestionCard(widget.position, question))
-          .toList();
-    }
+    int positionIndex = positionProvider.positionList
+        .indexWhere((pos) => pos.name == widget.position);
+    List<String> questionList =
+        positionProvider.positionList[positionIndex].questions;
+    questions = questionList
+        .map((question) => InterviewQuestionCard(widget.position, question))
+        .toList();
     return ExpansionTile(
       title: Text(
         widget.position,
@@ -58,7 +56,8 @@ class _InterviewPositionState extends State<InterviewPosition> {
             textInputAction: TextInputAction.done,
             onSubmitted: (value) {
               setState(() {
-                positionProvider.addQuestion(widget.position, _controller.text);
+                positionProvider.addQuestion(
+                    widget.position, _controller.text, null);
                 questions.add(
                     InterviewQuestionCard(widget.position, _controller.text));
                 _controller.clear();

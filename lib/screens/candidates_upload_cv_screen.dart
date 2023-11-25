@@ -7,7 +7,10 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+import 'package:talentsync/models/candidates_model.dart';
 import 'package:talentsync/models/colors.dart';
+import 'package:talentsync/providers/candidate_provider.dart';
 import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/widgets/candidate_info_text_field.dart';
 
@@ -45,11 +48,8 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
       final imgDownloadlink =
           await FirebaseStorage.instance.ref("imgs/$imgName").getDownloadURL();
       print("img uploaded succesfully");
-      await _firebaseFirestore
-          .collection("user")
-          .doc(Auth().currentUser!.uid)
-          .update({"imgNames": imgName, "imgUrls": imgDownloadlink});
-
+      Provider.of<CandidatesProvider>(context, listen: false).setImgDetails(
+          imgExtractedModel(imgName: imgName, imgUrl: imgDownloadlink));
       print("img anjeng succesfully");
     }
   }
@@ -106,6 +106,10 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
 
   @override
   Widget build(BuildContext context) {
+    CandidateModel currentCandidate =
+        Provider.of<CandidatesProvider>(context, listen: false)
+            .defaultCandidate;
+
     return Scaffold(
         body: Container(
       child: Row(

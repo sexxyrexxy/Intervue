@@ -33,13 +33,21 @@ class Auth {
         "email": value.user!.email,
         "id": value.user!.uid,
         'name': '',
-        'education': '',
-        'skills': '',
-        'achievement': '',
-        'pdfNames': '',
-        'pdfUrls': '',
-        'imgNames': '',
-        'imgUrls': '',
+        'education': [],
+        'skills': [],
+        'experiences': [],
+        'imgs': {
+          'imgName': '',
+          'imgUrl': '',
+        },
+        'pdfs': {
+          "name": '',
+          "pdfUrls": '',
+          "candidateName": '',
+          "skills": [],
+          "experience": [],
+          "education": []
+        }
       });
     });
     return null;

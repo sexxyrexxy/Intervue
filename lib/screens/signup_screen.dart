@@ -219,7 +219,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               _controllerPassword,
             ),
             const SizedBox(
-              height: 24,
+              height: 20,
             ),
             Center(
               child: errorMessage(),

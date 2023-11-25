@@ -78,8 +78,8 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
                 textInputAction: TextInputAction.done,
                 onSubmitted: (value) {
                   setState(() {
-                    _controller.clear();
                     positions.add(InterviewPosition(value));
+                    _controller.clear();
                   });
                 },
                 //Change this to button that leads to the job posting screen//

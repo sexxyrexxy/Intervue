@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
           title: 'Intervüe',
           theme: ThemeData(fontFamily: 'Futura'),
 
-          home: CandidatesUploadCV(),
+          home: Navigation(),
           routes: {
             AdminMainScreen.routeName: (context) => AdminMainScreen(),
             newJobPostionScreenII.routeName: (context) =>

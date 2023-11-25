@@ -5,12 +5,21 @@ import 'package:talentsync/models/candidates_model.dart';
 import '../auth.dart';
 
 class Candidates with ChangeNotifier {
+  pdfExtractedModel pdfExtractedData = pdfExtractedModel(
+      pdfName: '',
+      pdfUrl: '',
+      candidateName: '',
+      skills: [],
+      experiences: [],
+      education: []);
+
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   CandidateModel candidateProviderData = CandidateModel(
       id: '',
       name: '',
       email: '',
       education: '',
+      imgs: [],
       skills: [],
       experiences: [],
       pdfs: []);
@@ -56,5 +65,22 @@ class Candidates with ChangeNotifier {
       },
     );
     print("Experiences updated successfully");
+  }
+
+  // pdfName, String pdfUrls, String candidateName, List<String> skills, List<String> experience, List<String> education
+  Future<void> setPdfsDetailss(pdfExtractedModel pdfExtractedData) async {
+    await _firebaseFirestore
+        .collection("user")
+        .doc(Auth().currentUser!.uid)
+        .update({
+      "pdfs": {
+        "name": pdfExtractedData.pdfName,
+        "pdfUrls": pdfExtractedData.pdfUrl,
+        "candidateName": pdfExtractedData.candidateName,
+        "skills": pdfExtractedData.skills,
+        "experience": pdfExtractedData.experiences,
+        "education": pdfExtractedData.education
+      }
+    });
   }
 }

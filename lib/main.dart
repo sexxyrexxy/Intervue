@@ -42,7 +42,11 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Intervüe',
           theme: ThemeData(fontFamily: 'Futura'),
+<<<<<<< HEAD
           home: Navigation(),
+=======
+          home: CandidatesAnsweringScreen(),
+>>>>>>> afd1dc7 (ok)
           routes: {
             AdminMainScreen.routeName: (context) => AdminMainScreen(),
             newJobPostionScreenII.routeName: (context) =>

@@ -48,7 +48,11 @@ class InterviewQuestionCard extends StatelessWidget {
                               positionProvider.removeQuestions(position, text);
                             },
                           ),
-                          TextButton(onPressed: (){Navigator.of(context).pop();}, child: Text('Cancel'))
+                          TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('Cancel'))
                         ],
                       );
                     },

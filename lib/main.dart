@@ -5,10 +5,12 @@ import 'package:talentsync/providers/position_provider.dart';
 import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/screens/candidates_pre_interview.dart';
 import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
+import 'package:talentsync/screens/login_screen.dart';
 import 'package:talentsync/screens/main_job_searching_screen.dart';
 import 'package:talentsync/screens/new_job_screen_I.dart';
 import 'package:talentsync/screens/new_job_screen_II.dart';
 import 'package:talentsync/screens/new_job_screen_III.dart';
+import 'package:talentsync/screens/signup_screen.dart';
 import 'package:talentsync/widgets/camera.dart';
 import 'firebase_options.dart';
 
@@ -38,7 +40,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Intervüe',
           theme: ThemeData(fontFamily: 'Futura'),
-          home: CandidatesAnsweringScreen(),
+          home: loginScreen(),
           routes: {
             AdminMainScreen.routeName: (context) => AdminMainScreen(),
             newJobPostionScreenII.routeName: (context) =>
@@ -49,6 +51,8 @@ class MyApp extends StatelessWidget {
             MainJobSearch.routeName: (context) => MainJobSearch(),
             AdminIndividualCandidateScreen.routeName: (context) =>
                 AdminIndividualCandidateScreen(),
+            loginScreen.routeName: (context) => loginScreen(),
+            RegisterScreen.routeName: (context) => RegisterScreen(),
             CandidatesUploadCV.routeName: (context) => CandidatesUploadCV(),
             CandidatesAnsweringScreen.routeName: (context) =>
                 CandidatesAnsweringScreen(),

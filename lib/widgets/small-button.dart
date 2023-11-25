@@ -35,3 +35,32 @@ class smallButton extends StatelessWidget {
     );
   }
 }
+
+class smallButtonwithoutIcons extends StatelessWidget {
+  double width;
+  double height;
+  double fontSize;
+  Color color;
+  Color fontColor;
+
+  String text;
+  smallButtonwithoutIcons(this.width, this.height, this.color, this.text,
+      this.fontSize, this.fontColor,
+      {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Center(
+          child: Text(text,
+              style: TextStyle(fontSize: fontSize, color: fontColor))),
+    );
+  }
+}

@@ -4750,6 +4750,12 @@ file_selector_platform_interface
 file_selector_windows
 flutter_lints
 flutter_plugin_android_lifecycle
+google_identity_services_web
+google_sign_in
+google_sign_in_android
+google_sign_in_ios
+google_sign_in_platform_interface
+google_sign_in_web
 image_picker_for_web
 image_picker_linux
 image_picker_macos
@@ -5060,6 +5066,9 @@ quiver
    limitations under the License.
 --------------------------------------------------------------------------------
 cloud_firestore_web
+firebase_auth
+firebase_auth_platform_interface
+firebase_auth_web
 firebase_core
 firebase_core_platform_interface
 firebase_storage

@@ -61,7 +61,6 @@ dependencies:
   timer_count_down: ^2.2.2
   firebase_auth: ^4.14.1
   google_sign_in: ^6.1.6
-  syncfusion_flutter_pdf: ^20.3.49
 
 dev_dependencies:
   flutter_test:

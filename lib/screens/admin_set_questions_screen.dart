@@ -55,39 +55,40 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
             ),
             ...positions,
             Container(
-                margin: EdgeInsets.all(10),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border:
-                      Border.all(width: 1, color: Colors.grey.withOpacity(0.5)),
-                  borderRadius: BorderRadius.circular(10),
-                  color: backgroundWhite,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 7,
-                      offset: Offset(0, 5), // changes position of shadow
-                    ),
-                  ],
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: TextField(
-                  textAlign: TextAlign.center,
-                  controller: _controller,
-                  textInputAction: TextInputAction.done,
-                  onSubmitted: (value) {
-                    setState(() {
-                      _controller.clear();
-                      positions.add(InterviewPosition(value));
-                    });
-                  },
-                  //Change this to button that leads to the job posting screen//
-                  decoration: InputDecoration(
-                    hintText: 'Add New Position',
-                    border: InputBorder.none,
+              margin: EdgeInsets.all(10),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                border:
+                    Border.all(width: 1, color: Colors.grey.withOpacity(0.5)),
+                borderRadius: BorderRadius.circular(10),
+                color: backgroundWhite,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 1,
+                    blurRadius: 7,
+                    offset: Offset(0, 5), // changes position of shadow
                   ),
-                ))
+                ],
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: TextField(
+                textAlign: TextAlign.center,
+                controller: _controller,
+                textInputAction: TextInputAction.done,
+                onSubmitted: (value) {
+                  setState(() {
+                    _controller.clear();
+                    positions.add(InterviewPosition(value));
+                  });
+                },
+                //Change this to button that leads to the job posting screen//
+                decoration: InputDecoration(
+                  hintText: 'Add New Position',
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
           ],
         ));
   }

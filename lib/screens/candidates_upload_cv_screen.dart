@@ -66,10 +66,8 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
           await FirebaseStorage.instance.ref("pdfs/$fileName").getDownloadURL();
 
       print("Pdf uploaded succesfully");
-      await _firebaseFirestore
-          .collection("user")
-          .doc(Auth().currentUser!.uid)
-          .update({"pdfNames": fileName, "pdfUrls": downloadlink});
+      Provider.of<CandidatesProvider>(context, listen: false).setPdfDetails(
+          pdfExtractedModel(pdfName: fileName, pdfUrl: downloadlink));
 
       print("Pdf anjeng succesfully");
     } else {
@@ -126,9 +124,9 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                             pickedFile = await FilePickerWeb.platform.pickFiles(
                                 type: FileType.custom,
                                 allowedExtensions: ['pdf']);
-                                
-    //                             PdfDocument document =
-    // PdfDocument(inputBytes: await _readDocumentData(pickedFile));
+
+                            //                             PdfDocument document =
+                            // PdfDocument(inputBytes: await _readDocumentData(pickedFile));
                             if (pickedFile != null) {
                               setState(() {
                                 fnameController.text = 'Rex';

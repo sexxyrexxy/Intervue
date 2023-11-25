@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:talentsync/providers/candidate_provider.dart';
 import 'package:talentsync/providers/position_provider.dart';
+import 'package:talentsync/screens/admin_candidates_screen.dart';
 import 'package:talentsync/screens/admin_set_questions_screen.dart';
 import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/screens/candidates_pre_interview.dart';
@@ -43,8 +44,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Intervüe',
           theme: ThemeData(fontFamily: 'Futura'),
-
-          home: CandidatesUploadCV(),
+          home: Navigation(),
           routes: {
             AdminMainScreen.routeName: (context) => AdminMainScreen(),
             newJobPostionScreenII.routeName: (context) =>

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:talentsync/models/candidates_model.dart';
 
@@ -6,6 +7,8 @@ import '../auth.dart';
 
 class CandidatesProvider with ChangeNotifier {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
+  List<String> candidatesIdList = [];
+  List<CandidateModel> loadedCandidateLists = [];
 
   CandidateModel defaultCandidate = CandidateModel(
       id: "0",
@@ -75,6 +78,82 @@ class CandidatesProvider with ChangeNotifier {
         "imgName": imgExtractedData.imgName,
         "imgUrls": imgExtractedData.imgUrl,
       }
+    });
+  }
+
+  Future<void> fetchForumId() async {
+    print('fetch');
+    try {
+      await FirebaseFirestore.instance.collection("candidates").get().then(
+        (snapshot) {
+          snapshot.docs.forEach(
+            (candidates) {
+              candidatesIdList.add(candidates.reference.id);
+            },
+          );
+        },
+      );
+      print('Success! fetched candidatesId List: ${candidatesIdList}');
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  Future<void> fetchAllCandidates() async {
+    for (int i = 0; i < candidatesIdList.length; i++) {
+      await fetchCandidateDatabyId(candidatesIdList[i]);
+    }
+    print('all done');
+  }
+
+  Future<void> fetchCandidateDatabyId(String candidatesId) async {
+    List<String> tmpSkills = <String>[];
+    List<String> tmpExperiences = <String>[];
+    List<Map<String, String>> tmpQuestions = <Map<String, String>>[];
+
+    await FirebaseFirestore.instance
+        .collection("candidates")
+        .doc(candidatesId)
+        .get()
+        .then((snapshot) {
+      List.from(snapshot.data()!['skills']).forEach(
+        (skills) {
+          String data = skills;
+          tmpSkills.add(data);
+        },
+      );
+      List.from(snapshot.data()!['experiences']).forEach(
+        (exp) {
+          String data = exp;
+          tmpExperiences.add(data);
+        },
+      );
+      // List.from(snapshot.data()!['questions']).forEach(
+      //   (questions) {
+      //     String data = questions;
+      //     tmpQuestions.add(data);
+      //   },
+      // );
+
+      CandidateModel loadedCandidate = CandidateModel(
+          id: snapshot.data()!["id"],
+          name: snapshot.data()!["name"],
+          email: snapshot.data()!["email"],
+          education: snapshot.data()!["education"],
+          appliedPosition: snapshot.data()!["appliedPosition"],
+          imgs: imgExtractedModel(
+              imgName: snapshot.data()!["imgs"]["imgName"],
+              imgUrl: snapshot.data()!["imgs"]["imgUrls"]),
+          skills: tmpSkills,
+          experiences: tmpExperiences,
+          question: tmpQuestions,
+          pdfs: pdfExtractedModel(
+              pdfName: snapshot.data()!["pdfs"]["pdfName"],
+              pdfUrl: snapshot.data()!["pdfs"]["pdfUrls"]));
+
+      loadedCandidateLists.add(loadedCandidate);
+      print('fetched ${snapshot.data()!['name']}');
     });
   }
 }

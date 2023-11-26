@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:talentsync/providers/candidate_provider.dart';
 import 'package:talentsync/widgets/candidate_card.dart';
+import '../models/colors.dart' as custom_colors;
 
 import 'loading_screen.dart';
 
@@ -41,7 +42,7 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
     } else {
       setState(
         () {
-          _isLoading = false;
+          _isLoading = true;
         },
       );
     }
@@ -56,9 +57,16 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
     var _provider = Provider.of<CandidatesProvider>(context, listen: false);
 
     return _isLoading
-        ? LoadingScreen()
+        ? Padding(
+            padding: const EdgeInsets.fromLTRB(52, 400, 52, 400),
+            child: Center(
+              child: CircularProgressIndicator(
+                color: custom_colors.secondaryDarkBlue,
+              ),
+            ),
+          )
         : Container(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.fromLTRB(40, 16, 16, 16),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -79,6 +87,9 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
                         );
                       }).toList(),
                     )),
+                SizedBox(
+                  height: MediaQuery.sizeOf(context).height * 0.016,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

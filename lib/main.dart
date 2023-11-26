@@ -8,6 +8,7 @@ import 'package:talentsync/screens/admin_set_questions_screen.dart';
 import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/screens/candidates_pre_interview.dart';
 import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
+import 'package:talentsync/screens/loading_screen.dart';
 import 'package:talentsync/screens/login_screen.dart';
 import 'package:talentsync/screens/main_job_searching_screen.dart';
 import 'package:talentsync/screens/new_job_screen_I.dart';

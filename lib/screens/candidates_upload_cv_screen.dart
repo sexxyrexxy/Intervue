@@ -52,7 +52,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
 
     // Start using!
     final completion = await OpenAI.instance.completion.create(
-      model: "text-davinci-003",     
+      model: "text-davinci-003",
       maxTokens: 500,
       prompt: """
                 I am giving you a resume broken down into text. Analyze it and summarize in bullet points. 
@@ -113,10 +113,8 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
           await FirebaseStorage.instance.ref("pdfs/$fileName").getDownloadURL();
 
       print("Pdf uploaded succesfully");
-      await _firebaseFirestore
-          .collection("user")
-          .doc(Auth().currentUser!.uid)
-          .update({"pdfNames": fileName, "pdfUrls": downloadlink});
+      Provider.of<CandidatesProvider>(context, listen: false).setPdfDetails(
+          pdfExtractedModel(pdfName: fileName, pdfUrl: downloadlink));
 
       print("Pdf anjeng succesfully");
     } else {

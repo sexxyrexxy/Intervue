@@ -926,6 +926,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "syncfusion_flutter_charts",
+      "rootUri": "file:///Users/rexlim/.pub-cache/hosted/pub.dev/syncfusion_flutter_charts-23.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "syncfusion_flutter_core",
       "rootUri": "file:///Users/rexlim/.pub-cache/hosted/pub.dev/syncfusion_flutter_core-23.2.4",
       "packageUri": "lib/",
@@ -1088,7 +1094,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-11-26T11:59:45.275021Z",
+  "generated": "2023-11-26T13:14:07.955362Z",
   "generator": "pub",
   "generatorVersion": "3.2.0"
 }

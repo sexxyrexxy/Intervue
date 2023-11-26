@@ -100,6 +100,7 @@ class PositionProvider with ChangeNotifier {
   }
 
   Future<void>? createNewPosition(
+      String id,
       String posName,
       String description,
       int numOfPeople,
@@ -109,16 +110,21 @@ class PositionProvider with ChangeNotifier {
       List<String> skillsRequired,
       List<String> responsibilities,
       List<String> defaultQuestions) {
-    _firebaseFirestore.collection("position").doc().set({
-      'positionName': posName,
-      'description': description,
-      'numOfPeople': numOfPeople,
-      'location': location,
-      'yearOfExperience': yearOfExperience,
-      'responsibilities': responsibilities,
-      'benefits': benefits,
-      'skillsRequired': skillsRequired,
-      'defaultQuestions': defaultQuestions,
+    _firebaseFirestore.collection("position").add({}).then((value) {
+      id = value.id;
+      print("id: ${value.id}");
+      _firebaseFirestore.collection("position").doc(id).set({
+        'id': id,
+        'positionName': posName,
+        'description': description,
+        'numOfPeople': numOfPeople,
+        'location': location,
+        'yearOfExperience': yearOfExperience,
+        'responsibilities': responsibilities,
+        'benefits': benefits,
+        'skillsRequired': skillsRequired,
+        'defaultQuestions': defaultQuestions,
+      });
     });
     return null;
   }
@@ -135,7 +141,7 @@ class PositionProvider with ChangeNotifier {
           );
         },
       );
-      print('Success! fetched forumId List: ${[positionIdList]}');
+      print('Success! fetched position List: ${[positionIdList]}');
     } catch (e) {
       print(e.toString());
       return null;
@@ -187,7 +193,7 @@ class PositionProvider with ChangeNotifier {
 
       PositionModel loadedPosition = PositionModel(
         id: snapshot.data()!["id"],
-        name: snapshot.data()!["name"],
+        name: snapshot.data()!["positionName"],
         description: snapshot.data()!["description"],
         numOfPeople: snapshot.data()!["numOfPeople"],
         yearOfExperience: snapshot.data()!["yearOfExperience"],
@@ -196,11 +202,10 @@ class PositionProvider with ChangeNotifier {
         responsibilities: tmpresponsibilities,
         skillsRequired: tmpSkillsRequired,
       );
-
+      print(loadedPosition);
       loadedPositionList.add(loadedPosition);
-      print('fetched ${snapshot.data()!['name']}');
-
-      ;
+      print('fetched ${snapshot.data()!['id']}');
+      print(loadedPositionList.length);
     });
   }
 }

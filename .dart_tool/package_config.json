@@ -218,6 +218,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "dio",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/dio-5.3.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "dropdown_button2",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/dropdown_button2-2.3.9",
       "packageUri": "lib/",
@@ -548,6 +554,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/intl-0.18.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "io",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/io-1.0.4",
       "packageUri": "lib/",
@@ -710,6 +722,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "petitparser",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/petitparser-5.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "platform",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/platform-3.1.3",
       "packageUri": "lib/",
@@ -750,6 +768,12 @@
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/quiver-3.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "read_pdf_text",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/read_pdf_text-0.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "record",
@@ -902,6 +926,18 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "syncfusion_flutter_core",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/syncfusion_flutter_core-23.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "syncfusion_flutter_pdf",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/syncfusion_flutter_pdf-23.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "synchronized",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/synchronized-3.1.0",
       "packageUri": "lib/",
@@ -1028,6 +1064,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "xml",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/xml-6.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "yaml",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/yaml-3.1.2",
       "packageUri": "lib/",
@@ -1040,7 +1082,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-11-25T13:37:28.883936Z",
+  "generated": "2023-11-26T05:56:44.346058Z",
   "generator": "pub",
   "generatorVersion": "3.0.6"
 }

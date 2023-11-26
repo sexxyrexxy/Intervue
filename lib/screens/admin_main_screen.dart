@@ -321,10 +321,10 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
               borderRadius: BorderRadius.circular(10),
             ),
             padding: const EdgeInsets.all(30),
-            child: Column(
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Interview Logs',
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
                 ),
@@ -334,7 +334,7 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
                     Expanded(
                         child: SingleChildScrollView(
                             scrollDirection: Axis.vertical,
-                            child: const DataTableExample()))
+                            child: DataTableComponent()))
                   ],
                 ),
               ],
@@ -361,14 +361,24 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
   }
 }
 
-class DataTableExample extends StatelessWidget {
-  const DataTableExample({super.key});
+class DataTableComponent extends StatelessWidget {
+  const DataTableComponent({super.key});
+
+  DataRow generateRow(
+      String name, String position, String date, String status, Color color) {
+    return DataRow(cells: <DataCell>[
+      DataCell(Text(name)),
+      DataCell(Text(position)),
+      DataCell(Text(date)),
+      DataCell(Text(status, style: TextStyle(color: color))),
+    ]);
+  }
 
   @override
   Widget build(BuildContext context) {
     return DataTable(
-      dataTextStyle:
-          TextStyle(fontSize: 18, color: Colors.black, fontFamily: 'Futura'),
+      dataTextStyle: const TextStyle(
+          fontSize: 18, color: Colors.black, fontFamily: 'Futura'),
       columns: <DataColumn>[
         DataColumn(
           label: Expanded(
@@ -407,49 +417,17 @@ class DataTableExample extends StatelessWidget {
           ),
         ),
       ],
-      rows: const <DataRow>[
-        DataRow(
-          cells: <DataCell>[
-            DataCell(Text('Rex Lim')),
-            DataCell(Text('Systems Engineer (Full-Time)')),
-            DataCell(Text('25 Nov 2024')),
-            DataCell(
-                Text('Pending Review', style: TextStyle(color: Colors.yellow))),
-          ],
-        ),
-        DataRow(
-          cells: <DataCell>[
-            DataCell(Text('Rex Lim')),
-            DataCell(Text('Systems Engineer (Full-Time)')),
-            DataCell(Text('25 Nov 2024')),
-            DataCell(Text('Accepted', style: TextStyle(color: Colors.green))),
-          ],
-        ),
-        DataRow(
-          cells: <DataCell>[
-            DataCell(Text('Rex Lim')),
-            DataCell(Text('Systems Engineer (Full-Time)')),
-            DataCell(Text('25 Nov 2024')),
-            DataCell(Text('Rejected', style: TextStyle(color: Colors.red))),
-          ],
-        ),
-        DataRow(
-          cells: <DataCell>[
-            DataCell(Text('Rex Lim')),
-            DataCell(Text('Systems Engineer (Full-Time)')),
-            DataCell(Text('25 Nov 2024')),
-            DataCell(Text('Pending Interview',
-                style: TextStyle(color: secondaryBlue))),
-          ],
-        ),
-        DataRow(
-          cells: <DataCell>[
-            DataCell(Text('Rex Lim')),
-            DataCell(Text('Systems Engineer (Full-Time)')),
-            DataCell(Text('25 Nov 2024')),
-            DataCell(Text('Canceled', style: TextStyle(color: Colors.grey))),
-          ],
-        ),
+      rows: <DataRow>[
+        generateRow('Rex Lim', 'Systems Engineer (Full-Time)', '25 Nov 2024',
+            'Pending Review', Colors.yellow),
+        generateRow('Rex Lim', 'Systems Engineer (Full-Time)', '25 Nov 2024',
+            'Accepted', Colors.green),
+        generateRow('Rex Lim', 'Systems Engineer (Full-Time)', '25 Nov 2024',
+            'Rejected', Colors.red),
+        generateRow('Rex Lim', 'Systems Engineer (Full-Time)', '25 Nov 2024',
+            'Pending Interview', secondaryBlue),
+        generateRow('Rex Lim', 'Systems Engineer (Full-Time)', '25 Nov 2024',
+            'Canceled', Colors.grey),
       ],
     );
   }

@@ -2,19 +2,24 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dart_openai/dart_openai.dart';
 import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
 import 'package:file_picker/_internal/file_picker_web.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:talentsync/models/candidates_model.dart';
 import 'package:talentsync/models/colors.dart';
 import 'package:talentsync/providers/candidate_provider.dart';
+import 'package:talentsync/providers/openAI_4_provider.dart';
 import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/widgets/candidate_info_text_field.dart';
 import '../auth.dart';
+import 'package:read_pdf_text/read_pdf_text.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 class CandidatesUploadCV extends StatefulWidget {
   static const routeName = '/uploadCV';
@@ -28,7 +33,49 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   var pickedFile;
 
-  // Pick image
+  Future<List<int>> _readDocumentData(String name) async {
+    final ByteData data = await rootBundle.load(name);
+    return data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+  }
+
+  // final systemMessage = OpenAIChatCompletionChoiceMessageModel(
+  //   content: "return any message you are given as JSON.",
+  //   role: OpenAIChatMessageRole.assistant,
+  // );
+  // final userMessage = OpenAIChatCompletionChoiceMessageModel(
+  //   content: "Hello, I am a chatbot created by OpenAI. How are you today?",
+  //   role: OpenAIChatMessageRole.user,
+  // );
+  Future<void> exampleAI(String text) async {
+    // Set the OpenAI API key from the .env file.
+    OpenAI.apiKey = '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';
+
+    // Start using!
+    final completion = await OpenAI.instance.completion.create(
+      model: "text-davinci-003",     
+      maxTokens: 500,
+      prompt: """
+                I am giving you a resume broken down into text. Analyze it and summarize in bullet points. 
+                Strictly only extract name, phone number, email, education and skills.
+                Give no extra information other than that. Here is the text : ${text}.
+                Do it in the strict format and order of below:
+                First Name: 'actual first name',
+                Last Name: 'actual last name',
+                Email: 'actual email',
+                Phone number: 'actual phone number',
+                Education: 'Bachelor's of Computer Science',
+                Skills: 
+                1. skill number 1,
+                2. skill number 2,
+                3. skill number 3,
+                
+                Skills are supposed to be one or two words per skill. For example, Flutter, Web Development, Mobile development etc.
+                """,
+    );
+
+    print(completion.choices[0].text);
+  }
+
   void pickImage() async {
     final result = await FilePickerWeb.platform.pickFiles(
         type: FileType.custom, allowedExtensions: ['jpeg', 'png', 'jpg']);
@@ -126,9 +173,13 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                             pickedFile = await FilePickerWeb.platform.pickFiles(
                                 type: FileType.custom,
                                 allowedExtensions: ['pdf']);
-                                
-    //                             PdfDocument document =
-    // PdfDocument(inputBytes: await _readDocumentData(pickedFile));
+                            PdfDocument document = PdfDocument(
+                                inputBytes: await _readDocumentData(
+                                    'lib/assets/pdfs/CVMay2023.pdf'));
+                            PdfTextExtractor extractor =
+                                PdfTextExtractor(document);
+                            String text = extractor.extractText();
+                            exampleAI(text);
                             if (pickedFile != null) {
                               setState(() {
                                 fnameController.text = 'Rex';

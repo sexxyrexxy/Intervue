@@ -18,7 +18,6 @@ class _InterviewPositionState extends State<InterviewPosition> {
   List<Widget> questions = [];
   @override
   Widget build(BuildContext context) {
-    questions.clear();
     var positionProvider = Provider.of<PositionProvider>(context, listen: true);
     int positionIndex = positionProvider.positionList
         .indexWhere((pos) => pos.name == widget.position);
@@ -42,7 +41,6 @@ class _InterviewPositionState extends State<InterviewPosition> {
           margin: EdgeInsets.all(10),
           width: double.infinity,
           decoration: BoxDecoration(
-            color: backgroundWhite,
             border: Border.all(width: 1, color: Colors.grey),
             borderRadius: BorderRadius.circular(10),
           ),
@@ -142,39 +140,52 @@ class _InterviewPositionState extends State<InterviewPosition> {
             ],
           ),
         ),
-        ...questions,
         Container(
-          decoration: BoxDecoration(
-            color: backgroundWhite,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 1,
-                blurRadius: 7,
-                offset: Offset(0, 5), // changes position of shadow
-              ),
-            ],
-          ),
+          padding: EdgeInsets.all(10),
           margin: EdgeInsets.all(10),
-          child: TextField(
-            textAlign: TextAlign.center,
-            controller: _controller,
-            textInputAction: TextInputAction.done,
-            onSubmitted: (value) {
-              setState(() {
-                positionProvider.addQuestion(
-                    widget.position, _controller.text, null);
-                questions.add(
-                    InterviewQuestionCard(widget.position, _controller.text));
-                _controller.clear();
-              });
-            },
-            decoration: InputDecoration(
-              hintText: 'Add Question...',
-              border: InputBorder.none,
-            ),
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(width: 1, color: Colors.grey),
           ),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text('Questions:'),
+            ...questions,
+            Container(
+              decoration: BoxDecoration(
+                color: backgroundWhite,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 1,
+                    blurRadius: 7,
+                    offset: Offset(0, 5), // changes position of shadow
+                  ),
+                ],
+              ),
+              margin: EdgeInsets.all(10),
+              child: TextField(
+                textAlign: TextAlign.center,
+                controller: _controller,
+                textInputAction: TextInputAction.done,
+                onSubmitted: (value) {
+                  setState(() {
+                    positionProvider.addQuestion(
+                        widget.position, _controller.text, null);
+                    questions.add(InterviewQuestionCard(
+                        widget.position, _controller.text));
+                    _controller.clear();
+                  });
+                },
+                decoration: InputDecoration(
+                  hintText: 'Add Question...',
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+          ]),
         ),
         SizedBox(
           height: 20,

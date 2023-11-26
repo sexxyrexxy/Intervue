@@ -90,7 +90,7 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
                       skillsRequired: [""],
                     ));
                     positionProvider.createNewPosition(
-                        "posName", "description", 0, "", 0, [], [], [], []);
+                        "", value, "", 0, "", 0, [], [], [], []);
                     _controller.clear();
                   });
                 },

@@ -100,6 +100,7 @@ class PositionProvider with ChangeNotifier {
   }
 
   Future<void>? createNewPosition(
+      String id,
       String posName,
       String description,
       int numOfPeople,
@@ -109,16 +110,21 @@ class PositionProvider with ChangeNotifier {
       List<String> skillsRequired,
       List<String> responsibilities,
       List<String> defaultQuestions) {
-    _firebaseFirestore.collection("position").doc().set({
-      'positionName': posName,
-      'description': description,
-      'numOfPeople': numOfPeople,
-      'location': location,
-      'yearOfExperience': yearOfExperience,
-      'responsibilities': responsibilities,
-      'benefits': benefits,
-      'skillsRequired': skillsRequired,
-      'defaultQuestions': defaultQuestions,
+    _firebaseFirestore.collection("position").add({}).then((value) {
+      id = value.id;
+      print("id: ${value.id}");
+      _firebaseFirestore.collection("position").doc(id).set({
+        'id': id,
+        'positionName': posName,
+        'description': description,
+        'numOfPeople': numOfPeople,
+        'location': location,
+        'yearOfExperience': yearOfExperience,
+        'responsibilities': responsibilities,
+        'benefits': benefits,
+        'skillsRequired': skillsRequired,
+        'defaultQuestions': defaultQuestions,
+      });
     });
     return null;
   }

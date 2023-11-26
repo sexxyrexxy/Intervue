@@ -33,20 +33,21 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   var pickedFile;
 
-  Future<List<int>> _readDocumentData(String name) async {
-    final ByteData data = await rootBundle.load(name);
-    return data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+  Future<List<int>> readDocumentData(ByteData bytedata) async {
+    return bytedata.buffer
+        .asUint8List(bytedata.offsetInBytes, bytedata.lengthInBytes);
   }
 
-  // final systemMessage = OpenAIChatCompletionChoiceMessageModel(
-  //   content: "return any message you are given as JSON.",
-  //   role: OpenAIChatMessageRole.assistant,
-  // );
-  // final userMessage = OpenAIChatCompletionChoiceMessageModel(
-  //   content: "Hello, I am a chatbot created by OpenAI. How are you today?",
-  //   role: OpenAIChatMessageRole.user,
-  // );
-  Future<void> exampleAI(String text) async {
+  ByteData? convertFilePickerResultToByteData(
+      FilePickerResult? result) {
+    if (result != null && result.files.isNotEmpty) {
+      List<int> fileBytes =  result.files.first.bytes ?? [];
+      return ByteData.sublistView(Uint8List.fromList(fileBytes));
+    }
+    return null;
+  }
+
+  Future<String> exampleAI(String text) async {
     // Set the OpenAI API key from the .env file.
     OpenAI.apiKey = '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';
 
@@ -55,25 +56,26 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
       model: "text-davinci-003",
       maxTokens: 500,
       prompt: """
-                I am giving you a resume broken down into text. Analyze it and summarize in bullet points. 
-                Strictly only extract name, phone number, email, education and skills.
-                Give no extra information other than that. Here is the text : ${text}.
-                Do it in the strict format and order of below:
-                First Name: 'actual first name',
-                Last Name: 'actual last name',
-                Email: 'actual email',
-                Phone number: 'actual phone number',
-                Education: 'Bachelor's of Computer Science',
-                Skills: 
-                1. skill number 1,
-                2. skill number 2,
-                3. skill number 3,
+                I am giving you a resume broken down into text. Analyze it, summarize, and return in JSON format. 
+                Strictly only extract first name, last name, phone number, email, education and strictly only 3 skills.
+                Give no extra information other than that. 
+                Here is the text : ${text}.
+                Do it in the strict JSON format and example of below, make sure the keys are exactly right:
+                {
+                                    "First Name": "Ronalds",
+                                    "Last Name": "Lim",
+                                    "Email": "rexlim2003@gmail.com",
+                                    "Phone Number": "+60 14 759 3534",
+                                    "Education": "Bachelor's of Computer Science",
+                                    "Skills": ["Application Development", "Flutter", "Firebase"]
+                                  }
                 
-                Skills are supposed to be one or two words per skill. For example, Flutter, Web Development, Mobile development etc.
+                Skills is a list, and they are supposed to be one or two words per skill. For example, Flutter, Web Development, Mobile development etc.
                 """,
     );
 
     print(completion.choices[0].text);
+    return completion.choices[0].text;
   }
 
   void pickImage() async {
@@ -171,21 +173,47 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                             pickedFile = await FilePickerWeb.platform.pickFiles(
                                 type: FileType.custom,
                                 allowedExtensions: ['pdf']);
-                            PdfDocument document = PdfDocument(
-                                inputBytes: await _readDocumentData(
-                                    'lib/assets/pdfs/CVMay2023.pdf'));
+
+                            ByteData byteFile =
+                                convertFilePickerResultToByteData(pickedFile)!;
+
+                            PdfDocument documentTry = PdfDocument(
+                                inputBytes: await readDocumentData(
+                                    byteFile));
+
                             PdfTextExtractor extractor =
-                                PdfTextExtractor(document);
+                                PdfTextExtractor(documentTry);
                             String text = extractor.extractText();
-                            exampleAI(text);
+                            Map<String, dynamic> jsonMap =
+                                json.decode(await exampleAI(text));
+                            // String inputString = """{
+                            //         "First Name": "Ronalds",
+                            //         "Last Name": "Lim",
+                            //         "Email": "rexlim2003@gmail.com",
+                            //         "Phone Number": "+60 14 759 3534",
+                            //         "Education": "Bachelor's of Computer Science",
+                            //         "Skills": ["Application Development", "Flutter", "Firebase"]
+                            //       }""";
+
+                            // Map<String, dynamic> jsonMap =
+                            //     json.decode(inputString);
+
+                            // Accessing individual properties
+                            String firstName = jsonMap['First Name'];
+                            String lastName = jsonMap['Last Name'];
+                            String email = jsonMap['Email'];
+                            String phoneNumber = jsonMap['Phone Number'];
+                            String education = jsonMap['Education'];
+                            List<String> skills =
+                                List<String>.from(jsonMap['Skills']);
+
                             if (pickedFile != null) {
                               setState(() {
-                                fnameController.text = 'Rex';
-                                lnameController.text = 'Lim';
-                                phoneController.text = "0147593534";
-                                emailController.text = 'rexlim2003@gmail.com';
-                                educationController.text =
-                                    "Bachelor's of Computer Science";
+                                fnameController.text = firstName;
+                                lnameController.text = lastName;
+                                phoneController.text = phoneNumber;
+                                emailController.text = email;
+                                educationController.text = education;
                               });
                             }
                           },

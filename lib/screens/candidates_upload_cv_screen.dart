@@ -33,19 +33,20 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   var pickedFile;
 
-  Future<List<int>> _readDocumentData(String name) async {
-    final ByteData data = await rootBundle.load(name);
-    return data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+  Future<List<int>> readDocumentData(ByteData bytedata) async {
+    return bytedata.buffer
+        .asUint8List(bytedata.offsetInBytes, bytedata.lengthInBytes);
   }
 
-  // final systemMessage = OpenAIChatCompletionChoiceMessageModel(
-  //   content: "return any message you are given as JSON.",
-  //   role: OpenAIChatMessageRole.assistant,
-  // );
-  // final userMessage = OpenAIChatCompletionChoiceMessageModel(
-  //   content: "Hello, I am a chatbot created by OpenAI. How are you today?",
-  //   role: OpenAIChatMessageRole.user,
-  // );
+  ByteData? convertFilePickerResultToByteData(
+      FilePickerResult? result) {
+    if (result != null && result.files.isNotEmpty) {
+      List<int> fileBytes =  result.files.first.bytes ?? [];
+      return ByteData.sublistView(Uint8List.fromList(fileBytes));
+    }
+    return null;
+  }
+
   Future<String> exampleAI(String text) async {
     // Set the OpenAI API key from the .env file.
     OpenAI.apiKey = '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';
@@ -172,26 +173,30 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                             pickedFile = await FilePickerWeb.platform.pickFiles(
                                 type: FileType.custom,
                                 allowedExtensions: ['pdf']);
-                            PdfDocument document = PdfDocument(
-                                inputBytes: await _readDocumentData(
-                                    'lib/assets/pdfs/CVMay2023.pdf'));
+
+                            ByteData byteFile =
+                                convertFilePickerResultToByteData(pickedFile)!;
+
+                            PdfDocument documentTry = PdfDocument(
+                                inputBytes: await readDocumentData(
+                                    byteFile));
+
                             PdfTextExtractor extractor =
-                                PdfTextExtractor(document);
+                                PdfTextExtractor(documentTry);
                             String text = extractor.extractText();
+                            Map<String, dynamic> jsonMap =
+                                json.decode(await exampleAI(text));
+                            // String inputString = """{
+                            //         "First Name": "Ronalds",
+                            //         "Last Name": "Lim",
+                            //         "Email": "rexlim2003@gmail.com",
+                            //         "Phone Number": "+60 14 759 3534",
+                            //         "Education": "Bachelor's of Computer Science",
+                            //         "Skills": ["Application Development", "Flutter", "Firebase"]
+                            //       }""";
 
                             // Map<String, dynamic> jsonMap =
-                            //     json.decode(await exampleAI(text));
-                                  String inputString = """{
-                                    "First Name": "Ronalds",
-                                    "Last Name": "Lim",
-                                    "Email": "rexlim2003@gmail.com",
-                                    "Phone Number": "+60 14 759 3534",
-                                    "Education": "Bachelor's of Computer Science",
-                                    "Skills": ["Application Development", "Flutter", "Firebase"]
-                                  }""";
-
-                            Map<String, dynamic> jsonMap =
-                                json.decode(inputString);
+                            //     json.decode(inputString);
 
                             // Accessing individual properties
                             String firstName = jsonMap['First Name'];

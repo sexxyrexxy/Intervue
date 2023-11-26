@@ -14,7 +14,20 @@ class InterviewPosition extends StatefulWidget {
 }
 
 class _InterviewPositionState extends State<InterviewPosition> {
-  final TextEditingController _controller = TextEditingController();
+  final TextEditingController _questionController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+
+  final TextEditingController _numOfPeopleController = TextEditingController();
+
+  final TextEditingController _locationController = TextEditingController();
+  final TextEditingController _skillsController = TextEditingController();
+
+  final TextEditingController _responsibilitiesController =
+      TextEditingController();
+  final TextEditingController _benefitsController = TextEditingController();
+  final TextEditingController _yearsExperienceController =
+      TextEditingController();
+
   List<Widget> questions = [];
   @override
   Widget build(BuildContext context) {
@@ -51,14 +64,24 @@ class _InterviewPositionState extends State<InterviewPosition> {
               SizedBox(
                 height: 8,
               ),
-              Container(
-                  padding: EdgeInsets.all(10),
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(fetchedPosition.description))
+              TextField(
+                controller: _descriptionController,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(10),
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  filled: true,
+                  fillColor: Colors.grey.withOpacity(0.1),
+                ),
+              ),
+              // Container(
+              //     padding: EdgeInsets.all(10),
+              //     width: double.infinity,
+              //     decoration: BoxDecoration(
+              //       color: Colors.grey.withOpacity(0.1),
+              //       borderRadius: BorderRadius.circular(10),
+              //     ),
+              //     child: Text(fetchedPosition.description))
             ],
           ),
         ),
@@ -80,6 +103,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                     child: QuestionDataTextField(
                       title: "Number of People:",
                       data: fetchedPosition.numOfPeople.toString(),
+                      controller: _numOfPeopleController,
                     ),
                   ),
                   SizedBox(
@@ -89,6 +113,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                     child: QuestionDataTextField(
                       title: "Location:",
                       data: fetchedPosition.location,
+                      controller: _locationController,
                     ),
                   ),
                 ],
@@ -102,6 +127,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                     child: QuestionDataTextField(
                       title: "Skills Required: ",
                       data: fetchedPosition.skillsRequired[0],
+                      controller: _skillsController,
                     ),
                   ),
                   SizedBox(
@@ -111,6 +137,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                     child: QuestionDataTextField(
                       title: "Responsibilities:",
                       data: fetchedPosition.responsibilities[0],
+                      controller: _responsibilitiesController,
                     ),
                   ),
                 ],
@@ -124,6 +151,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                     child: QuestionDataTextField(
                       title: "Years of Experience:",
                       data: fetchedPosition.yearOfExperience.toString(),
+                      controller: _yearsExperienceController,
                     ),
                   ),
                   SizedBox(
@@ -133,6 +161,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                     child: QuestionDataTextField(
                       title: "Benefits:",
                       data: fetchedPosition.benefits[0],
+                      controller: _benefitsController,
                     ),
                   ),
                 ],
@@ -168,15 +197,15 @@ class _InterviewPositionState extends State<InterviewPosition> {
               margin: EdgeInsets.all(10),
               child: TextField(
                 textAlign: TextAlign.center,
-                controller: _controller,
+                controller: _questionController,
                 textInputAction: TextInputAction.done,
                 onSubmitted: (value) {
                   setState(() {
                     positionProvider.addQuestion(
-                        widget.position, _controller.text, null);
+                        widget.position, _questionController.text, null);
                     questions.add(InterviewQuestionCard(
-                        widget.position, _controller.text));
-                    _controller.clear();
+                        widget.position, _questionController.text));
+                    _questionController.clear();
                   });
                 },
                 decoration: InputDecoration(
@@ -198,8 +227,10 @@ class _InterviewPositionState extends State<InterviewPosition> {
 class QuestionDataTextField extends StatelessWidget {
   String title;
   String data;
+  TextEditingController controller;
 
-  QuestionDataTextField({required this.title, required this.data});
+  QuestionDataTextField(
+      {required this.title, required this.data, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -208,8 +239,23 @@ class QuestionDataTextField extends StatelessWidget {
       children: [
         Text(title),
         SizedBox(
-          height: 8,
+          height: 4,
         ),
+        Container(
+            padding: EdgeInsets.all(8),
+            alignment: Alignment.centerRight,
+            width: double.infinity,
+            height: 60,
+            child: TextField(
+              controller: controller,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.all(8),
+                enabledBorder:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+                filled: true,
+                fillColor: Colors.grey.withOpacity(0.1),
+              ),
+            )),
         Container(
           padding: EdgeInsets.all(8),
           alignment: Alignment.centerRight,

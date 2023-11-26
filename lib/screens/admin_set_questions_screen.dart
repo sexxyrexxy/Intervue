@@ -22,21 +22,19 @@ final _controller = TextEditingController();
 class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
   @override
   Widget build(BuildContext context) {
-    var positionProvider =
-        Provider.of<PositionProvider>(context, listen: true);
+    var positionProvider = Provider.of<PositionProvider>(context, listen: true);
     print(positions);
 
     if (positions.isEmpty) {
       // Perform the initialization if the positions list is empty
       positionProvider.initializePositions();
       // Populate the positions list from the provider
-      
     }
     setState(() {
-        positions = positionProvider.positionList
-            .map((pos) => InterviewPosition(pos.name))
-            .toList();
-      });
+      positions = positionProvider.positionList
+          .map((pos) => InterviewPosition(pos.name))
+          .toList();
+    });
     return Container(
         padding: EdgeInsets.all(20),
         child: Column(
@@ -83,17 +81,16 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
                     positionProvider.addNewPosition(PositionModel(
                       id: "",
                       name: value,
-                      description:
-                          "",
+                      description: "",
                       numOfPeople: 0,
                       location: "",
                       yearOfExperience: 0,
-                      responsibilities: [""
-                        
-                      ],
+                      responsibilities: [""],
                       benefits: [""],
                       skillsRequired: [""],
                     ));
+                    positionProvider.createNewPosition(
+                        "posName", "description", 0, "", 0, [], [], [], []);
                     _controller.clear();
                   });
                 },

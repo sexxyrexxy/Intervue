@@ -1,8 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:talentsync/models/position_model.dart';
 
+import '../auth.dart';
+
 class PositionProvider with ChangeNotifier {
+  final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   List<PositionModel> positionList = [];
+  List<String> positionIdList = [];
+  List<PositionModel> loadedPositionList = [];
 
   void initializePositions() {
     // Job 1
@@ -91,5 +97,110 @@ class PositionProvider with ChangeNotifier {
     int positionIndex = positionList.indexWhere((pos) => pos.name == posName);
     positionList[positionIndex].questions.remove(questionToRemove);
     notifyListeners();
+  }
+
+  Future<void>? createNewPosition(
+      String posName,
+      String description,
+      int numOfPeople,
+      String location,
+      int yearOfExperience,
+      List<String> benefits,
+      List<String> skillsRequired,
+      List<String> responsibilities,
+      List<String> defaultQuestions) {
+    _firebaseFirestore.collection("position").doc().set({
+      'positionName': posName,
+      'description': description,
+      'numOfPeople': numOfPeople,
+      'location': location,
+      'yearOfExperience': yearOfExperience,
+      'responsibilities': responsibilities,
+      'benefits': benefits,
+      'skillsRequired': skillsRequired,
+      'defaultQuestions': defaultQuestions,
+    });
+    return null;
+  }
+
+  Future<void> fetchPositionId() async {
+    print('fetch');
+    try {
+      await FirebaseFirestore.instance.collection('position').get().then(
+        (snapshot) {
+          snapshot.docs.forEach(
+            (position) {
+              positionIdList.add(position.reference.id);
+            },
+          );
+        },
+      );
+      print('Success! fetched forumId List: ${[positionIdList]}');
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  Future<void> fetchAllPosition() async {
+    for (int i = 0; i < positionIdList.length; i++) {
+      await fetchPositionById(positionIdList[i]);
+    }
+    print('all done');
+  }
+
+  Future<void> fetchPositionById(String positionId) async {
+    List<String> tmpSkillsRequired = <String>[];
+    List<String> tmpBenefits = <String>[];
+    List<String> tmpresponsibilities = <String>[];
+    List<String> tmpQuestions = <String>[];
+
+    await FirebaseFirestore.instance
+        .collection("position")
+        .doc(positionId)
+        .get()
+        .then((snapshot) {
+      List.from(snapshot.data()!['skillsRequired']).forEach(
+        (skills) {
+          String data = skills;
+          tmpSkillsRequired.add(data);
+        },
+      );
+      List.from(snapshot.data()!['responsibilities']).forEach(
+        (exp) {
+          String data = exp;
+          tmpresponsibilities.add(data);
+        },
+      );
+      List.from(snapshot.data()!['benefits']).forEach(
+        (skills) {
+          String data = skills;
+          tmpBenefits.add(data);
+        },
+      );
+      List.from(snapshot.data()!['defaultQuestions']).forEach(
+        (exp) {
+          String data = exp;
+          tmpQuestions.add(data);
+        },
+      );
+
+      PositionModel loadedPosition = PositionModel(
+        id: snapshot.data()!["id"],
+        name: snapshot.data()!["name"],
+        description: snapshot.data()!["description"],
+        numOfPeople: snapshot.data()!["numOfPeople"],
+        yearOfExperience: snapshot.data()!["yearOfExperience"],
+        location: snapshot.data()!["location"],
+        benefits: tmpBenefits,
+        responsibilities: tmpresponsibilities,
+        skillsRequired: tmpSkillsRequired,
+      );
+
+      loadedPositionList.add(loadedPosition);
+      print('fetched ${snapshot.data()!['name']}');
+
+      ;
+    });
   }
 }

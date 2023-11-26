@@ -17,7 +17,7 @@ class InterviewQuestionCard extends StatelessWidget {
         padding: EdgeInsets.all(10),
         margin: EdgeInsets.all(10),
         decoration: BoxDecoration(
-          border: Border.all(width: 1, color: Colors.grey),
+          color: Colors.grey.withOpacity(0.1),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
@@ -48,7 +48,11 @@ class InterviewQuestionCard extends StatelessWidget {
                               positionProvider.removeQuestions(position, text);
                             },
                           ),
-                          TextButton(onPressed: (){Navigator.of(context).pop();}, child: Text('Cancel'))
+                          TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('Cancel'))
                         ],
                       );
                     },

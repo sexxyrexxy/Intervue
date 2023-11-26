@@ -100,7 +100,7 @@ class NavigationState extends State<Navigation> {
                     Icons.add, 'New Job', currentIndex == 5 ? true : false),
               ),
               Divider(
-                color: black,
+                color: Colors.white,
                 thickness: 1.5,
               ),
               Spacer(),

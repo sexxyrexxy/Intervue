@@ -57,6 +57,13 @@ dependencies:
   easy_pdf_viewer: ^1.0.7
   firebase_storage: ^11.5.2
   cloud_firestore: ^4.13.2
+  flutter_dotenv: ^5.1.0
+  timer_count_down: ^2.2.2
+  firebase_auth: ^4.14.1
+  google_sign_in: ^6.1.6
+  dio: ^5.3.4
+  read_pdf_text: ^0.2.1
+  syncfusion_flutter_pdf: ^23.2.4
 
 dev_dependencies:
   flutter_test:
@@ -100,6 +107,9 @@ flutter:
     - lib/assets/images/bbq.jpeg
     - lib/assets/images/ronald.jpeg
     - lib/assets/images/cheah.png
+    - lib/assets/images/google-logo.png
+    - lib/assets/pdfs/example-CV.pdf
+    - lib/assets/pdfs/CVMay2023.pdf
 
   fonts:
     - family: Futura

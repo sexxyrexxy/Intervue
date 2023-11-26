@@ -57,9 +57,9 @@
     },
     {
       "name": "build_daemon",
-      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/build_daemon-4.0.0",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/build_daemon-4.0.1",
       "packageUri": "lib/",
-      "languageVersion": "2.14"
+      "languageVersion": "3.0"
     },
     {
       "name": "build_resolvers",
@@ -165,9 +165,9 @@
     },
     {
       "name": "code_builder",
-      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/code_builder-4.7.0",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/code_builder-4.8.0",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.0"
     },
     {
       "name": "collection",
@@ -189,9 +189,9 @@
     },
     {
       "name": "cross_file",
-      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/cross_file-0.3.3+6",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/cross_file-0.3.3+7",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.0"
     },
     {
       "name": "crypto",
@@ -213,9 +213,15 @@
     },
     {
       "name": "dart_style",
-      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/dart_style-2.3.3",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/dart_style-2.3.4",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "dio",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/dio-5.3.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
     },
     {
       "name": "dropdown_button2",
@@ -261,7 +267,7 @@
     },
     {
       "name": "file_picker",
-      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/file_picker-6.0.0",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/file_picker-6.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -288,6 +294,24 @@
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/file_selector_windows-0.9.3+1",
       "packageUri": "lib/",
       "languageVersion": "2.19"
+    },
+    {
+      "name": "firebase_auth",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/firebase_auth-4.14.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "firebase_auth_platform_interface",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/firebase_auth_platform_interface-7.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "firebase_auth_web",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/firebase_auth_web-5.8.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
     },
     {
       "name": "firebase_core",
@@ -350,6 +374,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_dotenv",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/flutter_dotenv-5.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_expanded_tile",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/flutter_expanded_tile-0.3.7",
       "packageUri": "lib/",
@@ -406,6 +436,42 @@
     {
       "name": "glob",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/glob-2.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "google_identity_services_web",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/google_identity_services_web-0.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "google_sign_in",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/google_sign_in-6.1.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "google_sign_in_android",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/google_sign_in_android-6.1.20",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "google_sign_in_ios",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/google_sign_in_ios-5.6.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "google_sign_in_platform_interface",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/google_sign_in_platform_interface-2.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "google_sign_in_web",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/google_sign_in_web-0.12.0+4",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -489,7 +555,7 @@
     },
     {
       "name": "intl",
-      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/intl-0.17.0",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/intl-0.18.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -549,7 +615,7 @@
     },
     {
       "name": "multi_dropdown",
-      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/multi_dropdown-2.1.0",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/multi_dropdown-2.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.16"
     },
@@ -656,6 +722,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "petitparser",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/petitparser-5.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "platform",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/platform-3.1.3",
       "packageUri": "lib/",
@@ -663,9 +735,9 @@
     },
     {
       "name": "plugin_platform_interface",
-      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.6",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.7",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.0"
     },
     {
       "name": "pool",
@@ -675,7 +747,7 @@
     },
     {
       "name": "provider",
-      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/provider-6.0.5",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/provider-6.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -696,6 +768,12 @@
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/quiver-3.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "read_pdf_text",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/read_pdf_text-0.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "record",
@@ -729,7 +807,7 @@
     },
     {
       "name": "record_web",
-      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/record_web-1.0.2",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/record_web-1.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -783,7 +861,7 @@
     },
     {
       "name": "speech_to_text",
-      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/speech_to_text-6.4.0",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/speech_to_text-6.4.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -848,16 +926,16 @@
       "languageVersion": "3.0"
     },
     {
-      "name": "syncfusion_flutter_charts",
-      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/syncfusion_flutter_charts-19.4.56",
+      "name": "syncfusion_flutter_core",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/syncfusion_flutter_core-23.2.4",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.17"
     },
     {
-      "name": "syncfusion_flutter_core",
-      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/syncfusion_flutter_core-19.4.56",
+      "name": "syncfusion_flutter_pdf",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/syncfusion_flutter_pdf-23.2.4",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.17"
     },
     {
       "name": "synchronized",
@@ -876,6 +954,12 @@
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/test_api-0.5.1",
       "packageUri": "lib/",
       "languageVersion": "2.18"
+    },
+    {
+      "name": "timer_count_down",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/timer_count_down-2.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "timing",
@@ -903,9 +987,9 @@
     },
     {
       "name": "url_launcher_ios",
-      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/url_launcher_ios-6.2.0",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/url_launcher_ios-6.2.1",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.0"
     },
     {
       "name": "url_launcher_linux",
@@ -939,7 +1023,7 @@
     },
     {
       "name": "uuid",
-      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/uuid-4.1.0",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/uuid-4.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
@@ -980,6 +1064,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "xml",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/xml-6.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "yaml",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/yaml-3.1.2",
       "packageUri": "lib/",
@@ -992,7 +1082,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-11-23T09:23:17.352114Z",
+  "generated": "2023-11-26T05:56:44.346058Z",
   "generator": "pub",
   "generatorVersion": "3.0.6"
 }

@@ -5,13 +5,14 @@ import 'package:talentsync/screens/admin_individual_candidate_screen.dart';
 class CandidateCard extends StatelessWidget {
   String imagePath;
   String name;
-  CandidateCard(this.name,this.imagePath,{super.key});
+  CandidateCard(this.name, this.imagePath, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(AdminIndividualCandidateScreen.routeName);
+        Navigator.of(context)
+            .pushNamed(AdminIndividualCandidateScreen.routeName);
       },
       child: Container(
         height: 360,
@@ -33,9 +34,7 @@ class CandidateCard extends StatelessWidget {
             Container(
               width: double.infinity,
               height: double.infinity,
-              child: Image.asset(
-                  fit: BoxFit.cover,
-                  imagePath),
+              child: Image.network(fit: BoxFit.cover, imagePath),
             ),
             Align(
               alignment: Alignment.bottomCenter,

@@ -1,49 +1,134 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:talentsync/providers/candidate_provider.dart';
 import 'package:talentsync/widgets/candidate_card.dart';
+import '../models/colors.dart' as custom_colors;
 
-class AdminCandidatesScreen extends StatelessWidget {
+import 'loading_screen.dart';
+
+class AdminCandidatesScreen extends StatefulWidget {
   const AdminCandidatesScreen({super.key});
 
   @override
+  State<AdminCandidatesScreen> createState() => _AdminCandidatesScreenState();
+}
+
+String _selectedItem = 'Software Engineer';
+List<String> _dropdownItems = ['Software Engineer', 'Data Analyst'];
+
+class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    var _provider = Provider.of<CandidatesProvider>(context, listen: false);
+    if (_provider.candidatesIdList.isEmpty) {
+      _provider.fetchForumId().then(
+        (_) {
+          print('Successfuly fetched ${_provider.candidatesIdList.length} ids');
+          _provider.fetchAllCandidates().then(
+            (_) {
+              setState(
+                () {
+                  _isLoading = false;
+                },
+              );
+            },
+          );
+        },
+      );
+    } else {
+      setState(
+        () {
+          _isLoading = true;
+        },
+      );
+    }
+    print(
+      "id: ${_provider.candidatesIdList.length}",
+    );
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
+    var _provider = Provider.of<CandidatesProvider>(context, listen: false);
+
+    return _isLoading
+        ? Padding(
+            padding: const EdgeInsets.fromLTRB(52, 400, 52, 400),
+            child: Center(
+              child: CircularProgressIndicator(
+                color: custom_colors.secondaryDarkBlue,
+              ),
+            ),
+          )
+        : Container(
+            padding: EdgeInsets.fromLTRB(40, 16, 16, 16),
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CandidateCard('Rex Lim', 'lib/assets/images/RexLim.jpeg'),
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: DropdownButton<String>(
+                      value: _selectedItem,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          print(newValue);
+                          _selectedItem = newValue!;
+                        });
+                      },
+                      items: _dropdownItems.map((String item) {
+                        return DropdownMenuItem<String>(
+                          value: item,
+                          child: Text(item),
+                        );
+                      }).toList(),
+                    )),
                 SizedBox(
-                  width: 60,
+                  height: MediaQuery.sizeOf(context).height * 0.016,
                 ),
-                CandidateCard('Hans Andreanto', 'lib/assets/images/hans.jpeg'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CandidateCard(_provider.loadedCandidateLists[0].name,
+                        _provider.loadedCandidateLists[0].imgs.imgUrl),
+                    SizedBox(
+                      width: 60,
+                    ),
+                    CandidateCard(_provider.loadedCandidateLists[1].name,
+                        _provider.loadedCandidateLists[1].imgs.imgUrl),
+                    SizedBox(
+                      width: 60,
+                    ),
+                    CandidateCard(_provider.loadedCandidateLists[2].name,
+                        _provider.loadedCandidateLists[2].imgs.imgUrl),
+                  ],
+                ),
                 SizedBox(
-                  width: 60,
+                  height: 20,
                 ),
-                CandidateCard('Ivy Chung', "lib/assets/images/ivy.jpeg"),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CandidateCard(_provider.loadedCandidateLists[3].name,
+                        _provider.loadedCandidateLists[3].imgs.imgUrl),
+                    SizedBox(
+                      width: 60,
+                    ),
+                    CandidateCard(_provider.loadedCandidateLists[4].name,
+                        _provider.loadedCandidateLists[4].imgs.imgUrl),
+                    SizedBox(
+                      width: 60,
+                    ),
+                    CandidateCard(_provider.loadedCandidateLists[5].name,
+                        _provider.loadedCandidateLists[5].imgs.imgUrl)
+                  ],
+                ),
               ],
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CandidateCard('Go Yap Xuan', "lib/assets/images/bbq.jpeg"),
-                SizedBox(
-                  width: 60,
-                ),
-                CandidateCard(
-                    'Bonifacio Ronald', 'lib/assets/images/ronald.jpeg'),
-                SizedBox(
-                  width: 60,
-                ),
-                CandidateCard('Cheah Zixu', 'lib/assets/images/cheah.png')
-              ],
-            )
-          ],
-        ));
+          );
   }
 }

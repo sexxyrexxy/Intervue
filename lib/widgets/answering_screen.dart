@@ -2,10 +2,14 @@ import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:speech_to_text/speech_to_text.dart';
+import 'package:talentsync/providers/speechtotext_provider.dart';
 import 'package:talentsync/widgets/camera.dart';
-
+import 'package:timer_count_down/timer_controller.dart';
+import 'package:timer_count_down/timer_count_down.dart';
 import '../models/colors.dart';
 import '../providers/position_provider.dart';
+
+
 
 class AnsweringScreen extends StatefulWidget {
   String question;
@@ -16,51 +20,13 @@ class AnsweringScreen extends StatefulWidget {
   State<AnsweringScreen> createState() => _AnsweringScreenState();
 }
 
-final SpeechToText _speechToText = SpeechToText();
-bool isListening = false;
-String text = '';
+var speechRecognitionComponent = SpeechToTextProvider();
+final CountdownController _controller = CountdownController(autoStart: false);
 
 class _AnsweringScreenState extends State<AnsweringScreen> {
-  void checkMicrophoneAvailability() async {
-    bool available = await _speechToText.initialize();
-    if (available) {
-      setState(() {
-        print('Microphone available: $available');
-      });
-    } else {
-      print("The user has denied the use of speech recognition.");
-    }
-  }
-
-  Future<void> startListening() async {
-    if (!isListening) {
-      var available = await _speechToText.initialize();
-      if (available) {
-        setState(() {
-          isListening = true;
-        });
-        _speechToText.listen(
-            listenMode: ListenMode.dictation,
-            listenFor: const Duration(minutes: 3),
-            pauseFor: Duration(seconds: 10),
-            onResult: (result) {
-              setState(() {
-                text = result.recognizedWords;
-              });
-            });
-      }
-    } else {
-      setState(() {
-        isListening = false;
-      });
-      _speechToText.stop();
-    }
-  }
-
   @override
   void initState() {
     super.initState();
-    checkMicrophoneAvailability();
   }
 
   @override
@@ -68,7 +34,7 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
     var positionProvider = Provider.of<PositionProvider>(context, listen: true);
     Future<void> exampleAI() async {
       // Set the OpenAI API key from the .env file.
-      OpenAI.apiKey = 'XXXXXX';
+      OpenAI.apiKey = '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';
 
       // Start using!
       final completion = await OpenAI.instance.completion.create(
@@ -76,12 +42,12 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
         maxTokens: 40,
         prompt: """
                 I am interviewing a candidate for software engineer. 
-                The question is ${widget.question}. The response is ${text}.
+                The question is ${widget.question}. The response is ${speechRecognitionComponent.recognizedWords}.
                 Please give me a very specific follow up qeustion.
                 """,
       );
-      positionProvider.addQuestionsAtIndex(
-          'Software Engineer', completion.choices[0].text);
+      positionProvider.addQuestion(
+          'Software Engineer', completion.choices[0].text, 1);
 
       print(completion.choices[0].text);
     }
@@ -99,31 +65,76 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
             SizedBox(
               height: 20,
             ),
-            Cameras(800, 540),
-            SizedBox(height: 20),
-            GestureDetector(
-                onTap: () {
-                  startListening();
-                  print('listen');
-                },
-                child: const Icon(Icons.mic)),
-            SizedBox(height: 20),
-            GestureDetector(
-              onTap: () {
-                widget.action!();
-                print('next');
-                if (widget.question == "Tell me a little bit about yourself") {
-                  exampleAI();
-                }
+
+            Cameras(800, 500),
+            SizedBox(
+              height: 10,
+            ),
+
+            Countdown(
+              // controller: _controller,
+              seconds: 180,
+              controller: _controller,
+              build: (_, double time) => Text(
+                time.toString() + " seconds left",
+                style: TextStyle(
+                  fontSize: 25,
+                ),
+              ),
+              interval: Duration(seconds: 1),
+              onFinished: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Timer is done!'),
+                  ),
+                );
               },
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: secondaryDarkBlue),
-                child: Text(
-                  'Next Question',
-                  style: TextStyle(color: backgroundWhite),
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                    onTap: () {
+                      _controller.start();
+                      speechRecognitionComponent.startListening();
+                      print('listen');
+                    },
+                    child: const Icon(
+                      Icons.play_circle_fill,
+                      size: 50,
+                    )),
+                GestureDetector(
+                    onTap: () {
+                      speechRecognitionComponent.stopListening();
+                      _controller.pause();
+                      print('listen');
+                    },
+                    child: const Icon(Icons.pause_circle, size: 50)),
+              ],
+            ),
+            SizedBox(height: 10),
+            //
+            Align(
+              alignment: Alignment.centerRight,
+              child: GestureDetector(
+                onTap: () {
+                  widget.action!();
+                  print('next');
+                  if (widget.question ==
+                      "Tell me a little bit about yourself") {
+                    exampleAI();
+                  }
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: secondaryDarkBlue),
+                  child: Text(
+                    'Next Question',
+                    style: TextStyle(color: backgroundWhite),
+                  ),
                 ),
               ),
             ),

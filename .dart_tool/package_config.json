@@ -926,6 +926,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "syncfusion_flutter_charts",
+      "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/syncfusion_flutter_charts-23.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "syncfusion_flutter_core",
       "rootUri": "file:///Users/hansandreanto/.pub-cache/hosted/pub.dev/syncfusion_flutter_core-23.2.4",
       "packageUri": "lib/",
@@ -1082,7 +1088,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-11-26T05:56:44.346058Z",
+  "generated": "2023-11-26T12:32:34.871457Z",
   "generator": "pub",
   "generatorVersion": "3.0.6"
 }

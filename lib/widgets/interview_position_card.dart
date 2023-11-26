@@ -32,10 +32,10 @@ class _InterviewPositionState extends State<InterviewPosition> {
   @override
   Widget build(BuildContext context) {
     var positionProvider = Provider.of<PositionProvider>(context, listen: true);
-    int positionIndex = positionProvider.positionList
+    int positionIndex = positionProvider.loadedPositionList
         .indexWhere((pos) => pos.name == widget.position);
     PositionModel fetchedPosition =
-        positionProvider.positionList[positionIndex];
+        positionProvider.loadedPositionList[positionIndex];
     List<String> questionList = fetchedPosition.questions;
     questions = questionList
         .map((question) => InterviewQuestionCard(widget.position, question))
@@ -66,22 +66,16 @@ class _InterviewPositionState extends State<InterviewPosition> {
               ),
               TextField(
                 controller: _descriptionController,
+                maxLines: 5,
                 decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(10),
+                  contentPadding: EdgeInsets.fromLTRB(16, 16, 16, 16),
+                  hintText: fetchedPosition.description,
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
                   filled: true,
                   fillColor: Colors.grey.withOpacity(0.1),
                 ),
               ),
-              // Container(
-              //     padding: EdgeInsets.all(10),
-              //     width: double.infinity,
-              //     decoration: BoxDecoration(
-              //       color: Colors.grey.withOpacity(0.1),
-              //       borderRadius: BorderRadius.circular(10),
-              //     ),
-              //     child: Text(fetchedPosition.description))
             ],
           ),
         ),
@@ -249,6 +243,7 @@ class QuestionDataTextField extends StatelessWidget {
             child: TextField(
               controller: controller,
               decoration: InputDecoration(
+                hintText: data,
                 contentPadding: EdgeInsets.all(8),
                 enabledBorder:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
@@ -256,28 +251,6 @@ class QuestionDataTextField extends StatelessWidget {
                 fillColor: Colors.grey.withOpacity(0.1),
               ),
             )),
-        Container(
-          padding: EdgeInsets.all(8),
-          alignment: Alignment.centerRight,
-          width: double.infinity,
-          height: 40,
-          decoration: BoxDecoration(
-            color: Colors.grey.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(6),
-          ),
-          child: Row(
-            children: [
-              Text(data),
-              Spacer(),
-              Text(
-                'Edit',
-                style: TextStyle(
-                  color: secondaryDarkBlue,
-                ),
-              ),
-            ],
-          ),
-        )
       ],
     );
   }

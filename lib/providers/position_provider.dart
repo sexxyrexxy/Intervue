@@ -141,7 +141,7 @@ class PositionProvider with ChangeNotifier {
           );
         },
       );
-      print('Success! fetched forumId List: ${[positionIdList]}');
+      print('Success! fetched position List: ${[positionIdList]}');
     } catch (e) {
       print(e.toString());
       return null;
@@ -193,7 +193,7 @@ class PositionProvider with ChangeNotifier {
 
       PositionModel loadedPosition = PositionModel(
         id: snapshot.data()!["id"],
-        name: snapshot.data()!["name"],
+        name: snapshot.data()!["positionName"],
         description: snapshot.data()!["description"],
         numOfPeople: snapshot.data()!["numOfPeople"],
         yearOfExperience: snapshot.data()!["yearOfExperience"],
@@ -202,11 +202,10 @@ class PositionProvider with ChangeNotifier {
         responsibilities: tmpresponsibilities,
         skillsRequired: tmpSkillsRequired,
       );
-
+      print(loadedPosition);
       loadedPositionList.add(loadedPosition);
-      print('fetched ${snapshot.data()!['name']}');
-
-      ;
+      print('fetched ${snapshot.data()!['id']}');
+      print(loadedPositionList.length);
     });
   }
 }

@@ -20,21 +20,52 @@ List<Widget> positions = [];
 final _controller = TextEditingController();
 
 class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
+  bool _isLoading = true;
+  @override
+  void initState() {
+    var _positionProvider =
+        Provider.of<PositionProvider>(context, listen: false);
+    if (_positionProvider.positionIdList.isEmpty) {
+      _positionProvider.fetchPositionId().then(
+        (_) {
+          print(
+              'Successfuly fetched ${_positionProvider.positionIdList.length} ids');
+          _positionProvider.fetchAllPosition().then(
+            (_) {
+              setState(
+                () {
+                  _isLoading = false;
+                  print(
+                      "Length: ${_positionProvider.loadedPositionList.length}");
+                  positions = _positionProvider.loadedPositionList
+                      .map((pos) => InterviewPosition(pos.name))
+                      .toList();
+                },
+              );
+            },
+          );
+        },
+      );
+    } else {
+      setState(
+        () {
+          _isLoading = true;
+        },
+      );
+    }
+    print(
+      "id: ${_positionProvider.positionIdList.length}",
+    );
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var positionProvider = Provider.of<PositionProvider>(context, listen: true);
+    var positionProvider =
+        Provider.of<PositionProvider>(context, listen: false);
     print(positions);
 
-    if (positions.isEmpty) {
-      // Perform the initialization if the positions list is empty
-      positionProvider.initializePositions();
-      // Populate the positions list from the provider
-    }
-    setState(() {
-      positions = positionProvider.positionList
-          .map((pos) => InterviewPosition(pos.name))
-          .toList();
-    });
     return Container(
         padding: EdgeInsets.all(20),
         child: Column(

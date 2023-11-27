@@ -141,7 +141,7 @@ class _MainJobSearchState extends State<MainJobSearch> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 56,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 32.0),
@@ -238,43 +238,43 @@ class _MainJobSearchState extends State<MainJobSearch> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Row(
-                    children: [
-                      category(
-                          width: 121,
-                          color: Colors.white,
-                          jobTitle: "Senior Admin",
-                          jobTitleColor: custom_Color.black),
-                      category(
-                          width: 121,
-                          color: Colors.white,
-                          jobTitle: "Data Analyst",
-                          jobTitleColor: custom_Color.black),
-                      category(
-                          width: 121,
-                          color: Colors.white,
-                          jobTitle: "Pen Tester",
-                          jobTitleColor: custom_Color.black),
-                      category(
-                        width: 200,
-                        color: Colors.white,
-                        jobTitle: "Chief Technology Officer",
-                        jobTitleColor: custom_Color.black,
-                      ),
-                      category(
-                        width: 160,
-                        color: Colors.white,
-                        jobTitle: "Senior Technician",
-                        jobTitleColor: custom_Color.black,
-                      ),
-                      category(
-                        width: 160,
-                        color: custom_Color.secondaryDarkBlue,
-                        jobTitle: "Software Engineer",
-                        jobTitleColor: custom_Color.backgroundWhite,
-                      ),
-                    ],
-                  ),
+                  // Row(
+                  //   children: [
+                  //     category(
+                  //         width: 121,
+                  //         color: Colors.white,
+                  //         jobTitle: "Senior Admin",
+                  //         jobTitleColor: custom_Color.black),
+                  //     category(
+                  //         width: 121,
+                  //         color: Colors.white,
+                  //         jobTitle: "Data Analyst",
+                  //         jobTitleColor: custom_Color.black),
+                  //     category(
+                  //         width: 121,
+                  //         color: Colors.white,
+                  //         jobTitle: "Pen Tester",
+                  //         jobTitleColor: custom_Color.black),
+                  //     category(
+                  //       width: 200,
+                  //       color: Colors.white,
+                  //       jobTitle: "Chief Technology Officer",
+                  //       jobTitleColor: custom_Color.black,
+                  //     ),
+                  //     category(
+                  //       width: 160,
+                  //       color: Colors.white,
+                  //       jobTitle: "Senior Technician",
+                  //       jobTitleColor: custom_Color.black,
+                  //     ),
+                  //     category(
+                  //       width: 160,
+                  //       color: custom_Color.secondaryDarkBlue,
+                  //       jobTitle: "Software Engineer",
+                  //       jobTitleColor: custom_Color.backgroundWhite,
+                  //     ),
+                  //   ],
+                  // ),
                   Divider(
                     height: 50,
                     color: custom_Color.black,
@@ -309,17 +309,16 @@ class _MainJobSearchState extends State<MainJobSearch> {
                                         .setSelectedPositionId(position.id);
                                   },
                                   child: Padding(
-                                    padding: const EdgeInsets.only(bottom: 10),
+                                    padding: const EdgeInsets.only(bottom: 20),
                                     child: Container(
                                       decoration: ShapeDecoration(
                                         color: Colors.white,
                                         shape: RoundedRectangleBorder(
                                           side: BorderSide(
-                                            width: 2,
+                                            width: isSelected ? 6 : 0,
                                             color: isSelected
                                                 ? custom_Color.secondaryBlue
                                                 : custom_Color.black,
-                                                style: 
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(12),
@@ -327,7 +326,7 @@ class _MainJobSearchState extends State<MainJobSearch> {
                                       ),
                                       child: Column(
                                         children: [
-                                          jobpositionCard(
+                                          jobPositionCard(
                                             job_title: _positionProvider
                                                 .loadedPositionList[index].name,
                                             description: (_positionProvider

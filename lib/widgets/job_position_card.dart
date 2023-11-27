@@ -5,24 +5,24 @@ import 'package:talentsync/screens/new_job_screen_I.dart';
 
 import '../screens/candidates_upload_cv_screen.dart';
 
-class jobpositionCard extends StatefulWidget {
+class jobPositionCard extends StatefulWidget {
   String job_title;
   String description;
 
-  jobpositionCard(
+  jobPositionCard(
       {required this.job_title, required this.description, super.key});
 
   @override
-  State<jobpositionCard> createState() => _jobpositionCardState();
+  State<jobPositionCard> createState() => _jobPositionCardState();
 }
 
-class _jobpositionCardState extends State<jobpositionCard> {
+class _jobPositionCardState extends State<jobPositionCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(16),
       width: 366,
-      height: 190,
+      height: 120,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,7 +31,7 @@ class _jobpositionCardState extends State<jobpositionCard> {
             widget.job_title,
             style: TextStyle(
               color: Color(0xFF0D4073),
-              fontSize: 28,
+              fontSize: 20,
               fontFamily: 'Futura',
               fontWeight: FontWeight.w600,
               decoration: TextDecoration.underline,
@@ -41,37 +41,10 @@ class _jobpositionCardState extends State<jobpositionCard> {
             widget.description,
             style: TextStyle(
               color: Colors.black,
-              fontSize: 16,
+              fontSize: 12,
               fontFamily: 'Futura',
               fontWeight: FontWeight.w400,
-              height: 0,
             ),
-          ),
-          Row(
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed(CandidatesUploadCV.routeName);
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: custom_Color.secondaryDarkBlue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  minimumSize: Size(340, 48),
-                ),
-                child: Text(
-                  'Apply Now',
-                  style: TextStyle(
-                    color: custom_Color.backgroundWhite,
-                    fontSize: 20,
-                    fontFamily: 'Futura',
-                    fontWeight: FontWeight.w300,
-                    height: 0,
-                  ),
-                ),
-              ),
-            ],
           ),
         ],
       ),

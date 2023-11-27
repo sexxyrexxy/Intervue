@@ -3,6 +3,8 @@ import 'package:talentsync/models/colors.dart' as custom_color;
 import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/screens/candidates_pre_interview.dart';
 import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
+import 'package:talentsync/models/colors.dart' as custom_Color;
+import '../models/position_model.dart';
 
 class JobDetailsCard extends StatelessWidget {
   String jobPosition;
@@ -10,6 +12,7 @@ class JobDetailsCard extends StatelessWidget {
   int salaryStartRange;
   int salaryEndRange;
   String jobType;
+  PositionModel selectedPosition;
 
   JobDetailsCard(
       {required this.jobPosition,
@@ -17,6 +20,7 @@ class JobDetailsCard extends StatelessWidget {
       required this.salaryStartRange,
       required this.salaryEndRange,
       required this.jobType,
+      required this.selectedPosition,
       super.key});
 
   @override
@@ -24,7 +28,7 @@ class JobDetailsCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 40, horizontal: 60),
       width: 1000,
-      height: 980,
+      height: 1100,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(width: 2),
@@ -108,18 +112,16 @@ class JobDetailsCard extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 8),
-                buildListItem("Responsibilities:", [
-                  "Maintain good relationship with existing customer",
-                  "Response to customer's enquiries",
-                  "Follow up with the customers",
-                ]),
+                buildListItem("Description:", [selectedPosition.description]),
+                buildListItem(
+                  "Responsibilities:",
+                  selectedPosition.responsibilities,
+                ),
                 buildListItem("Job Type: ", [jobType]),
                 buildListItem("Salary: ", [
                   "RM $salaryStartRange.00 - RM $salaryEndRange.00 per month",
                 ]),
-                buildListItem("Benefits: ", [
-                  "Maternity leave",
-                ]),
+                buildListItem("Benefits: ", selectedPosition.benefits),
                 buildListItem("Education: ", [
                   "STM/SPM (Preferred)",
                 ]),

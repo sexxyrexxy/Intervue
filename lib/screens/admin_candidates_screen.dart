@@ -19,14 +19,14 @@ List<String> _dropdownItems = ['Software Engineer', 'Data Analyst'];
 
 class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
   bool _isLoading = true;
-
   @override
   void initState() {
     // TODO: implement initState
     var _provider = Provider.of<CandidatesProvider>(context, listen: false);
     if (_provider.candidatesIdList.isEmpty) {
       _provider.fetchForumId().then(
-        (_) {
+        (_) {         
+
           print('Successfuly fetched ${_provider.candidatesIdList.length} ids');
           _provider.fetchAllCandidates().then(
             (_) {
@@ -90,42 +90,20 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
                 SizedBox(
                   height: MediaQuery.sizeOf(context).height * 0.016,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CandidateCard(_provider.loadedCandidateLists[0].name,
-                        _provider.loadedCandidateLists[0].imgs.imgUrl),
-                    SizedBox(
-                      width: 60,
-                    ),
-                    CandidateCard(_provider.loadedCandidateLists[1].name,
-                        _provider.loadedCandidateLists[1].imgs.imgUrl),
-                    SizedBox(
-                      width: 60,
-                    ),
-                    CandidateCard(_provider.loadedCandidateLists[2].name,
-                        _provider.loadedCandidateLists[2].imgs.imgUrl),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CandidateCard(_provider.loadedCandidateLists[3].name,
-                        _provider.loadedCandidateLists[3].imgs.imgUrl),
-                    SizedBox(
-                      width: 60,
-                    ),
-                    CandidateCard(_provider.loadedCandidateLists[4].name,
-                        _provider.loadedCandidateLists[4].imgs.imgUrl),
-                    SizedBox(
-                      width: 60,
-                    ),
-                    CandidateCard(_provider.loadedCandidateLists[5].name,
-                        _provider.loadedCandidateLists[5].imgs.imgUrl)
-                  ],
+                GridView.builder(
+                  shrinkWrap: true,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                  ),
+                  itemCount: _provider.loadedCandidateLists.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return CandidateCard(
+                      _provider.loadedCandidateLists[index].name,
+                      _provider.loadedCandidateLists[index].imgs.imgUrl,
+                    );
+                  },
                 ),
               ],
             ),

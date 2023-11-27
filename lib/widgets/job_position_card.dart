@@ -1,93 +1,50 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:talentsync/models/colors.dart' as custom_Color;
+import 'package:talentsync/screens/new_job_screen_I.dart';
 
-class jobpositionCard extends StatefulWidget {
-  String image;
+import '../screens/candidates_upload_cv_screen.dart';
+
+class jobPositionCard extends StatefulWidget {
   String job_title;
   String description;
-  jobpositionCard(
-      {required this.image,
-      required this.job_title,
-      required this.description,
-      super.key});
+
+  jobPositionCard(
+      {required this.job_title, required this.description, super.key});
 
   @override
-  State<jobpositionCard> createState() => _jobpositionCardState();
+  State<jobPositionCard> createState() => _jobPositionCardState();
 }
 
-class _jobpositionCardState extends State<jobpositionCard> {
+class _jobPositionCardState extends State<jobPositionCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(16),
       width: 366,
-      height: 480,
-      decoration: ShapeDecoration(
-          color: Colors.white,
-          shape: RoundedRectangleBorder(
-            side: BorderSide(width: 2),
-            borderRadius: BorderRadius.circular(12),
-          )),
+      height: 120,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            width: 331.90,
-            height: 250.05,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('lib/assets/images/dummy_job_man.jpeg'),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
           Text(
-            'Pen-Tester Intern',
+            widget.job_title,
             style: TextStyle(
               color: Color(0xFF0D4073),
-              fontSize: 28,
+              fontSize: 20,
               fontFamily: 'Futura',
               fontWeight: FontWeight.w600,
               decoration: TextDecoration.underline,
-              height: 0,
             ),
           ),
           Text(
-            'Intervue present you with multiple job positions with AI-powered interview',
+            widget.description,
             style: TextStyle(
               color: Colors.black,
-              fontSize: 16,
-              fontFamily: 'Actor',
+              fontSize: 12,
+              fontFamily: 'Futura',
               fontWeight: FontWeight.w400,
-              height: 0,
             ),
-          ),
-          Row(
-            children: [
-              Container(
-                alignment: Alignment.center,
-                width: 323,
-                height: 42,
-                decoration: BoxDecoration(
-                  color: custom_Color.secondaryDarkBlue,
-                  border: Border.all(
-                    width: 1, // Border width
-                  ),
-                  borderRadius: BorderRadius.circular(8), // Border radius
-                ),
-                child: Text(
-                  'Apply Now',
-                  style: TextStyle(
-                    color: custom_Color.backgroundWhite,
-                    fontSize: 20,
-                    fontFamily: 'Futura',
-                    fontWeight: FontWeight.w500,
-                    height: 0,
-                  ),
-                ),
-              ),
-            ],
           ),
         ],
       ),

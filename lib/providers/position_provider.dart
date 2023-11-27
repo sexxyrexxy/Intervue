@@ -9,6 +9,15 @@ class PositionProvider with ChangeNotifier {
   List<PositionModel> positionList = [];
   List<String> positionIdList = [];
   List<PositionModel> loadedPositionList = [];
+  String _selectedPositionId = '';
+
+  String get selectedPositionId => _selectedPositionId;
+
+  void setSelectedPositionId(String positionId) async {
+    _selectedPositionId = positionId;
+    notifyListeners();
+    print(_selectedPositionId);
+  }
 
   void initializePositions() {
     // Job 1

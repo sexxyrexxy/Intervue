@@ -1,3 +1,4 @@
+import 'package:bulleted_list/bulleted_list.dart';
 import 'package:flutter/material.dart';
 import 'package:talentsync/models/colors.dart' as custom_color;
 import 'package:talentsync/screens/candidates_answering_screen.dart';
@@ -28,7 +29,7 @@ class JobDetailsCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 40, horizontal: 60),
       width: 1000,
-      height: 1100,
+      height: 892,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(width: 2),
@@ -45,7 +46,7 @@ class JobDetailsCard extends StatelessWidget {
                 jobPosition,
                 style: TextStyle(
                   color: custom_color.secondaryDarkBlue,
-                  fontSize: 32,
+                  fontSize: 24,
                   fontWeight: FontWeight.w300,
                 ),
               ),
@@ -54,7 +55,7 @@ class JobDetailsCard extends StatelessWidget {
                 location,
                 style: TextStyle(
                   color: custom_color.secondaryDarkBlue.withOpacity(0.3),
-                  fontSize: 20,
+                  fontSize: 16,
                 ),
               ),
               SizedBox(height: 12),
@@ -62,7 +63,7 @@ class JobDetailsCard extends StatelessWidget {
                 "RM $salaryStartRange - RM $salaryEndRange a month - $jobType",
                 style: TextStyle(
                   color: custom_color.secondaryDarkBlue,
-                  fontSize: 20,
+                  fontSize: 16,
                 ),
               ),
               SizedBox(height: 20),
@@ -81,7 +82,7 @@ class JobDetailsCard extends StatelessWidget {
                   'Apply Now',
                   style: TextStyle(
                     color: custom_color.backgroundWhite,
-                    fontSize: 20,
+                    fontSize: 16,
                     fontFamily: 'Futura',
                     fontWeight: FontWeight.w300,
                     height: 0,
@@ -103,16 +104,38 @@ class JobDetailsCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Text(
+                //   "Job Description",
+                //   style: TextStyle(
+                //     color: custom_color.secondaryDarkBlue,
+                //     fontSize: 28,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
+                // SizedBox(height: 8),
                 Text(
-                  "Job details",
+                  "Job Description",
+                  textAlign: TextAlign.justify,
                   style: TextStyle(
                     color: custom_color.secondaryDarkBlue,
-                    fontSize: 28,
-                    fontWeight: FontWeight.w500,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 8),
-                buildListItem("Description:", [selectedPosition.description]),
+                SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  selectedPosition.description,
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: custom_Color.secondaryDarkBlue),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
                 buildListItem(
                   "Responsibilities:",
                   selectedPosition.responsibilities,
@@ -122,16 +145,16 @@ class JobDetailsCard extends StatelessWidget {
                   "RM $salaryStartRange.00 - RM $salaryEndRange.00 per month",
                 ]),
                 buildListItem("Benefits: ", selectedPosition.benefits),
-                buildListItem("Education: ", [
-                  "STM/SPM (Preferred)",
-                ]),
+                // buildListItem("Education: ", [
+                //   "STM/SPM (Preferred)",
+                // ]),
                 buildListItem("Experience: ", [
-                  "1 - 2 year of experience (Preferred)",
+                  "${selectedPosition.yearOfExperience} year of experience (Preferred)",
                 ]),
-                buildListItem("Language: ", [
-                  "English (Preferred)",
-                  "Bahasa (Preferred)",
-                ]),
+                // buildListItem("Language: ", [
+                //   "English (Preferred)",
+                //   "Bahasa (Preferred)",
+                // ]),
               ],
             ),
           ),
@@ -148,19 +171,35 @@ class JobDetailsCard extends StatelessWidget {
           title,
           style: TextStyle(
             color: custom_color.secondaryDarkBlue,
-            fontSize: 24,
+            fontSize: 16,
             fontWeight: FontWeight.w300,
           ),
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: items
-              .map((item) => Text(
-                    "• $item",
-                    style: TextStyle(
-                        color: custom_color.secondaryDarkBlue, fontSize: 20),
-                  ))
-              .toList(),
+          children: [
+            BulletedList(
+              bullet: Icon(
+                Icons.circle_rounded,
+                color: custom_Color.secondaryDarkBlue,
+                size: 8,
+              ),
+              listItems: items,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: custom_Color.secondaryDarkBlue),
+              bulletColor: custom_Color.secondaryDarkBlue,
+            )
+          ],
+          // children: items
+          //     .map((item) => Text(
+          //           "• $item",
+          //           style: TextStyle(
+          //               color: custom_color.secondaryDarkBlue, fontSize: 20),
+          //         ))
+          //     .toList(),
         ),
         SizedBox(height: 8),
       ],

@@ -28,7 +28,8 @@ class JobDetailsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 40, horizontal: 60),
-      width: 1000,     
+      width: 1000,
+      height: 800,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(width: 2),
@@ -139,10 +140,7 @@ class JobDetailsCard extends StatelessWidget {
                   "Responsibilities:",
                   selectedPosition.responsibilities,
                 ),
-                buildListItem("Job Type: ", [jobType]),
-                buildListItem("Salary: ", [
-                  "RM $salaryStartRange.00 - RM $salaryEndRange.00 per month",
-                ]),
+
                 buildListItem("Benefits: ", selectedPosition.benefits),
                 // buildListItem("Education: ", [
                 //   "STM/SPM (Preferred)",
@@ -186,7 +184,7 @@ class JobDetailsCard extends StatelessWidget {
               listItems: items,
               crossAxisAlignment: CrossAxisAlignment.start,
               style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 16,
                   fontWeight: FontWeight.w500,
                   color: custom_Color.secondaryDarkBlue),
               bulletColor: custom_Color.secondaryDarkBlue,

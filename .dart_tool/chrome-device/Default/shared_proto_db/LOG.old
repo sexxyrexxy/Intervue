@@ -1,5 +1,65 @@
-<<<<<<< HEAD
-2023/11/27-10:21:21.973 b703 Reusing MANIFEST /private/var/folders/83/svfkvc395n3_dglspq1mvz740000gn/T/flutter_tools.YtU5GR/flutter_tools_chrome_device.IsB77U/Default/shared_proto_db/MANIFEST-000001
-=======
-2023/11/27-15:26:27.197 b603 Reusing MANIFEST /private/var/folders/c6/ml47p_317kjcw90pxjg9s7sc0000gn/T/flutter_tools.7yC5sO/flutter_tools_chrome_device.wuUE7T/Default/shared_proto_db/MANIFEST-000001
->>>>>>> 0bb31c729b1814431d9bf53e778d9ebb78a2b4ac
+2023/11/28-09:48:53.140 f103 Reusing MANIFEST /private/var/folders/c6/ml47p_317kjcw90pxjg9s7sc0000gn/T/flutter_tools.BbGS5y/flutter_tools_chrome_device.lsJepc/Default/shared_proto_db/MANIFEST-000001
+2023/11/28-09:48:53.140 f103 Recovering log #3
+2023/11/28-09:48:53.141 f103 Level-0 table #3: started
+2023/11/28-09:48:53.152 f103 Level-0 table #3: 18661 bytes OK
+2023/11/28-09:48:53.152 f103 Recovering log #4
+2023/11/28-09:48:53.155 f103 Level-0 table #4: started
+2023/11/28-09:48:53.163 f103 Level-0 table #4: 123375 bytes OK
+2023/11/28-09:48:53.163 f103 Recovering log #7
+2023/11/28-09:48:53.164 f103 Level-0 table #5: started
+2023/11/28-09:48:53.173 f103 Level-0 table #5: 92478 bytes OK
+2023/11/28-09:48:53.173 f103 Recovering log #10
+2023/11/28-09:48:53.175 f103 Level-0 table #8: started
+2023/11/28-09:48:53.179 f103 Level-0 table #8: 125990 bytes OK
+2023/11/28-09:48:53.179 f103 Recovering log #13
+2023/11/28-09:48:53.180 f103 Level-0 table #11: started
+2023/11/28-09:48:53.184 f103 Level-0 table #11: 124041 bytes OK
+2023/11/28-09:48:53.184 f103 Recovering log #16
+2023/11/28-09:48:53.185 f103 Level-0 table #14: started
+2023/11/28-09:48:53.189 f103 Level-0 table #14: 124316 bytes OK
+2023/11/28-09:48:53.189 f103 Recovering log #19
+2023/11/28-09:48:53.191 f103 Level-0 table #17: started
+2023/11/28-09:48:53.195 f103 Level-0 table #17: 125616 bytes OK
+2023/11/28-09:48:53.195 f103 Recovering log #23
+2023/11/28-09:48:53.196 f103 Level-0 table #20: started
+2023/11/28-09:48:53.200 f103 Level-0 table #20: 122011 bytes OK
+2023/11/28-09:48:53.200 f103 Recovering log #26
+2023/11/28-09:48:53.201 f103 Level-0 table #24: started
+2023/11/28-09:48:53.204 f103 Level-0 table #24: 115457 bytes OK
+2023/11/28-09:48:53.204 f103 Recovering log #29
+2023/11/28-09:48:53.205 f103 Level-0 table #27: started
+2023/11/28-09:48:53.209 f103 Level-0 table #27: 111963 bytes OK
+2023/11/28-09:48:53.209 f103 Recovering log #31
+2023/11/28-09:48:53.210 f103 Level-0 table #30: started
+2023/11/28-09:48:53.214 f103 Level-0 table #30: 123064 bytes OK
+2023/11/28-09:48:53.214 f103 Recovering log #34
+2023/11/28-09:48:53.215 f103 Reusing old log /private/var/folders/c6/ml47p_317kjcw90pxjg9s7sc0000gn/T/flutter_tools.BbGS5y/flutter_tools_chrome_device.lsJepc/Default/shared_proto_db/000034.log 
+2023/11/28-09:48:53.222 f103 Delete type=0 #13
+2023/11/28-09:48:53.222 f103 Delete type=0 #7
+2023/11/28-09:48:53.222 f103 Delete type=0 #4
+2023/11/28-09:48:53.222 f103 Delete type=0 #10
+2023/11/28-09:48:53.222 f103 Delete type=0 #29
+2023/11/28-09:48:53.222 f103 Delete type=0 #16
+2023/11/28-09:48:53.222 f103 Delete type=0 #3
+2023/11/28-09:48:53.222 f103 Delete type=2 #21
+2023/11/28-09:48:53.222 f103 Delete type=2 #35
+2023/11/28-09:48:53.223 f103 Delete type=2 #32
+2023/11/28-09:48:53.223 f103 Delete type=0 #26
+2023/11/28-09:48:53.223 f103 Delete type=0 #31
+2023/11/28-09:48:53.223 f103 Delete type=0 #19
+2023/11/28-09:48:53.223 f103 Delete type=0 #23
+2023/11/28-09:48:53.224 f103 Compacting 11@0 + 0@1 files
+2023/11/28-09:48:53.234 f103 Generated table #35@0: 125 keys, 43788 bytes
+2023/11/28-09:48:53.234 f103 Compacted 11@0 + 0@1 files => 43788 bytes
+2023/11/28-09:48:53.241 f103 compacted to: files[ 0 1 0 0 0 0 0 ]
+2023/11/28-09:48:53.242 f103 Delete type=2 #14
+2023/11/28-09:48:53.242 f103 Delete type=2 #17
+2023/11/28-09:48:53.242 f103 Delete type=2 #3
+2023/11/28-09:48:53.242 f103 Delete type=2 #4
+2023/11/28-09:48:53.242 f103 Delete type=2 #5
+2023/11/28-09:48:53.242 f103 Delete type=2 #11
+2023/11/28-09:48:53.242 f103 Delete type=2 #8
+2023/11/28-09:48:53.242 f103 Delete type=2 #20
+2023/11/28-09:48:53.242 f103 Delete type=2 #27
+2023/11/28-09:48:53.242 f103 Delete type=2 #24
+2023/11/28-09:48:53.242 f103 Delete type=2 #30

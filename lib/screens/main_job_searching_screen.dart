@@ -316,10 +316,10 @@ class _MainJobSearchState extends State<MainJobSearch> {
                                         color: Colors.white,
                                         shape: RoundedRectangleBorder(
                                           side: BorderSide(
-                                            width: isSelected ? 6 : 0,
+                                            width: isSelected ? 4 : 0,
                                             color: isSelected
                                                 ? custom_Color.secondaryBlue
-                                                : custom_Color.black,
+                                                : custom_Color.backgroundWhite,
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(12),
@@ -348,6 +348,7 @@ class _MainJobSearchState extends State<MainJobSearch> {
                             },
                           ),
                         ),
+                        Spacer(),
                         Consumer<PositionProvider>(
                             builder: (context, positionProvider, _) {
                           final selectedPosition =

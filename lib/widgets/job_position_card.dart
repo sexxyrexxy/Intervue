@@ -20,15 +20,15 @@ class _jobPositionCardState extends State<jobPositionCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.all(20),
       width: 366,
-      height: 120,
+      height: 160,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             widget.job_title,
+            textAlign: TextAlign.justify,
             style: TextStyle(
               color: Color(0xFF0D4073),
               fontSize: 20,
@@ -37,11 +37,15 @@ class _jobPositionCardState extends State<jobPositionCard> {
               decoration: TextDecoration.underline,
             ),
           ),
+          SizedBox(
+            height: 8,
+          ),
           Text(
             widget.description,
+            textAlign: TextAlign.justify,
             style: TextStyle(
               color: Colors.black,
-              fontSize: 12,
+              fontSize: 16,
               fontFamily: 'Futura',
               fontWeight: FontWeight.w400,
             ),

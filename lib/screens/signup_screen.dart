@@ -123,7 +123,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
               backgroundColor: custom_colors.secondaryBlue),
-          onPressed: (() => createUserWithEmailAndPassword()),
+          onPressed: (() {
+            createUserWithEmailAndPassword();
+            Navigator.of(context).pushNamed(CandidatesUploadCV.routeName);
+          }),
           child: Text(
             'SIGN UP',
             style: TextStyle(
@@ -163,7 +166,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             left: MediaQuery.of(context).size.width * 0.09,
             right: MediaQuery.of(context).size.width * 0.09,
             top: MediaQuery.of(context).size.height * 0.15,
-            bottom: MediaQuery.of(context).size.height * 0.15),
+            bottom: MediaQuery.of(context).size.height * 0.11),
         child: Container(
           padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.09),
           width: double.infinity,

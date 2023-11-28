@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
 import 'package:talentsync/screens/main_job_searching_screen.dart';
 import 'package:talentsync/screens/signup_screen.dart';
 import '../models/colors.dart' as custom_colors;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:talentsync/screens/new_job_screen_I.dart';
+import 'package:talentsync/screens/signup_screen.dart';
 import 'models/colors.dart';
 import 'screens/admin_analytics_screen.dart';
 import 'screens/admin_candidates_screen.dart';
@@ -87,16 +88,26 @@ class NavigationState extends State<Navigation> {
                 color: Colors.white,
                 thickness: 1.5,
               ),
-
               GestureDetector(
                 onTap: () {
+                  setState(() {
+                    currentIndex = 4;
+                  });
+                },
+                child: navItem(Icons.notifications, 'Messages',
+                    currentIndex == 4 ? true : false),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushNamed(RegisterScreen.routeName);
                   setState(() {
                     currentIndex = 3;
                   });
                 },
-                child: navItem(Icons.notifications, 'Messages',
-                    currentIndex == 3 ? true : false),
+                child: navItem(
+                    Icons.work, 'Apply Jobs', currentIndex == 3 ? true : false),
               ),
+
               // GestureDetector(
               //   onTap: () {
               //     setState(() {
@@ -106,13 +117,13 @@ class NavigationState extends State<Navigation> {
               //   child: navItem(Icons.settings, 'Settings',
               //       currentIndex == 6 ? true : false),
               // ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pushNamed(MainJobSearch.routeName);
-                },
-                child: navItem(
-                    Icons.logout, 'Log Out', currentIndex == 4 ? true : false),
-              ),
+              // GestureDetector(
+              //   onTap: () {
+              //     Navigator.of(context).pushNamed(RegisterScreen.routeName);
+              //   },
+              //   child: navItem(
+              //       Icons.logout, 'Log Out', currentIndex == 5 ? true : false),
+              // ),
             ],
           ),
         ),

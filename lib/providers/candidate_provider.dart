@@ -9,6 +9,17 @@ class CandidatesProvider with ChangeNotifier {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   List<String> candidatesIdList = [];
   List<CandidateModel> loadedCandidateLists = [];
+  CandidateModel candidateProviderData = CandidateModel(
+      id: "",
+      name: "",
+      email: "",
+      education: "",
+      appliedPosition: "",
+      imgs: imgExtractedModel(imgName: "", imgUrl: ""),
+      skills: [],
+      experiences: [],
+      question: [],
+      pdfs: pdfExtractedModel(pdfName: "", pdfUrl: ""));
 
   CandidateModel defaultCandidate = CandidateModel(
       id: "0",
@@ -81,6 +92,15 @@ class CandidatesProvider with ChangeNotifier {
     });
   }
 
+  Future<void> setSelectedPosition(String selectedPosition) async {
+    await _firebaseFirestore
+        .collection("candidates")
+        .doc(Auth().currentUser!.uid)
+        .update({"appliedPosition": selectedPosition});
+
+    print("Selected Positions Updated");
+  }
+
   Future<void> fetchForumId() async {
     print('fetch');
     try {
@@ -105,6 +125,52 @@ class CandidatesProvider with ChangeNotifier {
       await fetchCandidateDatabyId(candidatesIdList[i]);
     }
     print('all done');
+  }
+
+  Future<void> fetchCandidateData() async {
+    List<String> tmpSkills = <String>[];
+    List<String> tmpExperiences = <String>[];
+    List<Map<String, String>> tmpQuestions = <Map<String, String>>[];
+
+    await FirebaseFirestore.instance
+        .collection("candidates")
+        .doc(Auth().currentUser!.uid)
+        .get()
+        .then((snapshot) {
+      List.from(snapshot.data()!['skills']).forEach(
+        (skills) {
+          String data = skills;
+          tmpSkills.add(data);
+        },
+      );
+      List.from(snapshot.data()!['experiences']).forEach(
+        (exp) {
+          String data = exp;
+          tmpExperiences.add(data);
+        },
+      );
+      // List.from(snapshot.data()!['questions']).forEach(
+      //   (questions) {
+      //     String data = questions;
+      //     tmpQuestions.add(data);
+      //   },
+      // );
+      candidateProviderData.id = snapshot.data()!["id"];
+      candidateProviderData.name = snapshot.data()!["name"];
+      candidateProviderData.email = snapshot.data()!["email"];
+      candidateProviderData.education = snapshot.data()!["education"];
+      candidateProviderData.appliedPosition =
+          snapshot.data()!["appliedPosition"];
+      candidateProviderData.imgs = imgExtractedModel(
+          imgName: snapshot.data()!["imgs"]["imgName"],
+          imgUrl: snapshot.data()!["imgs"]["imgUrls"]);
+      candidateProviderData.skills = tmpSkills;
+      candidateProviderData.experiences = tmpExperiences;
+      candidateProviderData.question = tmpQuestions;
+      candidateProviderData.pdfs = pdfExtractedModel(
+          pdfName: snapshot.data()!["pdfs"]["pdfName"],
+          pdfUrl: snapshot.data()!["pdfs"]["pdfUrls"]);
+    });
   }
 
   Future<void> fetchCandidateDatabyId(String candidatesId) async {

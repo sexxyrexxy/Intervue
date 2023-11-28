@@ -39,10 +39,9 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
         .asUint8List(bytedata.offsetInBytes, bytedata.lengthInBytes);
   }
 
-  ByteData? convertFilePickerResultToByteData(
-      FilePickerResult? result) {
+  ByteData? convertFilePickerResultToByteData(FilePickerResult? result) {
     if (result != null && result.files.isNotEmpty) {
-      List<int> fileBytes =  result.files.first.bytes ?? [];
+      List<int> fileBytes = result.files.first.bytes ?? [];
       return ByteData.sublistView(Uint8List.fromList(fileBytes));
     }
     return null;
@@ -179,8 +178,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                                 convertFilePickerResultToByteData(pickedFile)!;
 
                             PdfDocument documentTry = PdfDocument(
-                                inputBytes: await readDocumentData(
-                                    byteFile));
+                                inputBytes: await readDocumentData(byteFile));
 
                             PdfTextExtractor extractor =
                                 PdfTextExtractor(documentTry);

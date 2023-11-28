@@ -1,11 +1,13 @@
 import 'package:bulleted_list/bulleted_list.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:talentsync/models/colors.dart' as custom_color;
 import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/screens/candidates_pre_interview.dart';
 import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
 import 'package:talentsync/models/colors.dart' as custom_Color;
 import '../models/position_model.dart';
+import '../providers/candidate_provider.dart';
 
 class JobDetailsCard extends StatelessWidget {
   String jobPosition;
@@ -26,6 +28,8 @@ class JobDetailsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var _provider = Provider.of<CandidatesProvider>(context, listen: false);
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 40, horizontal: 60),
       width: 1000,
@@ -69,6 +73,7 @@ class JobDetailsCard extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
+                  _provider.setSelectedPosition(selectedPosition.name);
                   Navigator.of(context).pushNamed(PreInterviewScreen.routeName);
                 },
                 style: ElevatedButton.styleFrom(

@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:talentsync/models/colors.dart' as custom_Color;
+import 'package:talentsync/models/colors.dart';
 import 'package:talentsync/models/position_model.dart';
 import 'package:talentsync/screens/loading_screen.dart';
 import 'package:talentsync/screens/login_screen.dart';
@@ -183,7 +184,7 @@ class _MainJobSearchState extends State<MainJobSearch> {
                     ),
                   ),
                   const SizedBox(
-                    height: 8,
+                    height: 20,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 32.0),
@@ -299,7 +300,7 @@ class _MainJobSearchState extends State<MainJobSearch> {
                               final position =
                                   _positionProvider.loadedPositionList[index];
                               var isSelected = position.id ==
-                                  _positionProvider.selectedPositionId;
+                                  _positionProvider.selectedPositionId;                              
                               return GestureDetector(
                                   onTap: () {
                                     setState(() {

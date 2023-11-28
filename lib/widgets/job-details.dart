@@ -28,8 +28,7 @@ class JobDetailsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 40, horizontal: 60),
-      width: 1000,
-      height: 892,
+      width: 1000,     
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(width: 2),

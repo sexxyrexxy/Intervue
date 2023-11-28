@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
 import 'package:talentsync/screens/login_screen.dart';
 import 'package:talentsync/screens/main_job_searching_screen.dart';
 import '../models/colors.dart' as custom_colors;
@@ -36,7 +37,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             _controllerPassword.text,
           )!
           .then((value) =>
-              Navigator.of(context).pushNamed(MainJobSearch.routeName));
+              Navigator.of(context).pushNamed(CandidatesUploadCV.routeName));
     } on FirebaseAuthException catch (e) {
       setState(
         () {

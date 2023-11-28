@@ -69,7 +69,7 @@ class JobDetailsCard extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(CandidatesUploadCV.routeName);
+                  Navigator.of(context).pushNamed(PreInterviewScreen.routeName);
                 },
                 style: ElevatedButton.styleFrom(
                   primary: custom_color.secondaryDarkBlue,

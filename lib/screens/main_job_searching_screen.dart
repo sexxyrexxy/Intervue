@@ -9,9 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:talentsync/auth.dart';
+import 'package:talentsync/models/candidates_model.dart';
 import 'package:talentsync/models/colors.dart' as custom_Color;
 import 'package:talentsync/models/colors.dart';
 import 'package:talentsync/models/position_model.dart';
+import 'package:talentsync/navigation.dart';
 import 'package:talentsync/screens/loading_screen.dart';
 import 'package:talentsync/screens/login_screen.dart';
 import 'package:talentsync/screens/signup_screen.dart';
@@ -19,6 +22,7 @@ import 'package:talentsync/widgets/Input_field.dart';
 import 'package:talentsync/widgets/category.dart';
 import 'package:talentsync/widgets/small-button.dart';
 
+import '../providers/candidate_provider.dart';
 import '../providers/position_provider.dart';
 import '../widgets/interview_position_card.dart';
 import '../widgets/job-details.dart';
@@ -42,6 +46,17 @@ class _MainJobSearchState extends State<MainJobSearch> {
   void initState() {
     var _positionProvider =
         Provider.of<PositionProvider>(context, listen: false);
+    Provider.of<CandidatesProvider>(context, listen: false)
+        .fetchCandidateData()
+        .then(
+      (_) {
+        setState(
+          () {
+            _isLoading = false;
+          },
+        );
+      },
+    );
     if (_positionProvider.positionIdList.isEmpty) {
       _positionProvider.fetchPositionId().then(
         (_) {
@@ -79,6 +94,9 @@ class _MainJobSearchState extends State<MainJobSearch> {
 
   @override
   Widget build(BuildContext context) {
+    CandidateModel currentUser =
+        Provider.of<CandidatesProvider>(context, listen: false)
+            .candidateProviderData;
     var _positionProvider =
         Provider.of<PositionProvider>(context, listen: false);
 
@@ -113,31 +131,79 @@ class _MainJobSearchState extends State<MainJobSearch> {
                           height: 80,
                         ),
                         Spacer(),
-                        GestureDetector(
-                          onTap: () => Navigator.of(context)
-                              .pushNamed(RegisterScreen.routeName),
-                          child: smallButtonwithoutIcons(
-                              140,
-                              44,
-                              custom_Color.backgroundWhite,
-                              "Signup",
-                              20,
-                              custom_Color.primaryBlue),
+
+                        Container(
+                          padding: EdgeInsets.fromLTRB(20, 12, 20, 12),
+                          decoration: BoxDecoration(
+                              color: custom_Color.secondaryDarkBlue,
+                              borderRadius: BorderRadius.circular(12)),
+                          height: 60,
+                          width: 240,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(
+                                  Icons.person,
+                                  size: 24,
+                                  color: custom_Color.backgroundWhite,
+                                ),
+                                Spacer(),
+                                Text(
+                                  currentUser.name,
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: custom_Color.backgroundWhite),
+                                ),
+                              ]),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         GestureDetector(
                           onTap: () => Navigator.of(context)
-                              .pushNamed(loginScreen.routeName),
-                          child: smallButtonwithoutIcons(
-                              140,
-                              44,
-                              custom_Color.secondaryBlue,
-                              "Login",
-                              20,
-                              Colors.white),
+                              .pushNamed(Navigation.routeName),
+                          child: Container(
+                            width: 120,
+                            height: 60,
+                            decoration: BoxDecoration(
+                                color: custom_Color.backgroundWhite,
+                                borderRadius: BorderRadius.circular(12)),
+                            child: Center(
+                              child: Text(
+                                "Admin",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: custom_Color.secondaryDarkBlue),
+                              ),
+                            ),
+                          ),
                         )
+
+                        // GestureDetector(
+                        //   onTap: () => Navigator.of(context)
+                        //       .pushNamed(RegisterScreen.routeName),
+                        //   child: smallButtonwithoutIcons(
+                        //       140,
+                        //       44,
+                        //       custom_Color.backgroundWhite,
+                        //       "Signup",
+                        //       20,
+                        //       custom_Color.primaryBlue),
+                        // ),
+                        // SizedBox(
+                        //   width: 20,
+                        // ),
+                        // GestureDetector(
+                        //   onTap: () => Navigator.of(context)
+                        //       .pushNamed(loginScreen.routeName),
+                        //   child: smallButtonwithoutIcons(
+                        //       140,
+                        //       44,
+                        //       custom_Color.secondaryBlue,
+                        //       "Login",
+                        //       20,
+                        //       Colors.white),
+                        // )
                       ],
                     ),
                   ),
@@ -300,7 +366,7 @@ class _MainJobSearchState extends State<MainJobSearch> {
                               final position =
                                   _positionProvider.loadedPositionList[index];
                               var isSelected = position.id ==
-                                  _positionProvider.selectedPositionId;                              
+                                  _positionProvider.selectedPositionId;
                               return GestureDetector(
                                   onTap: () {
                                     setState(() {

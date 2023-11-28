@@ -25,8 +25,7 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
     var _provider = Provider.of<CandidatesProvider>(context, listen: false);
     if (_provider.candidatesIdList.isEmpty) {
       _provider.fetchForumId().then(
-        (_) {         
-
+        (_) {
           print('Successfuly fetched ${_provider.candidatesIdList.length} ids');
           _provider.fetchAllCandidates().then(
             (_) {
@@ -94,8 +93,8 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
                   shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 24,
+                    mainAxisSpacing: 12,
                   ),
                   itemCount: _provider.loadedCandidateLists.length,
                   itemBuilder: (BuildContext context, int index) {

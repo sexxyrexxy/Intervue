@@ -30,9 +30,8 @@ class NavigationState extends State<Navigation> {
     AdminMainScreen(),
     AdminSetInterviewScreen(),
     AdminCandidatesScreen(),
-    AdminAnalyticsScreen(),
+    // newJobPostionScreen(),
     AdminMessageScreen(),
-    newJobPostionScreen(),
     AdminSettingsScreen(),
   ];
 
@@ -73,52 +72,46 @@ class NavigationState extends State<Navigation> {
                   },
                   child: navItem(Icons.people, 'Candidates',
                       currentIndex == 2 ? true : false)),
-              GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      currentIndex = 3;
-                    });
-                  },
-                  child: navItem(Icons.line_axis_outlined, 'Analytics',
-                      currentIndex == 3 ? true : false)),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    currentIndex = 4;
-                  });
-                },
-                child: navItem(Icons.notifications, 'Messages',
-                    currentIndex == 4 ? true : false),
-              ),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    currentIndex = 5;
-                  });
-                },
-                child: navItem(
-                    Icons.add, 'New Job', currentIndex == 5 ? true : false),
-              ),
+
+              // GestureDetector(
+              //   onTap: () {
+              //     setState(() {
+              //       currentIndex = 5;
+              //     });
+              //   },
+              //   child: navItem(
+              //       Icons.add, 'New Job', currentIndex == 5 ? true : false),
+              // ),
+              Spacer(),
               Divider(
                 color: Colors.white,
                 thickness: 1.5,
               ),
-              Spacer(),
+
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    currentIndex = 6;
+                    currentIndex = 3;
                   });
                 },
-                child: navItem(Icons.settings, 'Settings',
-                    currentIndex == 6 ? true : false),
+                child: navItem(Icons.notifications, 'Messages',
+                    currentIndex == 3 ? true : false),
               ),
+              // GestureDetector(
+              //   onTap: () {
+              //     setState(() {
+              //       currentIndex = 6;
+              //     });
+              //   },
+              //   child: navItem(Icons.settings, 'Settings',
+              //       currentIndex == 6 ? true : false),
+              // ),
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).pushNamed(MainJobSearch.routeName);
                 },
                 child: navItem(
-                    Icons.logout, 'Log Out', currentIndex == 8 ? true : false),
+                    Icons.logout, 'Log Out', currentIndex == 4 ? true : false),
               ),
             ],
           ),

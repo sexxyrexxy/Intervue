@@ -104,7 +104,7 @@ class PositionProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void removeQuestions(String posName, String questionToRemove) {
+  Future<void> removeQuestions(String posName, String questionToRemove) async{
     int positionIndex =
         loadedPositionList.indexWhere((pos) => pos.name == posName);
     loadedPositionList[positionIndex].questions.remove(questionToRemove);
@@ -235,5 +235,39 @@ class PositionProvider with ChangeNotifier {
       print('fetched ${snapshot.data()!['id']}');
       print(loadedPositionList.length);
     });
+  }
+
+  Future<void> setDescription(String id, String newDesc) async {
+    await _firebaseFirestore
+        .collection("position")
+        .doc(id)
+        .update({"description": newDesc});
+
+    print("Selected Positions Updated");
+  }
+
+  Future<void> setnumOfpeople(String id, String newNum) async {
+    await _firebaseFirestore
+        .collection("position")
+        .doc(id)
+        .update({"numOfPeople": newNum});
+
+    print("Selected Positions Updated");
+  }
+
+  Future<void> setYearOfExperience(String id, String newYear) async {
+    await _firebaseFirestore
+        .collection("position")
+        .doc(id)
+        .update({"numOfPeople": newYear});
+    print("Selected Positions Updated");
+  }
+
+  Future<void> setResponsibility(String id, String newRes) async {
+    await _firebaseFirestore
+        .collection("position")
+        .doc(id)
+        .update({"responsibilities": newRes});
+    print("Selected Positions Updated");
   }
 }

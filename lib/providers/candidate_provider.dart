@@ -127,6 +127,7 @@ class CandidatesProvider with ChangeNotifier {
       return null;
     }
   }
+  
 
   Future<void> fetchAllCandidates() async {
     for (int i = 0; i < candidatesIdList.length; i++) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:talentsync/models/colors.dart';
 import 'package:talentsync/providers/candidate_provider.dart';
 import 'package:talentsync/providers/position_provider.dart';
@@ -33,11 +34,21 @@ class _CandidatesAnsweringScreenState extends State<CandidatesAnsweringScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var candidateProvider =
-        Provider.of<CandidatesProvider>(context, listen: true);
-    questions = candidateProvider.defaultCandidate.question
+    // var candidateProvider =
+    //     Provider.of<CandidatesProvider>(context, listen: true);
+    // questions = candidateProvider.defaultCandidate.question
+    //     .map(
+    //       (question) => AnsweringScreen(question.keys.toString(), action),
+    //     )
+    //     .toList();
+    
+    var positionProvider =
+        Provider.of<PositionProvider>(context, listen: true);
+        int positionIndex =
+        positionProvider.loadedPositionList.indexWhere((pos) => pos.name == 'Software Engineer');
+         questions = positionProvider.loadedPositionList[positionIndex].questions
         .map(
-          (question) => AnsweringScreen(question.keys.toString(), action),
+          (question) => AnsweringScreen(question.toString(), action),
         )
         .toList();
     return Scaffold(

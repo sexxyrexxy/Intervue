@@ -38,6 +38,7 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
           );
         },
       );
+       _isLoading = false;
     } else {
       setState(() {
         _isLoading = false;
@@ -52,74 +53,83 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
   Widget build(BuildContext context) {
     var positionProvider = Provider.of<PositionProvider>(context, listen: true);
 
-    return Container(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Interview Positions',
-              style: TextStyle(
-                  color: secondaryDarkBlue,
-                  fontSize: 25,
-                  fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Divider(
-              height: 0,
-            ),
-            ...positionProvider.loadedPositionList
-                .map((pos) => InterviewPosition(pos.name)),
-            Container(
-              margin: EdgeInsets.all(10),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                border:
-                    Border.all(width: 1, color: Colors.grey.withOpacity(0.5)),
-                borderRadius: BorderRadius.circular(10),
-                color: backgroundWhite,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 7,
-                    offset: Offset(0, 5), // changes position of shadow
-                  ),
-                ],
+    return _isLoading
+        ? Padding(
+            padding: const EdgeInsets.fromLTRB(52, 400, 52, 400),
+            child: Center(
+              child: CircularProgressIndicator(
+                color: secondaryDarkBlue,
               ),
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: TextField(
-                textAlign: TextAlign.center,
-                controller: _controller,
-                textInputAction: TextInputAction.done,
-                onSubmitted: (value) {
-                  setState(() {
-                    positionProvider.addNewPosition(PositionModel(
-                      id: "",
-                      name: value,
-                      description: "",
-                      numOfPeople: 0,
-                      location: "",
-                      yearOfExperience: 0,
-                      responsibilities: [""],
-                      benefits: [""],
-                      skillsRequired: [""],
-                    ));
-                    positionProvider.createNewPosition(
-                        "", value, "", 0, "", 0, [], [], [], []);
-                    _controller.clear();
-                  });
-                },
-                //Change this to button that leads to the job posting screen//
-                decoration: InputDecoration(
-                  hintText: 'Add New Position',
-                  border: InputBorder.none,
+            ),
+          )
+        : Container(
+            padding: EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Interview Positions',
+                  style: TextStyle(
+                      color: secondaryDarkBlue,
+                      fontSize: 25,
+                      fontWeight: FontWeight.w500),
                 ),
-              ),
-            ),
-          ],
-        ));
+                SizedBox(
+                  height: 20,
+                ),
+                Divider(
+                  height: 0,
+                ),
+                ...positionProvider.loadedPositionList
+                    .map((pos) => InterviewPosition(pos.name)),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        width: 1, color: Colors.grey.withOpacity(0.5)),
+                    borderRadius: BorderRadius.circular(10),
+                    color: backgroundWhite,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 1,
+                        blurRadius: 7,
+                        offset: Offset(0, 5), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: TextField(
+                    textAlign: TextAlign.center,
+                    controller: _controller,
+                    textInputAction: TextInputAction.done,
+                    onSubmitted: (value) {
+                      setState(() {
+                        positionProvider.addNewPosition(PositionModel(
+                          id: "",
+                          name: value,
+                          description: "",
+                          numOfPeople: 0,
+                          location: "",
+                          yearOfExperience: 0,
+                          responsibilities: [""],
+                          benefits: [""],
+                          skillsRequired: [""],
+                        ));
+                        positionProvider.createNewPosition(
+                            "", value, "", 0, "", 0, [], [], [], []);
+                        _controller.clear();
+                      });
+                    },
+                    //Change this to button that leads to the job posting screen//
+                    decoration: InputDecoration(
+                      hintText: 'Add New Position',
+                      border: InputBorder.none,
+                    ),
+                  ),
+                ),
+              ],
+            ));
   }
 }

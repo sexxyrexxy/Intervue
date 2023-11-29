@@ -99,7 +99,7 @@ class NavigationState extends State<Navigation> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).pushNamed(RegisterScreen.routeName);
+                  Navigator.of(context).pushNamed(MainJobSearch.routeName);
                   setState(() {
                     currentIndex = 4;
                   });

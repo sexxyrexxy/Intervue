@@ -16,6 +16,7 @@ import 'package:talentsync/models/colors.dart';
 import 'package:talentsync/providers/candidate_provider.dart';
 import 'package:talentsync/providers/openAI_4_provider.dart';
 import 'package:talentsync/screens/candidates_answering_screen.dart';
+import 'package:talentsync/screens/candidates_pre_interview.dart';
 import 'package:talentsync/screens/main_job_searching_screen.dart';
 import 'package:talentsync/widgets/candidate_info_text_field.dart';
 import '../auth.dart';
@@ -265,7 +266,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                     ElevatedButton(
                       onPressed: () {
                         Navigator.of(context)
-                            .pushNamed(MainJobSearch.routeName);
+                            .pushNamed(PreInterviewScreen.routeName);
                         uploadFiles();
                       },
                       style: ElevatedButton.styleFrom(

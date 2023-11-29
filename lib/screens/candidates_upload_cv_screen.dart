@@ -139,6 +139,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
 
   @override
   Widget build(BuildContext context) {
+    var _provider = Provider.of<CandidatesProvider>(context, listen: false);
     CandidateModel currentCandidate =
         Provider.of<CandidatesProvider>(context, listen: false)
             .defaultCandidate;
@@ -208,6 +209,10 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
 
                             if (pickedFile != null) {
                               setState(() {
+                                // Not sure if this works
+                                _provider.setName("$firstName $lastName");
+                                _provider.setEducation(education);
+                                _provider.setSkills(skills);
                                 fnameController.text = firstName;
                                 lnameController.text = lastName;
                                 phoneController.text = phoneNumber;

@@ -67,6 +67,14 @@ class CandidatesProvider with ChangeNotifier {
     print("Experiences updated successfully");
   }
 
+  Future<void> setEducation(String educations) async {
+    await _firebaseFirestore
+        .collection("candidates")
+        .doc(Auth().currentUser!.uid)
+        .update({"education": educations});
+    print("Education updated successfully");
+  }
+
   // pdfName, String pdfUrls, String candidateName, List<String> skills, List<String> experience, List<String> education
   Future<void> setPdfDetails(pdfExtractedModel pdfExtractedData) async {
     await _firebaseFirestore

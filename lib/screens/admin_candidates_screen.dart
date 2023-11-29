@@ -2,6 +2,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:talentsync/providers/candidate_provider.dart';
+import 'package:talentsync/screens/admin_individual_candidate_screen.dart';
 import 'package:talentsync/widgets/candidate_card.dart';
 import '../models/colors.dart' as custom_colors;
 
@@ -98,9 +99,14 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
                   ),
                   itemCount: _provider.loadedCandidateLists.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return CandidateCard(
-                      _provider.loadedCandidateLists[index].name,
-                      _provider.loadedCandidateLists[index].imgs.imgUrl,
+                    return GestureDetector(
+                      onTap: () => Navigator.of(context).pushNamed(
+                          AdminIndividualCandidateScreen.routeName,
+                          arguments: _provider.loadedCandidateLists[index]),
+                      child: CandidateCard(
+                          _provider.loadedCandidateLists[index].name,
+                          _provider.loadedCandidateLists[index].imgs.imgUrl,
+                          _provider.loadedCandidateLists[index]),
                     );
                   },
                 ),

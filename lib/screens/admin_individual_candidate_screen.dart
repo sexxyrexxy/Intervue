@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:talentsync/models/candidates_model.dart';
 import 'package:talentsync/models/colors.dart';
 import 'package:bulleted_list/bulleted_list.dart';
 import 'package:talentsync/providers/candidate_provider.dart';
+import 'package:talentsync/screens/loading_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../providers/position_provider.dart';
 
 class AdminIndividualCandidateScreen extends StatefulWidget {
@@ -22,6 +25,8 @@ class _AdminIndividualCandidateScreenState
   Widget build(BuildContext context) {
     var candidateProvider =
         Provider.of<CandidatesProvider>(context, listen: false);
+    CandidateModel displayedCandidate =
+        ModalRoute.of(context)!.settings.arguments as CandidateModel;
 
     questions = candidateProvider.defaultCandidate.question.map((question) {
       return Container(
@@ -50,31 +55,6 @@ class _AdminIndividualCandidateScreenState
       );
     }).toList();
 
-    // questions.insert(
-    //     1,
-    //     Container(
-    //         margin: EdgeInsets.all(10),
-    //         child: Row(
-    //           children: [
-    //             Icon(
-    //               Icons.voice_chat,
-    //               color: secondaryDarkBlue,
-    //             ),
-    //             SizedBox(
-    //               width: 10,
-    //             ),
-    //             InkWell(
-    //               onTap: () {
-    //                 _dialogBuilder(context,
-    //                     'Could you tell me a bit more about the strategies you use to reduce load time?');
-    //               },
-    //               child: new Text(
-    //                 'Could you tell me a bit more about the strategies you use to reduce load time?',
-    //                 style: TextStyle(color: secondaryDarkBlue),
-    //               ),
-    //             )
-    //           ],
-    //         )));
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(20),
@@ -115,11 +95,12 @@ class _AdminIndividualCandidateScreenState
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                     ),
-                    child: Image.asset(
-                        fit: BoxFit.fill, 'lib/assets/images/RexLim.jpeg'),
+                    child: Image.network(displayedCandidate.imgs.imgUrl),
+                    // child: Image.asset(
+                    //     fit: BoxFit.fill, 'lib/assets/images/RexLim.jpeg'),
                   ),
                   Text(
-                    'Rex Lim',
+                    displayedCandidate.name,
                     style: TextStyle(color: black, fontSize: 20),
                   ),
                   SizedBox(
@@ -146,7 +127,7 @@ class _AdminIndividualCandidateScreenState
                       SizedBox(
                         width: 20,
                       ),
-                      Text('rexlim2003@gmail.com')
+                      Text(displayedCandidate.email)
                     ],
                   ),
                   SizedBox(
@@ -194,12 +175,15 @@ class _AdminIndividualCandidateScreenState
                       SizedBox(
                         width: 20,
                       ),
-                      Text(
-                        'RexCV.pdf',
-                        style: TextStyle(
-                            color: Color(0xff2200CC),
-                            decoration: TextDecoration.underline),
-                      ),
+                      TextButton(
+                        onPressed: () => launch(displayedCandidate.pdfs.pdfUrl),
+                        child: Text(
+                          displayedCandidate.pdfs.pdfName,
+                          style: TextStyle(
+                              color: Color(0xff2200CC),
+                              decoration: TextDecoration.underline),
+                        ),
+                      )
                     ],
                   ),
                   Spacer(),
@@ -254,7 +238,7 @@ class _AdminIndividualCandidateScreenState
                       ),
                       SizedBox(height: 10),
                       Text(
-                        'About Rex Lim',
+                        'About ${displayedCandidate.name}',
                         style: TextStyle(fontSize: 20),
                       ),
                       SizedBox(

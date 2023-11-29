@@ -22,7 +22,6 @@ class _jobPositionCardState extends State<jobPositionCard> {
     return Container(
       padding: EdgeInsets.all(20),
       width: 366,
-      height: 160,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

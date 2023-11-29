@@ -378,7 +378,7 @@ class DataTableComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return DataTable(
       dataTextStyle: const TextStyle(
-          fontSize: 18, color: Colors.black, fontFamily: 'Futura'),
+          fontSize: 18, color: Colors.black,),
       columns: <DataColumn>[
         DataColumn(
           label: Expanded(

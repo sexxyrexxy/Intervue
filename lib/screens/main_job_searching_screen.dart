@@ -383,10 +383,10 @@ class _MainJobSearchState extends State<MainJobSearch> {
                                         color: Colors.white,
                                         shape: RoundedRectangleBorder(
                                           side: BorderSide(
-                                            width: isSelected ? 4 : 0,
+                                            width: isSelected ? 4 : 1,
                                             color: isSelected
                                                 ? custom_Color.secondaryBlue
-                                                : custom_Color.backgroundWhite,
+                                                : custom_Color.black,
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(12),

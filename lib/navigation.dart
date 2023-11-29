@@ -91,21 +91,21 @@ class NavigationState extends State<Navigation> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    currentIndex = 4;
-                  });
-                },
-                child: navItem(Icons.notifications, 'Messages',
-                    currentIndex == 4 ? true : false),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pushNamed(RegisterScreen.routeName);
-                  setState(() {
                     currentIndex = 3;
                   });
                 },
+                child: navItem(Icons.notifications, 'Messages',
+                    currentIndex == 3 ? true : false),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushNamed(MainJobSearch.routeName);
+                  setState(() {
+                    currentIndex = 4;
+                  });
+                },
                 child: navItem(
-                    Icons.work, 'Apply Jobs', currentIndex == 3 ? true : false),
+                    Icons.work, 'Apply Jobs', currentIndex == 4 ? true : false),
               ),
 
               // GestureDetector(

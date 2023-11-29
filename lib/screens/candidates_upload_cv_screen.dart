@@ -16,6 +16,7 @@ import 'package:talentsync/models/colors.dart';
 import 'package:talentsync/providers/candidate_provider.dart';
 import 'package:talentsync/providers/openAI_4_provider.dart';
 import 'package:talentsync/screens/candidates_answering_screen.dart';
+import 'package:talentsync/screens/candidates_pre_interview.dart';
 import 'package:talentsync/screens/main_job_searching_screen.dart';
 import 'package:talentsync/widgets/candidate_info_text_field.dart';
 import '../auth.dart';
@@ -57,7 +58,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
       maxTokens: 500,
       prompt: """
                 I am giving you a resume broken down into text. Analyze it, summarize, and return in JSON format. 
-                Strictly only extract first name, last name, phone number, email, education and strictly only 3 skills.
+                Strictly only extract first name, last name, phone number, email, education and strictly only 3 skills and experiences.
                 Give no extra information other than that. 
                 Here is the text : ${text}.
                 Do it in the strict JSON format and example of below, make sure the keys are exactly right:
@@ -68,9 +69,13 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                                     "Phone Number": "+60 14 759 3534",
                                     "Education": "Bachelor's of Computer Science",
                                     "Skills": ["Application Development", "Flutter", "Firebase"]
+                                    "Experience": ["7 years of working experience",
+                                                    "Worked with AirAsia, Uber and Amazon",
+                                                    "Working with large language model and artificial intelligence",
+                                                    "Degree from Taylor's University"]
                                   }
                 
-                Skills is a list, and they are supposed to be one or two words per skill. For example, Flutter, Web Development, Mobile development etc.
+                Skills and experience are lists.
                 """,
     );
 
@@ -261,7 +266,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                     ElevatedButton(
                       onPressed: () {
                         Navigator.of(context)
-                            .pushNamed(MainJobSearch.routeName);
+                            .pushNamed(PreInterviewScreen.routeName);
                         uploadFiles();
                       },
                       style: ElevatedButton.styleFrom(

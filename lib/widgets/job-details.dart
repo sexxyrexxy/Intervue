@@ -6,6 +6,7 @@ import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/screens/candidates_pre_interview.dart';
 import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
 import 'package:talentsync/models/colors.dart' as custom_Color;
+import 'package:talentsync/screens/signup_screen.dart';
 import '../models/position_model.dart';
 import '../providers/candidate_provider.dart';
 
@@ -74,7 +75,7 @@ class JobDetailsCard extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   _provider.setSelectedPosition(selectedPosition.name);
-                  Navigator.of(context).pushNamed(PreInterviewScreen.routeName);
+                  Navigator.of(context).pushNamed(RegisterScreen.routeName);
                 },
                 style: ElevatedButton.styleFrom(
                   primary: custom_color.secondaryDarkBlue,
@@ -88,7 +89,6 @@ class JobDetailsCard extends StatelessWidget {
                   style: TextStyle(
                     color: custom_color.backgroundWhite,
                     fontSize: 16,
-                    fontFamily: 'Futura',
                     fontWeight: FontWeight.w300,
                     height: 0,
                   ),

@@ -156,19 +156,18 @@ class _loginScreenState extends State<loginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * 0.09,
-            right: MediaQuery.of(context).size.width * 0.09,
-            top: MediaQuery.of(context).size.height * 0.15,
-            bottom: MediaQuery.of(context).size.height * 0.15),
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 100),
+        width: double.infinity,
+        height: double.infinity,
+        alignment: Alignment.center,
         child: Container(
-          padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.074),
-          width: double.infinity,
-          height: MediaQuery.of(context).size.width * 0.8,
+          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+          width: 1000,
+          height: double.infinity,
           decoration: BoxDecoration(
             color: custom_colors.backgroundWhite,
-            borderRadius: BorderRadius.circular(60),
+            borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
                 color: custom_colors.secondaryDarkBlue.withOpacity(0.3),

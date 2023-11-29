@@ -41,9 +41,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
     } on FirebaseAuthException catch (e) {
       setState(
         () {
-          print(errorMessage);
           _errorMessage = e.message;
-          print(errorMessage);
+
         },
       );
     }
@@ -100,16 +99,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  Widget errorMessage() {
-    return Text(
-      _errorMessage == '' ? '' : 'Hmm? $_errorMessage',
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        color: custom_colors.primaryBlue,
-        fontSize: MediaQuery.of(context).size.width * 0.015,
-      ),
-    );
-  }
 
   Widget _submitButton() {
     return ClipRRect(
@@ -161,19 +150,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * 0.09,
-            right: MediaQuery.of(context).size.width * 0.09,
-            top: MediaQuery.of(context).size.height * 0.15,
-            bottom: MediaQuery.of(context).size.height * 0.11),
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal:50, vertical: 100),
+        width: double.infinity,
+        height: double.infinity,
+        alignment: Alignment.center,
         child: Container(
-          padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.09),
-          width: double.infinity,
-          height: MediaQuery.of(context).size.width * 0.8,
+          alignment: Alignment.center,
+          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+          width: 1000,
+          height: double.infinity,
           decoration: BoxDecoration(
             color: custom_colors.backgroundWhite,
-            borderRadius: BorderRadius.circular(60),
+            borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
                 color: custom_colors.secondaryDarkBlue.withOpacity(0.3),
@@ -224,9 +213,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             const SizedBox(
               height: 20,
-            ),
-            Center(
-              child: errorMessage(),
             ),
             const SizedBox(
               height: 16,

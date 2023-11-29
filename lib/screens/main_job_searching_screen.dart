@@ -57,6 +57,7 @@ class _MainJobSearchState extends State<MainJobSearch> {
         );
       },
     );
+
     if (_positionProvider.positionIdList.isEmpty) {
       _positionProvider.fetchPositionId().then(
         (_) {

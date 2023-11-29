@@ -6,8 +6,8 @@ import 'package:talentsync/screens/admin_individual_candidate_screen.dart';
 class CandidateCard extends StatelessWidget {
   String imagePath;
   String name;
-  CandidateModel pickedCandidate;
-  CandidateCard(this.name, this.imagePath, this.pickedCandidate, {super.key});
+  // CandidateModel pickedCandidate;
+  CandidateCard(this.name, this.imagePath, {super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -4,8 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:talentsync/providers/candidate_provider.dart';
 import 'package:talentsync/screens/admin_individual_candidate_screen.dart';
 import 'package:talentsync/widgets/candidate_card.dart';
+import '../models/candidates_model.dart';
 import '../models/colors.dart' as custom_colors;
 
+import '../providers/position_provider.dart';
 import 'loading_screen.dart';
 
 class AdminCandidatesScreen extends StatefulWidget {
@@ -15,14 +17,56 @@ class AdminCandidatesScreen extends StatefulWidget {
   State<AdminCandidatesScreen> createState() => _AdminCandidatesScreenState();
 }
 
-String _selectedItem = 'Software Engineer';
-List<String> _dropdownItems = ['Software Engineer', 'Data Analyst'];
+String _selectedItem = '';
+List<String> _dropdownItems = [];
+List<CandidateModel> _positionedCandidates = [];
+Set<CandidateModel> uniqueCandidate = Set<CandidateModel>();
 
 class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
   bool _isLoading = true;
+
   @override
   void initState() {
     // TODO: implement initState
+    var _positionProvider =
+        Provider.of<PositionProvider>(context, listen: false);
+    if (_positionProvider.positionIdList.isEmpty) {
+      _positionProvider.fetchPositionId().then(
+        (_) {
+          print(
+              'Successfuly fetched ${_positionProvider.positionIdList.length} ids');
+          _positionProvider.fetchAllPosition().then(
+            (_) {
+              setState(
+                () {
+                  for (int i = 0;
+                      i < _positionProvider.loadedPositionList.length;
+                      i++) {
+                    _dropdownItems
+                        .add(_positionProvider.loadedPositionList[i].name);
+                  }
+
+                  _selectedItem = _positionProvider.loadedPositionList[0].name;
+                  _isLoading = false;
+
+                  print(
+                      "Length: ${_positionProvider.loadedPositionList.length}");
+                },
+              );
+            },
+          );
+        },
+      );
+    } else {
+      setState(
+        () {
+          _isLoading = true;
+        },
+      );
+    }
+    print(
+      "id: ${_positionProvider.positionIdList.length}",
+    );
     var _provider = Provider.of<CandidatesProvider>(context, listen: false);
     if (_provider.candidatesIdList.isEmpty) {
       _provider.fetchForumId().then(
@@ -49,6 +93,7 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
     print(
       "id: ${_provider.candidatesIdList.length}",
     );
+
     super.initState();
   }
 
@@ -78,6 +123,19 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
                         setState(() {
                           print(newValue);
                           _selectedItem = newValue!;
+                          uniqueCandidate.clear();
+                          for (int i = 0;
+                              i < _provider.candidatesIdList.length;
+                              i++)
+                            if (_provider
+                                    .loadedCandidateLists[i].appliedPosition ==
+                                _selectedItem) {
+                              uniqueCandidate
+                                  .add(_provider.loadedCandidateLists[i]);
+
+                              // _positionedCandidates
+                              //     .add(_provider.loadedCandidateLists[i]);
+                            }
                         });
                       },
                       items: _dropdownItems.map((String item) {
@@ -97,16 +155,19 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
                     crossAxisSpacing: 24,
                     mainAxisSpacing: 12,
                   ),
-                  itemCount: _provider.loadedCandidateLists.length,
+                  itemCount: uniqueCandidate.length,
+                  // itemCount: _provider.loadedCandidateLists.length,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () => Navigator.of(context).pushNamed(
                           AdminIndividualCandidateScreen.routeName,
-                          arguments: _provider.loadedCandidateLists[index]),
+                          arguments: uniqueCandidate.elementAt(index)),
                       child: CandidateCard(
-                          _provider.loadedCandidateLists[index].name,
-                          _provider.loadedCandidateLists[index].imgs.imgUrl,
-                          _provider.loadedCandidateLists[index]),
+                          uniqueCandidate.elementAt(index).name,
+                          uniqueCandidate.elementAt(index).imgs.imgUrl),
+                      // _provider.loadedCandidateLists[index].name,
+                      // _provider.loadedCandidateLists[index].imgs.imgUrl,
+                      // _provider.loadedCandidateLists[index]),
                     );
                   },
                 ),

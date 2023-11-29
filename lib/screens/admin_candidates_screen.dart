@@ -21,10 +21,9 @@ String _selectedItem = '';
 List<String> _dropdownItems = [];
 List<CandidateModel> _positionedCandidates = [];
 Set<CandidateModel> uniqueCandidate = Set<CandidateModel>();
+bool _isLoading = true;
 
 class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
-  bool _isLoading = true;
-
   @override
   void initState() {
     // TODO: implement initState
@@ -45,8 +44,6 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
                     _dropdownItems
                         .add(_positionProvider.loadedPositionList[i].name);
                   }
-
-                  _selectedItem = _positionProvider.loadedPositionList[0].name;
                   _isLoading = false;
 
                   print(
@@ -60,7 +57,7 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
     } else {
       setState(
         () {
-          _isLoading = true;
+          _isLoading = false;
         },
       );
     }
@@ -86,7 +83,7 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
     } else {
       setState(
         () {
-          _isLoading = true;
+          _isLoading = false;
         },
       );
     }
@@ -138,12 +135,18 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
                             }
                         });
                       },
-                      items: _dropdownItems.map((String item) {
-                        return DropdownMenuItem<String>(
-                          value: item,
-                          child: Text(item),
-                        );
-                      }).toList(),
+                      items: [
+                        DropdownMenuItem<String>(
+                          value: '',
+                          child: Text('Select a position'),
+                        ),
+                        ..._dropdownItems.map((String item) {
+                          return DropdownMenuItem<String>(
+                            value: item,
+                            child: Text(item),
+                          );
+                        }).toList(),
+                      ],
                     )),
                 SizedBox(
                   height: MediaQuery.sizeOf(context).height * 0.016,

@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Intervüe',
-          theme: ThemeData(fontFamily: 'Futura'),
+          theme: ThemeData(fontFamily: "Futura"),
           home: Navigation(),
           routes: {
             Navigation.routeName: (context) => Navigation(),

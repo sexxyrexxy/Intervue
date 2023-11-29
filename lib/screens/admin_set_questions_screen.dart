@@ -16,7 +16,6 @@ class AdminSetInterviewScreen extends StatefulWidget {
       _AdminSetInterviewScreenState();
 }
 
-List<Widget> positions = [];
 final _controller = TextEditingController();
 
 class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
@@ -29,42 +28,29 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
       _positionProvider.fetchPositionId().then(
         (_) {
           print(
-              'Successfuly fetched ${_positionProvider.positionIdList.length} ids');
+              'Successfully fetched ${_positionProvider.positionIdList.length} ids');
           _positionProvider.fetchAllPosition().then(
             (_) {
-              setState(
-                () {
-                  _isLoading = false;
-                  print(
-                      "Length: ${_positionProvider.loadedPositionList.length}");
-                  positions = _positionProvider.loadedPositionList
-                      .map((pos) => InterviewPosition(pos.name))
-                      .toList();
-                },
-              );
+              setState(() {
+                print("Length: ${_positionProvider.loadedPositionList.length}");
+              });
             },
           );
         },
       );
     } else {
-      setState(
-        () {
-          _isLoading = true;
-        },
-      );
+      setState(() {
+        _isLoading = false;
+      });
     }
-    print(
-      "id: ${_positionProvider.positionIdList.length}",
-    );
+    print("id: ${_positionProvider.positionIdList.length}");
     // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    var positionProvider =
-        Provider.of<PositionProvider>(context, listen: false);
-    print(positions);
+    var positionProvider = Provider.of<PositionProvider>(context, listen: true);
 
     return Container(
         padding: EdgeInsets.all(20),
@@ -84,7 +70,8 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
             Divider(
               height: 0,
             ),
-            ...positions,
+            ...positionProvider.loadedPositionList
+                .map((pos) => InterviewPosition(pos.name)),
             Container(
               margin: EdgeInsets.all(10),
               width: double.infinity,

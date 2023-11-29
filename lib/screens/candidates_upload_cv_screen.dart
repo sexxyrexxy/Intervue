@@ -57,7 +57,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
       maxTokens: 500,
       prompt: """
                 I am giving you a resume broken down into text. Analyze it, summarize, and return in JSON format. 
-                Strictly only extract first name, last name, phone number, email, education and strictly only 3 skills.
+                Strictly only extract first name, last name, phone number, email, education and strictly only 3 skills and experiences.
                 Give no extra information other than that. 
                 Here is the text : ${text}.
                 Do it in the strict JSON format and example of below, make sure the keys are exactly right:
@@ -68,9 +68,13 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                                     "Phone Number": "+60 14 759 3534",
                                     "Education": "Bachelor's of Computer Science",
                                     "Skills": ["Application Development", "Flutter", "Firebase"]
+                                    "Experience": ["7 years of working experience",
+                                                    "Worked with AirAsia, Uber and Amazon",
+                                                    "Working with large language model and artificial intelligence",
+                                                    "Degree from Taylor's University"]
                                   }
                 
-                Skills is a list, and they are supposed to be one or two words per skill. For example, Flutter, Web Development, Mobile development etc.
+                Skills and experience are lists.
                 """,
     );
 

@@ -266,7 +266,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                     ElevatedButton(
                       onPressed: () {
                         Navigator.of(context)
-                            .pushNamed(PreInterviewScreen.routeName);
+                            .pushNamed(MainJobSearch.routeName);
                         uploadFiles();
                       },
                       style: ElevatedButton.styleFrom(
@@ -277,7 +277,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                         minimumSize: Size(280, 56),
                       ),
                       child: Text(
-                        'Interview Now',
+                        'Start Applying Jobs',
                         style: TextStyle(
                           color: backgroundWhite,
                           fontSize: 20,

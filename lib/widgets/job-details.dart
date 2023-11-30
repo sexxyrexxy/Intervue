@@ -1,4 +1,5 @@
 import 'package:bulleted_list/bulleted_list.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:talentsync/models/colors.dart' as custom_color;
@@ -75,7 +76,11 @@ class JobDetailsCard extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  _showLoginAlertDialog(context, jobPosition);
+                  if (FirebaseAuth.instance.currentUser != null) {
+                    _showInterviewAlertDialog(context, jobPosition);
+                  } else {
+                    _showLoginAlertDialog(context, jobPosition);
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   primary: custom_color.secondaryDarkBlue,
@@ -238,6 +243,62 @@ void _showLoginAlertDialog(BuildContext context, String position) {
                 Navigator.of(context).pushNamed(loginScreen.routeName);
               },
               child: Text('Log In',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold)),
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+void _showInterviewAlertDialog(BuildContext context, String position) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        titlePadding: EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 20),
+        contentPadding: EdgeInsets.only(left: 30, right: 30, bottom: 30),
+        actionsPadding: EdgeInsets.all(30),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        title: Text(
+          'Ready to Go?',
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+              color: custom_Color.secondaryDarkBlue),
+        ),
+        content: Text(
+          'You are about to start the interview for $position.\nClick the \'Start\' button to proceed.',
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
+        actions: [
+          SizedBox(width: 10),
+          Container(
+            width: 120,
+            height: 40,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: custom_Color.secondaryDarkBlue,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                padding: EdgeInsets.all(6),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Provider.of<CandidatesProvider>(context, listen: false)
+                    .setSelectedPosition(position);
+                Navigator.of(context).pushNamed(PreInterviewScreen.routeName);
+              },
+              child: Text('Start',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,

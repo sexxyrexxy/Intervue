@@ -121,7 +121,9 @@ class _loginScreenState extends State<loginScreen> {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
               backgroundColor: custom_colors.secondaryBlue),
-          onPressed: (() => signInWithEmailAndPassword()),
+          onPressed: (() {
+            signInWithEmailAndPassword();
+          }),
           child: Text(
             'LOG IN',
             style: TextStyle(

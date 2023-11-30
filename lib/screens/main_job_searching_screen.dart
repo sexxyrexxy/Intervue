@@ -16,6 +16,7 @@ import 'package:talentsync/models/colors.dart' as custom_Color;
 import 'package:talentsync/models/colors.dart';
 import 'package:talentsync/models/position_model.dart';
 import 'package:talentsync/navigation.dart';
+import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
 import 'package:talentsync/screens/loading_screen.dart';
 import 'package:talentsync/screens/login_screen.dart';
 import 'package:talentsync/screens/signup_screen.dart';
@@ -144,66 +145,41 @@ class _MainJobSearchState extends State<MainJobSearch> {
                           height: 80,
                         ),
                         Spacer(),
-                        FirebaseAuth.instance.currentUser != null
-                            ? Container(
-                                padding: EdgeInsets.fromLTRB(20, 12, 20, 12),
-                                decoration: BoxDecoration(
-                                    color: custom_Color.secondaryDarkBlue,
-                                    borderRadius: BorderRadius.circular(12)),
-                                height: 60,
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Icon(
-                                        Icons.person,
-                                        size: 24,
-                                        color: custom_Color.backgroundWhite,
-                                      ),
-                                      SizedBox(
-                                        width: 8,
-                                      ),
-                                      Text(
-                                        FirebaseAuth
+                        GestureDetector(
+                          onTap: () => Navigator.of(context).pushNamed(
+                              FirebaseAuth.instance.currentUser == null
+                                  ? loginScreen.routeName
+                                  : CandidatesUploadCV.routeName),
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(20, 12, 20, 12),
+                            decoration: BoxDecoration(
+                                color: custom_Color.secondaryDarkBlue,
+                                borderRadius: BorderRadius.circular(12)),
+                            height: 60,
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Icon(
+                                    Icons.person,
+                                    size: 24,
+                                    color: custom_Color.backgroundWhite,
+                                  ),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  Text(
+                                    FirebaseAuth.instance.currentUser == null
+                                        ? 'Log In'
+                                        : FirebaseAuth
                                             .instance.currentUser!.email!,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            color:
-                                                custom_Color.backgroundWhite),
-                                      ),
-                                    ]),
-                              )
-                            : GestureDetector(
-                                onTap: () => Navigator.of(context)
-                                    .pushNamed(loginScreen.routeName),
-                                child: Container(
-                                  padding: EdgeInsets.fromLTRB(20, 12, 20, 12),
-                                  decoration: BoxDecoration(
-                                      color: custom_Color.secondaryDarkBlue,
-                                      borderRadius: BorderRadius.circular(12)),
-                                  height: 60,
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Icon(
-                                          Icons.person,
-                                          size: 24,
-                                          color: custom_Color.backgroundWhite,
-                                        ),
-                                        SizedBox(
-                                          width: 8,
-                                        ),
-                                        Text(
-                                          'Log In',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              color:
-                                                  custom_Color.backgroundWhite),
-                                        ),
-                                      ]),
-                                ),
-                              ),
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        color: custom_Color.backgroundWhite),
+                                  ),
+                                ]),
+                          ),
+                        ),
                         const SizedBox(
                           width: 20,
                         ),

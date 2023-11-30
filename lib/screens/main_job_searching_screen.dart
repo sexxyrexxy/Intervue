@@ -39,6 +39,12 @@ class MainJobSearch extends StatefulWidget {
 
 List<Widget> positions = [];
 
+Future<void> _signOut(BuildContext context) async {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  await _firebaseAuth.signOut().then((value) =>
+      Navigator.of(context).pushReplacementNamed(MainJobSearch.routeName));
+}
+
 class _MainJobSearchState extends State<MainJobSearch> {
   bool _isLoading = true;
   bool isSelected = false;
@@ -90,7 +96,6 @@ class _MainJobSearchState extends State<MainJobSearch> {
     print(
       "id: ${_positionProvider.positionIdList.length}",
     );
-    // TODO: implement initState
     super.initState();
   }
 
@@ -104,6 +109,12 @@ class _MainJobSearchState extends State<MainJobSearch> {
 
     final TextEditingController _positionController = TextEditingController();
     final TextEditingController _locationController = TextEditingController();
+
+    if (!_positionProvider.positionIdList.isEmpty) {
+      setState(() {
+        _isLoading = false;
+      });
+    }
 
     return Scaffold(
       body: _isLoading == true
@@ -133,30 +144,65 @@ class _MainJobSearchState extends State<MainJobSearch> {
                           height: 80,
                         ),
                         Spacer(),
-                        Container(
-                          padding: EdgeInsets.fromLTRB(20, 12, 20, 12),
-                          decoration: BoxDecoration(
-                              color: custom_Color.secondaryDarkBlue,
-                              borderRadius: BorderRadius.circular(12)),
-                          height: 60,
-                          width: 240,
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(
-                                  Icons.person,
-                                  size: 24,
-                                  color: custom_Color.backgroundWhite,
+                        FirebaseAuth.instance.currentUser != null
+                            ? Container(
+                                padding: EdgeInsets.fromLTRB(20, 12, 20, 12),
+                                decoration: BoxDecoration(
+                                    color: custom_Color.secondaryDarkBlue,
+                                    borderRadius: BorderRadius.circular(12)),
+                                height: 60,
+                                child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Icon(
+                                        Icons.person,
+                                        size: 24,
+                                        color: custom_Color.backgroundWhite,
+                                      ),
+                                      SizedBox(
+                                        width: 8,
+                                      ),
+                                      Text(
+                                        currentUser.email,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            color:
+                                                custom_Color.backgroundWhite),
+                                      ),
+                                    ]),
+                              )
+                            : GestureDetector(
+                                onTap: () => Navigator.of(context)
+                                    .pushNamed(loginScreen.routeName),
+                                child: Container(
+                                  padding: EdgeInsets.fromLTRB(20, 12, 20, 12),
+                                  decoration: BoxDecoration(
+                                      color: custom_Color.secondaryDarkBlue,
+                                      borderRadius: BorderRadius.circular(12)),
+                                  height: 60,
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Icon(
+                                          Icons.person,
+                                          size: 24,
+                                          color: custom_Color.backgroundWhite,
+                                        ),
+                                        SizedBox(
+                                          width: 8,
+                                        ),
+                                        Text(
+                                          'Log In',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              color:
+                                                  custom_Color.backgroundWhite),
+                                        ),
+                                      ]),
                                 ),
-                                Spacer(),
-                                Text(
-                                  currentUser.name,
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      color: custom_Color.backgroundWhite),
-                                ),
-                              ]),
-                        ),
+                              ),
                         const SizedBox(
                           width: 20,
                         ),
@@ -178,7 +224,20 @@ class _MainJobSearchState extends State<MainJobSearch> {
                               ),
                             ),
                           ),
-                        )
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              if (FirebaseAuth.instance.currentUser != null) {
+                                _showLogoutAlertDialog(context);
+                              } else {}
+                            },
+                            icon: Icon(
+                              Icons.logout_rounded,
+                              color: Colors.white,
+                            ))
                       ],
                     ),
                   ),
@@ -396,4 +455,68 @@ class _MainJobSearchState extends State<MainJobSearch> {
               )),
     );
   }
+}
+
+void _showLogoutAlertDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        titlePadding: EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 20),
+        contentPadding: EdgeInsets.only(left: 30, right: 30, bottom: 30),
+        actionsPadding: EdgeInsets.all(30),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        title: Text(
+          'Logout',
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+              color: custom_Color.secondaryDarkBlue),
+        ),
+        content: Text(
+          'Are you sure you want to logout?',
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('Cancel',
+                style: TextStyle(
+                    color: custom_Color.secondaryDarkBlue,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold)),
+          ),
+          SizedBox(width: 10),
+          Container(
+            width: 120,
+            height: 40,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: custom_Color.secondaryDarkBlue,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                padding: EdgeInsets.all(6),
+              ),
+              onPressed: () {
+                _signOut(context);
+                Navigator.of(context).pop();
+              },
+              child: Text('Yes',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold)),
+            ),
+          ),
+        ],
+      );
+    },
+  );
 }

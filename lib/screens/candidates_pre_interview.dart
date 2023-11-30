@@ -50,6 +50,7 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String jobPosition = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 30, horizontal: 50),
@@ -66,8 +67,9 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                     child: Image.asset('lib/assets/images/Intervue-Logo.png',
                         height: 80)),
                 GestureDetector(
-                  onTap: () => Navigator.of(context)
-                      .pushNamed(CandidatesAnsweringScreen.routeName),
+                  onTap: () => Navigator.of(context).pushNamed(
+                      CandidatesAnsweringScreen.routeName,
+                      arguments: jobPosition),
                   child: smallButton(140, 52, custom_colors.secondaryDarkBlue,
                       Icons.arrow_forward_ios, "Start", 20),
                 )
@@ -82,7 +84,7 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'The Interview Question \n will be shown here.',
+                      'Welcome to Your Interview for\n$jobPosition',
                       style: TextStyle(
                           fontSize: 28,
                           color: custom_colors.primaryBlue,
@@ -219,13 +221,13 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                         width: 180,
                         height: 52,
                         decoration: BoxDecoration(
-                            color: custom_colors.primaryBlue,
+                            color: Colors.black.withOpacity(0.05),
                             borderRadius: BorderRadius.circular(8)),
                         child: Center(
                           child: Text(
                             "Play a sound",
                             style: TextStyle(
-                                color: custom_colors.backgroundWhite,
+                                color: custom_colors.secondaryDarkBlue,
                                 fontSize: 16),
                           ),
                         ),

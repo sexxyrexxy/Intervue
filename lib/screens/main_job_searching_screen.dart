@@ -413,7 +413,8 @@ class _MainJobSearchState extends State<MainJobSearch> {
                                 benefits: _positionProvider
                                     .loadedPositionList[0].benefits,
                                 skillsRequired: _positionProvider
-                                    .loadedPositionList[0].skillsRequired),
+                                    .loadedPositionList[0].skillsRequired,
+                                questions: []),
                           );
                           return JobDetailsCard(
                             jobPosition: selectedPosition?.name ??

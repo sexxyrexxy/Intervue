@@ -38,7 +38,7 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
           );
         },
       );
-       _isLoading = false;
+      _isLoading = false;
     } else {
       setState(() {
         _isLoading = false;
@@ -116,6 +116,7 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
                           responsibilities: [""],
                           benefits: [""],
                           skillsRequired: [""],
+                          questions: [],
                         ));
                         positionProvider.createNewPosition(
                             "", value, "", 0, "", 0, [], [], [], []);

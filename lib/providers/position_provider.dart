@@ -190,35 +190,35 @@ class PositionProvider with ChangeNotifier {
         },
       );
       List.from(snapshot.data()!['responsibilities']).forEach(
-        (exp) {
-          String data = exp;
+        (resp) {
+          String data = resp;
           tmpresponsibilities.add(data);
         },
       );
       List.from(snapshot.data()!['benefits']).forEach(
-        (skills) {
-          String data = skills;
+        (benefit) {
+          String data = benefit;
           tmpBenefits.add(data);
         },
       );
       List.from(snapshot.data()!['defaultQuestions']).forEach(
-        (exp) {
-          String data = exp;
+        (question) {
+          String data = question;
           tmpQuestions.add(data);
         },
       );
 
       PositionModel loadedPosition = PositionModel(
-        id: snapshot.data()!["id"],
-        name: snapshot.data()!["positionName"],
-        description: snapshot.data()!["description"],
-        numOfPeople: snapshot.data()!["numOfPeople"],
-        yearOfExperience: snapshot.data()!["yearOfExperience"],
-        location: snapshot.data()!["location"],
-        benefits: tmpBenefits,
-        responsibilities: tmpresponsibilities,
-        skillsRequired: tmpSkillsRequired,
-      );
+          id: snapshot.data()!["id"],
+          name: snapshot.data()!["positionName"],
+          description: snapshot.data()!["description"],
+          numOfPeople: snapshot.data()!["numOfPeople"],
+          yearOfExperience: snapshot.data()!["yearOfExperience"],
+          location: snapshot.data()!["location"],
+          benefits: tmpBenefits,
+          responsibilities: tmpresponsibilities,
+          skillsRequired: tmpSkillsRequired,
+          questions: tmpQuestions);
       print(loadedPosition);
       loadedPositionList.add(loadedPosition);
       print('fetched ${snapshot.data()!['id']}');

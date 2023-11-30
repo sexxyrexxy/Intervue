@@ -104,26 +104,9 @@ class NavigationState extends State<Navigation> {
                     currentIndex = 4;
                   });
                 },
-                child: navItem(
-                    Icons.work, 'Apply Jobs', currentIndex == 4 ? true : false),
+                child: navItem(Icons.logout_outlined, 'Return',
+                    currentIndex == 4 ? true : false),
               ),
-
-              // GestureDetector(
-              //   onTap: () {
-              //     setState(() {
-              //       currentIndex = 6;
-              //     });
-              //   },
-              //   child: navItem(Icons.settings, 'Settings',
-              //       currentIndex == 6 ? true : false),
-              // ),
-              // GestureDetector(
-              //   onTap: () {
-              //     Navigator.of(context).pushNamed(RegisterScreen.routeName);
-              //   },
-              //   child: navItem(
-              //       Icons.logout, 'Log Out', currentIndex == 5 ? true : false),
-              // ),
             ],
           ),
         ),

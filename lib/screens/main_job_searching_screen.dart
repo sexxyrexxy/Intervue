@@ -132,7 +132,6 @@ class _MainJobSearchState extends State<MainJobSearch> {
                           height: 80,
                         ),
                         Spacer(),
-
                         Container(
                           padding: EdgeInsets.fromLTRB(20, 12, 20, 12),
                           decoration: BoxDecoration(
@@ -179,32 +178,6 @@ class _MainJobSearchState extends State<MainJobSearch> {
                             ),
                           ),
                         )
-
-                        // GestureDetector(
-                        //   onTap: () => Navigator.of(context)
-                        //       .pushNamed(RegisterScreen.routeName),
-                        //   child: smallButtonwithoutIcons(
-                        //       140,
-                        //       44,
-                        //       custom_Color.backgroundWhite,
-                        //       "Signup",
-                        //       20,
-                        //       custom_Color.primaryBlue),
-                        // ),
-                        // SizedBox(
-                        //   width: 20,
-                        // ),
-                        // GestureDetector(
-                        //   onTap: () => Navigator.of(context)
-                        //       .pushNamed(loginScreen.routeName),
-                        //   child: smallButtonwithoutIcons(
-                        //       140,
-                        //       44,
-                        //       custom_Color.secondaryBlue,
-                        //       "Login",
-                        //       20,
-                        //       Colors.white),
-                        // )
                       ],
                     ),
                   ),
@@ -306,43 +279,6 @@ class _MainJobSearchState extends State<MainJobSearch> {
                   const SizedBox(
                     height: 20,
                   ),
-                  // Row(
-                  //   children: [
-                  //     category(
-                  //         width: 121,
-                  //         color: Colors.white,
-                  //         jobTitle: "Senior Admin",
-                  //         jobTitleColor: custom_Color.black),
-                  //     category(
-                  //         width: 121,
-                  //         color: Colors.white,
-                  //         jobTitle: "Data Analyst",
-                  //         jobTitleColor: custom_Color.black),
-                  //     category(
-                  //         width: 121,
-                  //         color: Colors.white,
-                  //         jobTitle: "Pen Tester",
-                  //         jobTitleColor: custom_Color.black),
-                  //     category(
-                  //       width: 200,
-                  //       color: Colors.white,
-                  //       jobTitle: "Chief Technology Officer",
-                  //       jobTitleColor: custom_Color.black,
-                  //     ),
-                  //     category(
-                  //       width: 160,
-                  //       color: Colors.white,
-                  //       jobTitle: "Senior Technician",
-                  //       jobTitleColor: custom_Color.black,
-                  //     ),
-                  //     category(
-                  //       width: 160,
-                  //       color: custom_Color.secondaryDarkBlue,
-                  //       jobTitle: "Software Engineer",
-                  //       jobTitleColor: custom_Color.backgroundWhite,
-                  //     ),
-                  //   ],
-                  // ),
                   Divider(
                     height: 50,
                     color: custom_Color.black,

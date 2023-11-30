@@ -104,7 +104,7 @@ class PositionProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> removeQuestions(String posName, String questionToRemove) async{
+  Future<void> removeQuestions(String posName, String questionToRemove) async {
     int positionIndex =
         loadedPositionList.indexWhere((pos) => pos.name == posName);
     loadedPositionList[positionIndex].questions.remove(questionToRemove);
@@ -122,17 +122,6 @@ class PositionProvider with ChangeNotifier {
       List<String> skillsRequired,
       List<String> responsibilities,
       List<String> defaultQuestions) {
-    // loadedPositionList.add(PositionModel(
-    //   id: id,
-    //   name: posName,
-    //   description: description,
-    //   numOfPeople: numOfPeople,
-    //   yearOfExperience: yearOfExperience,
-    //   location: location,
-    //   benefits: benefits,
-    //   responsibilities: responsibilities,
-    //   skillsRequired: skillsRequired,
-    // ));
     _firebaseFirestore.collection("position").add({}).then(
       (value) {
         id = value.id;

@@ -151,143 +151,153 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
 
     return Scaffold(
         body: Container(
+      padding: EdgeInsets.all(20),
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Personal Information",
-                      style: TextStyle(color: secondaryDarkBlue, fontSize: 20),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Divider(
-                      color: black,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      children: [
-                        GestureDetector(
-                          onTap: () async {
-                            pickedFile = await FilePickerWeb.platform.pickFiles(
-                                type: FileType.custom,
-                                allowedExtensions: ['pdf']);
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Personal Information",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: secondaryDarkBlue,
+                      fontSize: 20),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Divider(
+                  color: black,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () async {
+                              pickedFile = await FilePickerWeb.platform
+                                  .pickFiles(
+                                      type: FileType.custom,
+                                      allowedExtensions: ['pdf']);
 
-                            ByteData byteFile =
-                                convertFilePickerResultToByteData(pickedFile)!;
+                              ByteData byteFile =
+                                  convertFilePickerResultToByteData(
+                                      pickedFile)!;
 
-                            PdfDocument documentTry = PdfDocument(
-                                inputBytes: await readDocumentData(byteFile));
+                              PdfDocument documentTry = PdfDocument(
+                                  inputBytes: await readDocumentData(byteFile));
 
-                            PdfTextExtractor extractor =
-                                PdfTextExtractor(documentTry);
-                            String text = extractor.extractText();
-                            Map<String, dynamic> jsonMap =
-                                json.decode(await exampleAI(text));
-                            // String inputString = """{
-                            //         "First Name": "Ronalds",
-                            //         "Last Name": "Lim",
-                            //         "Email": "rexlim2003@gmail.com",
-                            //         "Phone Number": "+60 14 759 3534",
-                            //         "Education": "Bachelor's of Computer Science",
-                            //         "Skills": ["Application Development", "Flutter", "Firebase"]
-                            //       }""";
+                              PdfTextExtractor extractor =
+                                  PdfTextExtractor(documentTry);
+                              String text = extractor.extractText();
+                              Map<String, dynamic> jsonMap =
+                                  json.decode(await exampleAI(text));
+                              // String inputString = """{
+                              //         "First Name": "Ronalds",
+                              //         "Last Name": "Lim",
+                              //         "Email": "rexlim2003@gmail.com",
+                              //         "Phone Number": "+60 14 759 3534",
+                              //         "Education": "Bachelor's of Computer Science",
+                              //         "Skills": ["Application Development", "Flutter", "Firebase"]
+                              //       }""";
 
-                            // Map<String, dynamic> jsonMap =
-                            //     json.decode(inputString);
+                              // Map<String, dynamic> jsonMap =
+                              //     json.decode(inputString);
 
-                            // Accessing individual properties
-                            String firstName = jsonMap['First Name'];
-                            String lastName = jsonMap['Last Name'];
-                            String email = jsonMap['Email'];
-                            String phoneNumber = jsonMap['Phone Number'];
-                            String education = jsonMap['Education'];
-                            List<String> skills =
-                                List<String>.from(jsonMap['Skills']);
+                              // Accessing individual properties
+                              String firstName = jsonMap['First Name'];
+                              String lastName = jsonMap['Last Name'];
+                              String email = jsonMap['Email'];
+                              String phoneNumber = jsonMap['Phone Number'];
+                              String education = jsonMap['Education'];
+                              List<String> skills =
+                                  List<String>.from(jsonMap['Skills']);
 
-                            if (pickedFile != null) {
-                              setState(() {
-                                // Not sure if this works
-                                _provider.setName("$firstName $lastName");
-                                _provider.setEducation(education);
-                                _provider.setSkills(skills);
-                                fnameController.text = firstName;
-                                lnameController.text = lastName;
-                                phoneController.text = phoneNumber;
-                                emailController.text = email;
-                                educationController.text = education;
-                              });
-                            }
-                          },
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 5),
-                            alignment: Alignment.center,
-                            height: 40,
-                            width: 200,
-                            decoration: BoxDecoration(
-                              color: secondaryDarkBlue,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Text(
-                              'Upload CV/Resume',
-                              style: TextStyle(color: backgroundWhite),
+                              if (pickedFile != null) {
+                                setState(() {
+                                  // Not sure if this works
+                                  _provider.setName("$firstName $lastName");
+                                  _provider.setEducation(education);
+                                  _provider.setSkills(skills);
+                                  fnameController.text = firstName;
+                                  lnameController.text = lastName;
+                                  phoneController.text = phoneNumber;
+                                  emailController.text = email;
+                                  educationController.text = education;
+                                });
+                              }
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 5),
+                              alignment: Alignment.center,
+                              height: 40,
+                              width: 200,
+                              decoration: BoxDecoration(
+                                color: secondaryDarkBlue,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Text(
+                                'Upload CV/Resume',
+                                style: TextStyle(color: backgroundWhite),
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Icon(
-                          Icons.file_copy_rounded,
-                          color: secondaryDarkBlue,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'PDF (2MB)',
-                          style: TextStyle(color: secondaryDarkBlue),
-                        )
-                      ],
-                    ),
-                    CandidatesInfoTextField('First Name', fnameController),
-                    CandidatesInfoTextField('Last Name', lnameController),
-                    CandidatesInfoTextField('Phone Number', phoneController),
-                    CandidatesInfoTextField('Email Address', emailController),
-                    CandidatesInfoTextField('Education', educationController),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context)
-                            .pushNamed(PreInterviewScreen.routeName);
-                        uploadFiles();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: secondaryDarkBlue,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        minimumSize: Size(280, 56),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Icon(
+                            Icons.file_copy_rounded,
+                            color: secondaryDarkBlue,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'PDF (2MB)',
+                            style: TextStyle(color: secondaryDarkBlue),
+                          )
+                        ],
                       ),
-                      child: Text(
-                        'Interview Now',
-                        style: TextStyle(
-                          color: backgroundWhite,
-                          fontSize: 20,
-                          fontFamily: 'Futura',
-                          fontWeight: FontWeight.w300,
-                          height: 0,
+                      CandidatesInfoTextField('First Name', fnameController),
+                      CandidatesInfoTextField('Last Name', lnameController),
+                      CandidatesInfoTextField('Phone Number', phoneController),
+                      CandidatesInfoTextField('Email Address', emailController),
+                      CandidatesInfoTextField('Education', educationController),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushNamed(MainJobSearch.routeName);
+                          uploadFiles();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: secondaryDarkBlue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          minimumSize: Size(280, 56),
+                        ),
+                        child: Text(
+                          'Start Applying For Jobs',
+                          style: TextStyle(
+                            color: backgroundWhite,
+                            fontFamily: 'Futura',
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
           Expanded(

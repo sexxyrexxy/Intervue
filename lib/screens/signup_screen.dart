@@ -42,7 +42,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       setState(
         () {
           _errorMessage = e.message;
-
         },
       );
     }
@@ -99,7 +98,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-
   Widget _submitButton() {
     return ClipRRect(
       borderRadius: BorderRadius.circular(
@@ -114,7 +112,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               backgroundColor: custom_colors.secondaryBlue),
           onPressed: (() {
             createUserWithEmailAndPassword();
-            Navigator.of(context).pushNamed(CandidatesUploadCV.routeName);
           }),
           child: Text(
             'SIGN UP',
@@ -151,7 +148,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal:50, vertical: 100),
+        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 100),
         width: double.infinity,
         height: double.infinity,
         alignment: Alignment.center,

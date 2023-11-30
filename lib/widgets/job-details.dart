@@ -1,4 +1,5 @@
 import 'package:bulleted_list/bulleted_list.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:talentsync/models/colors.dart' as custom_color;
@@ -6,6 +7,7 @@ import 'package:talentsync/screens/candidates_answering_screen.dart';
 import 'package:talentsync/screens/candidates_pre_interview.dart';
 import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
 import 'package:talentsync/models/colors.dart' as custom_Color;
+import 'package:talentsync/screens/login_screen.dart';
 import 'package:talentsync/screens/signup_screen.dart';
 import '../models/position_model.dart';
 import '../providers/candidate_provider.dart';
@@ -74,8 +76,11 @@ class JobDetailsCard extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  _provider.setSelectedPosition(selectedPosition.name);
-                  Navigator.of(context).pushNamed(RegisterScreen.routeName);
+                  if (FirebaseAuth.instance.currentUser != null) {
+                    _showInterviewAlertDialog(context, jobPosition);
+                  } else {
+                    _showLoginAlertDialog(context, jobPosition);
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   primary: custom_color.secondaryDarkBlue,
@@ -109,15 +114,6 @@ class JobDetailsCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Text(
-                //   "Job Description",
-                //   style: TextStyle(
-                //     color: custom_color.secondaryDarkBlue,
-                //     fontSize: 28,
-                //     fontWeight: FontWeight.bold,
-                //   ),
-                // ),
-                // SizedBox(height: 8),
                 Text(
                   "Job Description",
                   textAlign: TextAlign.justify,
@@ -145,18 +141,10 @@ class JobDetailsCard extends StatelessWidget {
                   "Responsibilities:",
                   selectedPosition.responsibilities,
                 ),
-
                 buildListItem("Benefits: ", selectedPosition.benefits),
-                // buildListItem("Education: ", [
-                //   "STM/SPM (Preferred)",
-                // ]),
                 buildListItem("Experience: ", [
                   "${selectedPosition.yearOfExperience} year of experience (Preferred)",
                 ]),
-                // buildListItem("Language: ", [
-                //   "English (Preferred)",
-                //   "Bahasa (Preferred)",
-                // ]),
               ],
             ),
           ),
@@ -195,16 +183,140 @@ class JobDetailsCard extends StatelessWidget {
               bulletColor: custom_Color.secondaryDarkBlue,
             )
           ],
-          // children: items
-          //     .map((item) => Text(
-          //           "• $item",
-          //           style: TextStyle(
-          //               color: custom_color.secondaryDarkBlue, fontSize: 20),
-          //         ))
-          //     .toList(),
         ),
         SizedBox(height: 8),
       ],
     );
   }
+}
+
+void _showLoginAlertDialog(BuildContext context, String position) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        titlePadding: EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 20),
+        contentPadding: EdgeInsets.only(left: 30, right: 30, bottom: 30),
+        actionsPadding: EdgeInsets.all(30),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        title: Text(
+          'Exciting Opportunity!',
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+              color: custom_Color.secondaryDarkBlue),
+        ),
+        content: Text(
+          'Found this $position job offer intersting?\nPlease log in or sign up to apply and unlock this opportunity.',
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pushNamed(RegisterScreen.routeName);
+            },
+            child: Text('Sign Up',
+                style: TextStyle(
+                    color: custom_Color.secondaryDarkBlue,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold)),
+          ),
+          SizedBox(width: 10),
+          Container(
+            width: 120,
+            height: 40,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: custom_Color.secondaryDarkBlue,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                padding: EdgeInsets.all(6),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pushNamed(loginScreen.routeName);
+              },
+              child: Text('Log In',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold)),
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+void _showInterviewAlertDialog(BuildContext context, String position) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        titlePadding: EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 20),
+        contentPadding: EdgeInsets.only(left: 30, right: 30, bottom: 30),
+        actionsPadding: EdgeInsets.all(30),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        title: Text(
+          'Ready to Go?',
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+              color: custom_Color.secondaryDarkBlue),
+        ),
+        content: Text(
+          'You are about to start the interview for $position.\nClick the \'Start\' button to proceed.',
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('Cancel',
+                style: TextStyle(
+                    color: custom_Color.secondaryDarkBlue,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold)),
+          ),
+          SizedBox(width: 10),
+          Container(
+            width: 120,
+            height: 40,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: custom_Color.secondaryDarkBlue,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                padding: EdgeInsets.all(6),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Provider.of<CandidatesProvider>(context, listen: false)
+                    .setSelectedPosition(position);
+                Navigator.of(context).pushNamed(PreInterviewScreen.routeName);
+              },
+              child: Text('Start',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold)),
+            ),
+          ),
+        ],
+      );
+    },
+  );
 }

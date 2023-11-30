@@ -52,7 +52,7 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 80, vertical: 36),
+        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 50),
         height: double.infinity,
         width: double.infinity,
         child: Column(
@@ -62,7 +62,9 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset('lib/assets/images/Intervue-logo.png', height: 80),
+                Container(
+                    child: Image.asset('lib/assets/images/Intervue-Logo.png',
+                        height: 80)),
                 GestureDetector(
                   onTap: () => Navigator.of(context)
                       .pushNamed(CandidatesAnsweringScreen.routeName),
@@ -70,9 +72,6 @@ class _PreInterviewScreenState extends State<PreInterviewScreen> {
                       Icons.arrow_forward_ios, "Start", 20),
                 )
               ],
-            ),
-            SizedBox(
-              height: 20,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

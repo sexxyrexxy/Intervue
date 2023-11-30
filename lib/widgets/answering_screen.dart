@@ -53,92 +53,83 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
     }
 
     return Container(
-        width: double.infinity,
-        padding: EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              widget.question,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-
-            Cameras(800, 500),
-            SizedBox(
-              height: 10,
-            ),
-
-            Countdown(
-              // controller: _controller,
-              seconds: 180,
-              controller: _controller,
-              build: (_, double time) => Text(
-                time.toString() + " seconds left",
-                style: TextStyle(
-                  fontSize: 25,
-                ),
+      width: double.infinity,
+      padding: EdgeInsets.all(20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            widget.question,
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+          ),
+          Cameras(800, 500),
+          Countdown(
+            // controller: _controller,
+            seconds: 180,
+            controller: _controller,
+            build: (_, double time) => Text(
+              time.toString() + " seconds left",
+              style: TextStyle(
+                fontSize: 25,
               ),
-              interval: Duration(seconds: 1),
-              onFinished: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('Timer is done!'),
-                  ),
-                );
+            ),
+            interval: Duration(seconds: 1),
+            onFinished: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Timer is done!'),
+                ),
+              );
+            },
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GestureDetector(
+                  onTap: () {
+                    _controller.start();
+                    speechRecognitionComponent.startListening();
+                    print('listen');
+                  },
+                  child: const Icon(
+                    Icons.play_circle_fill,
+                    size: 50,
+                  )),
+              GestureDetector(
+                  onTap: () {
+                    speechRecognitionComponent.stopListening();
+                    _controller.pause();
+                    print('listen');
+                  },
+                  child: const Icon(Icons.pause_circle, size: 50)),
+            ],
+          ),
+          //
+          Align(
+            alignment: Alignment.centerRight,
+            child: GestureDetector(
+              onTap: () {
+                widget.action!();
+                print('next');
+                if (widget.question == "Tell me a little bit about yourself") {
+                  exampleAI();
+                }
               },
-            ),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                    onTap: () {
-                      _controller.start();
-                      speechRecognitionComponent.startListening();
-                      print('listen');
-                    },
-                    child: const Icon(
-                      Icons.play_circle_fill,
-                      size: 50,
-                    )),
-                GestureDetector(
-                    onTap: () {
-                      speechRecognitionComponent.stopListening();
-                      _controller.pause();
-                      print('listen');
-                    },
-                    child: const Icon(Icons.pause_circle, size: 50)),
-              ],
-            ),
-            SizedBox(height: 10),
-            //
-            Align(
-              alignment: Alignment.centerRight,
-              child: GestureDetector(
-                onTap: () {
-                  widget.action!();
-                  print('next');
-                  if (widget.question ==
-                      "Tell me a little bit about yourself") {
-                    exampleAI();
-                  }
-                },
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: secondaryDarkBlue),
-                  child: Text(
-                    'Next Question',
-                    style: TextStyle(color: backgroundWhite),
-                  ),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: secondaryDarkBlue),
+                child: Text(
+                  'Next Question',
+                  style: TextStyle(color: backgroundWhite),
                 ),
               ),
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 }

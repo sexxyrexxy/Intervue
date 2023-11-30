@@ -164,7 +164,8 @@ class _MainJobSearchState extends State<MainJobSearch> {
                                         width: 8,
                                       ),
                                       Text(
-                                        currentUser.email,
+                                        FirebaseAuth
+                                            .instance.currentUser!.email!,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             color:

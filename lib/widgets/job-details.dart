@@ -280,6 +280,16 @@ void _showInterviewAlertDialog(BuildContext context, String position) {
           ),
         ),
         actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('Cancel',
+                style: TextStyle(
+                    color: custom_Color.secondaryDarkBlue,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold)),
+          ),
           SizedBox(width: 10),
           Container(
             width: 120,

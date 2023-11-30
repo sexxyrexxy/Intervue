@@ -14,15 +14,15 @@ class PositionModel {
     'Why do you want to join us?'
   ];
 
-  PositionModel({
-    required this.id,
-    required this.name,
-    required this.description,
-    required this.numOfPeople,
-    required this.location,
-    required this.yearOfExperience,
-    required this.responsibilities,
-    required this.benefits,
-    required this.skillsRequired,
-  });
+  PositionModel(
+      {required this.id,
+      required this.name,
+      required this.description,
+      required this.numOfPeople,
+      required this.location,
+      required this.yearOfExperience,
+      required this.responsibilities,
+      required this.benefits,
+      required this.skillsRequired,
+      required this.questions});
 }

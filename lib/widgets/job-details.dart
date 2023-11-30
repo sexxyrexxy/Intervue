@@ -306,7 +306,8 @@ void _showInterviewAlertDialog(BuildContext context, String position) {
                 Navigator.of(context).pop();
                 Provider.of<CandidatesProvider>(context, listen: false)
                     .setSelectedPosition(position);
-                Navigator.of(context).pushNamed(PreInterviewScreen.routeName);
+                Navigator.of(context).pushNamed(PreInterviewScreen.routeName,
+                    arguments: position);
               },
               child: Text('Start',
                   style: TextStyle(

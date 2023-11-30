@@ -34,6 +34,7 @@ class _CandidatesAnsweringScreenState extends State<CandidatesAnsweringScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String jobPosition = ModalRoute.of(context)!.settings.arguments as String;
     // var candidateProvider =
     //     Provider.of<CandidatesProvider>(context, listen: true);
     // questions = candidateProvider.defaultCandidate.question
@@ -41,12 +42,11 @@ class _CandidatesAnsweringScreenState extends State<CandidatesAnsweringScreen> {
     //       (question) => AnsweringScreen(question.keys.toString(), action),
     //     )
     //     .toList();
-    
-    var positionProvider =
-        Provider.of<PositionProvider>(context, listen: true);
-        int positionIndex =
-        positionProvider.loadedPositionList.indexWhere((pos) => pos.name == 'Software Engineer');
-         questions = positionProvider.loadedPositionList[positionIndex].questions
+
+    var positionProvider = Provider.of<PositionProvider>(context, listen: true);
+    int positionIndex = positionProvider.loadedPositionList
+        .indexWhere((pos) => pos.name == jobPosition);
+    questions = positionProvider.loadedPositionList[positionIndex].questions
         .map(
           (question) => AnsweringScreen(question.toString(), action),
         )

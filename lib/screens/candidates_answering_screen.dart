@@ -48,7 +48,10 @@ class _CandidatesAnsweringScreenState extends State<CandidatesAnsweringScreen> {
         .indexWhere((pos) => pos.name == jobPosition);
     questions = positionProvider.loadedPositionList[positionIndex].questions
         .map(
-          (question) => AnsweringScreen(question.toString(), action),
+          (question) => AnsweringScreen(
+              position: jobPosition,
+              question: question.toString(),
+              action: action),
         )
         .toList();
     return Scaffold(

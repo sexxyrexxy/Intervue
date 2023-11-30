@@ -9,12 +9,12 @@ import 'package:timer_count_down/timer_count_down.dart';
 import '../models/colors.dart';
 import '../providers/position_provider.dart';
 
-
-
 class AnsweringScreen extends StatefulWidget {
+  String position;
   String question;
   Function()? action;
-  AnsweringScreen(this.question, this.action, {super.key});
+  AnsweringScreen(
+      {required this.position, required this.question, this.action});
 
   @override
   State<AnsweringScreen> createState() => _AnsweringScreenState();
@@ -41,13 +41,13 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
         model: "text-davinci-003",
         maxTokens: 40,
         prompt: """
-                I am interviewing a candidate for software engineer. 
+                I am interviewing a candidate for ${widget.position}. 
                 The question is ${widget.question}. The response is ${speechRecognitionComponent.recognizedWords}.
                 Please give me a very specific follow up qeustion.
                 """,
       );
       positionProvider.addQuestion(
-          'Software Engineer', completion.choices[0].text, 1);
+          widget.position, completion.choices[0].text, 1);
 
       print(completion.choices[0].text);
     }

@@ -9,7 +9,6 @@ class CandidatesInfoTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 30),
       child: Row(
         children: [
           Container(width: 120, child: Text(text)),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:dart_openai/dart_openai.dart';
+import 'package:intl/intl.dart';
 import 'package:talentsync/models/colors.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -14,7 +14,6 @@ class AdminMainScreen extends StatefulWidget {
 class _AdminMainScreenState extends State<AdminMainScreen> {
   @override
   Widget build(BuildContext context) {
-    // exampleAI();
     return Container(
         padding: const EdgeInsets.all(40.0),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -41,7 +40,7 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.fromLTRB(24, 30, 24, 30),
+                            padding: EdgeInsets.fromLTRB(24, 30, 24, 30),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -51,12 +50,12 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
                                       fontSize: 30,
                                       fontWeight: FontWeight.w500),
                                 ),
-                                SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 const Row(
                                   children: [
                                     DecoratedBox(
                                         decoration: BoxDecoration(
-                                          color: Colors.blue,
+                                          color: Color.fromRGBO(75, 135, 185, 1),
                                         ),
                                         child: SizedBox(
                                           width: 10,
@@ -70,7 +69,7 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
                                     SizedBox(width: 35),
                                     DecoratedBox(
                                         decoration: BoxDecoration(
-                                          color: Colors.blue,
+                                          color: Color.fromRGBO(192, 108, 132, 1),
                                         ),
                                         child: SizedBox(
                                           width: 10,
@@ -85,7 +84,7 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
                                 ),
                                 const SizedBox(height: 35),
                                 SizedBox(
-                                    height: 500, child: SfCartesianChart()),
+                                    height: 500, child: DataChartComponent()),
                               ],
                             ),
                           ))),
@@ -342,22 +341,89 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
           ),
         ]));
   }
+}
 
-  Future<void> exampleAI() async {
-    // Set the OpenAI API key from the .env file.
-    OpenAI.apiKey = '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';
+class ChartSampleData {
+  ChartSampleData(
+      {this.x,
+        this.y,
+        this.xValue,
+        this.yValue,
+        this.secondSeriesYValue,
+        this.thirdSeriesYValue,
+        this.pointColor,
+        this.size,
+        this.text,
+        this.open,
+        this.close,
+        this.low,
+        this.high,
+        this.volume});
 
-    // Start using!
-    final completion = await OpenAI.instance.completion.create(
-      model: "text-davinci-003",
-      prompt: """
-                I am interviewing a candidate for software engineer. 
-                The question is what language do you know. The response is I know flutter, 
-                and I have made a few apps with Flutter. What follow up question should I ask? 
-                Please give me a very specific follow up qeustion.
-                """,
+  final dynamic x;
+  final num? y;
+  final dynamic xValue;
+  final num? yValue;
+  final num? secondSeriesYValue;
+  final num? thirdSeriesYValue;
+  final Color? pointColor;
+  final num? size;
+  final String? text;
+  final num? open;
+  final num? close;
+  final num? low;
+  final num? high;
+  final num? volume;
+}
+
+class DataChartComponent extends StatelessWidget {
+  DataChartComponent({super.key});
+
+  final List<ChartSampleData> chartData = <ChartSampleData>[
+    ChartSampleData(x: DateTime(2023, 11, 23), y: 40, secondSeriesYValue: 26),
+    ChartSampleData(x: DateTime(2023, 11, 24), y: 30, secondSeriesYValue: 28),
+    ChartSampleData(x: DateTime(2023, 11, 25), y: 38, secondSeriesYValue: 26),
+    ChartSampleData(x: DateTime(2023, 11, 26), y: 34, secondSeriesYValue: 30),
+    ChartSampleData(x: DateTime(2023, 11, 27), y: 32, secondSeriesYValue: 36),
+    ChartSampleData(x: DateTime(2023, 11, 28), y: 39, secondSeriesYValue: 30),
+  ];
+
+  List<AreaSeries<ChartSampleData, DateTime>> _getDefaultAreaSeries() {
+    return <AreaSeries<ChartSampleData, DateTime>>[
+      AreaSeries<ChartSampleData, DateTime>(
+        dataSource: chartData,
+        opacity: 0.7,
+        name: 'Submissions',
+        xValueMapper: (ChartSampleData sales, _) => sales.x as DateTime,
+        yValueMapper: (ChartSampleData sales, _) => sales.y,
+      ),
+      AreaSeries<ChartSampleData, DateTime>(
+        dataSource: chartData,
+        opacity: 0.7,
+        name: 'Accepted',
+        xValueMapper: (ChartSampleData sales, _) => sales.x as DateTime,
+        yValueMapper: (ChartSampleData sales, _) => sales.secondSeriesYValue,
+      )
+    ];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SfCartesianChart(
+      plotAreaBorderWidth: 0,
+      primaryXAxis: DateTimeAxis(
+          dateFormat: DateFormat.d(),
+          interval: 1,
+          intervalType: DateTimeIntervalType.days,
+          majorGridLines: const MajorGridLines(width: 0),
+          edgeLabelPlacement: EdgeLabelPlacement.shift),
+      primaryYAxis: NumericAxis(
+          interval: 1,
+          axisLine: const AxisLine(width: 0),
+          majorTickLines: const MajorTickLines(size: 0)),
+      series: _getDefaultAreaSeries(),
+      tooltipBehavior: TooltipBehavior(enable: true),
     );
-    print(completion.choices[0].text);
   }
 }
 

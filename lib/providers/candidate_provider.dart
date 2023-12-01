@@ -97,7 +97,9 @@ class CandidatesProvider with ChangeNotifier {
         .collection("candidates")
         .doc(Auth().currentUser!.uid)
         .update({
-      'questions': {'question': question, 'response': answer}
+      'questions': FieldValue.arrayUnion([
+        {'question': question, 'response': answer}
+      ]),
     });
   }
 

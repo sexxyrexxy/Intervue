@@ -87,6 +87,7 @@ class CandidatesProvider with ChangeNotifier {
       }
     });
   }
+  // Updating the questions
 
   Future<void> setImgDetails(imgExtractedModel imgExtractedData) async {
     await _firebaseFirestore

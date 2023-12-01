@@ -58,7 +58,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
       maxTokens: 500,
       prompt: """
                 I am giving you a resume broken down into text. Analyze it, summarize, and return in JSON format. 
-                Strictly only extract first name, last name, phone number, email, education and strictly only 3 skills and experiences.
+                Strictly only extract first name, last name, phone number, email, education and strictly only 5 skills and experiences.
                 Give no extra information other than that. 
                 Here is the text : ${text}.
                 Do it in the strict JSON format and example of below, make sure the keys are exactly right:

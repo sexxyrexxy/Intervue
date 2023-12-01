@@ -40,7 +40,7 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.fromLTRB(24, 30, 24, 30),
+                            padding: const EdgeInsets.fromLTRB(24, 30, 24, 30),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [

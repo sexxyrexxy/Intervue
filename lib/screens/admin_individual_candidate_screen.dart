@@ -251,6 +251,9 @@ class _AdminIndividualCandidateScreenState
                               color: secondaryDarkBlue),
                           bulletColor: secondaryDarkBlue,
                           listItems: [
+                            displayedCandidate.experiences,
+                            displayedCandidate.skills,
+                            displayedCandidate.education,
                             'Software Engineer, Data Scientist, AI Engineer',
                             'Flutter, React.JS, Python',
                             '7 years of working experience',

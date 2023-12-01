@@ -63,7 +63,7 @@ class CandidatesProvider with ChangeNotifier {
     await _firebaseFirestore
         .collection("candidates")
         .doc(Auth().currentUser!.uid)
-        .update({"experience": FieldValue.arrayUnion(experience)});
+        .update({"experiences": FieldValue.arrayUnion(experience)});
     print("Experiences updated successfully");
   }
 
@@ -127,7 +127,6 @@ class CandidatesProvider with ChangeNotifier {
       return null;
     }
   }
-  
 
   Future<void> fetchAllCandidates() async {
     for (int i = 0; i < candidatesIdList.length; i++) {

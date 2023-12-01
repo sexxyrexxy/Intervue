@@ -244,6 +244,8 @@ class _AdminIndividualCandidateScreenState
                       SizedBox(
                         height: 10,
                       ),
+                      Text("General Overview: ",
+                          style: TextStyle(fontSize: 20)),
                       BulletedList(
                           style: TextStyle(
                               fontSize: 15,
@@ -251,16 +253,35 @@ class _AdminIndividualCandidateScreenState
                               color: secondaryDarkBlue),
                           bulletColor: secondaryDarkBlue,
                           listItems: [
-                            displayedCandidate.experiences,
-                            displayedCandidate.skills,
                             displayedCandidate.education,
-                            'Software Engineer, Data Scientist, AI Engineer',
-                            'Flutter, React.JS, Python',
-                            '7 years of working experience',
-                            'Worked with AirAsia, Uber and Amazon',
-                            'Working with large language model and artificial intelligence',
-                            "Degree from Taylor's University",
-                            "Compensation : 100k USD",
+                          ]),
+                      Text(
+                        "Skills:",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      BulletedList(
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              color: secondaryDarkBlue),
+                          bulletColor: secondaryDarkBlue,
+                          listItems: [
+                            ...displayedCandidate.skills
+                                .map((skill) => '$skill'),
+                          ]),
+                      Text(
+                        "Experience: ",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      BulletedList(
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              color: secondaryDarkBlue),
+                          bulletColor: secondaryDarkBlue,
+                          listItems: [
+                            ...displayedCandidate.experiences
+                                .map((experiences) => '$experiences'),
                           ]),
                       SizedBox(
                         height: 20,

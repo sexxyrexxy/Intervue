@@ -48,7 +48,7 @@ class Auth {
           "name": '',
           "pdfUrls": '',
         },
-        "questions": [],
+        "questions": {},
       });
     });
     return null;

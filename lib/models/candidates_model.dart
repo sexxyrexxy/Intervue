@@ -36,3 +36,16 @@ class imgExtractedModel {
 
   imgExtractedModel({required this.imgName, required this.imgUrl});
 }
+
+class questionResponseModel {
+  String question;
+  String response;
+
+  questionResponseModel({required this.question, required this.response});
+  Map<String, String> toMap() {
+    return {
+      'question': question,
+      'response': response,
+    };
+  }
+}

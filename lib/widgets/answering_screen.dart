@@ -6,7 +6,9 @@ import 'package:talentsync/providers/speechtotext_provider.dart';
 import 'package:talentsync/widgets/camera.dart';
 import 'package:timer_count_down/timer_controller.dart';
 import 'package:timer_count_down/timer_count_down.dart';
+import '../models/candidates_model.dart';
 import '../models/colors.dart';
+import '../providers/candidate_provider.dart';
 import '../providers/position_provider.dart';
 
 class AnsweringScreen extends StatefulWidget {
@@ -22,15 +24,31 @@ class AnsweringScreen extends StatefulWidget {
 
 var speechRecognitionComponent = SpeechToTextProvider();
 final CountdownController _controller = CountdownController(autoStart: false);
+bool _isLoading = true;
 
 class _AnsweringScreenState extends State<AnsweringScreen> {
   @override
   void initState() {
+    Provider.of<CandidatesProvider>(context, listen: false)
+        .fetchCandidateData()
+        .then(
+      (_) {
+        setState(
+          () {
+            _isLoading = false;
+          },
+        );
+      },
+    );
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    var _provider = Provider.of<CandidatesProvider>(context, listen: false);
+    CandidateModel currentCandidate =
+        Provider.of<CandidatesProvider>(context, listen: false)
+            .candidateProviderData;
     var positionProvider = Provider.of<PositionProvider>(context, listen: true);
     Future<void> exampleAI() async {
       // Set the OpenAI API key from the .env file.
@@ -110,6 +128,8 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
             alignment: Alignment.centerRight,
             child: GestureDetector(
               onTap: () {
+                _provider.updateQuestions(widget.question,
+                    speechRecognitionComponent.recognizedWords);
                 widget.action!();
                 print('next');
                 if (widget.question == "Tell me a little bit about yourself") {

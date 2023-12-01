@@ -18,7 +18,10 @@ class CandidatesProvider with ChangeNotifier {
       imgs: imgExtractedModel(imgName: "", imgUrl: ""),
       skills: [],
       experiences: [],
-      question: [],
+      question: [
+        questionResponseModel(question: 'question', response: 'response')
+            .toMap()
+      ],
       pdfs: pdfExtractedModel(pdfName: "", pdfUrl: ""));
 
   CandidateModel defaultCandidate = CandidateModel(
@@ -87,7 +90,16 @@ class CandidatesProvider with ChangeNotifier {
       }
     });
   }
+
   // Updating the questions
+  Future<void> updateQuestions(String question, String answer) async {
+    await _firebaseFirestore
+        .collection("candidates")
+        .doc(Auth().currentUser!.uid)
+        .update({
+      'questions': {'question': question, 'response': answer}
+    });
+  }
 
   Future<void> setImgDetails(imgExtractedModel imgExtractedData) async {
     await _firebaseFirestore

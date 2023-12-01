@@ -220,6 +220,8 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                               String education = jsonMap['Education'];
                               List<String> skills =
                                   List<String>.from(jsonMap['Skills']);
+                              List<String> experiences =
+                                  List<String>.from(jsonMap['Experience']);
 
                               if (pickedFile != null) {
                                 setState(() {
@@ -227,6 +229,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                                   _provider.setName("$firstName $lastName");
                                   _provider.setEducation(education);
                                   _provider.setSkills(skills);
+                                  _provider.setExperiences(experiences);
                                   fnameController.text = firstName;
                                   lnameController.text = lastName;
                                   phoneController.text = phoneNumber;

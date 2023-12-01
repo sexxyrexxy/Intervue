@@ -44,10 +44,14 @@ class NavigationState extends State<Navigation> {
           width: 200,
           height: double.infinity,
           color: secondaryDarkBlue,
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Column(
             children: [
-              Image.asset('lib/assets/images/Intervue-Logo.png'),
+              Image.asset(
+                'lib/assets/images/Intervue-Logo.png',
+                height: 48,
+              ),
+              const SizedBox(height: 40),
               GestureDetector(
                   onTap: () {
                     setState(() {

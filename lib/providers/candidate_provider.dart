@@ -101,6 +101,9 @@ class CandidatesProvider with ChangeNotifier {
         {'question': question, 'response': answer}
       ]),
     });
+    print(question);
+    print(answer);
+    print("Question updated successfully ");
   }
 
   Future<void> setImgDetails(imgExtractedModel imgExtractedData) async {

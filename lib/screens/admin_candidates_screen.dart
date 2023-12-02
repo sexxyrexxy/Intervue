@@ -162,9 +162,13 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
                   // itemCount: _provider.loadedCandidateLists.length,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
-                      onTap: () => Navigator.of(context).pushNamed(
-                          AdminIndividualCandidateScreen.routeName,
-                          arguments: uniqueCandidate.elementAt(index)),
+                      onTap: () {
+                        print(
+                            "Question: ${uniqueCandidate.elementAt(index).question[0]['question']}");
+                        Navigator.of(context).pushNamed(
+                            AdminIndividualCandidateScreen.routeName,
+                            arguments: uniqueCandidate.elementAt(index));
+                      },
                       child: CandidateCard(
                           uniqueCandidate.elementAt(index).name,
                           uniqueCandidate.elementAt(index).imgs.imgUrl),

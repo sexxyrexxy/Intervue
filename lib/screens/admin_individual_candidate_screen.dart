@@ -28,7 +28,8 @@ class _AdminIndividualCandidateScreenState
     CandidateModel displayedCandidate =
         ModalRoute.of(context)!.settings.arguments as CandidateModel;
 
-    questions = candidateProvider.defaultCandidate.question.map((question) {
+    questions =
+        candidateProvider.candidateProviderData.question.map((question) {
       return Container(
         margin: EdgeInsets.all(10),
         child: Row(
@@ -42,11 +43,12 @@ class _AdminIndividualCandidateScreenState
             ),
             InkWell(
               onTap: () {
-                _dialogBuilder(context, question.keys.toString(),
-                    question.values.toString());
+                _dialogBuilder(context, displayedCandidate.question);
+                // _dialogBuilder(context, question.keys.toString(),
+                //     question.values.toString());
               },
               child: new Text(
-                question.keys.toString(),
+                displayedCandidate.question[0]['question'].toString(),
                 style: TextStyle(color: secondaryDarkBlue),
               ),
             )
@@ -302,28 +304,34 @@ class _AdminIndividualCandidateScreenState
   }
 
   Future<void> _dialogBuilder(
-      BuildContext context, String question, String answer) {
+      BuildContext context, List<Map<String, String>> listOfQuestionsAnswers) {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(question),
-          content: Container(
-            width: MediaQuery.of(context).size.width * 0.6,
-            child: Text(answer),
-          ),
-          actions: <Widget>[
-            TextButton(
-              style: TextButton.styleFrom(
-                textStyle: Theme.of(context).textTheme.labelLarge,
+        for (int i = 0; i < listOfQuestionsAnswers.length; i++) {
+          String question = listOfQuestionsAnswers[i]['question'] ?? '';
+          String response = listOfQuestionsAnswers[i]['response'] ?? '';
+          return AlertDialog(
+            title: Text(question),
+            content: Container(
+                width: MediaQuery.of(context).size.width * 0.6,
+                child: Text(response)),
+            actions: <Widget>[
+              TextButton(
+                style: TextButton.styleFrom(
+                  textStyle: Theme.of(context).textTheme.labelLarge,
+                ),
+                child: const Text('Close'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
               ),
-              child: const Text('Close'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
+            ],
+          );
+        }
+
+        // Return an empty widget here to satisfy the potentially non-nullable return type
+        return const SizedBox.shrink();
       },
     );
   }

@@ -175,12 +175,12 @@ class CandidatesProvider with ChangeNotifier {
           tmpExperiences.add(data);
         },
       );
-      // List.from(snapshot.data()!['questions']).forEach(
-      //   (questions) {
-      //     String data = questions;
-      //     tmpQuestions.add(data);
-      //   },
-      // );
+      List.from(snapshot.data()!['questions']).forEach(
+        (questions) {
+          Map<String, String> data = Map<String, String>.from(questions);
+          tmpQuestions.add(data);
+        },
+      );
       candidateProviderData.id = snapshot.data()!["id"];
       candidateProviderData.name = snapshot.data()!["name"];
       candidateProviderData.email = snapshot.data()!["email"];
@@ -221,12 +221,12 @@ class CandidatesProvider with ChangeNotifier {
           tmpExperiences.add(data);
         },
       );
-      // List.from(snapshot.data()!['questions']).forEach(
-      //   (questions) {
-      //     String data = questions;
-      //     tmpQuestions.add(data);
-      //   },
-      // );
+      List.from(snapshot.data()!['questions']).forEach(
+        (questions) {
+          Map<String, String> data = Map<String, String>.from(questions);
+          tmpQuestions.add(data);
+        },
+      );
 
       CandidateModel loadedCandidate = CandidateModel(
           id: snapshot.data()!["id"],

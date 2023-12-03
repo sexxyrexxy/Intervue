@@ -29,10 +29,10 @@ class _AdminIndividualCandidateScreenState
         ModalRoute.of(context)!.settings.arguments as CandidateModel;
 
     questions =
-        candidateProvider.candidateProviderData.question.map((question) {
+        displayedCandidate.question.map((question) {
       return Container(
-        margin: EdgeInsets.all(10),
-        child: Row(
+        margin: EdgeInsets.all(10),        
+        child: Row(          
           children: [
             Icon(
               Icons.voice_chat,
@@ -43,15 +43,16 @@ class _AdminIndividualCandidateScreenState
             ),
             InkWell(
               onTap: () {
-                _dialogBuilder(context, displayedCandidate.question);
+                _dialogBuilder(context, question['question']!, question['response']!);
                 // _dialogBuilder(context, question.keys.toString(),
                 //     question.values.toString());
               },
               child: new Text(
-                displayedCandidate.question[0]['question'].toString(),
-                style: TextStyle(color: secondaryDarkBlue),
+              question['question'].toString(),
+              style: TextStyle(color: secondaryDarkBlue),
+            ),
               ),
-            )
+            
           ],
         ),
       );
@@ -209,8 +210,7 @@ class _AdminIndividualCandidateScreenState
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.all(20),
-                height: double.infinity,
+                padding: EdgeInsets.all(20),                
                 decoration: BoxDecoration(
                   color: backgroundWhite,
                   borderRadius: BorderRadius.circular(10),
@@ -223,78 +223,71 @@ class _AdminIndividualCandidateScreenState
                     ),
                   ],
                 ),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Hear the highlights',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      ...questions,
-                      Divider(
-                        color: secondaryDarkBlue,
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'About ${displayedCandidate.name}',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text("General Overview: ",
-                          style: TextStyle(fontSize: 20)),
-                      BulletedList(
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: secondaryDarkBlue),
-                          bulletColor: secondaryDarkBlue,
-                          listItems: [
-                            displayedCandidate.education,
-                          ]),
-                      Text(
-                        "Skills:",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      BulletedList(
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: secondaryDarkBlue),
-                          bulletColor: secondaryDarkBlue,
-                          listItems: [
-                            ...displayedCandidate.skills
-                                .map((skill) => '$skill'),
-                          ]),
-                      Text(
-                        "Experience: ",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      BulletedList(
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: secondaryDarkBlue),
-                          bulletColor: secondaryDarkBlue,
-                          listItems: [
-                            ...displayedCandidate.experiences
-                                .map((experiences) => '$experiences'),
-                          ]),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        'This candidate is highly confident, and more elaborative in his answers than most candidates. Skillsets match the job descriptions. Highly recommended!',
-                        style: TextStyle(
-                            color: secondaryDarkBlue,
-                            fontWeight: FontWeight.w500),
-                      )
-                    ]),
+                child: SingleChildScrollView(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Hear the highlights',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        ...questions,
+                        Divider(
+                          color: secondaryDarkBlue,
+                        ),
+                        SizedBox(height: 10),
+                      
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text("General Overview: ",
+                            style: TextStyle(fontSize: 20)),
+                        BulletedList(
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                color: secondaryDarkBlue),
+                            bulletColor: secondaryDarkBlue,
+                            listItems: [
+                              displayedCandidate.education,
+                            ]),
+                        Text(
+                          "Skills:",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        BulletedList(
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                color: secondaryDarkBlue),
+                            bulletColor: secondaryDarkBlue,
+                            listItems: [
+                              ...displayedCandidate.skills
+                                  .map((skill) => '$skill'),
+                            ]),
+                        Text(
+                          "Experience: ",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        BulletedList(
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                color: secondaryDarkBlue),
+                            bulletColor: secondaryDarkBlue,
+                            listItems: [
+                              ...displayedCandidate.experiences
+                                  .map((experiences) => '$experiences'),
+                            ]),
+                        SizedBox(
+                          height: 20,
+                        ),
+                      ]),
+                ),
               ),
             )
           ],
@@ -303,36 +296,29 @@ class _AdminIndividualCandidateScreenState
     );
   }
 
-  Future<void> _dialogBuilder(
-      BuildContext context, List<Map<String, String>> listOfQuestionsAnswers) {
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        for (int i = 0; i < listOfQuestionsAnswers.length; i++) {
-          String question = listOfQuestionsAnswers[i]['question'] ?? '';
-          String response = listOfQuestionsAnswers[i]['response'] ?? '';
-          return AlertDialog(
-            title: Text(question),
-            content: Container(
-                width: MediaQuery.of(context).size.width * 0.6,
-                child: Text(response)),
-            actions: <Widget>[
-              TextButton(
-                style: TextButton.styleFrom(
-                  textStyle: Theme.of(context).textTheme.labelLarge,
-                ),
-                child: const Text('Close'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        }
-
-        // Return an empty widget here to satisfy the potentially non-nullable return type
-        return const SizedBox.shrink();
-      },
-    );
-  }
-}
+ Future<void> _dialogBuilder(
+    BuildContext context, String question, String response) {
+  return showDialog<void>(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(question),
+        content: Container(
+          width: MediaQuery.of(context).size.width * 0.6,
+          child: Text(response),
+        ),
+        actions: <Widget>[
+          TextButton(
+            style: TextButton.styleFrom(
+              textStyle: Theme.of(context).textTheme.labelLarge,
+            ),
+            child: const Text('Close'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}}

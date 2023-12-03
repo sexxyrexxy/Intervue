@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:talentsync/screens/main_job_searching_screen.dart';
 import 'auth.dart';
-import 'navigation.dart';
 
 class AuthWidgetTree extends StatefulWidget {
   const AuthWidgetTree({super.key});

@@ -1,7 +1,6 @@
 import 'dart:html' as html;
 import 'dart:js_util' as js_util;
 import 'dart:math';
-import 'package:flutter/material.dart';
 
 class SpeechToTextProvider {
   final speechRecognition = html.SpeechRecognition();

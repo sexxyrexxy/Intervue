@@ -1,26 +1,21 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:talentsync/models/colors.dart' as custom_Color;
-import 'package:talentsync/screens/new_job_screen_I.dart';
 
-import '../screens/candidates_upload_cv_screen.dart';
-
-class jobPositionCard extends StatefulWidget {
+class JobPositionCard extends StatefulWidget {
   String job_title;
   String description;
 
-  jobPositionCard(
+  JobPositionCard(
       {required this.job_title, required this.description, super.key});
 
   @override
-  State<jobPositionCard> createState() => _jobPositionCardState();
+  State<JobPositionCard> createState() => _JobPositionCardState();
 }
 
-class _jobPositionCardState extends State<jobPositionCard> {
+class _JobPositionCardState extends State<JobPositionCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       width: 366,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,7 +23,7 @@ class _jobPositionCardState extends State<jobPositionCard> {
           Text(
             widget.job_title,
             textAlign: TextAlign.justify,
-            style: TextStyle(
+            style: const TextStyle(
               color: Color(0xFF0D4073),
               fontSize: 20,
               fontFamily: 'Futura',
@@ -36,13 +31,13 @@ class _jobPositionCardState extends State<jobPositionCard> {
               decoration: TextDecoration.underline,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Text(
             widget.description,
             textAlign: TextAlign.justify,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 16,
               fontFamily: 'Futura',

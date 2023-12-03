@@ -1,28 +1,16 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'dart:isolate';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:file_picker/_internal/file_picker_web.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:talentsync/auth.dart';
 import 'package:talentsync/models/candidates_model.dart';
 import 'package:talentsync/models/colors.dart' as custom_Color;
-import 'package:talentsync/models/colors.dart';
 import 'package:talentsync/models/position_model.dart';
 import 'package:talentsync/navigation.dart';
 import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
 import 'package:talentsync/screens/loading_screen.dart';
 import 'package:talentsync/screens/login_screen.dart';
-import 'package:talentsync/screens/signup_screen.dart';
 import 'package:talentsync/widgets/Input_field.dart';
-import 'package:talentsync/widgets/category.dart';
-import 'package:talentsync/widgets/small-button.dart';
 
 import '../providers/candidate_provider.dart';
 import '../providers/position_provider.dart';
@@ -102,9 +90,6 @@ class _MainJobSearchState extends State<MainJobSearch> {
 
   @override
   Widget build(BuildContext context) {
-    CandidateModel currentUser =
-        Provider.of<CandidatesProvider>(context, listen: false)
-            .candidateProviderData;
     var _positionProvider =
         Provider.of<PositionProvider>(context, listen: false);
 
@@ -285,8 +270,8 @@ class _MainJobSearchState extends State<MainJobSearch> {
                       SizedBox(
                         width: 12,
                       ),
-                      inputField(text: 'What', controller: _positionController),
-                      inputField(
+                      InputField(text: 'What', controller: _positionController),
+                      InputField(
                           text: 'Where', controller: _locationController),
                       // Find Jobs Button
                       Container(
@@ -367,7 +352,7 @@ class _MainJobSearchState extends State<MainJobSearch> {
                                       ),
                                       child: Column(
                                         children: [
-                                          jobPositionCard(
+                                          JobPositionCard(
                                             job_title: _positionProvider
                                                 .loadedPositionList[index].name,
                                             description: (_positionProvider

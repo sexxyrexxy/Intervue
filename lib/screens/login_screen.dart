@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:talentsync/screens/candidates_upload_cv_screen.dart';
 import 'package:talentsync/screens/main_job_searching_screen.dart';
 import 'package:talentsync/screens/signup_screen.dart';
 import '../models/colors.dart' as custom_colors;
@@ -231,75 +230,6 @@ class _loginScreenState extends State<loginScreen> {
               child: _submitButton(),
             ),
             SizedBox(height: MediaQuery.of(context).size.width * 0.015),
-            // Row(
-            //   children: [
-            //     Expanded(
-            //       child: Padding(
-            //         padding: const EdgeInsets.only(right: 10.0),
-            //         child: Container(
-            //           height: 1,
-            //           color: custom_colors.primaryBlue,
-            //         ),
-            //       ),
-            //     ),
-            //     Text(
-            //       'OR',
-            //       style: TextStyle(
-            //         fontSize: MediaQuery.of(context).size.width * 0.015,
-            //         color: custom_colors.primaryBlue,
-            //       ),
-            //     ),
-            //     Expanded(
-            //       child: Padding(
-            //         padding: const EdgeInsets.only(left: 10.0),
-            //         child: Container(
-            //           height: 1,
-            //           color: custom_colors.primaryBlue,
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
-            // SizedBox(
-            //   height: 4,
-            // ),
-            // Center(
-            //   child: GestureDetector(
-            //     onTap: () => Auth().signInWithGoogle(),
-            //     child: Container(
-            //       padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
-            //       width: MediaQuery.of(context).size.width * 0.3,
-            //       height: MediaQuery.of(context).size.height * 0.080,
-            //       decoration: BoxDecoration(
-            //           color: Colors.white,
-            //           border: Border.all(
-            //               color: custom_colors.secondaryDarkBlue, width: 2),
-            //           borderRadius: BorderRadius.circular(20)),
-            //       child: Row(
-            //         mainAxisAlignment: MainAxisAlignment.center,
-            //         children: [
-            //           Image.asset(
-            //             'lib/assets/images/google-logo.png',
-            //             fit: BoxFit.cover,
-            //           ),
-            //           SizedBox(
-            //             width: MediaQuery.of(context).size.width * 0.02,
-            //           ),
-            //           Text(
-            //             'Sign In With Google',
-            //             style: TextStyle(
-            //               fontSize: MediaQuery.of(context).size.width * 0.015,
-            //               color: custom_colors.primaryBlue,
-            //             ),
-            //           )
-            //         ],
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: 20,
-            // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

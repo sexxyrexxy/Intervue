@@ -34,7 +34,7 @@ class JobDetailsCard extends StatelessWidget {
     var _provider = Provider.of<CandidatesProvider>(context, listen: false);
 
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 40, horizontal: 60),
+      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 60),
       width: 1000,
       height: 800,
       decoration: BoxDecoration(
@@ -51,13 +51,13 @@ class JobDetailsCard extends StatelessWidget {
             children: [
               Text(
                 jobPosition,
-                style: TextStyle(
+                style: const TextStyle(
                   color: custom_color.secondaryDarkBlue,
                   fontSize: 24,
                   fontWeight: FontWeight.w300,
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Text(
                 location,
                 style: TextStyle(
@@ -65,15 +65,15 @@ class JobDetailsCard extends StatelessWidget {
                   fontSize: 16,
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Text(
                 "RM $salaryStartRange - RM $salaryEndRange a month - $jobType",
-                style: TextStyle(
+                style: const TextStyle(
                   color: custom_color.secondaryDarkBlue,
                   fontSize: 16,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   if (FirebaseAuth.instance.currentUser != null) {
@@ -87,9 +87,9 @@ class JobDetailsCard extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  minimumSize: Size(280, 48),
+                  minimumSize: const Size(280, 48),
                 ),
-                child: Text(
+                child: const Text(
                   'Apply Now',
                   style: TextStyle(
                     color: custom_color.backgroundWhite,
@@ -102,7 +102,7 @@ class JobDetailsCard extends StatelessWidget {
             ],
           ),
           // Divider
-          Divider(
+          const Divider(
             height: 50,
             color: custom_color.black,
             thickness: 1,
@@ -114,7 +114,7 @@ class JobDetailsCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Job Description",
                   textAlign: TextAlign.justify,
                   style: TextStyle(
@@ -123,18 +123,18 @@ class JobDetailsCard extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Text(
                   selectedPosition.description,
                   textAlign: TextAlign.justify,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       color: custom_Color.secondaryDarkBlue),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 buildListItem(
@@ -159,7 +159,7 @@ class JobDetailsCard extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             color: custom_color.secondaryDarkBlue,
             fontSize: 16,
             fontWeight: FontWeight.w300,
@@ -169,14 +169,14 @@ class JobDetailsCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BulletedList(
-              bullet: Icon(
+              bullet: const Icon(
                 Icons.circle_rounded,
                 color: custom_Color.secondaryDarkBlue,
                 size: 8,
               ),
               listItems: items,
               crossAxisAlignment: CrossAxisAlignment.start,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                   color: custom_Color.secondaryDarkBlue),
@@ -184,7 +184,7 @@ class JobDetailsCard extends StatelessWidget {
             )
           ],
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
       ],
     );
   }
@@ -195,13 +195,14 @@ void _showLoginAlertDialog(BuildContext context, String position) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        titlePadding: EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 20),
-        contentPadding: EdgeInsets.only(left: 30, right: 30, bottom: 30),
-        actionsPadding: EdgeInsets.all(30),
+        titlePadding:
+            const EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 20),
+        contentPadding: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
+        actionsPadding: const EdgeInsets.all(30),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
-        title: Text(
+        title: const Text(
           'Exciting Opportunity!',
           style: TextStyle(
               fontWeight: FontWeight.bold,
@@ -210,7 +211,7 @@ void _showLoginAlertDialog(BuildContext context, String position) {
         ),
         content: Text(
           'Found this $position job offer intersting?\nPlease log in or sign up to apply and unlock this opportunity.',
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
           ),
         ),
@@ -220,13 +221,13 @@ void _showLoginAlertDialog(BuildContext context, String position) {
               Navigator.of(context).pop();
               Navigator.of(context).pushNamed(RegisterScreen.routeName);
             },
-            child: Text('Sign Up',
+            child: const Text('Sign Up',
                 style: TextStyle(
                     color: custom_Color.secondaryDarkBlue,
                     fontSize: 16,
                     fontWeight: FontWeight.bold)),
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Container(
             width: 120,
             height: 40,
@@ -236,13 +237,13 @@ void _showLoginAlertDialog(BuildContext context, String position) {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                padding: EdgeInsets.all(6),
+                padding: const EdgeInsets.all(6),
               ),
               onPressed: () {
                 Navigator.of(context).pop();
                 Navigator.of(context).pushNamed(loginScreen.routeName);
               },
-              child: Text('Log In',
+              child: const Text('Log In',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
@@ -260,13 +261,14 @@ void _showInterviewAlertDialog(BuildContext context, String position) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        titlePadding: EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 20),
-        contentPadding: EdgeInsets.only(left: 30, right: 30, bottom: 30),
-        actionsPadding: EdgeInsets.all(30),
+        titlePadding:
+            const EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 20),
+        contentPadding: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
+        actionsPadding: const EdgeInsets.all(30),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
-        title: Text(
+        title: const Text(
           'Ready to Go?',
           style: TextStyle(
               fontWeight: FontWeight.bold,
@@ -275,7 +277,7 @@ void _showInterviewAlertDialog(BuildContext context, String position) {
         ),
         content: Text(
           'You are about to start the interview for $position.\nClick the \'Start\' button to proceed.',
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
           ),
         ),
@@ -284,13 +286,13 @@ void _showInterviewAlertDialog(BuildContext context, String position) {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text('Cancel',
+            child: const Text('Cancel',
                 style: TextStyle(
                     color: custom_Color.secondaryDarkBlue,
                     fontSize: 16,
                     fontWeight: FontWeight.bold)),
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Container(
             width: 120,
             height: 40,
@@ -300,7 +302,7 @@ void _showInterviewAlertDialog(BuildContext context, String position) {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                padding: EdgeInsets.all(6),
+                padding: const EdgeInsets.all(6),
               ),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -309,7 +311,7 @@ void _showInterviewAlertDialog(BuildContext context, String position) {
                 Navigator.of(context).pushNamed(PreInterviewScreen.routeName,
                     arguments: position);
               },
-              child: Text('Start',
+              child: const Text('Start',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,

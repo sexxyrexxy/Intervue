@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:talentsync/models/colors.dart';
-import 'package:talentsync/providers/candidate_provider.dart';
 import 'package:talentsync/providers/position_provider.dart';
 import 'package:talentsync/widgets/answering_screen.dart';
-import 'package:talentsync/widgets/camera.dart';
 
 class CandidatesAnsweringScreen extends StatefulWidget {
   static const routeName = '/autoanswer';
@@ -35,13 +31,6 @@ class _CandidatesAnsweringScreenState extends State<CandidatesAnsweringScreen> {
   @override
   Widget build(BuildContext context) {
     String jobPosition = ModalRoute.of(context)!.settings.arguments as String;
-    // var candidateProvider =
-    //     Provider.of<CandidatesProvider>(context, listen: true);
-    // questions = candidateProvider.defaultCandidate.question
-    //     .map(
-    //       (question) => AnsweringScreen(question.keys.toString(), action),
-    //     )
-    //     .toList();
 
     var positionProvider = Provider.of<PositionProvider>(context, listen: true);
     int positionIndex = positionProvider.loadedPositionList
@@ -62,7 +51,7 @@ class _CandidatesAnsweringScreenState extends State<CandidatesAnsweringScreen> {
         width: double.infinity,
         height: 800,
         child: PageView(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             controller: _pageController,
             children: [...questions]),
       ),

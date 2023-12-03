@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class category extends StatefulWidget {
+class Category extends StatefulWidget {
   double width;
   Color color;
   String jobTitle;
   Color jobTitleColor;
-  category(
+  Category(
       {required this.width,
       required this.color,
       required this.jobTitle,
@@ -13,21 +13,21 @@ class category extends StatefulWidget {
       super.key});
 
   @override
-  State<category> createState() => _categoryState();
+  State<Category> createState() => _CategoryState();
 }
 
-class _categoryState extends State<category> {
+class _CategoryState extends State<Category> {
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
       width: widget.width,
       height: 32,
-      margin: EdgeInsets.only(top: 10, left: 28, right: 4),
+      margin: const EdgeInsets.only(top: 10, left: 28, right: 4),
       decoration: ShapeDecoration(
         color: widget.color,
         shape: RoundedRectangleBorder(
-          side: BorderSide(width: 1),
+          side: const BorderSide(width: 1),
           borderRadius: BorderRadius.circular(8),
         ),
       ),

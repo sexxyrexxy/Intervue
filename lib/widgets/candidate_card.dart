@@ -22,7 +22,7 @@ class CandidateCard extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 1,
             blurRadius: 7,
-            offset: Offset(0, 5), // changes position of shadow
+            offset: const Offset(0, 5), // changes position of shadow
           ),
         ],
       ),
@@ -44,12 +44,12 @@ class CandidateCard extends StatelessWidget {
                   children: [
                     Text(
                       name,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 25,
                           color: backgroundWhite),
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Text(
                       'Student',
                       style: TextStyle(

@@ -61,7 +61,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                 Strictly only extract first name, last name, phone number, email, education and strictly only 5 skills and experiences.
                 Give no extra information other than that. 
                 Here is the text : ${text}.
-                the response you give will be used as json in code, make your response a valid json please. Don't give unexpencted token in json. Give no prefix such as 'Answer:"
+                the response you give will be used as json in code, make your response a valid json please. Strictly do not give any prefix in your response such as 'Answer:"
                 Do it in the strict JSON format and example of below, make sure the keys are exactly right:
                 {
                                     "First Name": "Ronalds",
@@ -76,7 +76,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                                                     "Degree from Taylor's University"]
                                   }
                 
-                Skills and experience are lists.
+                Skills and experience are lists. Put company names under experience if applicable.
                 """,
     );
 

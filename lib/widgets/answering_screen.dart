@@ -61,7 +61,7 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
         prompt: """
                 I am interviewing a candidate for ${widget.position}. 
                 The question is ${widget.question}. The response is ${speechRecognitionComponent.recognizedWords}.
-                Please give me a very specific follow up qeustion.
+                Please give me a very specific follow up qeustion. Strictly do not give any prefix in your response such as 'Answer:' or 'Qeustion:'
                 """,
       );
       positionProvider.addQuestion(

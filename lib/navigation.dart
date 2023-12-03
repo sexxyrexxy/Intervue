@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:talentsync/screens/new_job_screen_I.dart';
-import 'package:talentsync/screens/signup_screen.dart';
 import 'models/colors.dart';
-import 'screens/admin_analytics_screen.dart';
 import 'screens/admin_candidates_screen.dart';
 import 'screens/admin_main_screen.dart';
 import 'screens/admin_messages_screen.dart';
 import 'screens/admin_set_questions_screen.dart';
-import 'screens/admin_settings_screen.dart';
 import 'screens/main_job_searching_screen.dart';
 
 class Navigation extends StatefulWidget {
@@ -33,7 +29,6 @@ class NavigationState extends State<Navigation> {
     AdminCandidatesScreen(),
     // newJobPostionScreen(),
     AdminMessageScreen(),
-    AdminSettingsScreen(),
   ];
 
   @override

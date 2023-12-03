@@ -43,15 +43,15 @@ class _InterviewPositionState extends State<InterviewPosition> {
     return ExpansionTile(
       title: Text(
         widget.position,
-        style: TextStyle(
+        style: const TextStyle(
             color: secondaryDarkBlue,
             fontSize: 17,
             fontWeight: FontWeight.w500),
       ),
       children: [
         Container(
-          padding: EdgeInsets.all(10),
-          margin: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
+          margin: const EdgeInsets.all(10),
           width: double.infinity,
           decoration: BoxDecoration(
             border: Border.all(width: 1, color: Colors.grey),
@@ -60,15 +60,15 @@ class _InterviewPositionState extends State<InterviewPosition> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Brief Description:'),
-              SizedBox(
+              const Text('Brief Description:'),
+              const SizedBox(
                 height: 8,
               ),
               TextField(
                 controller: _descriptionController,
                 maxLines: 5,
                 decoration: InputDecoration(
-                  contentPadding: EdgeInsets.fromLTRB(16, 16, 16, 16),
+                  contentPadding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
                   hintText: fetchedPosition.description,
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
@@ -80,8 +80,8 @@ class _InterviewPositionState extends State<InterviewPosition> {
           ),
         ),
         Container(
-          padding: EdgeInsets.all(10),
-          margin: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
+          margin: const EdgeInsets.all(10),
           width: double.infinity,
           decoration: BoxDecoration(
             color: backgroundWhite,
@@ -100,7 +100,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                       controller: _numOfPeopleController,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 40,
                   ),
                   Expanded(
@@ -112,7 +112,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -124,7 +124,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                       controller: _skillsController,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 40,
                   ),
                   Expanded(
@@ -136,7 +136,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -148,7 +148,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                       controller: _yearsExperienceController,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 40,
                   ),
                   Expanded(
@@ -164,8 +164,8 @@ class _InterviewPositionState extends State<InterviewPosition> {
           ),
         ),
         Container(
-          padding: EdgeInsets.all(10),
-          margin: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
+          margin: const EdgeInsets.all(10),
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -173,7 +173,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
           ),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text('Questions:'),
+            const Text('Questions:'),
             ...questions,
             Container(
               decoration: BoxDecoration(
@@ -184,11 +184,11 @@ class _InterviewPositionState extends State<InterviewPosition> {
                     color: Colors.grey.withOpacity(0.5),
                     spreadRadius: 1,
                     blurRadius: 7,
-                    offset: Offset(0, 5), // changes position of shadow
+                    offset: const Offset(0, 5), // changes position of shadow
                   ),
                 ],
               ),
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               child: TextField(
                 textAlign: TextAlign.center,
                 controller: _questionController,
@@ -202,7 +202,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                     _questionController.clear();
                   });
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Add Question...',
                   border: InputBorder.none,
                 ),
@@ -210,7 +210,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
             ),
           ]),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         )
       ],
@@ -232,11 +232,11 @@ class QuestionDataTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(title),
-        SizedBox(
+        const SizedBox(
           height: 4,
         ),
         Container(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             alignment: Alignment.centerRight,
             width: double.infinity,
             height: 60,
@@ -244,7 +244,7 @@ class QuestionDataTextField extends StatelessWidget {
               controller: controller,
               decoration: InputDecoration(
                 hintText: data,
-                contentPadding: EdgeInsets.all(8),
+                contentPadding: const EdgeInsets.all(8),
                 enabledBorder:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
                 filled: true,

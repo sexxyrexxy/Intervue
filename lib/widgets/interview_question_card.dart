@@ -14,8 +14,8 @@ class InterviewQuestionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: double.infinity,
-        padding: EdgeInsets.all(10),
-        margin: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: Colors.grey.withOpacity(0.1),
           borderRadius: BorderRadius.circular(10),
@@ -26,7 +26,7 @@ class InterviewQuestionCard extends StatelessWidget {
           children: [
             Text(
               text,
-              style: TextStyle(color: secondaryDarkBlue),
+              style: const TextStyle(color: secondaryDarkBlue),
             ),
             GestureDetector(
                 onTap: () {
@@ -34,8 +34,8 @@ class InterviewQuestionCard extends StatelessWidget {
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        title: Text('Confirmation'),
-                        content: Text(
+                        title: const Text('Confirmation'),
+                        content: const Text(
                             'Are you sure you want to delete this question?'),
                         actions: [
                           TextButton(
@@ -52,13 +52,13 @@ class InterviewQuestionCard extends StatelessWidget {
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
-                              child: Text('Cancel'))
+                              child: const Text('Cancel'))
                         ],
                       );
                     },
                   );
                 },
-                child: Icon(Icons.cancel))
+                child: const Icon(Icons.cancel))
           ],
         ));
   }

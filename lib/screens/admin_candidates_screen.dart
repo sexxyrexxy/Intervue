@@ -1,4 +1,3 @@
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:talentsync/providers/candidate_provider.dart';
@@ -8,7 +7,6 @@ import '../models/candidates_model.dart';
 import '../models/colors.dart' as custom_colors;
 
 import '../providers/position_provider.dart';
-import 'loading_screen.dart';
 
 class AdminCandidatesScreen extends StatefulWidget {
   const AdminCandidatesScreen({super.key});
@@ -19,7 +17,6 @@ class AdminCandidatesScreen extends StatefulWidget {
 
 String _selectedItem = '';
 List<String> _dropdownItems = [];
-List<CandidateModel> _positionedCandidates = [];
 Set<CandidateModel> uniqueCandidate = Set<CandidateModel>();
 bool _isLoading = true;
 
@@ -99,8 +96,8 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
     var _provider = Provider.of<CandidatesProvider>(context, listen: false);
 
     return _isLoading
-        ? Padding(
-            padding: const EdgeInsets.fromLTRB(52, 400, 52, 400),
+        ? const Padding(
+            padding: EdgeInsets.fromLTRB(52, 400, 52, 400),
             child: Center(
               child: CircularProgressIndicator(
                 color: custom_colors.secondaryDarkBlue,
@@ -108,7 +105,7 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
             ),
           )
         : Container(
-            padding: EdgeInsets.fromLTRB(40, 16, 16, 16),
+            padding: const EdgeInsets.fromLTRB(40, 16, 16, 16),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -136,7 +133,7 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
                         });
                       },
                       items: [
-                        DropdownMenuItem<String>(
+                        const DropdownMenuItem<String>(
                           value: '',
                           child: Text('Select a position'),
                         ),
@@ -153,7 +150,7 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
                 ),
                 GridView.builder(
                   shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     crossAxisSpacing: 24,
                     mainAxisSpacing: 12,
@@ -172,9 +169,6 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
                       child: CandidateCard(
                           uniqueCandidate.elementAt(index).name,
                           uniqueCandidate.elementAt(index).imgs.imgUrl),
-                      // _provider.loadedCandidateLists[index].name,
-                      // _provider.loadedCandidateLists[index].imgs.imgUrl,
-                      // _provider.loadedCandidateLists[index]),
                     );
                   },
                 ),

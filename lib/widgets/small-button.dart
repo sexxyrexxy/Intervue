@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class smallButton extends StatelessWidget {
+class SmallButton extends StatelessWidget {
   double width;
   double height;
   double fontSize;
   Color color;
   IconData icons;
   String text;
-  smallButton(
+  SmallButton(
       this.width, this.height, this.color, this.icons, this.text, this.fontSize,
       {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       width: width,
       height: height,
       decoration: BoxDecoration(
@@ -36,7 +36,7 @@ class smallButton extends StatelessWidget {
   }
 }
 
-class smallButtonwithoutIcons extends StatelessWidget {
+class SmallButtonWithoutIcons extends StatelessWidget {
   double width;
   double height;
   double fontSize;
@@ -44,14 +44,14 @@ class smallButtonwithoutIcons extends StatelessWidget {
   Color fontColor;
 
   String text;
-  smallButtonwithoutIcons(this.width, this.height, this.color, this.text,
+  SmallButtonWithoutIcons(this.width, this.height, this.color, this.text,
       this.fontSize, this.fontColor,
       {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       width: width,
       height: height,
       decoration: BoxDecoration(

@@ -1,26 +1,18 @@
 import 'dart:convert';
-import 'dart:io';
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dart_openai/dart_openai.dart';
-import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
 import 'package:file_picker/_internal/file_picker_web.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:talentsync/models/candidates_model.dart';
 import 'package:talentsync/models/colors.dart';
 import 'package:talentsync/providers/candidate_provider.dart';
-import 'package:talentsync/providers/openAI_4_provider.dart';
-import 'package:talentsync/screens/candidates_answering_screen.dart';
-import 'package:talentsync/screens/candidates_pre_interview.dart';
 import 'package:talentsync/screens/main_job_searching_screen.dart';
 import 'package:talentsync/widgets/candidate_info_text_field.dart';
-import '../auth.dart';
-import 'package:read_pdf_text/read_pdf_text.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 class CandidatesUploadCV extends StatefulWidget {
@@ -151,27 +143,27 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
 
     return Scaffold(
         body: Container(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Row(
         children: [
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Personal Information",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: secondaryDarkBlue,
                       fontSize: 20),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Divider(
+                const Divider(
                   color: black,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Expanded(
@@ -239,7 +231,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                               }
                             },
                             child: Container(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 5),
                               alignment: Alignment.center,
                               height: 40,
@@ -248,23 +240,23 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                                 color: secondaryDarkBlue,
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              child: Text(
+                              child: const Text(
                                 'Upload CV/Resume',
                                 style: TextStyle(color: backgroundWhite),
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
-                          Icon(
+                          const Icon(
                             Icons.file_copy_rounded,
                             color: secondaryDarkBlue,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
-                          Text(
+                          const Text(
                             'PDF (2MB)',
                             style: TextStyle(color: secondaryDarkBlue),
                           )
@@ -286,9 +278,9 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
-                          minimumSize: Size(280, 56),
+                          minimumSize: const Size(280, 56),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Start Applying For Jobs',
                           style: TextStyle(
                             color: backgroundWhite,
@@ -305,7 +297,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
           ),
           Expanded(
               child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 150, vertical: 60),
+            padding: const EdgeInsets.symmetric(horizontal: 150, vertical: 60),
             child: GestureDetector(
               onTap: () async {
                 pickImage();
@@ -320,7 +312,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                 ),
                 child: selectedImage != null
                     ? FittedBox(fit: BoxFit.cover, child: selectedImage)
-                    : Column(
+                    : const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(

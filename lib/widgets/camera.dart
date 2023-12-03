@@ -1,20 +1,20 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
-class Cameras extends StatefulWidget {
+class CameraCard extends StatefulWidget {
   double width;
   double height;
-  Cameras(
+  CameraCard(
     this.width,
     this.height, {
     super.key,
   });
 
   @override
-  State<Cameras> createState() => _CamerasState();
+  State<CameraCard> createState() => _CameraCardState();
 }
 
-class _CamerasState extends State<Cameras> {
+class _CameraCardState extends State<CameraCard> {
   List<CameraDescription>? cameras;
   CameraController? controller; //controller for camera
   XFile? image;
@@ -49,15 +49,12 @@ class _CamerasState extends State<Cameras> {
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(28)),
       child: controller == null
-          ? Center(child: Text("Loading Camera..."))
+          ? const Center(child: Text("Loading Camera..."))
           : !controller!.value.isInitialized
-              ? Center(
+              ? const Center(
                   child: CircularProgressIndicator(),
                 )
               : CameraPreview(controller!),
     );
-    void initCamera() {
-      loadCamera();
-    }
   }
 }

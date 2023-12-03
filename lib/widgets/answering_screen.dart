@@ -61,7 +61,7 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
         prompt: """
                 I am interviewing a candidate for ${widget.position}. 
                 The question is ${widget.question}. The response is ${speechRecognitionComponent.recognizedWords}.
-                Please give me a very specific follow up qeustion.
+                Please give me a very specific follow up question.
                 """,
       );
       positionProvider.addQuestion(
@@ -72,30 +72,30 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
 
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             widget.question,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
           ),
-          Cameras(800, 500),
+          CameraCard(800, 500),
           Countdown(
             // controller: _controller,
             seconds: 180,
             controller: _controller,
             build: (_, double time) => Text(
               time.toString() + " seconds left",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 25,
               ),
             ),
-            interval: Duration(seconds: 1),
+            interval: const Duration(seconds: 1),
             onFinished: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
+                const SnackBar(
                   content: Text('Timer is done!'),
                 ),
               );
@@ -137,11 +137,12 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
                 }
               },
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: secondaryDarkBlue),
-                child: Text(
+                child: const Text(
                   'Next Question',
                   style: TextStyle(color: backgroundWhite),
                 ),

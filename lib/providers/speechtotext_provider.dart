@@ -20,7 +20,6 @@ class SpeechToTextProvider {
 
   void stopListening() async {
     _isListening = false;
-    _recognizedWords = '';
     speechRecognition.stop();
   }
 

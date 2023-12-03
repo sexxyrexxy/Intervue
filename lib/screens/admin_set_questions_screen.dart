@@ -14,35 +14,27 @@ class AdminSetInterviewScreen extends StatefulWidget {
 }
 
 final _controller = TextEditingController();
-
+bool _isLoading = true;
 class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
-  bool _isLoading = true;
+  
   @override
-  void initState() {
-    var _positionProvider =
-        Provider.of<PositionProvider>(context, listen: false);
-    if (_positionProvider.positionIdList.isEmpty) {
-      _positionProvider.fetchPositionId().then(
-        (_) {
-          print(
-              'Successfully fetched ${_positionProvider.positionIdList.length} ids');
-          _positionProvider.fetchAllPosition().then(
-            (_) {
-              setState(() {
-                print("Length: ${_positionProvider.loadedPositionList.length}");
-              });
-            },
-          );
-        },
-      );
-      _isLoading = false;
-    } else {
-      setState(() {
-        _isLoading = false;
+   void initState() {
+    var _positionProvider = Provider.of<PositionProvider>(context, listen: false);
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    _positionProvider.fetchPositionId().then((_) {
+      print('Successfully fetched ${_positionProvider.positionIdList.length} ids');
+      _positionProvider.fetchAllPosition().then((_) {
+        setState(() {
+          _isLoading = false;
+          print("Length: ${_positionProvider.loadedPositionList.length}");
+        });
       });
-    }
-    print("id: ${_positionProvider.positionIdList.length}");
-    // TODO: implement initState
+    });
+
     super.initState();
   }
 

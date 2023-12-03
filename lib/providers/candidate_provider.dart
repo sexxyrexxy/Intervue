@@ -155,7 +155,7 @@ class CandidatesProvider with ChangeNotifier {
   Future<void> fetchCandidateData() async {
     List<String> tmpSkills = <String>[];
     List<String> tmpExperiences = <String>[];
-    List<Map<String, String>> tmpQuestions = <Map<String, String>>[];
+    List<Map<String, String>> tmpQuestions= [];
 
     await FirebaseFirestore.instance
         .collection("candidates")

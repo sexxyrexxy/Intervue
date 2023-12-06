@@ -22,10 +22,17 @@ class PositionProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void addQuestion(
-      String posName, String question, int? preferredQuestionIndex) {
+  Future<void> addQuestion(
+      String posName, String question, int? preferredQuestionIndex) async {
     int positionIndex =
         loadedPositionList.indexWhere((pos) => pos.name == posName);
+
+     await _firebaseFirestore
+        .collection("position")
+        .doc(positionIdList[positionIndex])
+        .update({
+      "defaultQuestions": FieldValue.arrayUnion([question])
+    });
 
     PositionModel newPositionModel = loadedPositionList[positionIndex];
     if (preferredQuestionIndex == null) {

@@ -53,7 +53,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                 Strictly only extract first name, last name, phone number, email, education and strictly only 5 skills and experiences.
                 Give no extra information other than that. 
                 Here is the text : ${text}.
-                the response you give will be used as json in code, make your response a valid json please. Strictly do not give any prefix in your response such as 'Answer:"
+                Make your response a valid json please. Strictly do not give any prefix in your response such as 'Answer: or response:"
                 Do it in the strict JSON format and example of below, make sure the keys are exactly right:
                 {
                                     "First Name": "Ronalds",
@@ -73,7 +73,10 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
     );
 
     print(completion.choices[0].text);
-    return completion.choices[0].text;
+    int braceIndex = completion.choices[0].text.indexOf('{');
+
+    // Extract the substring from the opening curly brace onwards
+    return completion.choices[0].text.substring(braceIndex);
   }
 
   void pickImage() async {
@@ -191,6 +194,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                               PdfTextExtractor extractor =
                                   PdfTextExtractor(documentTry);
                               String text = extractor.extractText();
+
                               Map<String, dynamic> jsonMap =
                                   json.decode(await exampleAI(text));
                               // String inputString = """{

@@ -28,6 +28,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
   final TextEditingController _yearsExperienceController =
       TextEditingController();
 
+  bool editable = false;
   List<Widget> questions = [];
   @override
   Widget build(BuildContext context) {
@@ -40,6 +41,15 @@ class _InterviewPositionState extends State<InterviewPosition> {
     questions = questionList
         .map((question) => InterviewQuestionCard(widget.position, question))
         .toList();
+
+    _descriptionController.text = fetchedPosition.description;
+    _numOfPeopleController.text = fetchedPosition.numOfPeople.toString();
+    _locationController.text = fetchedPosition.location;
+    _skillsController.text = fetchedPosition.skillsRequired[0];
+    _responsibilitiesController.text = fetchedPosition.responsibilities[0];
+    _benefitsController.text = fetchedPosition.benefits[0];
+    _yearsExperienceController.text =
+        fetchedPosition.yearOfExperience.toString();
     return ExpansionTile(
       title: Text(
         widget.position,
@@ -65,6 +75,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                 height: 8,
               ),
               TextField(
+                enabled: editable,
                 controller: _descriptionController,
                 maxLines: 5,
                 decoration: InputDecoration(
@@ -98,6 +109,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                       title: "Number of People:",
                       data: fetchedPosition.numOfPeople.toString(),
                       controller: _numOfPeopleController,
+                      editable: editable,
                     ),
                   ),
                   const SizedBox(
@@ -108,6 +120,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                       title: "Location:",
                       data: fetchedPosition.location,
                       controller: _locationController,
+                      editable: editable,
                     ),
                   ),
                 ],
@@ -122,6 +135,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                       title: "Skills Required: ",
                       data: fetchedPosition.skillsRequired[0],
                       controller: _skillsController,
+                      editable: editable,
                     ),
                   ),
                   const SizedBox(
@@ -132,6 +146,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                       title: "Responsibilities:",
                       data: fetchedPosition.responsibilities[0],
                       controller: _responsibilitiesController,
+                      editable: editable,
                     ),
                   ),
                 ],
@@ -146,6 +161,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                       title: "Years of Experience:",
                       data: fetchedPosition.yearOfExperience.toString(),
                       controller: _yearsExperienceController,
+                      editable: editable,
                     ),
                   ),
                   const SizedBox(
@@ -156,6 +172,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
                       title: "Benefits:",
                       data: fetchedPosition.benefits[0],
                       controller: _benefitsController,
+                      editable: editable,
                     ),
                   ),
                 ],
@@ -190,6 +207,7 @@ class _InterviewPositionState extends State<InterviewPosition> {
               ),
               margin: const EdgeInsets.all(10),
               child: TextField(
+                enabled: editable,
                 textAlign: TextAlign.center,
                 controller: _questionController,
                 textInputAction: TextInputAction.done,
@@ -212,7 +230,73 @@ class _InterviewPositionState extends State<InterviewPosition> {
         ),
         const SizedBox(
           height: 20,
-        )
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    editable = true;
+                  });
+                },
+                child: Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 7,
+                          offset:
+                              const Offset(0, 5), // changes position of shadow
+                        ),
+                      ],
+                      borderRadius: BorderRadius.circular(10),
+                      color: backgroundWhite,
+                    ),
+                    padding: EdgeInsets.all(20),
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Edit',
+                      style: TextStyle(fontSize:17, color: primaryBlue),
+                    )),
+              ),
+            ),
+            const SizedBox(width: 20),
+            Expanded(
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    editable=false;
+                  });
+                },
+                child: Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 7,
+                          offset:
+                              const Offset(0, 5), // changes position of shadow
+                        ),
+                      ],
+                      borderRadius: BorderRadius.circular(10),
+                      color: primaryBlue,
+                    ),
+                    padding: EdgeInsets.all(20),
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Save',
+                      style: TextStyle(fontSize:17,color: backgroundWhite),
+                    )),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 20,
+        ),
       ],
     );
   }
@@ -221,11 +305,14 @@ class _InterviewPositionState extends State<InterviewPosition> {
 class QuestionDataTextField extends StatelessWidget {
   String title;
   String data;
+  bool editable;
   TextEditingController controller;
 
   QuestionDataTextField(
-      {required this.title, required this.data, required this.controller});
-
+      {required this.title,
+      required this.data,
+      required this.controller,
+      required this.editable});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -241,6 +328,7 @@ class QuestionDataTextField extends StatelessWidget {
             width: double.infinity,
             height: 60,
             child: TextField(
+              enabled: editable,
               controller: controller,
               decoration: InputDecoration(
                 hintText: data,

@@ -24,7 +24,7 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
     setState(() {
       _isLoading = true;
     });
-
+if (_positionProvider.positionIdList.isEmpty) {
     _positionProvider.fetchPositionId().then((_) {
       print('Successfully fetched ${_positionProvider.positionIdList.length} ids');
       _positionProvider.fetchAllPosition().then((_) {
@@ -34,7 +34,12 @@ class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
         });
       });
     });
-
+}
+else{
+  setState(() {
+          _isLoading = false;
+        });
+}
     super.initState();
   }
 

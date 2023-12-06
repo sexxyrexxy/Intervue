@@ -412,7 +412,7 @@ class DataChartComponent extends StatelessWidget {
     return SfCartesianChart(
       plotAreaBorderWidth: 0,
       primaryXAxis: DateTimeAxis(
-          dateFormat: DateFormat.d(),
+          dateFormat: DateFormat.Md(),
           interval: 1,
           intervalType: DateTimeIntervalType.days,
           majorGridLines: const MajorGridLines(width: 0),

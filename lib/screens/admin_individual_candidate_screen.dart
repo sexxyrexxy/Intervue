@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:talentsync/models/candidates_model.dart';
@@ -26,7 +28,7 @@ class _AdminIndividualCandidateScreenState
     CandidateModel displayedCandidate =
         ModalRoute.of(context)!.settings.arguments as CandidateModel;
 
-    questions = displayedCandidate.question.map((question) {
+    questions = displayedCandidate.question.mapIndexed((index, question) {
       return Container(
         margin: const EdgeInsets.all(10),
         child: Row(
@@ -46,7 +48,7 @@ class _AdminIndividualCandidateScreenState
                 //     question.values.toString());
               },
               child: new Text(
-                displayedCandidate.question[0]['question'].toString(),
+                displayedCandidate.question[index]['question'].toString(),
                 style: const TextStyle(color: secondaryDarkBlue),
               ),
             )
@@ -133,25 +135,18 @@ class _AdminIndividualCandidateScreenState
                   const SizedBox(
                     height: 20,
                   ),
-                  const Row(
-                    children: [
-                      Icon(Icons.phone),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Text('014 759 3534')
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const Row(
+                  Row(
                     children: [
                       Icon(Icons.school),
                       SizedBox(
                         width: 20,
                       ),
-                      Text('Bachelor of Computer Science')
+                      Expanded(
+                        child: Text(
+                          displayedCandidate.education,
+                          softWrap: true,
+                        ),
+                      )
                     ],
                   ),
                   const SizedBox(

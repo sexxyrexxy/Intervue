@@ -13,6 +13,8 @@ class CandidatesAnsweringScreen extends StatefulWidget {
       _CandidatesAnsweringScreenState();
 }
 
+int currentPage = 0;
+
 class _CandidatesAnsweringScreenState extends State<CandidatesAnsweringScreen> {
   @override
   void initState() {
@@ -21,23 +23,22 @@ class _CandidatesAnsweringScreenState extends State<CandidatesAnsweringScreen> {
 
   List<AnsweringScreen> questions = [];
   final PageController _pageController = PageController();
-  int currentPage = 0;
 
   void action() {
-    currentPage++;
-    _pageController.animateToPage(currentPage,
-        duration: new Duration(seconds: 1), curve: Curves.easeIn);
-  }
-  void pop() {
-    Navigator.of(context).pushNamed(MainJobSearch.routeName);
+    if (currentPage != questions.length - 1) {
+      currentPage++;
+
+      _pageController.animateToPage(currentPage,
+          duration: new Duration(seconds: 1), curve: Curves.easeIn);
+    } else {
+      Navigator.of(context).pushReplacementNamed(MainJobSearch.routeName);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     String jobPosition = ModalRoute.of(context)!.settings.arguments as String;
-
     var positionProvider = Provider.of<PositionProvider>(context, listen: true);
-    int i = positionProvider.loadedPositionList.length-1;
     int positionIndex = positionProvider.loadedPositionList
         .indexWhere((pos) => pos.name == jobPosition);
     questions = positionProvider.loadedPositionList[positionIndex].questions
@@ -45,7 +46,7 @@ class _CandidatesAnsweringScreenState extends State<CandidatesAnsweringScreen> {
           (question) => AnsweringScreen(
               position: jobPosition,
               question: question.toString(),
-              action: currentPage>=questions.length-1 ? pop : action ),
+              action: action),
         )
         .toList();
     return Scaffold(

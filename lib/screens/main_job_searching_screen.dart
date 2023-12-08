@@ -46,11 +46,6 @@ class _MainJobSearchState extends State<MainJobSearch> {
         .fetchCandidateData()
         .then(
       (_) {
-        setState(
-          () {
-            _isLoading = false;
-          },
-        );
       },
     );
 
@@ -78,7 +73,7 @@ class _MainJobSearchState extends State<MainJobSearch> {
     } else {
       setState(
         () {
-          _isLoading = true;
+          _isLoading = false;
         },
       );
     }

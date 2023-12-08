@@ -202,7 +202,7 @@ class _AdminIndividualCandidateScreenState
             ),
             Expanded(
               child: Container(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(24),
                 height: double.infinity,
                 decoration: BoxDecoration(
                   color: backgroundWhite,
@@ -221,7 +221,10 @@ class _AdminIndividualCandidateScreenState
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        const Text(
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        Text(
                           'Hear the highlights',
                           style: TextStyle(fontSize: 20),
                         ),
@@ -238,6 +241,9 @@ class _AdminIndividualCandidateScreenState
                         ),
                         const Text("General Overview: ",
                             style: TextStyle(fontSize: 20)),
+                        SizedBox(
+                          height: 16,
+                        ),
                         BulletedList(
                             style: const TextStyle(
                                 fontSize: 15,
@@ -247,6 +253,9 @@ class _AdminIndividualCandidateScreenState
                             listItems: [
                               displayedCandidate.education,
                             ]),
+                        SizedBox(
+                          height: 16,
+                        ),
                         const Text(
                           "Skills:",
                           style: TextStyle(fontSize: 20),
@@ -261,9 +270,15 @@ class _AdminIndividualCandidateScreenState
                               ...displayedCandidate.skills
                                   .map((skill) => '$skill'),
                             ]),
+                        SizedBox(
+                          height: 16,
+                        ),
                         const Text(
                           "Experience: ",
                           style: TextStyle(fontSize: 20),
+                        ),
+                        const SizedBox(
+                          height: 16,
                         ),
                         BulletedList(
                             style: const TextStyle(

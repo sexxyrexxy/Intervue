@@ -194,7 +194,7 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
                   _provider
                       .updateQuestions(widget.question, recognizedWords)
                       .then((_) {
-                    startListening();
+                    stopListening();
                     _recognizedWords = "";
                   });
                 });

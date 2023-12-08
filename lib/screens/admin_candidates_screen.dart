@@ -132,7 +132,7 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
     );
     var _provider = Provider.of<CandidatesProvider>(context, listen: false);
     if (_provider.candidatesIdList.isEmpty) {
-      _provider.fetchForumId().then(
+      _provider.fetchCandidateId().then(
         (_) {
           print('Successfuly fetched ${_provider.candidatesIdList.length} ids');
           _provider.fetchAllCandidates().then(

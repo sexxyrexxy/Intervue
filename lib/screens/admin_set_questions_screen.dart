@@ -15,31 +15,34 @@ class AdminSetInterviewScreen extends StatefulWidget {
 
 final _controller = TextEditingController();
 bool _isLoading = true;
+
 class _AdminSetInterviewScreenState extends State<AdminSetInterviewScreen> {
-  
   @override
-   void initState() {
-    var _positionProvider = Provider.of<PositionProvider>(context, listen: false);
+  void initState() {
+    var _positionProvider =
+        Provider.of<PositionProvider>(context, listen: false);
+    _positionProvider.loadedPositionList.clear();
+    _positionProvider.positionIdList.clear();
 
     setState(() {
       _isLoading = true;
     });
-if (_positionProvider.positionIdList.isEmpty) {
-    _positionProvider.fetchPositionId().then((_) {
-      print('Successfully fetched ${_positionProvider.positionIdList.length} ids');
-      _positionProvider.fetchAllPosition().then((_) {
-        setState(() {
-          _isLoading = false;
-          print("Length: ${_positionProvider.loadedPositionList.length}");
+    if (_positionProvider.positionIdList.isEmpty) {
+      _positionProvider.fetchPositionId().then((_) {
+        print(
+            'Successfully fetched ${_positionProvider.positionIdList.length} ids');
+        _positionProvider.fetchAllPosition().then((_) {
+          setState(() {
+            _isLoading = false;
+            print("Length: ${_positionProvider.loadedPositionList.length}");
+          });
         });
       });
-    });
-}
-else{
-  setState(() {
-          _isLoading = false;
-        });
-}
+    } else {
+      setState(() {
+        _isLoading = false;
+      });
+    }
     super.initState();
   }
 

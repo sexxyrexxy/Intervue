@@ -100,7 +100,7 @@ class NavigationState extends State<Navigation> {
                 onTap: () {
                   Navigator.of(context).pushNamed(MainJobSearch.routeName);
                   setState(() {
-                    currentIndex = 4;
+                    currentIndex = 0;
                   });
                 },
                 child: navItem(Icons.logout_outlined, 'Return',

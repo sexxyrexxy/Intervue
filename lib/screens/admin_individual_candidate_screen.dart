@@ -46,7 +46,7 @@ class _AdminIndividualCandidateScreenState
                 //     question.values.toString());
               },
               child: new Text(
-                displayedCandidate.question[0]['question'].toString(),
+                question['question']!,
                 style: const TextStyle(color: secondaryDarkBlue),
               ),
             )

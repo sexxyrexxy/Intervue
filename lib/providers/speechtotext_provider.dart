@@ -2,6 +2,8 @@ import 'dart:html' as html;
 import 'dart:js_util' as js_util;
 import 'dart:math';
 
+import 'package:talentsync/widgets/answering_screen.dart';
+
 class SpeechToTextProvider {
   final speechRecognition = html.SpeechRecognition();
   String _recognizedWords = '';
@@ -20,6 +22,9 @@ class SpeechToTextProvider {
   void stopListening() async {
     _isListening = false;
     speechRecognition.stop();
+  }
+  void clear(){
+    _recognizedWords="";
   }
 
   void _onSpeechResult(html.SpeechRecognitionEvent event) {

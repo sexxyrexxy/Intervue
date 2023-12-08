@@ -3,6 +3,7 @@ import 'package:talentsync/screens/main_job_searching_screen.dart';
 import 'auth.dart';
 
 class AuthWidgetTree extends StatefulWidget {
+  static const routeName = '';
   const AuthWidgetTree({super.key});
 
   @override

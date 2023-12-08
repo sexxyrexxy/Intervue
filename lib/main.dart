@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:talentsync/auth_widget_tree.dart';
 import 'package:talentsync/providers/candidate_provider.dart';
 import 'package:talentsync/providers/position_provider.dart';
 import 'package:talentsync/screens/candidates_answering_screen.dart';
@@ -38,8 +39,9 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Intervüe',
           theme: ThemeData(fontFamily: "Futura"),
-          home: Navigation(),
+          home: AuthWidgetTree(),
           routes: {
+            AuthWidgetTree.routeName: (context) => AuthWidgetTree(),
             Navigation.routeName: (context) => Navigation(),
             AdminMainScreen.routeName: (context) => AdminMainScreen(),
             PreInterviewScreen.routeName: (context) => PreInterviewScreen(),

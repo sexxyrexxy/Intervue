@@ -169,8 +169,15 @@ class _MainJobSearchState extends State<MainJobSearch> {
                           width: 20,
                         ),
                         GestureDetector(
-                          onTap: () => Navigator.of(context)
-                              .pushNamed(Navigation.routeName),
+                          onTap: () {
+                            _positionProvider.loadedPositionList.clear();
+                            _positionProvider.positionIdList.clear();
+
+                            print(
+                                "Position Id LIST: ${_positionProvider.positionIdList.length}");
+                            Navigator.of(context)
+                                .pushNamed(Navigation.routeName);
+                          },
                           child: Container(
                             width: 120,
                             height: 60,

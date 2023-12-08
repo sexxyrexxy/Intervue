@@ -21,6 +21,75 @@ Set<CandidateModel> uniqueCandidate = Set<CandidateModel>();
 bool _isLoading = true;
 
 class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
+  // @override
+  // void didChangeDependencies() {
+  //   // TODO: implement didChangeDependencies
+  //   var _positionProvider =
+  //       Provider.of<PositionProvider>(context, listen: false);
+  //   if (_positionProvider.positionIdList.isEmpty) {
+  //     _positionProvider.fetchPositionId().then(
+  //       (_) {
+  //         print(
+  //             'Successfuly fetched ${_positionProvider.positionIdList.length} ids');
+  //         _positionProvider.fetchAllPosition().then(
+  //           (_) {
+  //             setState(
+  //               () {
+  //                 for (int i = 0;
+  //                     i < _positionProvider.loadedPositionList.length;
+  //                     i++) {
+  //                   _dropdownItems
+  //                       .add(_positionProvider.loadedPositionList[i].name);
+  //                 }
+  //                 _isLoading = false;
+
+  //                 print(
+  //                     "Length: ${_positionProvider.loadedPositionList.length}");
+  //               },
+  //             );
+  //           },
+  //         );
+  //       },
+  //     );
+  //   } else {
+  //     setState(
+  //       () {
+  //         _isLoading = false;
+  //       },
+  //     );
+  //   }
+  //   print(
+  //     "id: ${_positionProvider.positionIdList.length}",
+  //   );
+  //   var _provider = Provider.of<CandidatesProvider>(context, listen: false);
+  //   if (_provider.candidatesIdList.isEmpty) {
+  //     _provider.fetchForumId().then(
+  //       (_) {
+  //         print('Successfuly fetched ${_provider.candidatesIdList.length} ids');
+  //         _provider.fetchAllCandidates().then(
+  //           (_) {
+  //             setState(
+  //               () {
+  //                 _isLoading = false;
+  //               },
+  //             );
+  //           },
+  //         );
+  //       },
+  //     );
+  //   } else {
+  //     setState(
+  //       () {
+  //         _isLoading = false;
+  //       },
+  //     );
+  //   }
+  //   print(
+  //     "id: ${_provider.candidatesIdList.length}",
+  //   );
+  //   super.didChangeDependencies();
+  // }
+
   @override
   void initState() {
     // TODO: implement initState

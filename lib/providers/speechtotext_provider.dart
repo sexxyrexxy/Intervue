@@ -23,8 +23,9 @@ class SpeechToTextProvider {
     _isListening = false;
     speechRecognition.stop();
   }
-  void clear(){
-    _recognizedWords="";
+
+  void clear() {
+    _recognizedWords = "";
   }
 
   void _onSpeechResult(html.SpeechRecognitionEvent event) {

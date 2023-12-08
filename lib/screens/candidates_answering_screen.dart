@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:talentsync/providers/position_provider.dart';
+import 'package:talentsync/screens/main_job_searching_screen.dart';
 import 'package:talentsync/widgets/answering_screen.dart';
 
 class CandidatesAnsweringScreen extends StatefulWidget {
@@ -27,12 +28,16 @@ class _CandidatesAnsweringScreenState extends State<CandidatesAnsweringScreen> {
     _pageController.animateToPage(currentPage,
         duration: new Duration(seconds: 1), curve: Curves.easeIn);
   }
+  void pop() {
+    Navigator.of(context).pushNamed(MainJobSearch.routeName);
+  }
 
   @override
   Widget build(BuildContext context) {
     String jobPosition = ModalRoute.of(context)!.settings.arguments as String;
 
     var positionProvider = Provider.of<PositionProvider>(context, listen: true);
+    int i = positionProvider.loadedPositionList.length-1;
     int positionIndex = positionProvider.loadedPositionList
         .indexWhere((pos) => pos.name == jobPosition);
     questions = positionProvider.loadedPositionList[positionIndex].questions
@@ -40,7 +45,7 @@ class _CandidatesAnsweringScreenState extends State<CandidatesAnsweringScreen> {
           (question) => AnsweringScreen(
               position: jobPosition,
               question: question.toString(),
-              action: action),
+              action: currentPage>=questions.length-1 ? pop : action ),
         )
         .toList();
     return Scaffold(

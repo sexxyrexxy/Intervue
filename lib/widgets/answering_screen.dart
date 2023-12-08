@@ -130,6 +130,9 @@ class _AnsweringScreenState extends State<AnsweringScreen> {
               onTap: () {
                 _provider.updateQuestions(widget.question,
                     speechRecognitionComponent.recognizedWords);
+                    setState(() {
+                       speechRecognitionComponent.clear();
+                    }); 
                 widget.action!();
                 print('next');
                 if (widget.question == "Tell me a little bit about yourself") {

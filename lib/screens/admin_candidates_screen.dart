@@ -95,6 +95,9 @@ class _AdminCandidatesScreenState extends State<AdminCandidatesScreen> {
     // TODO: implement initState
     var _positionProvider =
         Provider.of<PositionProvider>(context, listen: false);
+    _positionProvider.loadedPositionList.clear();
+    _positionProvider.positionIdList.clear();
+
     if (_positionProvider.positionIdList.isEmpty) {
       _positionProvider.fetchPositionId().then(
         (_) {

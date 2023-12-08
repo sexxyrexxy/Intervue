@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Intervüe',
           theme: ThemeData(fontFamily: "Futura"),
-          home: AuthWidgetTree(),
+          home: Navigation(),
           routes: {
             AuthWidgetTree.routeName: (context) => AuthWidgetTree(),
             Navigation.routeName: (context) => Navigation(),

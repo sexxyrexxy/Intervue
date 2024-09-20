@@ -279,7 +279,7 @@ class _CandidatesUploadCVState extends State<CandidatesUploadCV> {
                           uploadFiles();
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: secondaryDarkBlue,
+                          backgroundColor: secondaryDarkBlue,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),

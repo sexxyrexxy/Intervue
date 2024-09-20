@@ -463,7 +463,7 @@ void _showLogoutAlertDialog(BuildContext context) {
             height: 40,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: custom_Color.secondaryDarkBlue,
+                backgroundColor: custom_Color.secondaryDarkBlue,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),

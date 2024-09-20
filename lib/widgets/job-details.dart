@@ -83,7 +83,7 @@ class JobDetailsCard extends StatelessWidget {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: custom_color.secondaryDarkBlue,
+                  backgroundColor: custom_color.secondaryDarkBlue,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -233,7 +233,7 @@ void _showLoginAlertDialog(BuildContext context, String position) {
             height: 40,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: custom_Color.secondaryDarkBlue,
+                backgroundColor: custom_Color.secondaryDarkBlue,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
@@ -298,7 +298,7 @@ void _showInterviewAlertDialog(BuildContext context, String position) {
             height: 40,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: custom_Color.secondaryDarkBlue,
+                backgroundColor: custom_Color.secondaryDarkBlue,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
